@@ -1,40 +1,66 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
 
-## Getting Started
+---
 
-First, run the development server:
+## Архитектурный манифест проекта
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Приложение строится на принципах **модульной декомпозиции** с четким разделением ответственности между слоями. Основная цель — обеспечить высокую связность кода внутри модулей и слабую зависимость между ними.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 1. Основные слои (Directories)
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+*   **`src/modules/` (Domain Modules)** — ключевой слой бизнес-логики. Каждый модуль представляет собой изолированную доменную область (например, `User`, `Order`, `Auth`). Модули находятся на одном уровне иерархии.
+*   **`src/components/` (Common Components)** — библиотека переиспользуемых компонентов, которые обладают сложной логикой, но не привязаны к конкретному бизнес-домену.
+*   **`src/layouts/` (Page Layouts)** — структурные компоненты, определяющие каркас страниц (Header, Sidebar, Footer wrappers).
+*   **`src/shared/` (Shared Kernel)** — базис приложения. Содержит максимально абстрактный код, переиспользуемый во всех слоях.
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+---
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+### 2. Внутренняя структура модуля (Segmenting)
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Каждый модуль (или сложный компонент) следует правилу **трех слоев (segments)** для разделения ответственности:
 
-## Learn More
+1.  **`api/` (Data Access Layer)** — логика взаимодействия с внешними сервисами: API-методы, инстансы Axios/Fetch, React Query хуки или контроллеры запросов.
+2.  **`model/` (Business Logic Layer)** — «мозг» модуля. Здесь сосредоточены:
+    *   Типы и интерфейсы (TypeScript).
+    *   Валидационные схемы (Zod/).
+    *   Хелперы и чистые функции трансформации данных.
+    *   Локальные сторы (Zustand/Redux slices).
+    *   Хуки
+3.  **`ui/` (Presentation Layer)** — визуальная часть. Здесь находятся React-компоненты, отвечающие за отображение данных.
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
+### 3. Правила декомпозиции UI
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Если компонент внутри слоя `ui` начинает разрастаться, применяется **внутренняя композиция**. Вместо одного гигантского файла создается папка компонента, где логика дробится на мелкие составные части:
 
-## Deploy on Vercel
+*   **Пример `Todos/`:**
+    *   `TodosList` — контейнер для итерации.
+    *   `TodosItem` — элемент списка.
+    *   `Todos.tsx` — точка входа (Entry point), собирающая воедино внутренние части.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+
+---
+
+### 4. Общий слой (Shared)
+
+Слой `shared` является фундаментом и не может зависеть от вышележащих модулей. Его структура:
+
+*   **`shared/ui/` (UIKit)** — «тупые» (stateless) компоненты: кнопки, инпуты, модалки, лоадеры. Они ничего не знают о бизнес-логике.
+*   **`shared/store/` (Global State)** — глобальное состояние приложения (например, настройки темы, данные сессии пользователя).
+*   **`shared/styles/` (Design Tokens)** — глобальные CSS-переменные, темы, reset.css и миксины.
+*   **`shared/api/`** — базовые конфигурации сетевых запросов (базовый URL, перехватчики/interceptors).
+
+---
+
+### Ключевые принципы взаимодействия
+
+1.  **Кросс-модульное использование:** Допускается импорт компонентов из одного модуля в другой, если это оправдано бизнес-логикой, однако стоит избегать циклических зависимостей.
+2.  **Принцип "снизу-вверх":** Компоненты из `shared` могут использоваться везде. Компоненты из `modules` могут использовать `shared` и `components`, но не наоборот.
+3.  **Инкапсуляция:** Внешний мир должен взаимодействовать с модулем через публичный интерфейс (желательно через `index.ts` файл в корне модуля), скрывая детали реализации `api` или `model`.
+
+### Примеры работ
+
+1. https://github.com/dreminjs/posts-innowise-react
+2. https://github.com/dreminjs/products-store-innowise
+3. https://github.com/dreminjs/innowise-todos-ts
