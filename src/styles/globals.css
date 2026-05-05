@@ -2,14 +2,36 @@
     --bg: rgba(#fff, #fff, #fff, 10%);
     --color: #2e2e2e;
     --border-color: rgba(#0000003b, 23%);
+    --active-color: #c63031;
+}
+
+html,
+body {
+    height: 100%;
 }
 
 body {
     background-color: var(--bg);
 }
 
+ul,
+ol {
+    list-style: none;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
 [data-theme="dark"] {
     --bg: #353535;
     --color: #fff;
     --border-color: rgba(#ffffff3b, 23%);
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
