@@ -65,3 +65,8 @@
 1. https://github.com/dreminjs/posts-innowise-react
 2. https://github.com/dreminjs/products-store-innowise
 3. https://github.com/dreminjs/innowise-todos-ts
+
+
+### Полезные ссылки
+
+* https://www.apollographql.com/docs/react/integrations/nextjs#react-client-components

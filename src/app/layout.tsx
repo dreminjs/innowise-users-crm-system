@@ -1,11 +1,17 @@
+import { ThemeProvider } from "next-themes";
+import "../styles/globals.css";
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body>{children}</body>
+    <html lang="en" suppressHydrationWarning>
+      <body>
+        <ThemeProvider enableSystem defaultTheme="system">
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
