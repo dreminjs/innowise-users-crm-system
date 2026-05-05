@@ -1,11 +1,11 @@
 import type { CodegenConfig } from "@graphql-codegen/cli";
 
 const config: CodegenConfig = {
-  schema:
-    process.env.NEXT_PUBLIC_GRAPHQL_URL || "http://localhost:3001/api/graphql",
+  schema: "http://localhost:3001/api/graphql",
+  documents: "src/**/*.ts",
   generates: {
-    "src/generated/graphql.ts": {
-      plugins: ["typescript", "typescript-operations"],
+    "src/graphql/": {
+      preset: "client",
     },
   },
 };
