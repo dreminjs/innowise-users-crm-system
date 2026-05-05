@@ -70,3 +70,8 @@
 ### Полезные ссылки
 
 * https://www.apollographql.com/docs/react/integrations/nextjs#react-client-components
+
+
+### Стек
+
+* React, TypeScript, NextJS (App Directory), Graphql, Apollo Client, Zustand
