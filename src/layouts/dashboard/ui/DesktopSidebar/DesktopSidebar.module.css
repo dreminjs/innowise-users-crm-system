@@ -38,8 +38,8 @@
 }
 
 .active {
-    background: #2563eb;
-    color: #ffffff;
+    background: #0000000A;
+    color: #2E2E2E;
 }
 
 @media (max-width: 1023px) {

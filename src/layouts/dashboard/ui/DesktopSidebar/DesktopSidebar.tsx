@@ -3,8 +3,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-
-
 import styles from './DesktopSidebar.module.css'
 import {navigationItems} from "@/shared/config/navigation";
 
@@ -13,8 +11,6 @@ export const DesktopSidebar = () => {
 
     return (
         <aside className={styles.sidebar}>
-            <div className={styles.logo}>CV CRM</div>
-
             <nav className={styles.navigation}>
                 {navigationItems.map(item => {
                     const isActive = pathname === item.href

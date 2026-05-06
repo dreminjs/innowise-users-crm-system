@@ -1,4 +1,4 @@
-
+GRAPHQL_URL="https://cv-node.onrender.com/api/graphql"
 ---
 
 ## Архитектурный манифест проекта

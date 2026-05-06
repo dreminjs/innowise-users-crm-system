@@ -308,7 +308,7 @@ export type MutationAddProfileSkillArgs = {
 };
 
 
-export type MutationCreateCvArgs = {
+export type  MutationCreateCvArgs = {
   cv: CreateCvInput;
 };
 
