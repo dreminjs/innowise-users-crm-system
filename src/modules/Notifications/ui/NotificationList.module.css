@@ -1,0 +1,12 @@
+.notificationList {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+}
+
+.notificationItem {
+    padding: 15px 30px;
+    margin-bottom: 10px;
+    background-color: var(--color-primary);
+    border-radius: 15px;
+}

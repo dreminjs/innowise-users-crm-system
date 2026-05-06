@@ -6,17 +6,23 @@ interface IAuthButtons {
   submitLabel: string;
   linkLabel: string;
   linkUrl: string;
+  isLoading: boolean;
 }
 
 export const AuthButtons: FC<IAuthButtons> = ({
   submitLabel,
   linkLabel,
   linkUrl,
+  isLoading,
 }) => {
   return (
     <div className={styles.authButtons}>
-      <button className={styles.authFormSubmit} type="submit">
-        {submitLabel}
+      <button
+        disabled={isLoading}
+        className={styles.authFormSubmit}
+        type="submit"
+      >
+        {isLoading ? "Загрузка..." : submitLabel}
       </button>
       <Link className={styles.authFormLink} href={linkUrl}>
         {linkLabel}

@@ -39,7 +39,7 @@
     background-color: transparent;
     border: none;
     outline: none;
-
+    width: 100%;
     box-shadow: 0 0 0 1000px var(--bg) inset;
     -webkit-box-shadow: 0 0 0 1000px var(--bg) inset;
 
@@ -68,6 +68,15 @@
     top: -11px;
     background-color: var(--bg);
     font-size: 12px;
+    color: var(--color-primary);
+}
+
+.authFormFieldInner:has(.authFormInput:focus) {
+    border: 1px solid var(--color-primary);
+}
+
+.authFormFieldInner:has(.authFormInput:not(:placeholder-shown)) {
+    border: 1px solid var(--color-primary);
 }
 
 .authButtons {

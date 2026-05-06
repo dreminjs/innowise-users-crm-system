@@ -37,6 +37,7 @@ export const SigninForm = () => {
           submitLabel="ВОЙТИ"
           linkLabel="ЗАБЫЛИ ПАРОЛЬ"
           linkUrl="forgot-password"
+          isLoading={false}
         />
       </form>
     </AuthFormLayout>

@@ -5,15 +5,18 @@ import { AuthButtons } from "./AuthButtons";
 import { AuthFormField } from "./AuthFormField";
 import { AuthFormLayout } from "./AuthFormLayout";
 import styles from "./AuthForm.module.css";
+import { useSignup } from "../model/hooks/useSignup";
 export const SignupForm = () => {
   const { register, handleSubmit, errors } = useAuthForm();
+
+  const { onSubmit, loading } = useSignup();
 
   return (
     <AuthFormLayout
       title="Зарегистрируйтесь"
       subtitle="Добро пожаловать! Создайте аккаунт, чтобы продолжить"
     >
-      <form className={styles.authForm}>
+      <form onSubmit={handleSubmit(onSubmit)} className={styles.authForm}>
         <div className={styles.authFormFields}>
           <AuthFormField
             type="email"
@@ -34,6 +37,7 @@ export const SignupForm = () => {
           submitLabel="СОЗДАТЬ АККАУНТ"
           linkLabel="У МЕНЯ ЕСТЬ АККАУНТ"
           linkUrl="signin"
+          isLoading={loading}
         />
       </form>
     </AuthFormLayout>
