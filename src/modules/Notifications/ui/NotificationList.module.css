@@ -7,6 +7,13 @@
 .notificationItem {
     padding: 15px 30px;
     margin-bottom: 10px;
-    background-color: var(--color-primary);
     border-radius: 15px;
+}
+
+.notificationItemError {
+    background-color: var(--color-primary);
+}
+
+.notificationItemSuccess {
+    background-color: green;
 }

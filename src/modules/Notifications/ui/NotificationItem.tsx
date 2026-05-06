@@ -1,6 +1,7 @@
 import { FC, useEffect } from "react";
 import { INotification } from "../model/notification.interface";
 import styles from "./NotificationList.module.css";
+import clsx from "clsx";
 type TNotificationItemProps = INotification & {
   onRemove: (id: string) => void;
 };
@@ -18,5 +19,14 @@ export const NotificationItem: FC<TNotificationItemProps> = ({
     return () => clearTimeout(timerId);
   }, [id, onRemove]);
 
-  return <li className={styles.notificationItem}>{message}</li>;
+  return (
+    <li
+      className={clsx(styles.notificationItem, {
+        [styles.notificationItemError]: type === "error",
+        [styles.notificationItemSuccess]: type === "success",
+      })}
+    >
+      {message}
+    </li>
+  );
 };

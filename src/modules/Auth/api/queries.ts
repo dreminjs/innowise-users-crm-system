@@ -17,3 +17,9 @@ export const SIGNUP = graphql(`
     }
   }
 `);
+
+export const FORGOT_PASSWORD = graphql(`
+  mutation forgotPassword($dto: ForgotPasswordInput!) {
+    forgotPassword(auth: $dto)
+  }
+`);
