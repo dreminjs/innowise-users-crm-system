@@ -5,18 +5,18 @@ import { useAuthForm } from "../model/hooks/useAuthForm";
 import { AuthButtons } from "./AuthButtons";
 import { AuthFormLayout } from "./AuthFormLayout";
 import styles from "./AuthForm.module.css";
+import { useSignin } from "../model/hooks/useSignin";
 export const SigninForm = () => {
   const { register, handleSubmit, errors } = useAuthForm();
+
+  const { onSubmit, loading } = useSignin();
 
   return (
     <AuthFormLayout
       title="С возвращением"
       subtitle="Рады вас видеть! Войдите, чтобы продолжить"
     >
-      <form
-        className={styles.authForm}
-        onSubmit={handleSubmit((data) => console.log(data))}
-      >
+      <form className={styles.authForm} onSubmit={handleSubmit(onSubmit)}>
         <div className={styles.authFormFields}>
           <AuthFormField
             name="email"
@@ -37,7 +37,7 @@ export const SigninForm = () => {
           submitLabel="ВОЙТИ"
           linkLabel="ЗАБЫЛИ ПАРОЛЬ"
           linkUrl="forgot-password"
-          isLoading={false}
+          isLoading={loading}
         />
       </form>
     </AuthFormLayout>

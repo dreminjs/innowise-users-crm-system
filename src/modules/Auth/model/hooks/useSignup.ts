@@ -18,7 +18,6 @@ export const useSignup = () => {
 
   return {
     onSubmit: (dto: AuthInput) => {
-      console.log("Данные отправляются в мутацию:", dto);
       mutate({ variables: { dto } });
     },
 
