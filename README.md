@@ -74,4 +74,4 @@
 
 ### Стек
 
-* React, TypeScript, NextJS (App Directory), Graphql, Apollo Client, Zustand
+  * React, TypeScript, NextJS (App Directory), Graphql, Apollo Client, Zustand, Shadcn UI, React Hook Form, Zod

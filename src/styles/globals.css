@@ -1,8 +1,9 @@
 :root {
     --bg: rgba(#fff, #fff, #fff, 10%);
-    --color: #2e2e2e;
-    --border-color: rgba(#0000003b, 23%);
-    --active-color: #c63031;
+    --color-dark: #2e2e2e;
+    --border-color: rgb(255 255 255 / 23%);
+    --color-primary: #c63031;
+    --color-title: #2e2e2e;
 }
 
 html,
@@ -24,10 +25,24 @@ a {
     text-decoration: none;
 }
 
+button {
+    border: none;
+    background: transparent;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    outline: none;
+    color: inherit;
+    text-align: inherit;
+}
+
 [data-theme="dark"] {
     --bg: #353535;
     --color: #fff;
-    --border-color: rgba(#ffffff3b, 23%);
+    /*--border-color: rgba(#ffffff3b, 23%);*/
+    --color-title: #ffffff;
 }
 
 * {

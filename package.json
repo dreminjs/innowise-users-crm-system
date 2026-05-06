@@ -29,6 +29,7 @@
     "@graphql-codegen/typescript": "^6.0.0",
     "@graphql-codegen/typescript-operations": "^6.0.0",
     "@graphql-codegen/typescript-react-apollo": "^4.4.2",
+    "@svgr/webpack": "^8.1.0",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
