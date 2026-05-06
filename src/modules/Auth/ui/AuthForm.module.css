@@ -33,6 +33,7 @@
     border: 2px solid var(--border-color);
     border-radius: 1px;
     padding: 12px;
+    position: relative;
 }
 
 .authFormInput {
@@ -76,6 +77,18 @@
 }
 
 .authFormFieldInner:has(.authFormInput:not(:placeholder-shown)) {
+    border: 1px solid var(--color-primary);
+}
+
+.authFormInput:-webkit-autofill + .authFormLabel,
+.authFormInput:autofill + .authFormLabel {
+    top: -11px;
+    background-color: var(--bg);
+    font-size: 12px;
+    color: var(--color-primary);
+}
+
+.authFormField:has(.authFormInput:-webkit-autofill) {
     border: 1px solid var(--color-primary);
 }
 
