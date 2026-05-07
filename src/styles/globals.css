@@ -1,52 +1,52 @@
 :root {
-    --bg: rgba(#fff, #fff, #fff, 10%);
-    --color-dark: #2e2e2e;
-    --border-color: rgba(0, 0, 0, 0.23);
-    --color-primary: #c63031;
-    --color-title: #2e2e2e;
+  --bg: rgba(#fff, #fff, #fff, 10%);
+  --color-dark: #2e2e2e;
+  --border-color: rgba(0, 0, 0, 0.23);
+  --color-primary: #c63031;
+  --color-title: #2e2e2e;
 }
 
 html,
 body {
-    height: 100%;
+  height: 100%;
 }
 
 body {
-    background-color: var(--bg);
+  background-color: var(--bg);
 }
 
 ul,
 ol {
-    list-style: none;
+  list-style: none;
 }
 
 a {
-    color: inherit;
-    text-decoration: none;
+  color: inherit;
+  text-decoration: none;
 }
 
 button {
-    border: none;
-    background: transparent;
-    padding: 0;
-    font: inherit;
-    cursor: pointer;
-    appearance: none;
-    -webkit-appearance: none;
-    outline: none;
-    color: inherit;
-    text-align: inherit;
+  border: none;
+  background: transparent;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  outline: none;
+  color: inherit;
+  text-align: inherit;
 }
 
 [data-theme="dark"] {
-    --bg: #353535;
-    --color: #fff;
-    /*--border-color: rgba(#ffffff3b, 23%);*/
-    --color-title: #ffffff;
+  --bg: #353535;
+  --color: #fff;
+  /*--border-color: rgba(#ffffff3b, 23%);*/
+  --color-title: #ffffff;
 }
 
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
