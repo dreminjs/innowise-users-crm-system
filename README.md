@@ -74,4 +74,4 @@ GRAPHQL_URL="https://cv-node.onrender.com/api/graphql"
 
 ### Стек
 
-* React, TypeScript, NextJS (App Directory), Graphql, Apollo Client, Zustand
+  * React, TypeScript, NextJS (App Directory), Graphql, Apollo Client, Zustand, Shadcn UI, React Hook Form, Zod

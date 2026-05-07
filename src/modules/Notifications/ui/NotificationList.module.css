@@ -1,0 +1,19 @@
+.notificationList {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+}
+
+.notificationItem {
+    padding: 15px 30px;
+    margin-bottom: 10px;
+    border-radius: 15px;
+}
+
+.notificationItemError {
+    background-color: var(--color-primary);
+}
+
+.notificationItemSuccess {
+    background-color: green;
+}

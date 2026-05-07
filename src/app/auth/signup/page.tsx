@@ -1,3 +1,9 @@
+import { SignupForm } from "@/modules/Auth";
+
 export default function Page() {
-  return <div>Page</div>;
+  return (
+    <>
+      <SignupForm />
+    </>
+  );
 }
