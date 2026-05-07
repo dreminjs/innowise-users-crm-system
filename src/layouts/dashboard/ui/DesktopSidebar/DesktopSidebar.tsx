@@ -1,16 +1,18 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import styles from "./DesktopSidebar.module.css";
 import { navigationItems } from "@/shared/config/navigation";
 
-export const DesktopSidebar = () => {
-  const pathname = usePathname();
+type Props = {
+  collapsed: boolean;
+  onToggle: () => void;
+};
 
-  const [collapsed, setCollapsed] = useState(false);
+export const DesktopSidebar = ({ collapsed, onToggle }: Props) => {
+  const pathname = usePathname();
 
   return (
     <aside
@@ -49,6 +51,7 @@ export const DesktopSidebar = () => {
             width={40}
             height={40}
           />
+
           {!collapsed && (
             <div className={styles.userInfo}>
               <span className={styles.name}>User email</span>
@@ -56,15 +59,10 @@ export const DesktopSidebar = () => {
           )}
         </button>
 
-        <button
-          className={styles.collapseButton}
-          onClick={() => setCollapsed((prev) => !prev)}
-        >
-          <Image
+        <button className={styles.collapseButton} onClick={onToggle}>
+          <img
             src="/arrow.svg"
             alt="Toggle sidebar"
-            width={34}
-            height={34}
             className={`
               ${styles.arrow}
               ${collapsed ? styles.rotated : ""}

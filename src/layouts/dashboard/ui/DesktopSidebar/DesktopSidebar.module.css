@@ -104,6 +104,7 @@
     background: transparent;
     cursor: pointer;
     color: #4b5563;
+    transform: rotate(180deg);
     transition: background 0.2s ease;
 }
 

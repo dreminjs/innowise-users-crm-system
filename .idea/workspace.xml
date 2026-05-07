@@ -6,7 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="40a36604-e3ff-4515-bcc0-28aae9d5db12" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/next.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/layouts/dashboard/ui/DashboardLayout/DashboardLayout.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/dashboard/ui/DashboardLayout/DashboardLayout.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/layouts/dashboard/ui/DashboardLayout/DashboardLayout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/dashboard/ui/DashboardLayout/DashboardLayout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/layouts/dashboard/ui/DesktopSidebar/DesktopSidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/dashboard/ui/DesktopSidebar/DesktopSidebar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/Users/ui/UsersSearch/UsersSearch.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/Users/ui/UsersSearch/UsersSearch.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/Users/ui/UsersSearch/UsersSearch.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/Users/ui/UsersSearch/UsersSearch.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,7 +145,7 @@
       <workItem from="1778073263993" duration="4317000" />
       <workItem from="1778136001547" duration="299000" />
       <workItem from="1778136342649" duration="6363000" />
-      <workItem from="1778162803638" duration="429000" />
+      <workItem from="1778162803638" duration="3113000" />
     </task>
     <servers />
   </component>
