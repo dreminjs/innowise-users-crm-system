@@ -5,18 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="40a36604-e3ff-4515-bcc0-28aae9d5db12" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.prettierignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.prettierrc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eslint.config.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/eslint.config.mjs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/application/authLink.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/application/client.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/application/errorLink.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/application/httpLink.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/application/refreshToken.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/Auth/api/mutations.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/application/ApolloWrapper.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/ApolloWrapper.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/Auth/model/hooks/useForgotPassword.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/Auth/model/hooks/useForgotPassword.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/Auth/ui/ForgotPasswordForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/Auth/ui/ForgotPasswordForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/Notifications/ui/NotificationList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/Notifications/ui/NotificationList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/globals.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graphql/fragment-masking.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphql/fragment-masking.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graphql/gql.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphql/gql.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graphql/graphql.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphql/graphql.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graphql/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphql/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/layouts/dashboard/ui/DesktopSidebar/DesktopSidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/dashboard/ui/DesktopSidebar/DesktopSidebar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/api/apollo/ApolloWrapper.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/assets/icons/CVs.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/CVs.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/assets/icons/Employees.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/Employees.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/assets/icons/Languages.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/Languages.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/assets/icons/Skills.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/Skills.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/assets/icons/arrow.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/arrow.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/assets/icons/more.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/more.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/assets/icons/search.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/search.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/config/navigation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/config/navigation.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +65,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "feature/signin-page",
+    "git-widget-placeholder": "feature/user-page",
     "js.debugger.nextJs.config.created.client": "true",
     "js.debugger.nextJs.config.created.server": "true",
     "js.linters.configure.manually.selectedeslint": "true",
@@ -68,6 +78,7 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "npm.Next.js: server-side.executor": "Run",
+    "npm.codegen.executor": "Run",
     "npm.lint.executor": "Run",
     "prettierjs.PrettierConfiguration.Package": "D:\\программирование\\dev\\innowise-users-crm-system\\node_modules\\prettier",
     "run.code.analysis.last.selected.profile": "pProject Default",
@@ -97,6 +108,9 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\программирование\dev\innowise-users-crm-system\src\shared\assets\icons" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\программирование\dev\innowise-users-crm-system\public" />
+    </key>
   </component>
   <component name="RunManager" selected="npm.Next.js: server-side">
     <configuration name="Next.js: debug client-side" type="JavascriptDebugType" uri="http://localhost:3000/">
@@ -107,6 +121,16 @@
       <command value="run" />
       <scripts>
         <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="codegen" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="codegen" />
       </scripts>
       <node-interpreter value="project" />
       <envs />
@@ -124,6 +148,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.codegen" />
         <item itemvalue="npm.lint" />
       </list>
     </recent_temporary>
@@ -159,7 +184,6 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/eslint.config.mjs</url>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
