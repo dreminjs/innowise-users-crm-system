@@ -1,0 +1,62 @@
+Index: src/application/ApolloWrapper.tsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>\"use client\";\r\n\r\nimport { ApolloLink, HttpLink } from \"@apollo/client\";\r\nimport {\r\n  ApolloNextAppProvider,\r\n  NextSSRInMemoryCache,\r\n  NextSSRApolloClient,\r\n  SSRMultipartLink,\r\n} from \"@apollo/experimental-nextjs-app-support/ssr\";\r\n\r\nfunction makeClient() {\r\n  const httpLink = new HttpLink({\r\n    uri: \"http://localhost:3001/api/graphql\",\r\n  });\r\n\r\n  return new NextSSRApolloClient({\r\n    cache: new NextSSRInMemoryCache(),\r\n    link:\r\n      typeof window === \"undefined\"\r\n        ? ApolloLink.from([\r\n            new SSRMultipartLink({\r\n              stripDefer: true,\r\n            }),\r\n            httpLink,\r\n          ])\r\n        : httpLink,\r\n  });\r\n}\r\n\r\nexport function ApolloWrapper({ children }: React.PropsWithChildren) {\r\n  return (\r\n    <ApolloNextAppProvider makeClient={makeClient}>\r\n      {children}\r\n    </ApolloNextAppProvider>\r\n  );\r\n}\r\n
+===================================================================
+diff --git a/src/application/ApolloWrapper.tsx b/src/application/ApolloWrapper.tsx
+--- a/src/application/ApolloWrapper.tsx	(revision 4dbe5267742a376e49020ae8a3fd3f0417b1814b)
++++ b/src/application/ApolloWrapper.tsx	(date 1778137274919)
+@@ -2,35 +2,26 @@
+ 
+ import { ApolloLink, HttpLink } from "@apollo/client";
+ import {
+-  ApolloNextAppProvider,
+-  NextSSRInMemoryCache,
+-  NextSSRApolloClient,
+-  SSRMultipartLink,
+-} from "@apollo/experimental-nextjs-app-support/ssr";
++    ApolloNextAppProvider,
++    ApolloClient,
++    InMemoryCache,
++} from "@apollo/client-integration-nextjs";
+ 
+ function makeClient() {
+-  const httpLink = new HttpLink({
+-    uri: "http://localhost:3001/api/graphql",
+-  });
++    const httpLink = new HttpLink({
++        uri: process.env.GRAPHQL_URL || "http://localhost:3001/api/graphql",
++    });
+ 
+-  return new NextSSRApolloClient({
+-    cache: new NextSSRInMemoryCache(),
+-    link:
+-      typeof window === "undefined"
+-        ? ApolloLink.from([
+-            new SSRMultipartLink({
+-              stripDefer: true,
+-            }),
+-            httpLink,
+-          ])
+-        : httpLink,
+-  });
++    return new ApolloClient({
++        cache: new InMemoryCache(),
++        link: ApolloLink.from([httpLink]),
++    });
+ }
+ 
+ export function ApolloWrapper({ children }: React.PropsWithChildren) {
+-  return (
+-    <ApolloNextAppProvider makeClient={makeClient}>
+-      {children}
+-    </ApolloNextAppProvider>
+-  );
+-}
++    return (
++        <ApolloNextAppProvider makeClient={makeClient}>
++            {children}
++        </ApolloNextAppProvider>
++    );
++}
+\ No newline at end of file
