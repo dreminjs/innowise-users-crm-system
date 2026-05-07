@@ -2,7 +2,6 @@ import { useMutation } from "@apollo/client/react";
 import { FORGOT_PASSWORD } from "../../api/queries";
 import { ForgotPasswordInput } from "@/generated/graphql";
 import { useNotification } from "@/modules/Notifications";
-import { useRouter } from "next/navigation";
 
 export const useForgotPassword = () => {
   const addNotification = useNotification((state) => state.addNotification);

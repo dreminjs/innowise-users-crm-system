@@ -1,8 +1,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
-  RegisterOptions,
   useForm,
-  UseFormRegisterReturn,
+
 } from "react-hook-form";
 import { forgotPasswordSchema } from "../model/auth.schema";
 import { TForgotPasswordFormData } from "../model/auth.types";
