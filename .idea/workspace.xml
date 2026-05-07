@@ -5,13 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="40a36604-e3ff-4515-bcc0-28aae9d5db12" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/modules/Users/model/hooks/useUsersTable.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/modules/Users/model/utils/filterUsers.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/modules/Users/model/utils/sortUsers.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eslint.config.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/eslint.config.mjs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(dashboard)/users/UsersPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboard)/users/UsersPage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/Users/ui/UsersSearch/UsersSearch.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/Users/ui/UsersSearch/UsersSearch.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/layouts/dashboard/ui/DesktopSidebar/DesktopSidebar.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/dashboard/ui/DesktopSidebar/DesktopSidebar.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/layouts/dashboard/ui/DesktopSidebar/DesktopSidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/dashboard/ui/DesktopSidebar/DesktopSidebar.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
