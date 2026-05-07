@@ -5,17 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="40a36604-e3ff-4515-bcc0-28aae9d5db12" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/modules/Users/model/usersTable.types.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/modules/Users/ui/UsersTable/UsersTableHeader.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/shared/ui/Avatar/Avatar.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/shared/ui/Avatar/Avatar.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/Users/model/hooks/useUsersTable.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/Users/model/utils/filterUsers.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/Users/model/utils/sortUsers.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eslint.config.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/eslint.config.mjs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/(dashboard)/users/UsersPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboard)/users/UsersPage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/Users/model/types.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/Users/ui/UsersTable/UsersTable.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/Users/ui/UsersTable/UsersTable.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/Users/ui/UsersTable/UsersTable.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/Users/ui/UsersTable/UsersTable.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/Users/ui/UsersTable/UsersTableRow/UsersTableRow.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/Users/ui/UsersTable/UsersTableRow/UsersTableRow.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/Users/ui/UsersTable/UsersTableRow/UsersTableRow.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/Users/ui/UsersTable/UsersTableRow/UsersTableRow.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/Users/ui/UsersSearch/UsersSearch.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/Users/ui/UsersSearch/UsersSearch.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -167,15 +163,5 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/eslint.config.mjs</url>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
