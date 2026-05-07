@@ -5,28 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="40a36604-e3ff-4515-bcc0-28aae9d5db12" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/application/authLink.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/application/client.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/application/errorLink.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/application/httpLink.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/application/refreshToken.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/modules/Auth/api/mutations.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/Users/model/usersTable.types.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/Users/ui/UsersTable/UsersTableHeader.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/shared/ui/Avatar/Avatar.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/shared/ui/Avatar/Avatar.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/ApolloWrapper.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/ApolloWrapper.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/graphql/fragment-masking.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphql/fragment-masking.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/graphql/gql.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphql/gql.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/graphql/graphql.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphql/graphql.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/graphql/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphql/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/layouts/dashboard/ui/DesktopSidebar/DesktopSidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/dashboard/ui/DesktopSidebar/DesktopSidebar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shared/api/apollo/ApolloWrapper.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shared/assets/icons/CVs.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/CVs.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shared/assets/icons/Employees.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/Employees.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shared/assets/icons/Languages.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/Languages.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shared/assets/icons/Skills.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/Skills.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shared/assets/icons/arrow.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/arrow.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shared/assets/icons/more.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/more.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shared/assets/icons/search.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/search.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shared/config/navigation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/config/navigation.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(dashboard)/users/UsersPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboard)/users/UsersPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/Users/model/types.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/Users/ui/UsersTable/UsersTable.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/Users/ui/UsersTable/UsersTable.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/Users/ui/UsersTable/UsersTable.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/Users/ui/UsersTable/UsersTable.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/Users/ui/UsersTable/UsersTableRow/UsersTableRow.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/Users/ui/UsersTable/UsersTableRow/UsersTableRow.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/Users/ui/UsersTable/UsersTableRow/UsersTableRow.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/Users/ui/UsersTable/UsersTableRow/UsersTableRow.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

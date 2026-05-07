@@ -1,76 +1,39 @@
 .row {
-    display: grid;
-    grid-template-columns: 2fr 2fr 1fr 1fr;
-    align-items: center;
-    padding: 20px 24px;
     border-bottom: 1px solid #e5e7eb;
+    transition: background 0.2s;
+}
+
+.row:hover {
+    background: #fafafa;
 }
 
 .row:last-child {
     border-bottom: none;
 }
 
-.userInfo {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.avatar,
-.avatarImage {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-}
-
-.avatar {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #dbeafe;
+.row td {
+    padding: 20px 24px;
+    vertical-align: middle;
     font-size: 14px;
-    font-weight: 600;
-    color: #2563eb;
+    color: #374151;
 }
 
-.avatarImage {
-    object-fit: cover;
-}
-
-.userContent {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-}
-
-.name {
-    font-size: 14px;
-    font-weight: 600;
-    color: #111827;
-}
-
-.email,
-.department,
-.position,
-.mobileEmail {
-    font-size: 14px;
+.email {
     color: #6b7280;
 }
 
-.mobileEmail {
-    display: none;
+.actions {
+    text-align: right;
 }
 
-@media (max-width: 768px) {
-    .row {
-        grid-template-columns: 2fr 1fr 1fr;
-    }
+.actionButton {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 20px;
+    color: #6b7280;
+}
 
-    .email {
-        display: none;
-    }
-
-    .mobileEmail {
-        display: block;
-    }
+.actionButton:hover {
+    color: #111827;
 }

@@ -1,27 +1,58 @@
 .tableWrapper {
     overflow-x: auto;
+    border: 1px solid #e5e7eb;
+    border-radius: 20px;
+    background: #ffffff;
 }
 
 .table {
-    min-width: 900px;
-    background: #ffffff;
-    border: 1px solid #e5e7eb;
-    border-radius: 20px;
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
 }
 
 .header {
-    display: grid;
-    grid-template-columns: 2fr 2fr 1fr 1fr;
-    padding: 20px 24px;
     border-bottom: 1px solid #e5e7eb;
+}
+
+.header th {
+    padding: 20px 24px;
+    text-align: left;
     font-size: 14px;
     font-weight: 600;
     color: #6b7280;
 }
 
-.body {
-    display: flex;
-    flex-direction: column;
+.sortButton {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    color: #374151;
+}
+
+.sortButton:hover {
+    color: #111827;
+}
+
+.avatarColumn {
+    width: 72px;
+}
+
+.nameColumn {
+    width: 160px;
+}
+
+.emailColumn {
+    width: 320px;
+}
+
+.actionsColumn {
+    width: 72px;
 }
 
 .empty {
@@ -33,14 +64,4 @@
     background: #ffffff;
     border: 1px solid #e5e7eb;
     color: #6b7280;
-}
-
-@media (max-width: 768px) {
-    .email {
-        display: none;
-    }
-
-    .header {
-        grid-template-columns: 2fr 1fr 1fr;
-    }
 }
