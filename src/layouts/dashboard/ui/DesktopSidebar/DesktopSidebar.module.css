@@ -121,11 +121,9 @@
 .arrow {
     transition: transform 0.2s ease;
 }
-
 .rotated {
     transform: rotate(180deg);
 }
-
 @media (max-width: 1023px) {
     .sidebar {
         display: none;

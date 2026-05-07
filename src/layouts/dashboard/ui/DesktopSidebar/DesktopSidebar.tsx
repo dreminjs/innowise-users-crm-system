@@ -6,7 +6,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import styles from "./DesktopSidebar.module.css";
 import { navigationItems } from "@/shared/config/navigation";
-import ArrowIcon from "../../../../../public/arrow.svg";
 
 export const DesktopSidebar = () => {
   const pathname = usePathname();
@@ -43,7 +42,13 @@ export const DesktopSidebar = () => {
 
       <div className={styles.footer}>
         <button className={styles.profileButton}>
-          <img className={styles.avatar} src="/avatar.jpg" alt="User avatar" />
+          <Image
+            className={styles.image}
+            src="/Employees.svg"
+            alt="user avatar"
+            width={40}
+            height={40}
+          />
           {!collapsed && (
             <div className={styles.userInfo}>
               <span className={styles.name}>User email</span>

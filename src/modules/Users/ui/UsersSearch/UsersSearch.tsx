@@ -4,7 +4,6 @@ import styles from "./UsersSearch.module.css";
 
 type Props = {
   value: string;
-
   onChange: (value: string) => void;
 };
 

@@ -1,5 +1,5 @@
 import styles from "./Avatar.module.css";
-
+import Image from "next/image";
 type Props = {
   firstName?: string | null;
   lastName?: string | null;
@@ -14,7 +14,13 @@ export const Avatar = ({ firstName, lastName, avatar }: Props) => {
 
   if (avatar) {
     return (
-      <img className={styles.image} src={avatar} alt={firstName ?? "User"} />
+      <Image
+        className={styles.image}
+        src={avatar}
+        alt={firstName ?? "User"}
+        width={40}
+        height={40}
+      />
     );
   }
 
