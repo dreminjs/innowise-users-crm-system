@@ -1,0 +1,24 @@
+.navigationList {
+    display: flex;
+}
+
+.navigationItem {
+    width: 150px;
+
+    display: flex;
+    justify-content: center;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17.5px;
+}
+
+.navigationItem > a {
+    padding: 16px 0px;
+    width: 100%;
+    text-align: center;
+}
+
+.navigationItemActive {
+    color: var(--color-primary);
+    border-bottom: 2px solid var(--color-primary);
+}

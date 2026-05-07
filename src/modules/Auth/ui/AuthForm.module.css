@@ -1,0 +1,128 @@
+.titleGreeting {
+    font-size: 34px;
+    line-height: 42px;
+    letter-spacing: 0.25px;
+    color: var(--color-title);
+    margin-bottom: 26px;
+    text-align: center;
+    font-weight: 400;
+}
+
+.subtitleGreeting {
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0.15px;
+    color: var(--color-title);
+    font-weight: 400;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.authFormField {
+    margin-bottom: 20px;
+    position: relative;
+    width: 100%;
+}
+
+.authFormFieldInner {
+    display: flex;
+    justify-content: space-between;
+    background-color: transparent;
+    align-items: center;
+    width: 100%;
+    border: 2px solid var(--border-color);
+    border-radius: 1px;
+    padding: 12px;
+    position: relative;
+}
+
+.authFormInput {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    width: 100%;
+    box-shadow: 0 0 0 1000px var(--bg) inset;
+    -webkit-box-shadow: 0 0 0 1000px var(--bg) inset;
+
+    -webkit-text-fill-color: var(--color-title);
+}
+
+.authFormLabel {
+    font-size: 16px;
+    line-height: 23px;
+    font-weight: 400;
+    letter-spacing: 0.25px;
+    color: rgba(#fff #fff #fff / 70%);
+    position: absolute;
+    left: 15px;
+    top: 10px;
+    z-index: 1;
+    pointer-events: none;
+    transition:
+        top 0.2s ease,
+        background-color 0.2s ease,
+        font-size 0.2s ease;
+}
+
+.authFormInput:focus + .authFormLabel,
+.authFormInput:not(:placeholder-shown) + .authFormLabel {
+    top: -11px;
+    background-color: var(--bg);
+    font-size: 12px;
+    color: var(--color-primary);
+}
+
+.authFormFieldInner:has(.authFormInput:focus) {
+    border: 1px solid var(--color-primary);
+}
+
+.authFormFieldInner:has(.authFormInput:not(:placeholder-shown)) {
+    border: 1px solid var(--color-primary);
+}
+
+.authFormInput:-webkit-autofill + .authFormLabel,
+.authFormInput:autofill + .authFormLabel {
+    top: -11px;
+    background-color: var(--bg);
+    font-size: 12px;
+    color: var(--color-primary);
+}
+
+.authFormField:has(.authFormInput:-webkit-autofill) {
+    border: 1px solid var(--color-primary);
+}
+
+.authButtons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.authFormLayout {
+    max-width: 560px;
+    width: 100%;
+}
+
+.authFormFields {
+    margin-bottom: 60px;
+}
+
+.authFormSubmit {
+    padding: 16px 42px;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 24px;
+    border-radius: 40px;
+    display: block;
+}
+
+.passwordEye {
+    fill: white;
+}
+
+.authFormLink {
+    color: #767676;
+}
