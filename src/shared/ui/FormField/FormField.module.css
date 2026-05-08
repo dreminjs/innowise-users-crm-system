@@ -1,0 +1,73 @@
+.formField {
+  margin-bottom: 20px;
+  position: relative;
+  width: 100%;
+  border: 1px solid #ffffff3b;
+}
+
+.formFieldInner {
+  display: flex;
+  justify-content: space-between;
+  background-color: transparent;
+  align-items: center;
+  width: 100%;
+  border-radius: 1px;
+  padding: 12px;
+  position: relative;
+}
+
+.formInput {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  width: 100%;
+  color: var(--color-text);
+  box-shadow: 0 0 0 1000px var(--bg) inset;
+  -webkit-box-shadow: 0 0 0 1000px var(--bg) inset;
+  -webkit-text-fill-color: var(--color-title);
+}
+
+.formLabel {
+  font-size: 16px;
+  line-height: 23px;
+  font-weight: 400;
+  letter-spacing: 0.25px;
+  color: var(--color-text);
+  position: absolute;
+  left: 15px;
+  top: 10px;
+  z-index: 1;
+  pointer-events: none;
+  transition:
+    top 0.2s ease,
+    background-color 0.2s ease,
+    font-size 0.2s ease;
+}
+
+.formInput:focus + .formLabel,
+.formInput:not(:placeholder-shown) + .formLabel {
+  top: -11px;
+  background-color: var(--bg);
+  font-size: 12px;
+  color: var(--color-primary);
+}
+
+.formField:has(.formInput:focus) {
+  border: 1px solid var(--color-primary);
+}
+
+.formField:has(.formInput:not(:placeholder-shown)) {
+  border: 1px solid var(--color-primary);
+}
+
+.formInput:-webkit-autofill + .formLabel,
+.formInput:autofill + .formLabel {
+  top: -11px;
+  background-color: var(--bg);
+  font-size: 12px;
+  color: var(--color-primary);
+}
+
+.formField:has(.formInput:-webkit-autofill) {
+  border: 1px solid var(--color-primary);
+}

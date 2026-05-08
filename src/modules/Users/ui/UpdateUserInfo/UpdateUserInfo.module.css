@@ -30,7 +30,7 @@
   align-items: center;
   justify-content: center;
   gap: 64px;
-  margin: 0 auto;
+  margin-bottom: 32px;
 }
 
 .uploadAvatarTrigger {
@@ -53,4 +53,28 @@
   color: #2e2e2e !important;
   font-size: 16px !important;
   line-height: 26px !important;
+}
+
+.userInfo {
+  text-align: center;
+  margin-bottom: 67px;
+}
+
+.userInfoFullName {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 32px;
+  color: var(--color-text);
+}
+
+.userInfoEmail {
+  font-size: 16px;
+  line-height: 26px;
+  color: rgba(000, 000, 000, 0.6);
+}
+
+.userInfoHiredDate {
+  font-size: 16px;
+  line-height: 26px;
+  color: var(--color-text);
 }

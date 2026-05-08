@@ -13,7 +13,9 @@ export const useGetProfile = (userId: string) => {
   useEffect(() => {
     if (!error) {
       if (data?.user.profile.first_name && data?.user.profile.last_name) {
-        setSegment(data.user.profile.first_name + data.user.profile.last_name);
+        setSegment(
+          `${data.user.profile.first_name} ${data.user.profile.last_name}`,
+        );
       } else if (data?.user.email) {
         setSegment(data.user.email);
       }

@@ -8,7 +8,7 @@ import Image from "next/image";
 type TInputType = "password" | "email";
 type TExcludeEmail<T> = T extends "email" ? "text" : T;
 
-interface IAuthFormFieldProps<T extends FieldValues> {
+interface IFormFieldProps<T extends FieldValues> {
   type: TInputType;
   register: UseFormRegister<T>;
   name: Path<T>;
@@ -16,13 +16,13 @@ interface IAuthFormFieldProps<T extends FieldValues> {
   label: string;
 }
 
-export const AuthFormField = <T extends FieldValues>({
+export const FormField = <T extends FieldValues>({
   type,
   error,
   label,
   register,
   name,
-}: IAuthFormFieldProps<T>) => {
+}: IFormFieldProps<T>) => {
   const [inputType, setInputType] = useState<TExcludeEmail<TInputType>>(
     type === "email" ? "text" : type,
   );
@@ -30,15 +30,15 @@ export const AuthFormField = <T extends FieldValues>({
   // const { theme } = useTheme();
 
   return (
-    <div className={styles.authFormField}>
-      <div className={styles.authFormFieldInner}>
+    <div className={styles.formField}>
+      <div className={styles.formFieldInner}>
         <input
           {...register(name)}
           placeholder=" "
-          className={styles.authFormInput}
+          className={styles.formInput}
           type={inputType}
         />
-        <span className={styles.authFormLabel}>{label}</span>
+        <span className={styles.formLabel}>{label}</span>
         {type === "password" && (
           <button
             type="button"

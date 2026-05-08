@@ -1,6 +1,6 @@
 import { FC } from "react";
 import Image from "next/image";
-import styles from "./UpdateUserInfo.module.css";
+import styles from "../UpdateUserInfo.module.css";
 interface IAvatarProps {
   avatarUrl: string | null;
   firstLetter: string;

@@ -49,6 +49,20 @@ export const GET_USER_PROFILE = graphql(`
       }
       role
       email
+      created_at
+    }
+  }
+`);
+
+export const GET_USERS_CREATERIES = graphql(`
+  query GetUsersCriteries {
+    positions {
+      id
+      name
+    }
+    departments {
+      id
+      name
     }
   }
 `);

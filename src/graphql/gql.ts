@@ -21,7 +21,7 @@ type Documents = {
     "\n  mutation uploadAvatarFile($dto: UploadAvatarInput!) {\n    uploadAvatar(avatar: $dto)\n  }\n": typeof types.UploadAvatarFileDocument,
     "\n  query getCurrentProfile($userId: ID!) {\n    user(userId: $userId) {\n      profile {\n        full_name\n      }\n    }\n  }\n": typeof types.GetCurrentProfileDocument,
     "\n  query GetUsers {\n    users {\n      id\n      email\n      role\n      department_name\n      position_name\n\n      profile {\n        id\n        first_name\n        last_name\n        avatar\n      }\n    }\n  }\n": typeof types.GetUsersDocument,
-    "\n  query getUserProfile($userId: ID!) {\n    user(userId: $userId) {\n      profile {\n        id\n        first_name\n        last_name\n        avatar\n      }\n\n      department {\n        id\n        name\n      }\n      position {\n        id\n        name\n      }\n      role\n      email\n    }\n  }\n": typeof types.GetUserProfileDocument,
+    "\n  query getUserProfile($userId: ID!) {\n    user(userId: $userId) {\n      profile {\n        id\n        first_name\n        last_name\n        avatar\n      }\n\n      department {\n        id\n        name\n      }\n      position {\n        id\n        name\n      }\n      role\n      email\n      created_at\n    }\n  }\n": typeof types.GetUserProfileDocument,
 };
 const documents: Documents = {
     "\n  mutation UpdateToken {\n    updateToken {\n      access_token\n      refresh_token\n    }\n  }\n": types.UpdateTokenDocument,
@@ -31,7 +31,7 @@ const documents: Documents = {
     "\n  mutation uploadAvatarFile($dto: UploadAvatarInput!) {\n    uploadAvatar(avatar: $dto)\n  }\n": types.UploadAvatarFileDocument,
     "\n  query getCurrentProfile($userId: ID!) {\n    user(userId: $userId) {\n      profile {\n        full_name\n      }\n    }\n  }\n": types.GetCurrentProfileDocument,
     "\n  query GetUsers {\n    users {\n      id\n      email\n      role\n      department_name\n      position_name\n\n      profile {\n        id\n        first_name\n        last_name\n        avatar\n      }\n    }\n  }\n": types.GetUsersDocument,
-    "\n  query getUserProfile($userId: ID!) {\n    user(userId: $userId) {\n      profile {\n        id\n        first_name\n        last_name\n        avatar\n      }\n\n      department {\n        id\n        name\n      }\n      position {\n        id\n        name\n      }\n      role\n      email\n    }\n  }\n": types.GetUserProfileDocument,
+    "\n  query getUserProfile($userId: ID!) {\n    user(userId: $userId) {\n      profile {\n        id\n        first_name\n        last_name\n        avatar\n      }\n\n      department {\n        id\n        name\n      }\n      position {\n        id\n        name\n      }\n      role\n      email\n      created_at\n    }\n  }\n": types.GetUserProfileDocument,
 };
 
 /**
@@ -79,7 +79,7 @@ export function graphql(source: "\n  query GetUsers {\n    users {\n      id\n  
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n  query getUserProfile($userId: ID!) {\n    user(userId: $userId) {\n      profile {\n        id\n        first_name\n        last_name\n        avatar\n      }\n\n      department {\n        id\n        name\n      }\n      position {\n        id\n        name\n      }\n      role\n      email\n    }\n  }\n"): (typeof documents)["\n  query getUserProfile($userId: ID!) {\n    user(userId: $userId) {\n      profile {\n        id\n        first_name\n        last_name\n        avatar\n      }\n\n      department {\n        id\n        name\n      }\n      position {\n        id\n        name\n      }\n      role\n      email\n    }\n  }\n"];
+export function graphql(source: "\n  query getUserProfile($userId: ID!) {\n    user(userId: $userId) {\n      profile {\n        id\n        first_name\n        last_name\n        avatar\n      }\n\n      department {\n        id\n        name\n      }\n      position {\n        id\n        name\n      }\n      role\n      email\n      created_at\n    }\n  }\n"): (typeof documents)["\n  query getUserProfile($userId: ID!) {\n    user(userId: $userId) {\n      profile {\n        id\n        first_name\n        last_name\n        avatar\n      }\n\n      department {\n        id\n        name\n      }\n      position {\n        id\n        name\n      }\n      role\n      email\n      created_at\n    }\n  }\n"];
 
 export function graphql(source: string) {
   return (documents as any)[source] ?? {};

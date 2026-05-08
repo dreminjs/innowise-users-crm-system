@@ -1,14 +1,12 @@
 import { FC, useState } from "react";
 import { Avatar } from "./Avatar";
 import { FileUpload } from "@chakra-ui/react";
-import Image from "next/image";
-import styles from "./UpdateUserInfo.module.css";
-import UploadAvatarIcon from "../../../../../public/upload-avatar.svg";
-import { useMutation } from "@apollo/client/react";
-import { UPLOAD_AVATAR } from "../../api/mutations";
-import { useUploadAvatar } from "../../model/hooks/useUploadAvatar";
+import { useUploadAvatar } from "../../../model/hooks/useUploadAvatar";
 import { useUserStore } from "@/application/store/user.store";
-import { toBase64 } from "../../model/utils/toBase64";
+import { toBase64 } from "../../../model/utils/toBase64";
+import styles from "../UpdateUserInfo.module.css";
+import UploadAvatarIcon from "../../../../../../public/upload-avatar.svg";
+import Image from "next/image";
 interface IUploadAvatarProps {
   avatarUrl: string;
   firstLetter: string;
