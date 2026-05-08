@@ -1,3 +1,4 @@
+"use client";
 import { Navigation } from "@/components/Navigation";
 import styles from "./AuthHeader.module.css";
 import { usePathname } from "next/navigation";

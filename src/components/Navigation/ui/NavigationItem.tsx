@@ -1,5 +1,5 @@
 import { FC } from "react";
-import styles from "./NavigationItem.module.css";
+import styles from "./Navigation.module.css";
 import clsx from "clsx";
 import Link from "next/link";
 import { INavigationItem } from "../model/navigation.interface";

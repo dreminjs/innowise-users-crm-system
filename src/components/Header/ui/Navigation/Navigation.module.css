@@ -1,0 +1,14 @@
+.navigationList {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.navigationItemActive {
+  color: var(--color-primary);
+}
+
+.navigationItem {
+  font-size: 16px;
+  line-height: 24px;
+}

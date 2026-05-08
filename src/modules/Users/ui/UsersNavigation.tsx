@@ -1,19 +1,6 @@
-import { NavigationItem } from "@/components/NavigationItem";
+import { Navigation } from "@/components/Navigation";
+import { userNavigation } from "../model/user.navigation";
 
 export const UsersNavigation = () => {
-  return (
-    <nav>
-      <ul>
-        <NavigationItem isActive={false} to={""}>
-          Профиль
-        </NavigationItem>
-        <NavigationItem isActive={false} to={"skills"}>
-          Скиллы
-        </NavigationItem>
-        <NavigationItem isActive={false} to={"languages"}>
-          Языки
-        </NavigationItem>
-      </ul>
-    </nav>
-  );
+  return <Navigation items={userNavigation} />;
 };

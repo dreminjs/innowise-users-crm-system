@@ -1,0 +1,132 @@
+.sidebar {
+    position: sticky;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 260px;
+    min-width: 260px;
+    height: 100vh;
+    padding: 32px 20px;
+    background: #ffffff;
+    border-right: 1px solid #e5e7eb;
+    transition:
+            width 0.2s ease,
+            min-width 0.2s ease,
+            padding 0.2s ease;
+}
+
+.collapsed {
+    width: 104px;
+    min-width: 104px;
+}
+
+.navigation {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    height: 48px;
+    padding: 0 16px;
+    border-radius: 14px;
+    color: #4b5563;
+    text-decoration: none;
+    transition:
+            background-color 0.2s ease,
+            color 0.2s ease;
+}
+
+.link:hover {
+    background: #f3f4f6;
+}
+
+.active {
+    background: #0000000A;
+    color: #111827;
+}
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.profileButton {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    padding: 8px;
+    border: none;
+    border-radius: 16px;
+    background: transparent;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.profileButton:hover {
+    background: #f3f4f6;
+}
+
+.avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.userInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.name {
+    font-size: 14px;
+    font-weight: 600;
+    color: #111827;
+}
+
+.collapseButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 12px;
+    background: transparent;
+    cursor: pointer;
+    color: #4b5563;
+    transform: rotate(180deg);
+    transition: background 0.2s ease;
+}
+
+.collapseButton:hover {
+    background: #f3f4f6;
+}
+
+.collapsed .link {
+    justify-content: center;
+}
+
+.collapsed .profileButton {
+    justify-content: center;
+}
+.arrow {
+    transition: transform 0.2s ease;
+}
+.rotated {
+    transform: rotate(180deg);
+}
+@media (max-width: 1023px) {
+    .sidebar {
+        display: none;
+    }
+}

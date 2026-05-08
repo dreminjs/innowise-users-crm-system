@@ -1,0 +1,31 @@
+.layout {
+    display: grid;
+    grid-template-columns:
+        260px
+        minmax(0, 1fr);
+    min-height: 100vh;
+    transition:
+            grid-template-columns 0.2s ease;
+
+    background: #f5f7fb;
+}
+
+.collapsed {
+    grid-template-columns:
+        104px
+        minmax(0, 1fr);
+}
+
+.content {
+    min-width: 0;
+    padding: 32px;
+}
+
+@media (max-width: 1023px) {
+    .layout {
+        display: block;
+    }
+    .content {
+        padding: 24px 16px 96px;
+    }
+}

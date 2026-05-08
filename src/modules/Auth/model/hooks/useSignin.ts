@@ -19,7 +19,6 @@ export const useSignin = () => {
     if (data) {
       setAccessToken(data.login.access_token);
       setRefreshToken(data.login.refresh_token);
-      router.push("/users");
     } else if (error && !data) {
       addNotification({
         message: error.message,

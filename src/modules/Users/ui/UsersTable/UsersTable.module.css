@@ -1,0 +1,67 @@
+.tableWrapper {
+    overflow-x: auto;
+    border: 1px solid #e5e7eb;
+    border-radius: 20px;
+    background: #ffffff;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.header {
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.header th {
+    padding: 20px 24px;
+    text-align: left;
+    font-size: 14px;
+    font-weight: 600;
+    color: #6b7280;
+}
+
+.sortButton {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    color: #374151;
+}
+
+.sortButton:hover {
+    color: #111827;
+}
+
+.avatarColumn {
+    width: 72px;
+}
+
+.nameColumn {
+    width: 160px;
+}
+
+.emailColumn {
+    width: 320px;
+}
+
+.actionsColumn {
+    width: 72px;
+}
+
+.empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
+    border-radius: 20px;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    color: #6b7280;
+}
