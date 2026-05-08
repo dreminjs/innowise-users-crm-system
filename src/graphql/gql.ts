@@ -18,12 +18,14 @@ type Documents = {
     "\n  mutation signup($dto: AuthInput!) {\n    signup(auth: $dto) {\n      access_token\n      refresh_token\n    }\n  }\n": typeof types.SignupDocument,
     "\n  mutation forgotPassword($dto: ForgotPasswordInput!) {\n    forgotPassword(auth: $dto)\n  }\n": typeof types.ForgotPasswordDocument,
     "\n  query getCurrentProfile($userId: ID!) {\n    profile(userId: $userId) {\n      id\n    }\n  }\n": typeof types.GetCurrentProfileDocument,
+    "\n  query GetUsers {\n    users {\n      id\n      email\n      role\n      department_name\n      position_name\n\n      profile {\n        first_name\n        last_name\n        avatar\n      }\n    }\n  }\n": typeof types.GetUsersDocument,
 };
 const documents: Documents = {
     "\n  query login($dto: AuthInput!) {\n    login(auth: $dto) {\n      access_token\n      refresh_token\n    }\n  }\n": types.LoginDocument,
     "\n  mutation signup($dto: AuthInput!) {\n    signup(auth: $dto) {\n      access_token\n      refresh_token\n    }\n  }\n": types.SignupDocument,
     "\n  mutation forgotPassword($dto: ForgotPasswordInput!) {\n    forgotPassword(auth: $dto)\n  }\n": types.ForgotPasswordDocument,
     "\n  query getCurrentProfile($userId: ID!) {\n    profile(userId: $userId) {\n      id\n    }\n  }\n": types.GetCurrentProfileDocument,
+    "\n  query GetUsers {\n    users {\n      id\n      email\n      role\n      department_name\n      position_name\n\n      profile {\n        first_name\n        last_name\n        avatar\n      }\n    }\n  }\n": types.GetUsersDocument,
 };
 
 /**
@@ -56,6 +58,10 @@ export function graphql(source: "\n  mutation forgotPassword($dto: ForgotPasswor
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(source: "\n  query getCurrentProfile($userId: ID!) {\n    profile(userId: $userId) {\n      id\n    }\n  }\n"): (typeof documents)["\n  query getCurrentProfile($userId: ID!) {\n    profile(userId: $userId) {\n      id\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n  query GetUsers {\n    users {\n      id\n      email\n      role\n      department_name\n      position_name\n\n      profile {\n        first_name\n        last_name\n        avatar\n      }\n    }\n  }\n"): (typeof documents)["\n  query GetUsers {\n    users {\n      id\n      email\n      role\n      department_name\n      position_name\n\n      profile {\n        first_name\n        last_name\n        avatar\n      }\n    }\n  }\n"];
 
 export function graphql(source: string) {
   return (documents as any)[source] ?? {};
