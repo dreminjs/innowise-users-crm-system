@@ -1,10 +1,6 @@
 import { graphql } from "@/graphql/gql";
-<<<<<<< Updated upstream
-export const GET_CURRENT_USER = graphql(`
-=======
 
 export const GET_USER_FULLNAME = graphql(`
->>>>>>> Stashed changes
   query getCurrentProfile($userId: ID!) {
     user(userId: $userId) {
       profile {
@@ -15,15 +11,6 @@ export const GET_USER_FULLNAME = graphql(`
 `);
 
 export const GET_USERS = graphql(`
-  query getUsers {
-    users {
-      id
-    }
-  }
-`);
-
-<<<<<<< Updated upstream
-export const GET_USERS = graphql(`
   query GetUsers {
     users {
       id
@@ -33,22 +20,25 @@ export const GET_USERS = graphql(`
       position_name
 
       profile {
-=======
+        id
+        first_name
+        last_name
+        avatar
+      }
+    }
+  }
+`);
+
 export const GET_USER_PROFILE = graphql(`
   query getUserProfile($userId: ID!) {
     user(userId: $userId) {
       profile {
         id
->>>>>>> Stashed changes
         first_name
         last_name
         avatar
       }
-<<<<<<< Updated upstream
-    }
-  }
-`)
-=======
+
       department {
         id
         name
@@ -62,4 +52,3 @@ export const GET_USER_PROFILE = graphql(`
     }
   }
 `);
->>>>>>> Stashed changes

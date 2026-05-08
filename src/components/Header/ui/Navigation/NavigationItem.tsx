@@ -20,11 +20,11 @@ export const NavigationItem: FC<INavigationItemProps> = ({
   return (
     <li
       className={clsx(
-        isActive && styles.navigationItemActive,
         styles.navigationItem,
+        isActive && styles.navigationItemActive,
       )}
     >
-      <Link href={"/"}>{label}</Link>
+      <Link href={href}>{label}</Link>
     </li>
   );
 };

@@ -3,7 +3,7 @@
   --color-dark: #2e2e2e;
   --border-color: rgba(0, 0, 0, 0.23);
   --color-primary: #c63031;
-  --color-title: #2e2e2e;
+  --color-text: #2e2e2e;
 }
 
 html,
@@ -41,8 +41,10 @@ button {
 [data-theme="dark"] {
   --bg: #353535;
   --color: #fff;
-  /*--border-color: rgba(#ffffff3b, 23%);*/
-  --color-title: #ffffff;
+  --border-color: rgba(#ffffff3b, 23%);
+  /*--color-title: #ffffff;*/
+  /*--color-text: #ffffff;*/
+  --color-text: black;
 }
 
 * {

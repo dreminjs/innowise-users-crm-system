@@ -1,39 +1,49 @@
 .row {
-    border-bottom: 1px solid #e5e7eb;
-    transition: background 0.2s;
+  border-bottom: 1px solid #e5e7eb;
+  transition: background 0.2s;
 }
 
 .row:hover {
-    background: #fafafa;
+  background: #fafafa;
 }
 
 .row:last-child {
-    border-bottom: none;
+  border-bottom: none;
 }
 
 .row td {
-    padding: 20px 24px;
-    vertical-align: middle;
-    font-size: 14px;
-    color: #374151;
+  padding: 20px 24px;
+  vertical-align: middle;
+  font-size: 14px;
+  color: #374151;
 }
 
 .email {
-    color: #6b7280;
+  color: #6b7280;
 }
 
 .actions {
-    text-align: right;
+  text-align: right;
 }
 
 .actionButton {
-    border: none;
-    background: transparent;
-    cursor: pointer;
-    font-size: 20px;
-    color: #6b7280;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 20px;
+  color: #6b7280;
 }
 
 .actionButton:hover {
-    color: #111827;
+  color: #111827;
 }
+
+.userActionsItem {
+  padding: 5px 15px;
+  color: white;
+  text-align: left;
+}
+
+/*.userActionsItem:hover {
+  background: var(--color-dark);
+}*/

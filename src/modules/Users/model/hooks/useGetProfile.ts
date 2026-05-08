@@ -1,9 +1,9 @@
 import { useQuery } from "@apollo/client/react";
-import { GET_USER_PROFILE } from "../api/queries";
+import { GET_USER_PROFILE } from "../../api/queries";
 import { useDynamicSegment } from "@/application/store/dynamicSegment.store";
 import { useEffect } from "react";
 
-export const useGetProfile = (userId: number) => {
+export const useGetProfile = (userId: string) => {
   const setSegment = useDynamicSegment((state) => state.setSegment);
 
   const { data, loading, error } = useQuery(GET_USER_PROFILE, {
@@ -18,7 +18,7 @@ export const useGetProfile = (userId: number) => {
         setSegment(data.user.email);
       }
     }
-  }, [loading, data]);
+  }, [loading, data, error, setSegment]);
 
   return {
     data,

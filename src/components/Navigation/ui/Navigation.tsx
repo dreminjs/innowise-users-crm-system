@@ -1,17 +1,15 @@
+"use client";
 import { FC } from "react";
 import { INavigationItem } from "../model/navigation.interface";
 import { NavigationItem } from "./NavigationItem";
 import { usePathname } from "next/navigation";
 import styles from "./Navigation.module.css";
-import { useDynamicSegment } from "@/application/store/dynamicSegment.store";
 interface INavigationProps {
   items: INavigationItem[];
 }
 
 export const Navigation: FC<INavigationProps> = ({ items }) => {
   const pathname = usePathname();
-
-  const segment = useDynamicSegment((state) => state.segment);
 
   return (
     <nav>

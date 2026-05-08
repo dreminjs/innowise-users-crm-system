@@ -1,14 +1,14 @@
 export const userNavigation = [
   {
-    label: "Профиль",
-    to: "/profile",
+    label: "ПРОФИЛЬ",
+    to: "/",
   },
   {
-    label: "Скиллы",
+    label: "СКИЛЛЫ",
     to: "/skills",
   },
   {
-    label: "Языки",
+    label: "ЯЗЫКИ",
     to: "/languages",
   },
 ];

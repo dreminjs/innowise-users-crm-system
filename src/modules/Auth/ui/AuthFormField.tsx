@@ -1,11 +1,10 @@
 "use client";
 import { useState } from "react";
 import { Path, UseFormRegister } from "react-hook-form";
-import { useTheme } from "next-themes";
 import { FieldValues } from "react-hook-form";
 import PasswordEye from "../../../../public/password-eye.svg";
 import styles from "./AuthForm.module.css";
-
+import Image from "next/image";
 type TInputType = "password" | "email";
 type TExcludeEmail<T> = T extends "email" ? "text" : T;
 
@@ -28,7 +27,7 @@ export const AuthFormField = <T extends FieldValues>({
     type === "email" ? "text" : type,
   );
 
-  const { theme } = useTheme();
+  // const { theme } = useTheme();
 
   return (
     <div className={styles.authFormField}>
@@ -49,7 +48,7 @@ export const AuthFormField = <T extends FieldValues>({
               )
             }
           >
-            <PasswordEye className={styles.passwordEye} />
+            <Image height={20} width={20} alt="pass" src={PasswordEye} />
           </button>
         )}
       </div>

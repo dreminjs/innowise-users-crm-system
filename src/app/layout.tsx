@@ -1,8 +1,9 @@
-import { ThemeProvider } from "next-themes";
 import "../styles/globals.css";
 import { Roboto } from "next/font/google";
 import { ApolloWrapper } from "@/application/ApolloWrapper";
 import { NotificationList } from "@/modules/Notifications";
+import { Provider } from "@/components/ui/provider";
+import { ThemeProvider } from "next-themes";
 
 const roboto = Roboto({
   weight: "400",
@@ -16,13 +17,15 @@ export default function RootLayout({
 }) {
   return (
     <html className={roboto.className} lang="en" suppressHydrationWarning>
-      <body>
-        <ApolloWrapper>
-          <ThemeProvider enableSystem defaultTheme="system">
-            {children}
-            <NotificationList />
-          </ThemeProvider>
-        </ApolloWrapper>
+      <body suppressHydrationWarning>
+        <ThemeProvider>
+          <ApolloWrapper>
+            <Provider>
+              <NotificationList />
+              {children}
+            </Provider>
+          </ApolloWrapper>
+        </ThemeProvider>
       </body>
     </html>
   );
