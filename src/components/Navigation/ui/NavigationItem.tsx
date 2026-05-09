@@ -1,17 +1,16 @@
 import { FC } from "react";
 import styles from "./Navigation.module.css";
-import Link from "next/link";
 import clsx from "clsx";
-export interface INavigationItem {
-  to: "signin" | "signup";
-  children: React.ReactNode;
+import Link from "next/link";
+import { INavigationItem } from "../model/navigation.interface";
+type TNavigationItemProps = {
   isActive: boolean;
-}
+} & INavigationItem;
 
-export const NavigationItem: FC<INavigationItem> = ({
-  to,
-  children,
+export const NavigationItem: FC<TNavigationItemProps> = ({
   isActive,
+  to,
+  label,
 }) => {
   return (
     <li
@@ -20,7 +19,7 @@ export const NavigationItem: FC<INavigationItem> = ({
         isActive && styles.navigationItemActive,
       )}
     >
-      <Link href={to}>{children}</Link>
+      <Link href={to}>{label}</Link>
     </li>
   );
 };

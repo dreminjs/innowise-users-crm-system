@@ -2,10 +2,11 @@
 
 import { useAuthForm } from "../model/hooks/useAuthForm";
 import { AuthButtons } from "./AuthButtons";
-import { AuthFormField } from "./AuthFormField";
 import { AuthFormLayout } from "./AuthFormLayout";
-import styles from "./AuthForm.module.css";
 import { useSignup } from "../model/hooks/useSignup";
+import { FormField } from "@/shared/ui/FormField";
+import { TAuthFormData } from "../model/auth.types";
+import styles from "./AuthForm.module.css";
 export const SignupForm = () => {
   const { register, handleSubmit, errors } = useAuthForm();
 
@@ -18,14 +19,14 @@ export const SignupForm = () => {
     >
       <form onSubmit={handleSubmit(onSubmit)} className={styles.authForm}>
         <div className={styles.authFormFields}>
-          <AuthFormField
+          <FormField<TAuthFormData>
             type="email"
             register={register}
             error={errors.email?.message}
             label={"Почта"}
             name={"email"}
           />
-          <AuthFormField
+          <FormField<TAuthFormData>
             type="password"
             register={register}
             error={errors.password?.message}

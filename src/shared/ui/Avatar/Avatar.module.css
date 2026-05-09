@@ -1,20 +1,20 @@
 .image,
 .fallback {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
 }
 
 .image {
-    object-fit: cover;
+  object-fit: cover;
 }
 
 .fallback {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #dbeafe;
-    color: #2563eb;
-    font-size: 14px;
-    font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #dbeafe;
+  color: #2563eb;
+  font-size: 14px;
+  font-weight: 600;
 }

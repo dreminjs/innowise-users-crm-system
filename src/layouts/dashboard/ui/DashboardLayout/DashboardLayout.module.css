@@ -1,31 +1,30 @@
 .layout {
-    display: grid;
-    grid-template-columns:
-        260px
-        minmax(0, 1fr);
-    min-height: 100vh;
-    transition:
-            grid-template-columns 0.2s ease;
+  display: grid;
+  grid-template-columns:
+    260px
+    minmax(0, 1fr);
+  min-height: 100vh;
+  transition: grid-template-columns 0.2s ease;
 
-    background: #f5f7fb;
+  background: var(--bg);
 }
 
 .collapsed {
-    grid-template-columns:
-        104px
-        minmax(0, 1fr);
+  grid-template-columns:
+    104px
+    minmax(0, 1fr);
 }
 
 .content {
-    min-width: 0;
-    padding: 32px;
+  min-width: 0;
+  padding: 0px 24px;
 }
 
 @media (max-width: 1023px) {
-    .layout {
-        display: block;
-    }
-    .content {
-        padding: 24px 16px 96px;
-    }
+  .layout {
+    display: block;
+  }
+  .content {
+    padding: 0px 16px 96px;
+  }
 }

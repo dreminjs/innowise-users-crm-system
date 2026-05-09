@@ -1,10 +1,11 @@
 "use client";
 
+import { navigationItems } from "@/shared/config/navigation";
+import { usePathname } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import styles from "./DesktopSidebar.module.css";
-import { navigationItems } from "@/shared/config/navigation";
+import clsx from "clsx";
 
 type Props = {
   collapsed: boolean;
@@ -34,7 +35,13 @@ export const DesktopSidebar = ({ collapsed, onToggle }: Props) => {
                 ${isActive ? styles.active : ""}
               `}
             >
-              <Image src={item.icon} alt={item.label} width={20} height={20} />
+              <Image
+                loading="eager"
+                src={item.icon}
+                alt={item.label}
+                width={20}
+                height={20}
+              />
 
               {!collapsed && <span>{item.label}</span>}
             </Link>
@@ -50,6 +57,7 @@ export const DesktopSidebar = ({ collapsed, onToggle }: Props) => {
             alt="user avatar"
             width={40}
             height={40}
+            loading="eager"
           />
 
           {!collapsed && (
@@ -60,13 +68,13 @@ export const DesktopSidebar = ({ collapsed, onToggle }: Props) => {
         </button>
 
         <button className={styles.collapseButton} onClick={onToggle}>
-          <img
+          <Image
             src="/arrow.svg"
             alt="Toggle sidebar"
-            className={`
-              ${styles.arrow}
-              ${collapsed ? styles.rotated : ""}
-            `}
+            loading="eager"
+            width={40}
+            height={40}
+            className={clsx(styles.arrow, collapsed && styles.rotated)}
           />
         </button>
       </div>

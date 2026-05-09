@@ -1,8 +1,11 @@
 import { graphql } from "@/graphql/gql";
-export const GET_CURRENT_USER = graphql(`
+
+export const GET_USER_FULLNAME = graphql(`
   query getCurrentProfile($userId: ID!) {
-    profile(userId: $userId) {
-      id
+    user(userId: $userId) {
+      profile {
+        full_name
+      }
     }
   }
 `);
@@ -17,10 +20,49 @@ export const GET_USERS = graphql(`
       position_name
 
       profile {
+        id
         first_name
         last_name
         avatar
       }
     }
   }
-`)
+`);
+
+export const GET_USER_PROFILE = graphql(`
+  query getUserProfile($userId: ID!) {
+    user(userId: $userId) {
+      profile {
+        id
+        first_name
+        last_name
+        avatar
+      }
+
+      department {
+        id
+        name
+      }
+      position {
+        id
+        name
+      }
+      role
+      email
+      created_at
+    }
+  }
+`);
+
+export const GET_USERS_CREATERIES = graphql(`
+  query GetUsersCriteries {
+    positions {
+      id
+      name
+    }
+    departments {
+      id
+      name
+    }
+  }
+`);

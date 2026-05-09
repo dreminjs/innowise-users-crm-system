@@ -12,13 +12,13 @@ export const sortUsers = (
 
     switch (sortField) {
       case "first_name":
-        firstValue = a.profile.first_name ?? "";
-        secondValue = b.profile.first_name ?? "";
+        firstValue = a.profile?.first_name ?? "";
+        secondValue = b.profile?.first_name ?? "";
         break;
 
       case "last_name":
-        firstValue = a.profile.last_name ?? "";
-        secondValue = b.profile.last_name ?? "";
+        firstValue = a.profile?.last_name ?? "";
+        secondValue = b.profile?.last_name ?? "";
         break;
 
       case "email":
@@ -27,13 +27,13 @@ export const sortUsers = (
         break;
 
       case "department":
-        firstValue = a.department_name ?? "";
-        secondValue = b.department_name ?? "";
+        firstValue = a?.department_name ?? "";
+        secondValue = b?.department_name ?? "";
         break;
 
       case "position":
-        firstValue = a.position_name ?? "";
-        secondValue = b.position_name ?? "";
+        firstValue = a?.position_name ?? "";
+        secondValue = b?.position_name ?? "";
         break;
     }
 
