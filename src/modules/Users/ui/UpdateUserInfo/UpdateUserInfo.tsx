@@ -12,31 +12,34 @@ interface IUpdateUserInfoProps {
 }
 
 export const UpdateUserInfo: FC<IUpdateUserInfoProps> = ({ userId }) => {
-  const { data, error } = useGetProfile(userId);
+  const { data, error, loading } = useGetProfile(userId);
   const currentUserId = useUserStore((state) => state.userId);
-  if (!data || error) return <div>Error!</div>;
+  if (loading)
+    return <div className={styles.uploadInfoLoading}>Loading...</div>;
+  if (error || !data)
+    return <div className={styles.uploadInfoError}>Error!</div>;
   return (
     <div className={styles.updateUserInfo}>
       <UploadAvatar
-        avatarUrl={data?.user.profile.avatar || ""}
-        firstLetter={data?.user?.profile?.first_name?.charAt(0) || "Unknow"}
+        avatarUrl={data.user.profile.avatar || ""}
+        firstLetter={data.user?.profile?.first_name?.charAt(0) || "Unknow"}
         isUploadAvailable={currentUserId === userId}
       />
       <UserInfo
         fullName={
-          data?.user.profile.first_name && data?.user.profile.last_name
-            ? data?.user.profile.first_name + " " + data?.user.profile.last_name
+          data.user.profile.first_name && data.user.profile.last_name
+            ? data.user.profile.first_name + " " + data.user.profile.last_name
             : "-"
         }
-        email={data?.user.email || "-"}
-        hiredDate={`A member since ${new Date(+data?.user.created_at || 0).toDateString()}`}
+        email={data.user.email || "-"}
+        hiredDate={`A member since ${new Date(+data.user.created_at || 0).toDateString()}`}
       />
       <UploadInfo
         isAvailable={currentUserId === userId}
-        firstName={data?.user.profile.first_name || ""}
-        lastName={data?.user.profile.last_name || ""}
+        firstName={data.user.profile.first_name || ""}
+        lastName={data.user.profile.last_name || ""}
         positionId={data.user.position?.id || ""}
-        departmentId={data?.user.department?.id || ""}
+        departmentId={data.user.department?.id || ""}
       />
     </div>
   );

@@ -108,6 +108,20 @@
   grid-column: 2 / 3;
 }
 
+.uploadInfoLoading {
+  color: var(--color-text);
+  text-align: center;
+  font-size: 16px;
+  line-height: 26px;
+}
+
+.uploadInfoError {
+  color: var(--color-primary);
+  text-align: center;
+  font-size: 16px;
+  line-height: 26px;
+}
+
 @media (max-width: 600px) {
   .uploadInfo {
     grid-template-columns: minmax(0, 350px);
