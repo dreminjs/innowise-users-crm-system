@@ -3,9 +3,9 @@ import { useState } from "react";
 import { Path, UseFormRegister } from "react-hook-form";
 import { FieldValues } from "react-hook-form";
 import PasswordEye from "../../../../public/password-eye.svg";
-import styles from "./AuthForm.module.css";
 import Image from "next/image";
-type TInputType = "password" | "email";
+import styles from "./FormField.module.css";
+type TInputType = "password" | "email" | "text";
 type TExcludeEmail<T> = T extends "email" ? "text" : T;
 
 interface IFormFieldProps<T extends FieldValues> {
@@ -14,6 +14,7 @@ interface IFormFieldProps<T extends FieldValues> {
   name: Path<T>;
   error?: string;
   label: string;
+  isAvailable?: boolean;
 }
 
 export const FormField = <T extends FieldValues>({
@@ -22,37 +23,39 @@ export const FormField = <T extends FieldValues>({
   label,
   register,
   name,
+  isAvailable = true,
 }: IFormFieldProps<T>) => {
   const [inputType, setInputType] = useState<TExcludeEmail<TInputType>>(
     type === "email" ? "text" : type,
   );
 
-  // const { theme } = useTheme();
-
   return (
-    <div className={styles.formField}>
-      <div className={styles.formFieldInner}>
-        <input
-          {...register(name)}
-          placeholder=" "
-          className={styles.formInput}
-          type={inputType}
-        />
-        <span className={styles.formLabel}>{label}</span>
-        {type === "password" && (
-          <button
-            type="button"
-            onClick={() =>
-              setInputType((prev) =>
-                prev === "password" ? "text" : "password",
-              )
-            }
-          >
-            <Image height={20} width={20} alt="pass" src={PasswordEye} />
-          </button>
-        )}
+    <>
+      <div className={styles.formField}>
+        <div className={styles.formFieldInner}>
+          <input
+            disabled={!isAvailable}
+            {...register(name)}
+            placeholder=" "
+            className={styles.formInput}
+            type={inputType}
+          />
+          <span className={styles.formLabel}>{label}</span>
+          {type === "password" && (
+            <button
+              type="button"
+              onClick={() =>
+                setInputType((prev) =>
+                  prev === "password" ? "text" : "password",
+                )
+              }
+            >
+              <Image height={20} width={20} alt="pass" src={PasswordEye} />
+            </button>
+          )}
+        </div>
+        {error && <span className={styles.error}>{error}</span>}
       </div>
-      {error && <span>{error}</span>}
-    </div>
+    </>
   );
 };

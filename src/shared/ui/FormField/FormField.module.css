@@ -1,8 +1,6 @@
 .formField {
-  margin-bottom: 20px;
   position: relative;
   width: 100%;
-  border: 1px solid #ffffff3b;
 }
 
 .formFieldInner {
@@ -14,6 +12,7 @@
   border-radius: 1px;
   padding: 12px;
   position: relative;
+  border: 1px solid #ffffff3b;
 }
 
 .formInput {
@@ -52,11 +51,11 @@
   color: var(--color-primary);
 }
 
-.formField:has(.formInput:focus) {
+.formFieldInner:has(.formInput:focus) {
   border: 1px solid var(--color-primary);
 }
 
-.formField:has(.formInput:not(:placeholder-shown)) {
+.formFieldInner:has(.formInput:not(:placeholder-shown)) {
   border: 1px solid var(--color-primary);
 }
 
@@ -68,6 +67,10 @@
   color: var(--color-primary);
 }
 
-.formField:has(.formInput:-webkit-autofill) {
+.formFieldInner:has(.formInput:-webkit-autofill) {
   border: 1px solid var(--color-primary);
+}
+
+.error {
+  color: var(--color-text);
 }

@@ -1,3 +1,4 @@
+"use client";
 import { useUserStore } from "@/application/store/user.store";
 import { FC } from "react";
 import { UpdateUserInfo } from "../../ui/UpdateUserInfo/UpdateUserInfo";

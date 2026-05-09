@@ -1,0 +1,40 @@
+.formLabel {
+  font-size: 16px;
+  color: var(--color-text);
+  position: absolute;
+  left: 15px;
+  top: 10px;
+  z-index: 1;
+  pointer-events: none;
+  transition:
+    top 0.2s ease,
+    font-size 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.formField {
+  padding: 5px 15px;
+  border: 1px solid var(--border-color);
+  position: relative;
+}
+
+.formField:has([data-state="open"]),
+.formField:has([data-has-value="true"]) {
+  border: 1px solid var(--color-primary);
+}
+
+.formInput {
+  color: var(--color-text);
+}
+
+.formField:has([data-state="open"]) .formLabel,
+.formField:has([data-has-value="true"]) .formLabel {
+  top: -10px;
+  background-color: var(--bg);
+  font-size: 12px;
+  color: var(--color-primary);
+}
+
+.selectItem {
+  padding: 5px 10px;
+}

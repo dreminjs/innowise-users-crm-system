@@ -1,9 +1,14 @@
 :root {
-  --bg: rgba(#fff, #fff, #fff, 10%);
+  --bg: #f5f7fb;
   --color-dark: #2e2e2e;
   --border-color: rgba(0, 0, 0, 0.23);
   --color-primary: #c63031;
   --color-text: #2e2e2e;
+  --color-subtitle: #00000099;
+  --bg-hover: #f3f4f6;
+  --link-color: #6b7280;
+  --border-color: #e5e7eb;
+  --bread-crumbs: rgba(000, 000, 000, 0.6);
 }
 
 html,
@@ -41,10 +46,12 @@ button {
 [data-theme="dark"] {
   --bg: #353535;
   --color: #fff;
-  --border-color: rgba(#ffffff3b, 23%);
-  /*--color-title: #ffffff;*/
-  /*--color-text: #ffffff;*/
-  --color-text: black;
+  --border-color: #ffffff3b;
+  --color-text: #ffffff;
+  --color-subtitle: rgba(#fff, #fff, #fff, 0.7);
+  --bg-hover: #303030;
+  --link-color: white;
+  --bread-crumbs: white;
 }
 
 * {

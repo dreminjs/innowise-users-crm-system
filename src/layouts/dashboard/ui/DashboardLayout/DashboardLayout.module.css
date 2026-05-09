@@ -6,7 +6,7 @@
   min-height: 100vh;
   transition: grid-template-columns 0.2s ease;
 
-  background: #f5f7fb;
+  background: var(--bg);
 }
 
 .collapsed {

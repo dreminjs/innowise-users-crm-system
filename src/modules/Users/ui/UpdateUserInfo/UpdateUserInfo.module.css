@@ -4,6 +4,19 @@
   align-items: center;
 }
 
+.avatarContainer {
+  flex-shrink: 0;
+  position: relative;
+}
+
+.deleteAvatar {
+  color: var(--color-text);
+  font-size: 20px;
+  position: absolute;
+  top: -10px;
+  right: -10px;
+}
+
 .avatarSkeleton {
   width: 120px;
   height: 120px;
@@ -29,6 +42,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  text-align: center;
   gap: 64px;
   margin-bottom: 32px;
 }
@@ -42,7 +56,7 @@
 .uploadAvatarInner {
   display: flex;
   gap: 16px;
-  color: #2e2e2e;
+  color: var(--color-text);
   font-weight: 500;
   font-size: 20px;
   line-height: 32px;
@@ -50,7 +64,7 @@
 
 .uploadAvatarSubtext {
   text-align: center;
-  color: #2e2e2e !important;
+  color: var(--color-text) !important;
   font-size: 16px !important;
   line-height: 26px !important;
 }
@@ -70,11 +84,38 @@
 .userInfoEmail {
   font-size: 16px;
   line-height: 26px;
-  color: rgba(000, 000, 000, 0.6);
+  color: var(--color-text);
 }
 
 .userInfoHiredDate {
   font-size: 16px;
   line-height: 26px;
   color: var(--color-text);
+}
+
+.uploadInfo {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 410px));
+  gap: 32px;
+}
+
+.uploadInfoSubmit {
+  background-color: var(--color-primary);
+  border-radius: 40px;
+  padding: 16px 0px;
+  color: white;
+  text-align: center;
+  grid-column: 2 / 3;
+}
+
+@media (max-width: 600px) {
+  .uploadInfo {
+    grid-template-columns: minmax(0, 350px);
+  }
+  .uploadInfoSubmit {
+    grid-column: 1 / 2;
+  }
+  .uploadAvatar {
+    flex-direction: column;
+  }
 }

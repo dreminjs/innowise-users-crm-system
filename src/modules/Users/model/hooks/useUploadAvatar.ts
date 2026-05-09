@@ -21,7 +21,6 @@ export const useUploadAvatar = () => {
   });
 
   const handleSubmit = async (dto: UploadAvatarInput) => {
-    console.log(dto);
     mutate({ variables: { dto } });
   };
 
