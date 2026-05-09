@@ -17,8 +17,6 @@ interface IUploadInfoProps {
   isAvailable: boolean;
   firstName: string;
   lastName: string;
-  department: string;
-  position: string;
   positionId: string;
   departmentId: string;
 }
@@ -27,8 +25,6 @@ export const UploadInfo: FC<IUploadInfoProps> = ({
   isAvailable,
   firstName,
   lastName,
-  department,
-  position,
   positionId,
   departmentId,
 }) => {
@@ -54,23 +50,17 @@ export const UploadInfo: FC<IUploadInfoProps> = ({
       defaultValues: {
         firstName,
         lastName,
-        department,
-        position,
         positionId,
         departmentId,
       },
       resolver: zodResolver(updateUserSchema),
     });
   const handleDepartmentChange = (departmentId: string) => {
-    const selected = data?.departments.find((el) => el.id === departmentId);
     setValue("departmentId", departmentId);
-    setValue("department", selected?.name ?? "");
   };
 
   const handlePositionChange = (positionId: string) => {
-    const selected = data?.positions.find((el) => el.id === positionId);
     setValue("positionId", positionId);
-    setValue("position", selected?.name ?? "");
   };
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
@@ -79,8 +69,6 @@ export const UploadInfo: FC<IUploadInfoProps> = ({
       onSubmit={handleSubmit(handleUpdateUserInfo)}
       className={styles.uploadInfo}
     >
-      <input type="hidden" {...register("department")} />
-      <input type="hidden" {...register("position")} />
       {(isAvailable || firstName) && (
         <FormField<TUpdateUserForm>
           type="text"
@@ -99,7 +87,7 @@ export const UploadInfo: FC<IUploadInfoProps> = ({
         />
       )}
 
-      {(isAvailable || department) && (
+      {(isAvailable || departmentId) && (
         <Controller
           control={control}
           name="departmentId"
@@ -120,7 +108,7 @@ export const UploadInfo: FC<IUploadInfoProps> = ({
         />
       )}
 
-      {(isAvailable || position) && (
+      {(isAvailable || positionId) && (
         <Controller
           control={control}
           name="positionId"

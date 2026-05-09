@@ -35,9 +35,7 @@ export const UpdateUserInfo: FC<IUpdateUserInfoProps> = ({ userId }) => {
         isAvailable={currentUserId === userId}
         firstName={data?.user.profile.first_name || ""}
         lastName={data?.user.profile.last_name || ""}
-        department={data?.user.department?.name || ""}
         positionId={data.user.position?.id || ""}
-        position={data.user.position?.name || ""}
         departmentId={data?.user.department?.id || ""}
       />
     </div>
