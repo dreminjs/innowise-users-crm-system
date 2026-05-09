@@ -1,0 +1,11 @@
+.addNewButton {
+  display: flex;
+  color: #767676;
+  gap: 16px;
+  width: 220px;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
+  line-height: 25px;
+  font-style: Medium;
+}

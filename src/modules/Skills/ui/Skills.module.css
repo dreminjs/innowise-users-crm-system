@@ -1,0 +1,35 @@
+.menagementSkills {
+  position: fixed;
+  bottom: 80px;
+  width: 100%;
+  background-color: var(--bg);
+  padding: 10px 0px;
+}
+
+.addSkillModalContent {
+  background-color: var(--bg);
+  padding: 20px;
+  color: var(--color-text);
+}
+
+.addSkillModalTitle {
+  font-size: 18px;
+}
+
+.addSkillForm {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.addSkillHeader {
+  margin-bottom: 25px;
+}
+
+.addSkillPositioner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  inset: 0;
+}

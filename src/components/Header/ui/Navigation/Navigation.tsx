@@ -20,10 +20,6 @@ export const Navigation = () => {
               label={getLabel(idx, el, segment)}
               href={idx === 1 ? `` : `/${el}`}
               isActive={idx === 1}
-              payload={{
-                type: "employee",
-                id: 0,
-              }}
             />
             {array[idx + 1] && (
               <Image

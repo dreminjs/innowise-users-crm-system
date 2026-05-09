@@ -51,7 +51,7 @@ button {
   --color-subtitle: rgba(#fff, #fff, #fff, 0.7);
   --bg-hover: #303030;
   --link-color: white;
-  --bread-crumbs: white;
+  --bread-crumbs: #767676;
 }
 
 * {

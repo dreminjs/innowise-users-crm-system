@@ -30,7 +30,7 @@ export const CustomSelect: FC<ICustomSelectProps> = ({
     >
       <Select.HiddenSelect />
       <Select.Control className={styles.formField}>
-        <Select.Trigger className={styles.formFieldInner}>
+        <Select.Trigger>
           <Select.ValueText placeholder=" " className={styles.formInput} />
           <Select.IndicatorGroup>
             <Select.Indicator />

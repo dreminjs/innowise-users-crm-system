@@ -13,7 +13,7 @@
 }
 
 .formField {
-  padding: 5px 15px;
+  padding: 2px 15px;
   border: 1px solid var(--border-color);
   position: relative;
 }

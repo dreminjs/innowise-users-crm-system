@@ -1,0 +1,66 @@
+import { GET_SKILLS } from "@/modules/Skills/api/queries";
+import { useAddProfileSkill } from "@/modules/Skills/model/hooks/useAddProfileSkill";
+import { skillLevels } from "@/modules/Skills/model/skill.constants";
+import { CustomSelect } from "@/shared/ui/CustomSelect";
+import { useQuery } from "@apollo/client/react";
+import { Controller } from "react-hook-form";
+import { useSkillForm } from "@/modules/Skills/model/hooks/useSkillForm";
+import styles from "../../Skills.module.css";
+import { ConfirmButtons } from "@/shared/ui/ConfirmButtons";
+import { TSkillForm } from "@/modules/Skills/model/skill.interface";
+export const AddSkillForm = () => {
+  const { handleAddProfileSkill } = useAddProfileSkill();
+  const { data: skillsData } = useQuery(GET_SKILLS);
+  const {
+    control,
+    handleChangeSkill,
+    handleChangeMastery,
+    currentCategoryId,
+    handleSubmit,
+    reset,
+  } = useSkillForm();
+
+  const onSubmit = async (data: TSkillForm) => {
+    handleAddProfileSkill(data).then(() => reset());
+  };
+
+  return (
+    <form onSubmit={handleSubmit(onSubmit)} className={styles.addSkillForm}>
+      <Controller
+        control={control}
+        name={"categoryId"}
+        render={({ field }) => (
+          <CustomSelect
+            label={"Skill"}
+            options={
+              skillsData?.skills.map((el) => ({
+                value: el.id,
+                label: el.name,
+              })) || []
+            }
+            value={field.value}
+            onChange={handleChangeSkill}
+            isAvailable={true}
+          />
+        )}
+      />
+      <Controller
+        control={control}
+        name={"mastery"}
+        render={({ field }) => (
+          <CustomSelect
+            label={"Skill mastery"}
+            options={skillLevels.map((el) => ({
+              value: el,
+              label: el,
+            }))}
+            value={field.value}
+            isAvailable={Boolean(currentCategoryId)}
+            onChange={handleChangeMastery}
+          />
+        )}
+      />
+      <ConfirmButtons confirmLabel={"CONFIRM"} confirmButtonType={"submit"} />
+    </form>
+  );
+};
