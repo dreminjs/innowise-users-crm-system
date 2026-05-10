@@ -4,6 +4,7 @@ import { EditLanguageModal } from "../EditLanguageModal/EditLanguageModal";
 import { useLanguageStore } from "../../model/language.store";
 import styles from "../Languages.module.css";
 import { Proficiency } from "@/generated/graphql";
+import clsx from "clsx";
 interface ILanguagesItemProps {
   name: string;
   proficiency: Proficiency;
@@ -14,7 +15,8 @@ export const LanguagesItem: FC<ILanguagesItemProps> = ({
   proficiency,
 }) => {
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
-  const { isDeleteMode, addDeleteLanguage } = useLanguageStore();
+  const { isDeleteMode, addDeleteLanguage, deleteLanguages } =
+    useLanguageStore();
   return (
     <>
       <li>
@@ -24,7 +26,10 @@ export const LanguagesItem: FC<ILanguagesItemProps> = ({
               ? addDeleteLanguage(name)
               : setIsEditModalOpen((prev) => !prev)
           }
-          className={styles.languagesItem}
+          className={clsx(
+            styles.languagesItem,
+            deleteLanguages[name] && styles.languagesItemActive,
+          )}
         >
           <span style={{ color: languageLevelColors[proficiency] }}>
             {proficiency}
