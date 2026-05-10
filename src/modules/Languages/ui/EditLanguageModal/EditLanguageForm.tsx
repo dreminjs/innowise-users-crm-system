@@ -22,6 +22,7 @@ export const EditLanguageForm: FC<TEditLanguageFormProps> = ({
   proficiency,
   currentUserId,
 }) => {
+  console.log(name);
   const { handleEditProfileLanguage } = useEditProfileLanguage();
   const { data: languagesData } = useQuery(GET_LANGUAGES);
   const { data: profileData } = useQuery(GET_PROFILE_LANGUAGES, {
@@ -68,7 +69,7 @@ export const EditLanguageForm: FC<TEditLanguageFormProps> = ({
             }
             value={field.value}
             onChange={handleChangeName}
-            disabled={false}
+            disabled={true}
           />
         )}
       />

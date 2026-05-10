@@ -11,7 +11,7 @@ export const RemoveLanguagesButton = () => {
     <button
       disabled={loading}
       onClick={handleDeleteProfileLanguages}
-      className={styles.removeSkillsButton}
+      className={styles.removeLanguagesButton}
     >
       <span className={styles.deleteConfirmButtonAmount}>
         {Object.keys(deleteLanguages).length}

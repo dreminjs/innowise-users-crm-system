@@ -1,9 +1,9 @@
 import { useMutation } from "@apollo/client/react";
 import { useUserStore } from "@/application/store/user.store";
 import { useNotification } from "@/modules/Notifications";
-import { DELETE_PROFILE_LANGUAGE } from "../../api/mutations";
-import { GET_PROFILE_LANGAUGES } from "../../api/queries";
 import { useLanguageStore } from "../language.store";
+import { DELETE_PROFILE_LANGUAGE } from "../../api/mutations";
+import { GET_PROFILE_LANGUAGES } from "../../api/queries";
 
 export const useDeleteProfileLanguages = () => {
   const addNotification = useNotification((state) => state.addNotification);
@@ -25,7 +25,7 @@ export const useDeleteProfileLanguages = () => {
       toggleDeleteMode();
     },
     refetchQueries: [
-      { query: GET_PROFILE_LANGAUGES, variables: { userId: currentUserId } },
+      { query: GET_PROFILE_LANGUAGES, variables: { userId: currentUserId } },
     ],
   });
 
