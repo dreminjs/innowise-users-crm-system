@@ -1,0 +1,35 @@
+.buttons {
+  display: flex;
+  justify-content: end;
+  gap: 10px;
+}
+
+.cancelButton {
+  width: 220px;
+  padding: 10px 0px;
+  color: var(--color-text);
+  text-align: center;
+  border-radius: 20px;
+  border: 1px solid var(--border-color);
+}
+
+.confirmButton {
+  text-align: center;
+  width: 220px;
+  padding: 10px 0px;
+  background-color: var(--color-primary);
+  border-radius: 20px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.confirmButtonAmount {
+  background-color: var(--primary-color);
+  color: white;
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+}

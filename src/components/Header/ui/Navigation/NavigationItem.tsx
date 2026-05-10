@@ -6,10 +6,6 @@ interface INavigationItemProps {
   href: string;
   label: string;
   isActive: boolean;
-  payload: {
-    type: "employee" | "cvs";
-    id: number;
-  };
 }
 
 export const NavigationItem: FC<INavigationItemProps> = ({
@@ -24,7 +20,9 @@ export const NavigationItem: FC<INavigationItemProps> = ({
         isActive && styles.navigationItemActive,
       )}
     >
-      <Link href={href}>{label}</Link>
+      <Link href={href}>
+        {label.charAt(0).toLocaleUpperCase() + label.slice(1)}
+      </Link>
     </li>
   );
 };

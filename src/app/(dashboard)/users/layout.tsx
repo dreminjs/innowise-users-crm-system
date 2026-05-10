@@ -1,4 +1,3 @@
-import { Header } from "@/components/Header/ui/Header";
 import styles from "./layout.module.css";
 
 export default function RootLayout({
@@ -6,10 +5,5 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return (
-    <div className={styles.layout}>
-      <Header />
-      {children}
-    </div>
-  );
+  return <div className={styles.layout}>{children}</div>;
 }

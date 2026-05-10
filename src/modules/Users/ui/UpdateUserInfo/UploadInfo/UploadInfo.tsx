@@ -131,10 +131,10 @@ export const UploadInfo: FC<IUploadInfoProps> = ({
 
       {isAvailable && (
         <button
-          disabled={loadingUpdatingProfile || loadingUpdatingUser}
+          disabled={loadingUpdatingProfile && loadingUpdatingUser}
           className={styles.uploadInfoSubmit}
         >
-          {loadingUpdatingProfile || loadingUpdatingUser
+          {loadingUpdatingProfile && loadingUpdatingUser
             ? "Loading..."
             : "SUBMIT"}
         </button>

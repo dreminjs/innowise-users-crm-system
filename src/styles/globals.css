@@ -1,5 +1,6 @@
 :root {
   --bg: #f5f7fb;
+  --bg-hover: #f3f4f6;
   --color-dark: #2e2e2e;
   --border-color: rgba(0, 0, 0, 0.23);
   --color-primary: #c63031;
@@ -9,6 +10,8 @@
   --link-color: #6b7280;
   --border-color: #e5e7eb;
   --bread-crumbs: rgba(000, 000, 000, 0.6);
+  --cancel-border: #ffffff3b;
+  --cancel-text: #ffffff3b;
 }
 
 html,
@@ -45,13 +48,14 @@ button {
 
 [data-theme="dark"] {
   --bg: #353535;
+  --bg-hover: #303030;
   --color: #fff;
   --border-color: #ffffff3b;
   --color-text: #ffffff;
   --color-subtitle: rgba(#fff, #fff, #fff, 0.7);
   --bg-hover: #303030;
   --link-color: white;
-  --bread-crumbs: white;
+  --bread-crumbs: #767676;
 }
 
 * {
