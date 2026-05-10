@@ -8,7 +8,14 @@ import { useSkillForm } from "@/modules/Skills/model/hooks/useSkillForm";
 import styles from "../../Skills.module.css";
 import { ConfirmButtons } from "@/shared/ui/ConfirmButtons";
 import { TSkillForm } from "@/modules/Skills/model/skill.interface";
-export const AddSkillForm = () => {
+import { Mastery } from "@/generated/graphql";
+import { FC } from "react";
+
+interface IAddSkillFormProps {
+  onToggle: () => void;
+}
+
+export const AddSkillForm: FC<IAddSkillFormProps> = ({ onToggle }) => {
   const { handleAddProfileSkill } = useAddProfileSkill();
   const { data: skillsData } = useQuery(GET_SKILLS);
   const {
@@ -56,11 +63,15 @@ export const AddSkillForm = () => {
             }))}
             value={field.value}
             isAvailable={Boolean(currentCategoryId)}
-            onChange={handleChangeMastery}
+            onChange={(value) => handleChangeMastery(value as Mastery)}
           />
         )}
       />
-      <ConfirmButtons confirmLabel={"CONFIRM"} confirmButtonType={"submit"} />
+      <ConfirmButtons
+        onCancel={onToggle}
+        confirmLabel={"CONFIRM"}
+        confirmButtonType={"submit"}
+      />
     </form>
   );
 };

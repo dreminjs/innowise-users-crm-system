@@ -22,9 +22,9 @@ export const ConfirmButtons: FC<ConfirmButtonsProps> = ({
         CANCEL
       </button>
       <button
-        type="submit"
+        type={confirmButtonType}
         className={styles.confirmButton}
-        // onClick={onConfirm}
+        onClick={onConfirm}
       >
         <span>{confirmLabel}</span>
         <span className={styles.confirmButtonAmount}>{amount}</span>

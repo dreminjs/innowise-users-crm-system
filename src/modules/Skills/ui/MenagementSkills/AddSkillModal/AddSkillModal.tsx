@@ -22,7 +22,7 @@ export const AddSkillModal: FC<IAddSkillModalProps> = ({ open, onToggle }) => {
           </Dialog.Header>
 
           <Dialog.Body>
-            <AddSkillForm />
+            <AddSkillForm onToggle={onToggle} />
           </Dialog.Body>
         </Dialog.Content>
       </Dialog.Positioner>

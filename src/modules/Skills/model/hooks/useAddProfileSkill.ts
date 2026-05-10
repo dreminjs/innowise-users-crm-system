@@ -2,7 +2,6 @@ import { useMutation, useQuery } from "@apollo/client/react";
 import { ADD_PROFILE_SKILL } from "../../api/mutations";
 import { useUserStore } from "@/application/store/user.store";
 import { useNotification } from "@/modules/Notifications";
-import { AddProfileSkillInput } from "@/graphql/graphql";
 import { GET_SKILLS } from "../../api/queries";
 import { TSkillForm } from "../skill.interface";
 
