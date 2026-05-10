@@ -7,9 +7,8 @@ import { useSkillForm } from "@/modules/Skills/model/hooks/useSkillForm";
 import { ConfirmButtons } from "@/shared/ui/ConfirmButtons";
 import { TSkillForm } from "@/modules/Skills/model/skill.interface";
 import { Mastery } from "@/generated/graphql";
-import { useUserStore } from "@/application/store/user.store";
 import { FC } from "react";
-import { GET_PROFILE_SKILLS, GET_SKILLS } from "@/modules/Skills/api/queries";
+import { GET_SKILLS } from "@/modules/Skills/api/queries";
 import styles from "../Skills.module.css";
 import { useEditProfileSkill } from "../../model/hooks/useEditProfileSkill";
 
@@ -56,7 +55,7 @@ export const EditSkillForm: FC<TEditSkillFormProps> = ({
             }
             value={field.value}
             onChange={handleChangeSkill}
-            isAvailable={false}
+            disabled={false}
           />
         )}
       />
@@ -71,7 +70,7 @@ export const EditSkillForm: FC<TEditSkillFormProps> = ({
               label: el,
             }))}
             value={field.value}
-            isAvailable={Boolean(currentCategoryId)}
+            disabled={!Boolean(currentCategoryId)}
             onChange={(value) => handleChangeMastery(value as Mastery)}
           />
         )}

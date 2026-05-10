@@ -4,7 +4,7 @@ import styles from "./CustomSelect.module.css";
 interface ICustomSelectProps {
   label: string;
   options: { label: string; value: string }[];
-  isAvailable?: boolean;
+  disabled?: boolean;
   value: string | null;
   onChange?: (value: string) => void;
 }
@@ -12,7 +12,7 @@ interface ICustomSelectProps {
 export const CustomSelect: FC<ICustomSelectProps> = ({
   label,
   options,
-  isAvailable,
+  disabled,
   value,
   onChange,
 }) => {
@@ -24,7 +24,7 @@ export const CustomSelect: FC<ICustomSelectProps> = ({
   return (
     <Select.Root
       collection={collection}
-      disabled={!isAvailable}
+      disabled={disabled}
       value={value ? [value] : []}
       onValueChange={(e) => onChange?.(e.value[0])}
     >

@@ -31,6 +31,9 @@
 
 .authFormFields {
   margin-bottom: 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .authFormSubmit {
