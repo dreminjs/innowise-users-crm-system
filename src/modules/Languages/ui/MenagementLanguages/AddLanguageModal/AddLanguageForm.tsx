@@ -1,4 +1,3 @@
-import { skillLevels } from "@/modules/Skills/model/skill.constants";
 import { CustomSelect } from "@/shared/ui/CustomSelect";
 import { useQuery } from "@apollo/client/react";
 import { Controller } from "react-hook-form";
@@ -12,8 +11,8 @@ import {
 import { useLanguageForm } from "@/modules/Languages/model/hooks/useLanguageForm";
 import { TLanguageForm } from "@/modules/Languages/model/languages.interface";
 import { useAddProfileLanguage } from "@/modules/Languages/model/hooks/useAddProfileLanguage";
-import styles from "../../Languages.module.css";
 import { languageProfiency } from "@/modules/Languages/model/languages.constants";
+import styles from "../../Languages.module.css";
 
 interface IEditLangugeFormProps {
   onToggle: () => void;

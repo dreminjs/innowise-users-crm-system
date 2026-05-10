@@ -1,7 +1,7 @@
 import { useMutation, useQuery } from "@apollo/client/react";
 import { useUserStore } from "@/application/store/user.store";
 import { useNotification } from "@/modules/Notifications";
-import { GET_LANGUAGES, GET_PROFILE_LANGAUGES } from "../../api/queries";
+import { GET_LANGUAGES, GET_PROFILE_LANGUAGES } from "../../api/queries";
 import { UPDATE_PROFILE_LANGUAGE } from "../../api/mutations";
 import { TLanguageForm } from "../languages.interface";
 
@@ -22,7 +22,7 @@ export const useEditProfileLanguage = () => {
       addNotification({ message: "Failed to edit language", type: "error" });
     },
     refetchQueries: [
-      { query: GET_PROFILE_LANGAUGES, variables: { userId: currentUserId } },
+      { query: GET_PROFILE_LANGUAGES, variables: { userId: currentUserId } },
     ],
   });
 

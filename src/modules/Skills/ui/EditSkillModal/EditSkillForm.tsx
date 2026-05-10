@@ -1,4 +1,3 @@
-import { useAddProfileSkill } from "@/modules/Skills/model/hooks/useAddProfileSkill";
 import { skillLevels } from "@/modules/Skills/model/skill.constants";
 import { CustomSelect } from "@/shared/ui/CustomSelect";
 import { useQuery } from "@apollo/client/react";
@@ -55,7 +54,7 @@ export const EditSkillForm: FC<TEditSkillFormProps> = ({
             }
             value={field.value}
             onChange={handleChangeSkill}
-            disabled={false}
+            disabled={true}
           />
         )}
       />
