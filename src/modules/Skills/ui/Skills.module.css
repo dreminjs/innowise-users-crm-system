@@ -1,9 +1,16 @@
+.skills {
+  flex: 1;
+  position: relative;
+}
+
 .menagementSkills {
-  position: fixed;
-  bottom: 80px;
+  display: flex;
+  justify-content: end;
+  gap: 15px;
+  right: 0px;
+  bottom: 0px;
   width: 100%;
   background-color: var(--bg);
-  padding: 10px 0px;
 }
 
 .addSkillModalContent {
@@ -32,4 +39,103 @@
   justify-content: center;
   position: fixed;
   inset: 0;
+}
+
+.skillsLists {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding-bottom: 60px;
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.categoryName {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--color-text);
+}
+
+.skillsList {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 289px));
+  gap: 16px;
+}
+
+.skillItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0px 16px;
+}
+
+.masteryLine {
+  display: block;
+  width: 32px;
+  height: 3px;
+  border-radius: 2px;
+}
+
+.skillName {
+  font-size: 16px;
+  color: #767676;
+}
+
+.skillItemDeleteActive {
+  background-color: var(--bg-hover);
+}
+
+.removeSkillsButton {
+  width: 220px;
+  padding: 15px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: white;
+  background-color: var(--color-primary);
+  border-radius: 25px;
+}
+
+.cancelDeleteButton {
+  border-radius: 25px;
+  border: 1px solid var(--cancel-border);
+  background-color: transparent;
+  color: var(--cancel-text);
+  width: 220px;
+  padding: 15px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.deleteConfirmButtonAmount {
+  height: 25px;
+  width: 25px;
+  text-align: center;
+  font-weight: 600;
+  border-radius: 50%;
+  background-color: white;
+  color: var(--color-primary);
+}
+
+.loading {
+  text-align: center;
+  color: var(--color-text);
+}
+
+.error {
+  text-align: center;
+  color: var(--color-primary);
+}
+
+@media (max-width: 600px) {
+  .skillsList {
+    grid-template-columns: repeat(2, minmax(0, 289px));
+  }
 }

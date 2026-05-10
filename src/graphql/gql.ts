@@ -19,7 +19,11 @@ type Documents = {
     "\n  mutation forgotPassword($dto: ForgotPasswordInput!) {\n    forgotPassword(auth: $dto)\n  }\n": typeof types.ForgotPasswordDocument,
     "\n  query login($dto: AuthInput!) {\n    login(auth: $dto) {\n      access_token\n      refresh_token\n      user {\n        role\n        id\n        email\n        position_name\n      }\n    }\n  }\n": typeof types.LoginDocument,
     "\n  mutation addProfileSkill($dto: AddProfileSkillInput!) {\n    addProfileSkill(skill: $dto) {\n      id\n    }\n  }\n": typeof types.AddProfileSkillDocument,
+    "\n  mutation deleteProfileSkill($dto: DeleteProfileSkillInput!) {\n    deleteProfileSkill(skill: $dto) {\n      id\n    }\n  }\n": typeof types.DeleteProfileSkillDocument,
+    "\n  mutation updateProfileSkill($dto: UpdateProfileSkillInput!) {\n    updateProfileSkill(skill: $dto) {\n      id\n    }\n  }\n": typeof types.UpdateProfileSkillDocument,
     "\n  query getSkills {\n    skills {\n      id\n      name\n      category {\n        id\n        name\n      }\n    }\n  }\n": typeof types.GetSkillsDocument,
+    "\n  query getProfileSkills($userId: ID!) {\n    profile(userId: $userId) {\n      skills {\n        name\n        categoryId\n        mastery\n      }\n    }\n  }\n": typeof types.GetProfileSkillsDocument,
+    "\n  query getSkillCategories {\n    skillCategories {\n      id\n      name\n      parent {\n        id\n        name\n      }\n    }\n  }\n": typeof types.GetSkillCategoriesDocument,
     "\n  mutation uploadAvatarFile($dto: UploadAvatarInput!) {\n    uploadAvatar(avatar: $dto)\n  }\n": typeof types.UploadAvatarFileDocument,
     "\n  mutation updateProfile($dto: UpdateProfileInput!) {\n    updateProfile(profile: $dto) {\n      id\n    }\n  }\n": typeof types.UpdateProfileDocument,
     "\n  mutation updateUser($dto: UpdateUserInput!) {\n    updateUser(user: $dto) {\n      id\n    }\n  }\n": typeof types.UpdateUserDocument,
@@ -35,7 +39,11 @@ const documents: Documents = {
     "\n  mutation forgotPassword($dto: ForgotPasswordInput!) {\n    forgotPassword(auth: $dto)\n  }\n": types.ForgotPasswordDocument,
     "\n  query login($dto: AuthInput!) {\n    login(auth: $dto) {\n      access_token\n      refresh_token\n      user {\n        role\n        id\n        email\n        position_name\n      }\n    }\n  }\n": types.LoginDocument,
     "\n  mutation addProfileSkill($dto: AddProfileSkillInput!) {\n    addProfileSkill(skill: $dto) {\n      id\n    }\n  }\n": types.AddProfileSkillDocument,
+    "\n  mutation deleteProfileSkill($dto: DeleteProfileSkillInput!) {\n    deleteProfileSkill(skill: $dto) {\n      id\n    }\n  }\n": types.DeleteProfileSkillDocument,
+    "\n  mutation updateProfileSkill($dto: UpdateProfileSkillInput!) {\n    updateProfileSkill(skill: $dto) {\n      id\n    }\n  }\n": types.UpdateProfileSkillDocument,
     "\n  query getSkills {\n    skills {\n      id\n      name\n      category {\n        id\n        name\n      }\n    }\n  }\n": types.GetSkillsDocument,
+    "\n  query getProfileSkills($userId: ID!) {\n    profile(userId: $userId) {\n      skills {\n        name\n        categoryId\n        mastery\n      }\n    }\n  }\n": types.GetProfileSkillsDocument,
+    "\n  query getSkillCategories {\n    skillCategories {\n      id\n      name\n      parent {\n        id\n        name\n      }\n    }\n  }\n": types.GetSkillCategoriesDocument,
     "\n  mutation uploadAvatarFile($dto: UploadAvatarInput!) {\n    uploadAvatar(avatar: $dto)\n  }\n": types.UploadAvatarFileDocument,
     "\n  mutation updateProfile($dto: UpdateProfileInput!) {\n    updateProfile(profile: $dto) {\n      id\n    }\n  }\n": types.UpdateProfileDocument,
     "\n  mutation updateUser($dto: UpdateUserInput!) {\n    updateUser(user: $dto) {\n      id\n    }\n  }\n": types.UpdateUserDocument,
@@ -83,7 +91,23 @@ export function graphql(source: "\n  mutation addProfileSkill($dto: AddProfileSk
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
+export function graphql(source: "\n  mutation deleteProfileSkill($dto: DeleteProfileSkillInput!) {\n    deleteProfileSkill(skill: $dto) {\n      id\n    }\n  }\n"): (typeof documents)["\n  mutation deleteProfileSkill($dto: DeleteProfileSkillInput!) {\n    deleteProfileSkill(skill: $dto) {\n      id\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n  mutation updateProfileSkill($dto: UpdateProfileSkillInput!) {\n    updateProfileSkill(skill: $dto) {\n      id\n    }\n  }\n"): (typeof documents)["\n  mutation updateProfileSkill($dto: UpdateProfileSkillInput!) {\n    updateProfileSkill(skill: $dto) {\n      id\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
 export function graphql(source: "\n  query getSkills {\n    skills {\n      id\n      name\n      category {\n        id\n        name\n      }\n    }\n  }\n"): (typeof documents)["\n  query getSkills {\n    skills {\n      id\n      name\n      category {\n        id\n        name\n      }\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n  query getProfileSkills($userId: ID!) {\n    profile(userId: $userId) {\n      skills {\n        name\n        categoryId\n        mastery\n      }\n    }\n  }\n"): (typeof documents)["\n  query getProfileSkills($userId: ID!) {\n    profile(userId: $userId) {\n      skills {\n        name\n        categoryId\n        mastery\n      }\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n  query getSkillCategories {\n    skillCategories {\n      id\n      name\n      parent {\n        id\n        name\n      }\n    }\n  }\n"): (typeof documents)["\n  query getSkillCategories {\n    skillCategories {\n      id\n      name\n      parent {\n        id\n        name\n      }\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */

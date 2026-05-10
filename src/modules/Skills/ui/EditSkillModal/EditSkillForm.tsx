@@ -1,28 +1,29 @@
-import { GET_PROFILE_SKILLS, GET_SKILLS } from "@/modules/Skills/api/queries";
 import { useAddProfileSkill } from "@/modules/Skills/model/hooks/useAddProfileSkill";
 import { skillLevels } from "@/modules/Skills/model/skill.constants";
 import { CustomSelect } from "@/shared/ui/CustomSelect";
 import { useQuery } from "@apollo/client/react";
 import { Controller } from "react-hook-form";
 import { useSkillForm } from "@/modules/Skills/model/hooks/useSkillForm";
-import styles from "../../Skills.module.css";
 import { ConfirmButtons } from "@/shared/ui/ConfirmButtons";
 import { TSkillForm } from "@/modules/Skills/model/skill.interface";
 import { Mastery } from "@/generated/graphql";
-import { FC } from "react";
 import { useUserStore } from "@/application/store/user.store";
+import { FC } from "react";
+import { GET_PROFILE_SKILLS, GET_SKILLS } from "@/modules/Skills/api/queries";
+import styles from "../Skills.module.css";
+import { useEditProfileSkill } from "../../model/hooks/useEditProfileSkill";
 
-interface IEditSkillFormProps {
+type TEditSkillFormProps = {
   onToggle: () => void;
-}
+} & TSkillForm;
 
-export const AddSkillForm: FC<IEditSkillFormProps> = ({ onToggle }) => {
-  const currentUserId = useUserStore((state) => state.userId);
-  const { handleAddProfileSkill } = useAddProfileSkill();
+export const EditSkillForm: FC<TEditSkillFormProps> = ({
+  onToggle,
+  mastery,
+  categoryId,
+}) => {
+  const { handleEditProfileSkill } = useEditProfileSkill();
   const { data: skillsData } = useQuery(GET_SKILLS);
-  const { data: profileData } = useQuery(GET_PROFILE_SKILLS, {
-    variables: { userId: currentUserId || "" },
-  });
   const {
     control,
     handleChangeSkill,
@@ -30,12 +31,12 @@ export const AddSkillForm: FC<IEditSkillFormProps> = ({ onToggle }) => {
     currentCategoryId,
     handleSubmit,
     reset,
-  } = useSkillForm();
+  } = useSkillForm({ categoryId, mastery });
 
   const onSubmit = async (data: TSkillForm) => {
-    handleAddProfileSkill(data).then(() => {
-      reset();
+    handleEditProfileSkill(data).then(() => {
       onToggle();
+      reset();
     });
   };
 
@@ -48,20 +49,14 @@ export const AddSkillForm: FC<IEditSkillFormProps> = ({ onToggle }) => {
           <CustomSelect
             label={"Skill"}
             options={
-              skillsData?.skills
-                ?.filter((el) =>
-                  profileData?.profile.skills.every(
-                    (e) => e.categoryId !== el.id,
-                  ),
-                )
-                .map((el) => ({
-                  value: el.id,
-                  label: el.name,
-                })) || []
+              skillsData?.skills.map((el) => ({
+                value: el.id,
+                label: el.name,
+              })) || []
             }
             value={field.value}
             onChange={handleChangeSkill}
-            isAvailable={true}
+            isAvailable={false}
           />
         )}
       />

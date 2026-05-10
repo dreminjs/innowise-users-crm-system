@@ -7,3 +7,19 @@ export const ADD_PROFILE_SKILL = graphql(`
     }
   }
 `);
+
+export const DELETE_PROFILE_SKILL = graphql(`
+  mutation deleteProfileSkill($dto: DeleteProfileSkillInput!) {
+    deleteProfileSkill(skill: $dto) {
+      id
+    }
+  }
+`);
+
+export const UPDATE_PROFILE_SKILL = graphql(`
+  mutation updateProfileSkill($dto: UpdateProfileSkillInput!) {
+    updateProfileSkill(skill: $dto) {
+      id
+    }
+  }
+`);
