@@ -1,0 +1,18 @@
+.addItemPositioner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  inset: 0;
+}
+.addItemModalContent {
+  background-color: var(--bg);
+  padding: 20px;
+  color: var(--color-text);
+}
+.addItemHeader {
+  margin-bottom: 25px;
+}
+.addItemModalTitle {
+  font-size: 18px;
+}

@@ -3,6 +3,7 @@ import { EditSkillForm } from "./EditSkillForm";
 import { TSkillForm } from "../../model/skill.interface";
 import { FC } from "react";
 import styles from "../Skills.module.css";
+import { AddItemModal } from "@/shared/ui/AddItemModal";
 
 type TEditSkillModalProps = {
   open: boolean;
@@ -17,28 +18,14 @@ export const EditSkillModal: FC<TEditSkillModalProps> = ({
   mastery,
 }) => {
   return (
-    <Dialog.Root open={open} onOpenChange={onToggle}>
-      <Dialog.Backdrop />
-      <Dialog.Positioner className={styles.addSkillPositioner}>
-        <Dialog.Content className={styles.addSkillModalContent}>
-          <Dialog.Header className={styles.addSkillHeader}>
-            <Dialog.Title className={styles.addSkillModalTitle}>
-              Edit skill
-            </Dialog.Title>
-            <Dialog.CloseTrigger onClick={onToggle} />
-          </Dialog.Header>
-
-          <Dialog.Body>
-            {categoryId && (
-              <EditSkillForm
-                onToggle={onToggle}
-                categoryId={categoryId}
-                mastery={mastery}
-              />
-            )}
-          </Dialog.Body>
-        </Dialog.Content>
-      </Dialog.Positioner>
-    </Dialog.Root>
+    <AddItemModal open={open} onToggle={onToggle} title={"Edit Edit"}>
+      {categoryId && (
+        <EditSkillForm
+          onToggle={onToggle}
+          categoryId={categoryId}
+          mastery={mastery}
+        />
+      )}
+    </AddItemModal>
   );
 };

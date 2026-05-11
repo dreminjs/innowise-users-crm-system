@@ -1,10 +1,10 @@
 import { useUserStore } from "@/application/store/user.store";
 import { MenagementSkills } from "./MenagementSkills/MenagementSkills";
 import { SkillsList } from "./SkillsList/SkillsList";
-import styles from "./Skills.module.css";
 import { useQuery } from "@apollo/client/react";
 import { GET_SKILL_CATEGORIES } from "../api/queries";
-import { Spinner } from "@chakra-ui/react";
+import { Loading } from "@/shared/ui/Loading";
+import styles from "./Skills.module.css";
 
 export const Skills = () => {
   const currentUserId = useUserStore((state) => state.userId);
@@ -14,7 +14,7 @@ export const Skills = () => {
     error,
   } = useQuery(GET_SKILL_CATEGORIES);
 
-  if (loading) return <Spinner />;
+  if (loading) return <Loading />;
 
   if (error) return <div>Error: {error.message}</div>;
 

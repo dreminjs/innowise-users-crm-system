@@ -1,3 +1,7 @@
-export default function LanguagesPage() {
-    return <div>Languages pages</div>
+"use client";
+
+import { LanguagesPage } from "@/modules/Languages/pages/LanguagesPage";
+
+export default function Page() {
+  return <LanguagesPage />;
 }

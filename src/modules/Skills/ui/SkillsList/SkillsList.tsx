@@ -1,5 +1,5 @@
 import { useQuery } from "@apollo/client/react";
-import { GET_PROFILE_SKILLS, GET_SKILL_CATEGORIES } from "../../api/queries";
+import { GET_PROFILE_SKILLS } from "../../api/queries";
 import { FC, useMemo } from "react";
 import { SkillItem } from "./SkillItem";
 import styles from "../Skills.module.css";
