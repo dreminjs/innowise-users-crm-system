@@ -123,6 +123,9 @@
 .rotated {
   transform: rotate(180deg);
 }
+.profileWrapper {
+  position: relative;
+}
 @media (max-width: 1023px) {
   .sidebar {
     display: none;

@@ -8,6 +8,8 @@ import clsx from "clsx";
 import styles from "./DesktopSidebar.module.css";
 import { useUserStore } from "@/application/store/user.store";
 import { useGetProfile } from "@/modules/Users";
+import { ProfileMenu } from "@/layouts/dashboard/ui/NavModal/ProfileMenu";
+import { useState } from "react";
 
 type Props = {
   collapsed: boolean;
@@ -16,9 +18,10 @@ type Props = {
 
 export const DesktopSidebar = ({ collapsed, onToggle }: Props) => {
   const pathname = usePathname();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const userId = useUserStore((state) => state.userId);
   const email = useUserStore((state) => state.email);
-  const { data } = useGetProfile(userId);
+  const { data } = useGetProfile(userId!);
   const profile = data?.user?.profile;
   const avatar = profile?.avatar;
   const firstName = profile?.first_name;
@@ -55,7 +58,10 @@ export const DesktopSidebar = ({ collapsed, onToggle }: Props) => {
       </nav>
 
       <div className={styles.footer}>
-        <button className={styles.profileButton}>
+        <button
+          className={styles.profileButton}
+          onClick={() => setIsMenuOpen((prev) => !prev)}
+        >
           {avatar ? (
             <Image
               className={styles.avatar}
@@ -81,7 +87,7 @@ export const DesktopSidebar = ({ collapsed, onToggle }: Props) => {
             </div>
           )}
         </button>
-
+        <ProfileMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
         <button className={styles.collapseButton} onClick={onToggle}>
           <Image
             src="/nav-arrow.svg"

@@ -1,22 +1,22 @@
 export const navigationItems = [
   {
     label: "Employees",
-    href: "../../../public/users",
-    icon: "Employees.svg",
+    href: "/users",
+    icon: "/Employees.svg",
   },
   {
     label: "Skills",
-    href: "../../../public/skills",
-    icon: "Skills.svg",
+    href: "/skills",
+    icon: "/Skills.svg",
   },
   {
     label: "Languages",
-    href: "../../../public/languages",
-    icon: "Languages.svg",
+    href: "/languages",
+    icon: "/Languages.svg",
   },
   {
     label: "CVs",
-    href: "../../../public/cvs",
-    icon: "CVs.svg",
+    href: "/cvs",
+    icon: "/CVs.svg",
   },
 ];
