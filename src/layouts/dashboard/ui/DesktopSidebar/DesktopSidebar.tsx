@@ -80,7 +80,6 @@ export const DesktopSidebar = ({ collapsed, onToggle }: Props) => {
               loading="eager"
             />
           )}
-
           {!collapsed && (
             <div className={styles.userInfo}>
               <span className={styles.name}>{displayName}</span>
@@ -89,7 +88,7 @@ export const DesktopSidebar = ({ collapsed, onToggle }: Props) => {
         </button>
         <ProfileMenu
           isOpen={isMenuOpen}
-          userId={userId}
+          userId={userId!}
           onClose={() => setIsMenuOpen(false)}
         />
         <button className={styles.collapseButton} onClick={onToggle}>
@@ -97,8 +96,8 @@ export const DesktopSidebar = ({ collapsed, onToggle }: Props) => {
             src="/nav-arrow.svg"
             alt="Toggle sidebar"
             loading="eager"
-            width={40}
-            height={40}
+            width={16}
+            height={16}
             className={clsx(styles.arrow, collapsed && styles.rotated)}
           />
         </button>

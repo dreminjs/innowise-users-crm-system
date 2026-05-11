@@ -1,4 +1,5 @@
 .tableWrapper {
+    width: 100%;
     overflow-x: auto;
     border: 1px solid #e5e7eb;
     border-radius: 20px;
@@ -16,11 +17,12 @@
 }
 
 .header th {
-    padding: 20px 24px;
+    padding: 15px 16px;
     text-align: left;
     font-size: 14px;
     font-weight: 600;
     color: #6b7280;
+    white-space: nowrap;
 }
 
 .sortButton {
@@ -41,18 +43,59 @@
 
 .avatarColumn {
     width: 72px;
+    min-width: 72px;
 }
 
 .nameColumn {
-    width: 160px;
+    max-width: 160px;
 }
 
 .emailColumn {
-    width: 320px;
+    max-width: 320px;
+}
+
+.departmentColumn {
+    max-width: 160px;
+}
+
+.positionColumn {
+    max-width: 160px;
 }
 
 .actionsColumn {
     width: 72px;
+    min-width: 72px;
+    text-align: center;
+}
+
+.row {
+    border-bottom: 1px solid #e5e7eb;
+    transition: background 0.2s;
+}
+
+.row:hover {
+    background: #fafafa;
+}
+
+.row:last-child {
+    border-bottom: none;
+}
+
+.row td {
+    padding: 16px;
+    vertical-align: middle;
+    font-size: 14px;
+    color: #374151;
+}
+
+.email {
+    color: #6b7280;
+}
+
+.cellContent {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .empty {

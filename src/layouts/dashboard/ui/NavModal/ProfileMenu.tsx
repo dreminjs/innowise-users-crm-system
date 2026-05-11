@@ -23,9 +23,7 @@ export const ProfileMenu = ({ isOpen, userId, onClose }: Props) => {
     onClose();
     router.push("/auth/signin");
   };
-
   if (!isOpen) return null;
-
   return (
     <>
       <div className={styles.backdrop} onClick={onClose} />

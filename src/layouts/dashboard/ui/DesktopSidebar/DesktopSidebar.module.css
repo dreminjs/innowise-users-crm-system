@@ -51,6 +51,7 @@
 }
 
 .footer {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -88,7 +89,6 @@
 .name {
   font-size: 14px;
   font-weight: 600;
-  color: #111827;
 }
 
 .collapseButton {
@@ -124,7 +124,6 @@
   transform: rotate(180deg);
 }
 .profileWrapper {
-  position: relative;
 }
 @media (max-width: 1023px) {
   .sidebar {

@@ -14,10 +14,9 @@
 
 .link {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 4px;
-  font-size: 12px;
+  gap: 12px;
+  font-size: 1.2rem;
   color: #6b7280;
   text-decoration: none;
 }
@@ -25,7 +24,14 @@
 .active {
   color: #2563eb;
 }
-
+.profileMobileButton{
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+.profileMobileButton>img{
+  border-radius: 50%;
+}
 @media (min-width: 1024px) {
   .navigation {
     display: none;
