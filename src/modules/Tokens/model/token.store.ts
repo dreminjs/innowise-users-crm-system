@@ -10,6 +10,7 @@ export const useTokens = create<ITokensState>()(
       setAccessToken: (payload: string | null) => set({ accessToken: payload }),
       setRefreshToken: (payload: string | null) =>
         set({ refreshToken: payload }),
+      deleteAccessToken: () => set({ accessToken: null }),
     }),
     {
       name: "tokens",

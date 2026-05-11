@@ -1,3 +1,5 @@
+"use client";
+
 import { useQuery } from "@apollo/client/react";
 import { GET_USER_PROFILE } from "../../api/queries";
 import { useDynamicSegment } from "@/application/store/dynamicSegment.store";

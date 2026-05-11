@@ -51,6 +51,7 @@
 }
 
 .footer {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -74,8 +75,6 @@
 }
 
 .avatar {
-  width: 44px;
-  height: 44px;
   border-radius: 50%;
   object-fit: cover;
   flex-shrink: 0;
@@ -90,7 +89,6 @@
 .name {
   font-size: 14px;
   font-weight: 600;
-  color: #111827;
 }
 
 .collapseButton {
@@ -124,6 +122,8 @@
 }
 .rotated {
   transform: rotate(180deg);
+}
+.profileWrapper {
 }
 @media (max-width: 1023px) {
   .sidebar {
