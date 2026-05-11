@@ -6,7 +6,6 @@
   --color-primary: #c63031;
   --color-text: #2e2e2e;
   --color-subtitle: #00000099;
-  --bg-hover: #f3f4f6;
   --link-color: #6b7280;
   --border-color: #e5e7eb;
   --bread-crumbs: rgba(000, 000, 000, 0.6);
@@ -53,7 +52,6 @@ button {
   --border-color: #ffffff3b;
   --color-text: #ffffff;
   --color-subtitle: rgba(#fff, #fff, #fff, 0.7);
-  --bg-hover: #303030;
   --link-color: white;
   --bread-crumbs: #767676;
 }
