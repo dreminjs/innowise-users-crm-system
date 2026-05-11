@@ -5,12 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="40a36604-e3ff-4515-bcc0-28aae9d5db12" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/layouts/dashboard/ui/NavModal/ProfileMenu.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/layouts/dashboard/ui/NavModal/ProfileMenu.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(dashboard)/settings/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/layouts/dashboard/ui/DesktopSidebar/DesktopSidebar.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/dashboard/ui/DesktopSidebar/DesktopSidebar.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(dashboard)/profile/page.tsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/layouts/dashboard/ui/DesktopSidebar/DesktopSidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/dashboard/ui/DesktopSidebar/DesktopSidebar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shared/config/navigation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/config/navigation.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/layouts/dashboard/ui/NavModal/ProfileMenu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/dashboard/ui/NavModal/ProfileMenu.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/Tokens/model/token.interface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/Tokens/model/token.interface.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/Tokens/model/token.store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/Tokens/model/token.store.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/Users/model/hooks/useGetProfile.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/Users/model/hooks/useGetProfile.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +55,7 @@
     "js.debugger.nextJs.config.created.client": "true",
     "js.debugger.nextJs.config.created.server": "true",
     "js.linters.configure.manually.selectedeslint": "true",
-    "last_opened_file_path": "D:/программирование/dev/innowise-users-crm-system/src/shared/assets/icons",
+    "last_opened_file_path": "D:/программирование/dev/innowise-users-crm-system/public",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.standard": "true",
     "node.js.detected.package.tslint": "true",
@@ -73,6 +75,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\программирование\dev\innowise-users-crm-system\public" />
       <recent name="D:\программирование\dev\innowise-users-crm-system\src\shared\assets\icons" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -142,7 +145,7 @@
       <workItem from="1778136001547" duration="299000" />
       <workItem from="1778136342649" duration="6363000" />
       <workItem from="1778162803638" duration="3113000" />
-      <workItem from="1778483287599" duration="8446000" />
+      <workItem from="1778483287599" duration="12505000" />
     </task>
     <servers />
   </component>

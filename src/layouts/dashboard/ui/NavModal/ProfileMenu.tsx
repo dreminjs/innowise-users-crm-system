@@ -1,36 +1,49 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import styles from "./ProfileMenu.module.css";
+import { useUserStore } from "@/application/store/user.store";
+import { useTokens } from "@/modules/Tokens";
 
 type Props = {
   isOpen: boolean;
+  userId: string;
   onClose: () => void;
 };
 
-export const ProfileMenu = ({ isOpen, onClose }: Props) => {
+export const ProfileMenu = ({ isOpen, userId, onClose }: Props) => {
+  const router = useRouter();
+  const resetUser = useUserStore((state) => state.resetUser);
+  const clearToken = useTokens((state) => state.deleteAccessToken);
+  const handleLogout = () => {
+    resetUser();
+    clearToken();
+    onClose();
+    router.push("/auth/signin");
+  };
+
   if (!isOpen) return null;
 
   return (
     <>
       <div className={styles.backdrop} onClick={onClose} />
-
       <div className={styles.modal}>
-        <button className={styles.item}>
+        <Link
+          className={styles.item}
+          href={`/users/${userId}`}
+          onClick={onClose}
+        >
           <Image src="/account.svg" alt="Profile" width={20} height={20} />
-
           <span>Profile</span>
-        </button>
-
-        <button className={styles.item}>
+        </Link>
+        <Link className={styles.item} href="/settings" onClick={onClose}>
           <Image src="/settings.svg" alt="Settings" width={20} height={20} />
-
           <span>Settings</span>
-        </button>
-
+        </Link>
         <div className={styles.divider} />
-
-        <button className={styles.item}>
+        <button className={styles.item} onClick={handleLogout}>
           <Image src="/logout.svg" alt="Logout" width={20} height={20} />
           <span>Logout</span>
         </button>

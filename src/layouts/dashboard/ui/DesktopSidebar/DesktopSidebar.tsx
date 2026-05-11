@@ -87,7 +87,11 @@ export const DesktopSidebar = ({ collapsed, onToggle }: Props) => {
             </div>
           )}
         </button>
-        <ProfileMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
+        <ProfileMenu
+          isOpen={isMenuOpen}
+          userId={userId}
+          onClose={() => setIsMenuOpen(false)}
+        />
         <button className={styles.collapseButton} onClick={onToggle}>
           <Image
             src="/nav-arrow.svg"

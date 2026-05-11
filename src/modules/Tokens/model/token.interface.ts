@@ -3,4 +3,5 @@ export interface ITokensState {
   refreshToken: string | null;
   setAccessToken: (payload: string | null) => void;
   setRefreshToken: (payload: string | null) => void;
+  deleteAccessToken: () => void;
 }
