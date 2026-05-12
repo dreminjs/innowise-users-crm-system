@@ -1,10 +1,11 @@
 import { FC } from "react";
 import { UploadAvatar } from "./UploadAvatar/UploadAvatar";
-import { useGetProfile } from "@/modules/Users";
+import { useGetProfile } from "../../model/hooks/useGetProfile";
 import { useUserStore } from "@/application/store/user.store";
-import styles from "./UpdateUserInfo.module.css";
 import { UserInfo } from "./UserInfo";
 import { UploadInfo } from "./UploadInfo/UploadInfo";
+import styles from "./UpdateUserInfo.module.css";
+import { Loading } from "@/shared/ui/Loading";
 
 interface IUpdateUserInfoProps {
   userId: string;
@@ -13,8 +14,7 @@ interface IUpdateUserInfoProps {
 export const UpdateUserInfo: FC<IUpdateUserInfoProps> = ({ userId }) => {
   const { data, error, loading } = useGetProfile(userId);
   const currentUserId = useUserStore((state) => state.userId);
-  if (loading)
-    return <div className={styles.uploadInfoLoading}>Loading...</div>;
+  if (loading) return <Loading />;
   if (error || !data)
     return <div className={styles.uploadInfoError}>Error!</div>;
   return (

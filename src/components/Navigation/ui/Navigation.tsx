@@ -1,28 +1,15 @@
 "use client";
 import { FC } from "react";
-import { INavigationItem } from "../model/navigation.interface";
-import { NavigationItem } from "./NavigationItem";
-import { usePathname } from "next/navigation";
 import styles from "./Navigation.module.css";
+
 interface INavigationProps {
-  items: INavigationItem[];
+  children: React.ReactNode;
 }
 
-export const Navigation: FC<INavigationProps> = ({ items }) => {
-  const pathname = usePathname();
-
+export const Navigation: FC<INavigationProps> = ({ children }) => {
   return (
-    <nav>
-      <ul className={styles.navigationList}>
-        {items.map((el, idx) => (
-          <NavigationItem
-            key={idx}
-            isActive={pathname.includes(el.to)}
-            label={el.label}
-            to={el.to}
-          />
-        ))}
-      </ul>
+    <nav className={styles.navigation}>
+      <ul className={styles.navigationList}>{children}</ul>
     </nav>
   );
 };

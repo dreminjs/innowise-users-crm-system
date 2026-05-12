@@ -4,15 +4,16 @@ import { MenagementLanguages } from "./MenagementLanguages/MenagementLanguages";
 import { FC } from "react";
 import { Loading } from "@/shared/ui/Loading";
 import { LanguagesList } from "./LanguagesList/LanguagesList";
+import { Empty } from "@/shared/ui/Empty";
 
 interface ILanguagesProps {
-  currentUserId: string;
+  usersLanguagesId: string;
 }
 
-export const Languages: FC<ILanguagesProps> = ({ currentUserId }) => {
+export const Languages: FC<ILanguagesProps> = ({ usersLanguagesId }) => {
   const { data, loading } = useQuery(GET_PROFILE_LANGUAGES, {
     variables: {
-      userId: currentUserId,
+      userId: usersLanguagesId,
     },
   });
 
@@ -20,12 +21,14 @@ export const Languages: FC<ILanguagesProps> = ({ currentUserId }) => {
 
   return (
     <section>
-      {!loading && data && (
-        <>
-          <LanguagesList languagesData={data} />
-          <MenagementLanguages />
-        </>
-      )}
+      <>
+        {data?.profile.languages.length ? (
+          <LanguagesList languagesData={data} isAvailableToChange={true} />
+        ) : (
+          <Empty />
+        )}
+        <MenagementLanguages />
+      </>
     </section>
   );
 };

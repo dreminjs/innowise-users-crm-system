@@ -1,6 +1,6 @@
 .addNewButton {
   display: flex;
-  color: #767676;
+  color: #767676 !important;
   gap: 16px;
   width: 220px;
   justify-content: center;

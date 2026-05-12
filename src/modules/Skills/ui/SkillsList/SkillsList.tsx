@@ -5,15 +5,19 @@ import { SkillItem } from "./SkillItem";
 import styles from "../Skills.module.css";
 import { TMastery } from "../../model/skill.interface";
 import { GetSkillCategoriesQuery } from "@/graphql/graphql";
+import { Empty } from "@/shared/ui/Empty";
 interface ISkillsListProps {
   userId: string;
   categoriesData: GetSkillCategoriesQuery;
+  isAvailableToChange: boolean;
 }
 
 export const SkillsList: FC<ISkillsListProps> = ({
   userId,
   categoriesData,
+  isAvailableToChange,
 }) => {
+  // console.log("Sklls list", categoriesData);
   const { data: profileData } = useQuery(GET_PROFILE_SKILLS, {
     variables: { userId },
   });
@@ -45,6 +49,8 @@ export const SkillsList: FC<ISkillsListProps> = ({
     return Object.values(result);
   }, [skills, categories]);
 
+  console.log(grouped);
+
   return (
     <>
       <div className={styles.skillsLists}>
@@ -58,6 +64,7 @@ export const SkillsList: FC<ISkillsListProps> = ({
                   name={skill.name}
                   mastery={skill.mastery as TMastery}
                   categoryId={skill.categoryId}
+                  isAvailableToChange={isAvailableToChange}
                 />
               ))}
             </ul>
