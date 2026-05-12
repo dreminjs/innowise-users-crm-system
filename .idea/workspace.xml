@@ -5,46 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="40a36604-e3ff-4515-bcc0-28aae9d5db12" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/app/(dashboard)/cvs/[cvId]/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/modules/Cvs/hooks/useCreateCv.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/modules/Cvs/hooks/useDeleteCv.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/modules/Cvs/hooks/useGetCv.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/modules/Cvs/hooks/useUpdateCv.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/modules/Cvs/pages/CvDetailsPage/CvDetailsPage.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/modules/Cvs/pages/CvDetailsPage/CvDetailsPage.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/modules/Cvs/ui/CVsTable/CvActions/CvActions.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/modules/Cvs/ui/CVsTable/CvActions/CvActions.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(dashboard)/cvs/[cvId]/layout.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(dashboard)/cvs/[cvId]/preview/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(dashboard)/cvs/[cvId]/projects/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(dashboard)/cvs/[cvId]/skills/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/layouts/dashboard/ui/CvLayout/CvLayout.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/layouts/dashboard/ui/CvLayout/CvLayout.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/shared/config/tabs.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/graphql/gql.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphql/gql.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/graphql/graphql.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphql/graphql.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/layouts/dashboard/ui/DashboardLayout/DashboardLayout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/dashboard/ui/DashboardLayout/DashboardLayout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/layouts/dashboard/ui/DesktopSidebar/DesktopSidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/dashboard/ui/DesktopSidebar/DesktopSidebar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/layouts/dashboard/ui/MobileBottomNav/MobileBottomNav.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/dashboard/ui/MobileBottomNav/MobileBottomNav.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/layouts/dashboard/ui/NavModal/ProfileMenu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/dashboard/ui/NavModal/ProfileMenu.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/Auth/api/queries.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/Auth/api/queries.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/Auth/model/hooks/useForgotPassword.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/Auth/model/hooks/useForgotPassword.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/Auth/ui/ForgotPasswordForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/Auth/ui/ForgotPasswordForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/Cvs/api/mutations.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/Cvs/api/mutations.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/Cvs/api/queries.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/Cvs/api/queries.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/Cvs/model/hooks/useCreateCv.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/Cvs/model/hooks/useCreateCv.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/Cvs/model/lib/processCvs.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/Cvs/model/lib/processCvs.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/Cvs/pages/CVsPage/CVsPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/Cvs/pages/CVsPage/CVsPage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/Cvs/ui/CVsTable/CVsTable.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/Cvs/ui/CVsTable/CVsTable.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/Cvs/ui/CVsTable/CvsTableRow.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/Cvs/ui/CVsTable/CvsTableRow.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/Cvs/ui/CVsToolbar/CVsToolbar.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/Cvs/ui/CVsToolbar/CVsToolbar.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/Cvs/ui/CVsToolbar/CVsToolbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/Cvs/ui/CVsToolbar/CVsToolbar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/Cvs/ui/CreateCvModal/CreateCvModal.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/Cvs/ui/CreateCvModal/CreateCvModal.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/Cvs/ui/CreateCvModal/CreateCvModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/Cvs/ui/CreateCvModal/CreateCvModal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/Languages/model/hooks/useLanguageForm.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/Languages/model/hooks/useLanguageForm.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/Languages/ui/EditLanguageModal/EditLanguageForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/Languages/ui/EditLanguageModal/EditLanguageForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/Languages/ui/EditLanguageModal/EditLanguageModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/Languages/ui/EditLanguageModal/EditLanguageModal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/Languages/ui/LanguagesList/LanguagesItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/Languages/ui/LanguagesList/LanguagesItem.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/Languages/ui/LanguagesList/LanguagesList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/Languages/ui/LanguagesList/LanguagesList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/Skills/ui/MenagementSkills/AddSkillModal/AddSkillForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/Skills/ui/MenagementSkills/AddSkillModal/AddSkillForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/Users/pages/UsersPage/UsersPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/Users/pages/UsersPage/UsersPage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/Users/ui/UpdateUserInfo/UploadInfo/UploadInfo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/Users/ui/UpdateUserInfo/UploadInfo/UploadInfo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/Users/ui/UsersSearch/UsersSearch.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/Users/ui/UsersSearch/UsersSearch.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/globals.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/Cvs/pages/CvDetailsPage/CvDetailsPage.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/Cvs/pages/CvDetailsPage/CvDetailsPage.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/Users/ui/UsersNavigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/Users/ui/UsersNavigation.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -183,5 +153,16 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/modules/Users/ui/UsersNavigation.tsx</url>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
