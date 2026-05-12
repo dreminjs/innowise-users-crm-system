@@ -9,7 +9,8 @@ import { GET_LANGUAGES } from "../../api/queries";
 import { FC } from "react";
 import styles from "../Languages.module.css";
 import { languageProfiency } from "../../model/languages.constants";
-import { Proficiency } from "@/graphql/graphql";
+import { Proficiency } from "@/generated/graphql";
+
 type TEditLanguageFormProps = {
   toggleAction: () => void;
 } & TLanguageForm;

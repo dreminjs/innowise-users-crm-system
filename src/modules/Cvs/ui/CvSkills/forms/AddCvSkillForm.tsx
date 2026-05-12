@@ -1,0 +1,107 @@
+"use client";
+
+import { Controller } from "react-hook-form";
+import { useQuery } from "@apollo/client/react";
+import { Mastery } from "@/generated/graphql";
+import { GET_SKILLS } from "@/modules/Skills/api/queries";
+import { CustomSelect } from "@/shared/ui/CustomSelect";
+import { ConfirmButtons } from "@/shared/ui/ConfirmButtons";
+import { skillLevels } from "@/modules/Skills/model/skill.constants";
+import { useSkillForm } from "@/modules/Skills/model/hooks/useSkillForm";
+import { useAddCvSkill } from "@/modules/Cvs/hooks/useAddCvSkill";
+import styles from "@/modules/Skills/ui/Skills.module.css";
+
+type Props = {
+  cvId: string;
+  toggleAction: () => void;
+};
+
+export const AddCvSkillForm = ({ cvId, toggleAction }: Props) => {
+  const [addCvSkill, { loading }] = useAddCvSkill(cvId);
+  const { data: skillsData } = useQuery(GET_SKILLS);
+  const {
+    control,
+    handleSubmit,
+    handleChangeSkill,
+    handleChangeMastery,
+    currentCategoryId,
+    reset,
+  } = useSkillForm({
+    categoryId: "",
+    mastery: Mastery.Novice,
+  });
+
+  const onSubmit = async (data: {
+    categoryId: string | null;
+    mastery: Mastery | null;
+  }) => {
+    if (!data.categoryId || !data.mastery) {
+      return;
+    }
+    const selectedSkill = skillsData?.skills.find(
+      (skill) => skill.id === data.categoryId,
+    );
+    if (!selectedSkill) {
+      return;
+    }
+    try {
+      await addCvSkill({
+        variables: {
+          skill: {
+            cvId,
+            name: selectedSkill.name,
+            categoryId: data.categoryId,
+            mastery: data.mastery,
+          },
+        },
+      });
+
+      reset();
+      toggleAction();
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  return (
+    <form onSubmit={handleSubmit(onSubmit)} className={styles.addSkillForm}>
+      <Controller
+        control={control}
+        name={"categoryId"}
+        render={({ field }) => (
+          <CustomSelect
+            label={"Skill"}
+            options={
+              skillsData?.skills.map((el) => ({
+                value: el.id,
+                label: el.name,
+              })) || []
+            }
+            value={field.value}
+            onChange={handleChangeSkill}
+          />
+        )}
+      />
+      <Controller
+        control={control}
+        name={"mastery"}
+        render={({ field }) => (
+          <CustomSelect
+            label={"Skill mastery"}
+            options={skillLevels.map((el) => ({
+              value: el,
+              label: el,
+            }))}
+            value={field.value}
+            disabled={!Boolean(currentCategoryId)}
+            onChange={(value) => handleChangeMastery(value as Mastery)}
+          />
+        )}
+      />
+      <ConfirmButtons
+        onCancel={toggleAction}
+        confirmLabel={loading ? "LOADING..." : "CONFIRM"}
+        confirmButtonType={"submit"}
+      />
+    </form>
+  );
+};

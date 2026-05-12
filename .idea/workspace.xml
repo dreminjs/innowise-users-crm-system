@@ -5,16 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="40a36604-e3ff-4515-bcc0-28aae9d5db12" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/app/(dashboard)/cvs/[cvId]/layout.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(dashboard)/cvs/[cvId]/preview/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(dashboard)/cvs/[cvId]/projects/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(dashboard)/cvs/[cvId]/skills/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/layouts/dashboard/ui/CvLayout/CvLayout.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/layouts/dashboard/ui/CvLayout/CvLayout.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/shared/config/tabs.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/Cvs/hooks/useAddCvSkill.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/Cvs/hooks/useDeleteCvSkill.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/Cvs/hooks/useUpdateCvSkill.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/Cvs/model/cv-skill.store.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/Cvs/ui/CvSkills/CvManagementSkills.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/Cvs/ui/CvSkills/CvRemoveSkillsButton.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/Cvs/ui/CvSkills/CvSkills.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/Cvs/ui/CvSkills/forms/AddCvSkillForm.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/Cvs/ui/CvSkills/modals/AddCvSkillModal.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/Cvs/pages/CvDetailsPage/CvDetailsPage.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/Cvs/pages/CvDetailsPage/CvDetailsPage.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/Users/ui/UsersNavigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/Users/ui/UsersNavigation.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(dashboard)/cvs/[cvId]/skills/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboard)/cvs/[cvId]/skills/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graphql/gql.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphql/gql.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graphql/graphql.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphql/graphql.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/Cvs/api/mutations.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/Cvs/api/mutations.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/Cvs/api/queries.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/Cvs/api/queries.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/Skills/ui/EditSkillModal/EditSkillModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/Skills/ui/EditSkillModal/EditSkillModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/ui/AddItemModal/ui/AddItemModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/ui/AddItemModal/ui/AddItemModal.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,7 +40,7 @@
   &quot;isMigrated&quot;: true
 }</component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="QODANA_PROBLEMS_VIEW_TAB" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
@@ -81,11 +88,12 @@
       <recent name="D:\программирование\dev\innowise-users-crm-system\src\shared\assets\icons" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\программирование\dev\innowise-users-crm-system\src\modules\Cvs\ui\CvSkills" />
       <recent name="D:\программирование\dev\innowise-users-crm-system\src\layouts\dashboard\ui\NavModal" />
       <recent name="D:\программирование\dev\innowise-users-crm-system\public" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.Next.js: server-side">
+  <component name="RunManager" selected="npm.codegen">
     <configuration name="Next.js: debug client-side" type="JavascriptDebugType" uri="http://localhost:3000/">
       <method v="2" />
     </configuration>

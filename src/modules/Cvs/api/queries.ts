@@ -15,6 +15,19 @@ export const GET_CVS = graphql(`
   }
 `);
 
+export const GET_CV_SKILLS = graphql(`
+  query GetCvSkills($cvId: ID!) {
+    cv(cvId: $cvId) {
+      id
+      skills {
+        name
+        mastery
+        categoryId
+      }
+    }
+  }
+`);
+
 export const GET_CV = graphql(`
   query GetCV($cvId: ID!) {
     cv(cvId: $cvId) {

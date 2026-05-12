@@ -6,22 +6,26 @@ import { AddItemModal } from "@/shared/ui/AddItemModal";
 
 type TEditLanguageModalProps = {
   open: boolean;
-  onToggle: () => void;
+  toggleAction: () => void;
 } & TLanguageForm;
 
 export const EditLanguageModal: FC<TEditLanguageModalProps> = ({
   open,
-  onToggle,
+  toggleAction,
   name,
   proficiency,
 }) => {
   const currentUserId = useUserStore((state) => state.userId);
 
   return (
-    <AddItemModal open={open} onToggle={onToggle} title={"Edit Language"}>
+    <AddItemModal
+      open={open}
+      toggleAction={toggleAction}
+      title={"Edit Language"}
+    >
       {currentUserId && (
         <EditLanguageForm
-          toggleAction={onToggle}
+          toggleAction={toggleAction}
           name={name}
           proficiency={proficiency}
         />

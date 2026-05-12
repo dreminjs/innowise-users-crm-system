@@ -2,6 +2,7 @@ import { FC } from "react";
 import styles from "../Languages.module.css";
 import { LanguagesItem } from "./LanguagesItem";
 import { GetProfileLanguagesQuery } from "@/graphql/graphql";
+import { Proficiency } from "@/generated/graphql";
 interface ILanguagesListProps {
   languagesData: GetProfileLanguagesQuery;
 }
@@ -13,7 +14,7 @@ export const LanguagesList: FC<ILanguagesListProps> = ({ languagesData }) => {
         <LanguagesItem
           key={el.name}
           name={el.name}
-          proficiency={el.proficiency}
+          proficiency={el.proficiency as Proficiency}
         />
       ))}
     </ul>

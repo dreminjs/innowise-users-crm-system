@@ -23,12 +23,7 @@ export const CVsTableRow = ({ cv }: Props) => {
           <span className={styles.cellContent}>{employeeName}</span>
         </td>
         <td className={styles.actions}>
-          <CvActions
-            cvId={cv.id}
-            onDelete={(id) => {
-              console.log(id);
-            }}
-          />
+          <CvActions cvId={cv.id} />
         </td>
       </tr>
       <tr className={styles.descriptionRow}>

@@ -15,7 +15,7 @@ export const AddLanguageModal: FC<IAddSkillModalProps> = ({
   const currentUserId = useUserStore((state) => state.userId);
 
   return (
-    <AddItemModal open={open} onToggle={onToggle} title={"Add Language"}>
+    <AddItemModal open={open} toggleAction={onToggle} title={"Add Language"}>
       {currentUserId && (
         <AddLanguageForm onToggle={onToggle} currentUserId={currentUserId} />
       )}

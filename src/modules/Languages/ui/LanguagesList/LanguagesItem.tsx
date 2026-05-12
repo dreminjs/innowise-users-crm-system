@@ -4,7 +4,7 @@ import { EditLanguageModal } from "../EditLanguageModal/EditLanguageModal";
 import { useLanguageStore } from "../../model/language.store";
 import styles from "../Languages.module.css";
 import clsx from "clsx";
-import { Proficiency } from "@/graphql/graphql";
+import { Proficiency } from "@/generated/graphql";
 
 interface ILanguagesItemProps {
   name: string;
@@ -40,7 +40,7 @@ export const LanguagesItem: FC<ILanguagesItemProps> = ({
       </li>
       <EditLanguageModal
         open={isEditModalOpen}
-        onToggle={() => setIsEditModalOpen((prev) => !prev)}
+        toggleAction={() => setIsEditModalOpen((prev) => !prev)}
         name={name}
         proficiency={proficiency}
       />

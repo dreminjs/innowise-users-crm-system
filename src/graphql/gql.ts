@@ -21,7 +21,11 @@ type Documents = {
     "\n  mutation CreateCv($cv: CreateCvInput!) {\n    createCv(cv: $cv) {\n      id\n      name\n      education\n      description\n      user {\n        id\n        email\n      }\n    }\n  }\n": typeof types.CreateCvDocument,
     "\n  mutation UpdateCv($cv: UpdateCvInput!) {\n    updateCv(cv: $cv) {\n      id\n      name\n      education\n      description\n      user {\n        id\n        email\n      }\n    }\n  }\n": typeof types.UpdateCvDocument,
     "\n  mutation DeleteCv($cv: DeleteCvInput!) {\n    deleteCv(cv: $cv) {\n      affected\n    }\n  }\n": typeof types.DeleteCvDocument,
+    "\n  mutation AddCvSkill($skill: AddCvSkillInput!) {\n    addCvSkill(skill: $skill) {\n      id\n      skills {\n        name\n        mastery\n        categoryId\n      }\n    }\n  }\n": typeof types.AddCvSkillDocument,
+    "\n  mutation UpdateCvSkill($skill: UpdateCvSkillInput!) {\n    updateCvSkill(skill: $skill) {\n      id\n      skills {\n        name\n        mastery\n        categoryId\n      }\n    }\n  }\n": typeof types.UpdateCvSkillDocument,
+    "\n  mutation DeleteCvSkill($skill: DeleteCvSkillInput!) {\n    deleteCvSkill(skill: $skill) {\n      id\n\n      skills {\n        name\n        mastery\n        categoryId\n      }\n    }\n  }\n": typeof types.DeleteCvSkillDocument,
     "\n  query GetCvs {\n    cvs {\n      id\n      name\n      education\n      description\n      user {\n        id\n        email\n      }\n    }\n  }\n": typeof types.GetCvsDocument,
+    "\n  query GetCvSkills($cvId: ID!) {\n    cv(cvId: $cvId) {\n      id\n      skills {\n        name\n        mastery\n        categoryId\n      }\n    }\n  }\n": typeof types.GetCvSkillsDocument,
     "\n  query GetCV($cvId: ID!) {\n    cv(cvId: $cvId) {\n      id\n      name\n      education\n      description\n      created_at\n      user {\n        id\n        email\n        role\n      }\n      skills {\n        name\n        mastery\n      }\n      languages {\n        name\n        proficiency\n      }\n      projects {\n        id\n        name\n        internal_name\n        description\n        domain\n        start_date\n        end_date\n        environment\n        roles\n        responsibilities\n      }\n    }\n  }\n": typeof types.GetCvDocument,
     "\n  mutation addProfileLanguage($dto: AddProfileLanguageInput!) {\n    addProfileLanguage(language: $dto) {\n      id\n    }\n  }\n": typeof types.AddProfileLanguageDocument,
     "\n  mutation deleteProfileLanguage($dto: DeleteProfileLanguageInput!) {\n    deleteProfileLanguage(language: $dto) {\n      id\n    }\n  }\n": typeof types.DeleteProfileLanguageDocument,
@@ -51,7 +55,11 @@ const documents: Documents = {
     "\n  mutation CreateCv($cv: CreateCvInput!) {\n    createCv(cv: $cv) {\n      id\n      name\n      education\n      description\n      user {\n        id\n        email\n      }\n    }\n  }\n": types.CreateCvDocument,
     "\n  mutation UpdateCv($cv: UpdateCvInput!) {\n    updateCv(cv: $cv) {\n      id\n      name\n      education\n      description\n      user {\n        id\n        email\n      }\n    }\n  }\n": types.UpdateCvDocument,
     "\n  mutation DeleteCv($cv: DeleteCvInput!) {\n    deleteCv(cv: $cv) {\n      affected\n    }\n  }\n": types.DeleteCvDocument,
+    "\n  mutation AddCvSkill($skill: AddCvSkillInput!) {\n    addCvSkill(skill: $skill) {\n      id\n      skills {\n        name\n        mastery\n        categoryId\n      }\n    }\n  }\n": types.AddCvSkillDocument,
+    "\n  mutation UpdateCvSkill($skill: UpdateCvSkillInput!) {\n    updateCvSkill(skill: $skill) {\n      id\n      skills {\n        name\n        mastery\n        categoryId\n      }\n    }\n  }\n": types.UpdateCvSkillDocument,
+    "\n  mutation DeleteCvSkill($skill: DeleteCvSkillInput!) {\n    deleteCvSkill(skill: $skill) {\n      id\n\n      skills {\n        name\n        mastery\n        categoryId\n      }\n    }\n  }\n": types.DeleteCvSkillDocument,
     "\n  query GetCvs {\n    cvs {\n      id\n      name\n      education\n      description\n      user {\n        id\n        email\n      }\n    }\n  }\n": types.GetCvsDocument,
+    "\n  query GetCvSkills($cvId: ID!) {\n    cv(cvId: $cvId) {\n      id\n      skills {\n        name\n        mastery\n        categoryId\n      }\n    }\n  }\n": types.GetCvSkillsDocument,
     "\n  query GetCV($cvId: ID!) {\n    cv(cvId: $cvId) {\n      id\n      name\n      education\n      description\n      created_at\n      user {\n        id\n        email\n        role\n      }\n      skills {\n        name\n        mastery\n      }\n      languages {\n        name\n        proficiency\n      }\n      projects {\n        id\n        name\n        internal_name\n        description\n        domain\n        start_date\n        end_date\n        environment\n        roles\n        responsibilities\n      }\n    }\n  }\n": types.GetCvDocument,
     "\n  mutation addProfileLanguage($dto: AddProfileLanguageInput!) {\n    addProfileLanguage(language: $dto) {\n      id\n    }\n  }\n": types.AddProfileLanguageDocument,
     "\n  mutation deleteProfileLanguage($dto: DeleteProfileLanguageInput!) {\n    deleteProfileLanguage(language: $dto) {\n      id\n    }\n  }\n": types.DeleteProfileLanguageDocument,
@@ -119,7 +127,23 @@ export function graphql(source: "\n  mutation DeleteCv($cv: DeleteCvInput!) {\n 
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
+export function graphql(source: "\n  mutation AddCvSkill($skill: AddCvSkillInput!) {\n    addCvSkill(skill: $skill) {\n      id\n      skills {\n        name\n        mastery\n        categoryId\n      }\n    }\n  }\n"): (typeof documents)["\n  mutation AddCvSkill($skill: AddCvSkillInput!) {\n    addCvSkill(skill: $skill) {\n      id\n      skills {\n        name\n        mastery\n        categoryId\n      }\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n  mutation UpdateCvSkill($skill: UpdateCvSkillInput!) {\n    updateCvSkill(skill: $skill) {\n      id\n      skills {\n        name\n        mastery\n        categoryId\n      }\n    }\n  }\n"): (typeof documents)["\n  mutation UpdateCvSkill($skill: UpdateCvSkillInput!) {\n    updateCvSkill(skill: $skill) {\n      id\n      skills {\n        name\n        mastery\n        categoryId\n      }\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n  mutation DeleteCvSkill($skill: DeleteCvSkillInput!) {\n    deleteCvSkill(skill: $skill) {\n      id\n\n      skills {\n        name\n        mastery\n        categoryId\n      }\n    }\n  }\n"): (typeof documents)["\n  mutation DeleteCvSkill($skill: DeleteCvSkillInput!) {\n    deleteCvSkill(skill: $skill) {\n      id\n\n      skills {\n        name\n        mastery\n        categoryId\n      }\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
 export function graphql(source: "\n  query GetCvs {\n    cvs {\n      id\n      name\n      education\n      description\n      user {\n        id\n        email\n      }\n    }\n  }\n"): (typeof documents)["\n  query GetCvs {\n    cvs {\n      id\n      name\n      education\n      description\n      user {\n        id\n        email\n      }\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n  query GetCvSkills($cvId: ID!) {\n    cv(cvId: $cvId) {\n      id\n      skills {\n        name\n        mastery\n        categoryId\n      }\n    }\n  }\n"): (typeof documents)["\n  query GetCvSkills($cvId: ID!) {\n    cv(cvId: $cvId) {\n      id\n      skills {\n        name\n        mastery\n        categoryId\n      }\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */

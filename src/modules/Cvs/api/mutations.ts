@@ -37,3 +37,42 @@ export const DELETE_CV = graphql(`
     }
   }
 `);
+export const ADD_CV_SKILL = graphql(`
+  mutation AddCvSkill($skill: AddCvSkillInput!) {
+    addCvSkill(skill: $skill) {
+      id
+      skills {
+        name
+        mastery
+        categoryId
+      }
+    }
+  }
+`);
+
+export const UPDATE_CV_SKILL = graphql(`
+  mutation UpdateCvSkill($skill: UpdateCvSkillInput!) {
+    updateCvSkill(skill: $skill) {
+      id
+      skills {
+        name
+        mastery
+        categoryId
+      }
+    }
+  }
+`);
+
+export const DELETE_CV_SKILL = graphql(`
+  mutation DeleteCvSkill($skill: DeleteCvSkillInput!) {
+    deleteCvSkill(skill: $skill) {
+      id
+
+      skills {
+        name
+        mastery
+        categoryId
+      }
+    }
+  }
+`);
