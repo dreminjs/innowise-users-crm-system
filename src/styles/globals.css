@@ -44,8 +44,8 @@ ol {
 }
 
 a {
-  color: var(--link-color);
   text-decoration: none;
+  color: inherit;
 }
 
 button {
