@@ -1,5 +1,5 @@
 import { useMutation } from "@apollo/client/react";
-import { FORGOT_PASSWORD } from "../../api/queries";
+import { FORGOT_PASSWORD } from "../../api/mutations";
 import { ForgotPasswordInput } from "@/generated/graphql";
 import { useNotification } from "@/modules/Notifications";
 

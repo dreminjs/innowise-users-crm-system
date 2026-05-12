@@ -1,3 +1,5 @@
-export default function CvsPage() {
-    return <div>CVs page</div>
+import { CVsPage } from "@/modules/Cvs/pages/CVsPage/CVsPage";
+
+export default function Page() {
+  return <CVsPage />;
 }

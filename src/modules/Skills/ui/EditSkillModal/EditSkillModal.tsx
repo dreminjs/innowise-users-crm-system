@@ -1,8 +1,6 @@
-import { Dialog } from "@chakra-ui/react";
 import { EditSkillForm } from "./EditSkillForm";
 import { TSkillForm } from "../../model/skill.interface";
 import { FC } from "react";
-import styles from "../Skills.module.css";
 import { AddItemModal } from "@/shared/ui/AddItemModal";
 
 type TEditSkillModalProps = {
@@ -18,7 +16,7 @@ export const EditSkillModal: FC<TEditSkillModalProps> = ({
   mastery,
 }) => {
   return (
-    <AddItemModal open={open} onToggle={onToggle} title={"Edit Edit"}>
+    <AddItemModal open={open} toggleAction={onToggle} title={"Edit Edit"}>
       {categoryId && (
         <EditSkillForm
           onToggle={onToggle}

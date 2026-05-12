@@ -28,7 +28,7 @@ export const useAddProfileLanguage = () => {
 
   const handleAddProfileLanguage = async (dto: TLanguageForm) => {
     if (currentUserId && languageData?.languages) {
-      mutate({
+      await mutate({
         variables: {
           dto: {
             userId: currentUserId,

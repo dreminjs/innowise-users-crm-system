@@ -24,7 +24,7 @@ export const DashboardLayout = ({ children }: Props) => {
     >
       <DesktopSidebar
         collapsed={collapsed}
-        onToggle={() => setCollapsed((prev) => !prev)}
+        toggleAction={() => setCollapsed((prev) => !prev)}
       />
 
       <main className={styles.content}>{children}</main>

@@ -6,6 +6,8 @@ import { Proficiency } from "@/graphql/graphql";
 
 import styles from "../Languages.module.css";
 import clsx from "clsx";
+import { Proficiency } from "@/generated/graphql";
+
 interface ILanguagesItemProps {
   name: string;
   proficiency: Proficiency;
@@ -45,7 +47,7 @@ export const LanguagesItem: FC<ILanguagesItemProps> = ({
       </li>
       <EditLanguageModal
         open={isEditModalOpen}
-        onToggle={() => setIsEditModalOpen((prev) => !prev)}
+        toggleAction={() => setIsEditModalOpen((prev) => !prev)}
         name={name}
         proficiency={proficiency}
       />

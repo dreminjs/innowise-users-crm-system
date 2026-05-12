@@ -1,6 +1,5 @@
 import { FC, useState } from "react";
 import { Popover } from "@chakra-ui/react";
-import styles from "../UsersTableRow.module.css";
 import { UserAction } from "./UserAction";
 
 interface IUserActionsProps {

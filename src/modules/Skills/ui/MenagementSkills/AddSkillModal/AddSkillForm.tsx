@@ -61,7 +61,7 @@ export const AddSkillForm: FC<IEditSkillFormProps> = ({ onToggle }) => {
             }
             value={field.value}
             onChange={handleChangeSkill}
-            isAvailable={true}
+            disabled={false}
           />
         )}
       />
@@ -76,7 +76,7 @@ export const AddSkillForm: FC<IEditSkillFormProps> = ({ onToggle }) => {
               label: el,
             }))}
             value={field.value}
-            isAvailable={Boolean(currentCategoryId)}
+            disabled={!currentCategoryId}
             onChange={(value) => handleChangeMastery(value as Mastery)}
           />
         )}

@@ -1,6 +1,5 @@
 "use client";
 import { useGetProfile, ProfilePage } from "@/modules/Users";
-import {} from "@/modules/Users/";
 import { use } from "react";
 
 export default function Page({
