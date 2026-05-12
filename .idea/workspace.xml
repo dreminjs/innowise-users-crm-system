@@ -5,12 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="40a36604-e3ff-4515-bcc0-28aae9d5db12" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/modules/Cvs/model/hooks/useGetCVs.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/Cvs/model/lib/filterCvs.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/Cvs/model/lib/getCvUserName.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/Cvs/model/lib/sortCvs.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/Cvs/pages/CVsPage/CVsPage.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/Cvs/pages/CVsPage/CVsPage.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/Cvs/ui/CVsSearch/CVsSearch.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/Cvs/ui/CVsSearch/CVsSearch.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/Cvs/ui/CVsTable/CVsTable.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/Cvs/ui/CVsTable/CVsTable.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/Cvs/ui/CVsTable/CvsTableRow.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/shared/hooks/useDebounce.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/Users/model/utils/sortUsers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/Users/model/utils/sortUsers.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/Users/ui/UsersTable/UsersTable.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/Users/ui/UsersTable/UsersTable.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/Users/ui/UsersTable/UsersTableHeader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/Users/ui/UsersTable/UsersTableHeader.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/Users/ui/UsersTable/UsersTableRow/UsersTableRow.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/Users/ui/UsersTable/UsersTableRow/UsersTableRow.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/Users/ui/UsersTable/UsersTableRow/UsersTableRow.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/Users/ui/UsersTable/UsersTableRow/UsersTableRow.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(dashboard)/cvs/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboard)/cvs/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graphql/gql.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphql/gql.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graphql/graphql.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphql/graphql.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/Cvs/api/queries.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/Cvs/api/queries.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/Users/ui/UsersSearch/UsersSearch.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/Users/ui/UsersSearch/UsersSearch.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,7 +93,7 @@
       <recent name="D:\программирование\dev\innowise-users-crm-system\public" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.Next.js: server-side">
+  <component name="RunManager" selected="npm.codegen">
     <configuration name="Next.js: debug client-side" type="JavascriptDebugType" uri="http://localhost:3000/">
       <method v="2" />
     </configuration>
@@ -117,8 +129,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.lint" />
         <item itemvalue="npm.codegen" />
+        <item itemvalue="npm.lint" />
       </list>
     </recent_temporary>
   </component>
