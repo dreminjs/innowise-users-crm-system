@@ -10,6 +10,7 @@ import { useUserStore } from "@/application/store/user.store";
 import { useGetProfile } from "@/modules/Users";
 import { ProfileMenu } from "@/layouts/dashboard/ui/NavModal/ProfileMenu";
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 
 type Props = {
   collapsed: boolean;
@@ -18,20 +19,15 @@ type Props = {
 
 export const DesktopSidebar = ({ collapsed, toggleAction }: Props) => {
   const pathname = usePathname();
-
+  const t = useTranslations("DesktopNavigation");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
   const userId = useUserStore((state) => state.userId);
   const email = useUserStore((state) => state.email);
-
   const { data } = useGetProfile(userId!);
-
   const profile = data?.user?.profile;
-
   const avatar = profile?.avatar;
   const firstName = profile?.first_name;
   const lastName = profile?.last_name;
-
   const displayName =
     firstName || lastName
       ? `${firstName ?? ""} ${lastName ?? ""}`.trim()
@@ -42,7 +38,7 @@ export const DesktopSidebar = ({ collapsed, toggleAction }: Props) => {
       <nav className={styles.navigation}>
         {navigationItems.map((item) => {
           const isActive = pathname === item.href;
-
+          console.log(item.label);
           return (
             <Link
               key={item.href}
@@ -56,8 +52,7 @@ export const DesktopSidebar = ({ collapsed, toggleAction }: Props) => {
                 width={20}
                 height={20}
               />
-
-              {!collapsed && <span>{item.label}</span>}
+              {!collapsed && <span>{t(item.label)}</span>}
             </Link>
           );
         })}

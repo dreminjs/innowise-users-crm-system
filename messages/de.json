@@ -1,0 +1,27 @@
+{
+  "Login": {
+    "title": "Willkommen zurück!",
+    "subtitle": "Willkommen! Bitte melden Sie sich an, um fortzufahren.",
+    "email": "E-Mail",
+    "password": "Passwort",
+    "forgotPassword": "PASSWORT VERGESSEN",
+    "submitLabel": "ANMELDEN"
+  },
+  "Signup": {
+    "title": "Registrieren",
+    "subtitle": "Erstellen Sie Ihr Konto",
+    "email": "E-Mail",
+    "password": "Passwort",
+    "submitLabel": "REGISTRIEREN",
+    "linkLabel": "Haben Sie bereits ein Konto?"
+  },
+  "DesktopNavigation": {
+    "employees": "Mitarbeiter",
+    "skills": "Fähigkeiten",
+    "languages": "Sprachen",
+    "cvs": "Lebensläufe",
+    "settings": "Einstellungen",
+    "profile": "Profil",
+    "logout": "Abmelden"
+  }
+}

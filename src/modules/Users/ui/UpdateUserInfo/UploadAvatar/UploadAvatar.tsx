@@ -19,7 +19,7 @@ export const UploadAvatar: FC<IUploadAvatarProps> = ({
   isUploadAvailable,
 }) => {
   const userId = useUserStore((state) => state.userId);
-  const { onSubmit } = useUploadAvatar();
+  const { onSubmit } = useUploadAvatar(userId!);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -39,9 +39,13 @@ export const UploadAvatar: FC<IUploadAvatarProps> = ({
 
   return (
     <div className={styles.uploadAvatar}>
-      <Avatar avatarUrl={previewUrl || avatarUrl} firstLetter={firstLetter} />
+      <Avatar
+        avatarUrl={previewUrl || avatarUrl}
+        firstLetter={firstLetter}
+        isAvailable={isUploadAvailable}
+      />
       {isUploadAvailable && (
-        <FileUpload.Root accept={["image/png"]}>
+        <FileUpload.Root accept={["image/png", "image/jpeg", "image/gif"]}>
           <FileUpload.HiddenInput onChange={handleFileChange} />
           <FileUpload.Trigger className={styles.uploadAvatarTrigger}>
             <div className={styles.uploadAvatarInner}>

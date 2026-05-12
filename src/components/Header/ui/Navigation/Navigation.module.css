@@ -13,5 +13,5 @@
 .navigationItem {
   font-size: 16px;
   line-height: 24px;
-  color: var(--bread-crumbs);
+  color: var(--nav-color);
 }

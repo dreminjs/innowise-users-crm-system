@@ -1,22 +1,30 @@
 export const navigationItems = [
   {
-    label: "Employees",
+    label: "employees",
     href: "/users",
     icon: "/Employees.svg",
   },
   {
-    label: "Skills",
+    label: "skills",
     href: "/skills",
     icon: "/Skills.svg",
   },
   {
-    label: "Languages",
+    label: "languages",
     href: "/languages",
     icon: "/Languages.svg",
   },
   {
-    label: "CVs",
+    label: "cvs",
     href: "/cvs",
     icon: "/CVs.svg",
   },
 ];
+
+// "employees": "Employees",
+// "skills": "Skills",
+// "languages": "Languages",
+// "cvs": "CVs",
+// "settings": "Settings",
+// "profile": "Profile",
+// "logout": "Logout"

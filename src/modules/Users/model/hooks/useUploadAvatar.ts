@@ -1,9 +1,10 @@
 import { useMutation } from "@apollo/client/react";
-import { UPLOAD_AVATAR } from "../../api/mutations";
 import { UploadAvatarInput } from "@/generated/graphql";
 import { useNotification } from "@/modules/Notifications";
+import { UPLOAD_AVATAR } from "../../api/mutations";
+import { GET_USER_PROFILE } from "../../api/queries";
 
-export const useUploadAvatar = () => {
+export const useUploadAvatar = (userId: string) => {
   const addNotification = useNotification((state) => state.addNotification);
   const [mutate, { loading }] = useMutation(UPLOAD_AVATAR, {
     onCompleted: () => {
@@ -18,6 +19,14 @@ export const useUploadAvatar = () => {
         message: "Failed to upload avatar",
       });
     },
+    refetchQueries: [
+      {
+        query: GET_USER_PROFILE,
+        variables: {
+          userId,
+        },
+      },
+    ],
   });
 
   const handleSubmit = async (dto: UploadAvatarInput) => {
