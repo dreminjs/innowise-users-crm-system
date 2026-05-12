@@ -1,0 +1,27 @@
+{
+  "Login": {
+    "title": "С возвращением!",
+    "subtitle": "Добро пожаловать! Пожалуйста, войдите, чтобы продолжить.",
+    "email": "Эл. почта",
+    "password": "Пароль",
+    "forgotPassword": "ЗАБЫЛИ ПАРОЛЬ",
+    "submitLabel": "ВОЙТИ"
+  },
+  "Signup": {
+    "title": "Регистрация",
+    "subtitle": "Создайте свой аккаунт",
+    "email": "Эл. почта",
+    "password": "Пароль",
+    "submitLabel": "ЗАРЕГИСТРИРОВАТЬСЯ",
+    "linkLabel": "Уже есть аккаунт?"
+  },
+  "DesktopNavigation": {
+    "employees": "Сотрудники",
+    "skills": "Навыки",
+    "languages": "Языки",
+    "cvs": "Резюме",
+    "settings": "Настройки",
+    "profile": "Профиль",
+    "logout": "Выйти"
+  }
+}

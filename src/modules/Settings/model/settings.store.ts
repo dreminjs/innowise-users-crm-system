@@ -4,18 +4,18 @@ import { TLanguage } from "./settings.types";
 
 interface ISettingsStore {
   language: TLanguage;
-  resumeLanguage: TLanguage;
   setLanguage: (language: TLanguage) => void;
+  resumeLanguage: TLanguage;
   setResumeLanguage: (resumeLanguage: TLanguage) => void;
 }
 
 export const useSettingsStore = create<ISettingsStore>()(
   persist(
     (set) => ({
-      language: "English",
       resumeLanguage: "English",
-      setLanguage: (language) => set({ language }),
       setResumeLanguage: (resumeLanguage) => set({ resumeLanguage }),
+      language: "English",
+      setLanguage: (language) => set({ language }),
     }),
     {
       name: "settings",

@@ -7,16 +7,14 @@ import styles from "./AuthForm.module.css";
 import { useSignin } from "../model/hooks/useSignin";
 import { FormField } from "@/shared/ui/FormField";
 import { TAuthFormData } from "../model/auth.types";
+import { useTranslations } from "next-intl";
 export const SigninForm = () => {
   const { register, handleSubmit, errors } = useAuthForm();
 
   const { onSubmit, loading } = useSignin();
-
+  const t = useTranslations("Login");
   return (
-    <AuthFormLayout
-      title="С возвращением"
-      subtitle="Рады вас видеть! Войдите, чтобы продолжить"
-    >
+    <AuthFormLayout title={t("title")} subtitle={t("subtitle")}>
       <form className={styles.authForm} onSubmit={handleSubmit(onSubmit)}>
         <div className={styles.authFormFields}>
           <FormField<TAuthFormData>
@@ -24,19 +22,19 @@ export const SigninForm = () => {
             type="email"
             register={register}
             error={errors.email?.message}
-            label={"Почта"}
+            label={t("email")}
           />
           <FormField<TAuthFormData>
             name="password"
             type="password"
             register={register}
             error={errors.password?.message}
-            label={"Пароль"}
+            label={t("password")}
           />
         </div>
         <AuthButtons
-          submitLabel="ВОЙТИ"
-          linkLabel="ЗАБЫЛИ ПАРОЛЬ"
+          submitLabel={t("submitLabel")}
+          linkLabel={t("forgotPassword")}
           linkUrl="forgot-password"
           isLoading={loading}
         />
