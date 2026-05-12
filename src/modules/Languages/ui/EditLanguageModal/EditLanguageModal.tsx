@@ -21,8 +21,7 @@ export const EditLanguageModal: FC<TEditLanguageModalProps> = ({
     <AddItemModal open={open} onToggle={onToggle} title={"Edit Language"}>
       {currentUserId && (
         <EditLanguageForm
-          onToggle={onToggle}
-          currentUserId={currentUserId}
+          toggleAction={onToggle}
           name={name}
           proficiency={proficiency}
         />

@@ -3,8 +3,9 @@ import { languageLevelColors } from "../../model/languages.constants";
 import { EditLanguageModal } from "../EditLanguageModal/EditLanguageModal";
 import { useLanguageStore } from "../../model/language.store";
 import styles from "../Languages.module.css";
-import { Proficiency } from "@/generated/graphql";
 import clsx from "clsx";
+import { Proficiency } from "@/graphql/graphql";
+
 interface ILanguagesItemProps {
   name: string;
   proficiency: Proficiency;

@@ -1,18 +1,36 @@
 "use client";
 
 import { GetCvsQuery } from "@/graphql/graphql";
+
+import { CvSortField, CvSortOrder } from "../../model/lib/processCvs";
+
+import { CVsTableRow } from "./CvsTableRow";
+
 import styles from "./CvsTable.module.css";
-import { CvsTableRow } from "./CvsTableRow";
-import { CvSortField, CvSortOrder } from "../../model/lib/sortCvs";
 
 type Props = {
   cvs: GetCvsQuery["cvs"];
   sortField: CvSortField;
   sortOrder: CvSortOrder;
-  onSort: (field: CvSortField) => void;
+  sortAction: (field: CvSortField) => void;
+  loading: boolean;
 };
 
-export const CVsTable = ({ cvs, sortField, sortOrder, onSort }: Props) => {
+export const CVsTable = ({
+  cvs,
+  sortField,
+  sortOrder,
+  sortAction,
+  loading,
+}: Props) => {
+  if (loading) {
+    return <div className={styles.empty}>Loading...</div>;
+  }
+
+  if (!cvs.length) {
+    return <div className={styles.empty}>No CVs found</div>;
+  }
+
   return (
     <div className={styles.tableWrapper}>
       <table className={styles.table}>
@@ -21,28 +39,29 @@ export const CVsTable = ({ cvs, sortField, sortOrder, onSort }: Props) => {
             <th className={styles.nameColumn}>
               <button
                 className={styles.sortButton}
-                onClick={() => onSort("name")}
+                onClick={() => sortAction("name")}
               >
                 Name
                 {sortField === "name" && (sortOrder === "asc" ? " ↑" : " ↓")}
               </button>
             </th>
-            <th>Education</th>
-            <th className={styles.userColumn}>
+            <th>
               <button
                 className={styles.sortButton}
-                onClick={() => onSort("user")}
+                onClick={() => sortAction("education")}
               >
-                Employee
-                {sortField === "user" && (sortOrder === "asc" ? " ↑" : " ↓")}
+                Education
+                {sortField === "education" &&
+                  (sortOrder === "asc" ? " ↑" : " ↓")}
               </button>
             </th>
+            <th className={styles.userColumn}>Employee</th>
             <th className={styles.actionsColumn} />
           </tr>
         </thead>
         <tbody>
           {cvs.map((cv) => (
-            <CvsTableRow key={cv.id} cv={cv} />
+            <CVsTableRow key={cv.id} cv={cv} />
           ))}
         </tbody>
       </table>

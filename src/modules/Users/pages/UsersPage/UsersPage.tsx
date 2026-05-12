@@ -20,7 +20,7 @@ export const UsersPage = () => {
   if (data)
     return (
       <section className={styles.page}>
-        <UsersSearch value={search} onChange={setSearch} />
+        <UsersSearch value={search} changeAction={setSearch} />
         <UsersTable
           users={users}
           sortField={sortField}

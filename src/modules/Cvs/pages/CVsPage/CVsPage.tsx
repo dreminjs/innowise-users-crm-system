@@ -1,16 +1,21 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { CVsSearch } from "../../ui/CVsSearch/CVsSearch";
-import { filterCvs } from "../../model/lib/filterCvs";
-import { CvSortField, CvSortOrder, sortCvs } from "../../model/lib/sortCvs";
+import { useGetCVs } from "../../model/hooks/useGetCVs";
+import {
+  CvSortField,
+  CvSortOrder,
+  processCvs,
+} from "../../model/lib/processCvs";
 import styles from "./CVsPage.module.css";
-import { useGetCVs } from "@/modules/Cvs/model/hooks/useGetCVs";
+import { CVsToolbar } from "@/modules/Cvs/ui/CVsToolbar/CVsToolbar";
 import { CVsTable } from "@/modules/Cvs/ui/CVsTable/CVsTable";
+import { CreateCvModal } from "@/modules/Cvs/ui/CreateCvModal/CreateCvModal";
 
 export const CVsPage = () => {
   const { data, loading } = useGetCVs();
   const [search, setSearch] = useState("");
+  const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
   const [sortField, setSortField] = useState<CvSortField>("name");
   const [sortOrder, setSortOrder] = useState<CvSortOrder>("asc");
   const handleSort = (field: CvSortField) => {
@@ -23,27 +28,32 @@ export const CVsPage = () => {
   };
 
   const cvs = useMemo(() => {
-    const filtered = filterCvs(data?.cvs ?? [], search);
-    return sortCvs(filtered, sortField, sortOrder);
+    return processCvs(data?.cvs ?? [], search, sortField, sortOrder);
   }, [data, search, sortField, sortOrder]);
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
   return (
     <section className={styles.page}>
       <div className={styles.header}>
         <h1 className={styles.title}>CVs</h1>
       </div>
       <div className={styles.content}>
-        <CVsSearch value={search} onChange={setSearch} />
+        <CVsToolbar
+          value={search}
+          changeAction={setSearch}
+          createAction={() => setIsCreateModalOpen(true)}
+        />
         <CVsTable
           cvs={cvs}
+          loading={loading}
           sortField={sortField}
           sortOrder={sortOrder}
-          onSort={handleSort}
+          sortAction={handleSort}
         />
       </div>
+      <CreateCvModal
+        isOpen={isCreateModalOpen}
+        closeAction={() => setIsCreateModalOpen(false)}
+      />
     </section>
   );
 };

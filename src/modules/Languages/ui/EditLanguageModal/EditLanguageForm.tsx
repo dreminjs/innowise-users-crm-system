@@ -1,7 +1,6 @@
 import { useQuery } from "@apollo/client/react";
 import { Controller } from "react-hook-form";
 import { ConfirmButtons } from "@/shared/ui/ConfirmButtons";
-import { Proficiency } from "@/generated/graphql";
 import { CustomSelect } from "@/shared/ui/CustomSelect";
 import { useEditProfileLanguage } from "../../model/hooks/useEditProfileLanguage";
 import { TLanguageForm } from "../../model/languages.interface";
@@ -10,13 +9,13 @@ import { GET_LANGUAGES } from "../../api/queries";
 import { FC } from "react";
 import styles from "../Languages.module.css";
 import { languageProfiency } from "../../model/languages.constants";
-
+import { Proficiency } from "@/graphql/graphql";
 type TEditLanguageFormProps = {
-  onToggle: () => void;
+  toggleAction: () => void;
 } & TLanguageForm;
 
 export const EditLanguageForm: FC<TEditLanguageFormProps> = ({
-  onToggle,
+  toggleAction,
   name,
   proficiency,
 }) => {
@@ -37,7 +36,7 @@ export const EditLanguageForm: FC<TEditLanguageFormProps> = ({
 
   const onSubmit = async (data: TLanguageForm) => {
     handleEditProfileLanguage(data).then(() => {
-      onToggle();
+      toggleAction();
       reset();
     });
   };
@@ -79,7 +78,7 @@ export const EditLanguageForm: FC<TEditLanguageFormProps> = ({
         )}
       />
       <ConfirmButtons
-        onCancel={onToggle}
+        onCancel={toggleAction}
         confirmLabel={"CONFIRM"}
         confirmButtonType={"submit"}
       />

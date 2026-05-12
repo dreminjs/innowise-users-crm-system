@@ -13,19 +13,25 @@ import { useState } from "react";
 
 type Props = {
   collapsed: boolean;
-  onToggle: () => void;
+  toggleAction: () => void;
 };
 
-export const DesktopSidebar = ({ collapsed, onToggle }: Props) => {
+export const DesktopSidebar = ({ collapsed, toggleAction }: Props) => {
   const pathname = usePathname();
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   const userId = useUserStore((state) => state.userId);
   const email = useUserStore((state) => state.email);
+
   const { data } = useGetProfile(userId!);
+
   const profile = data?.user?.profile;
+
   const avatar = profile?.avatar;
   const firstName = profile?.first_name;
   const lastName = profile?.last_name;
+
   const displayName =
     firstName || lastName
       ? `${firstName ?? ""} ${lastName ?? ""}`.trim()
@@ -80,18 +86,21 @@ export const DesktopSidebar = ({ collapsed, onToggle }: Props) => {
               loading="eager"
             />
           )}
+
           {!collapsed && (
             <div className={styles.userInfo}>
               <span className={styles.name}>{displayName}</span>
             </div>
           )}
         </button>
+
         <ProfileMenu
           isOpen={isMenuOpen}
           userId={userId!}
-          onClose={() => setIsMenuOpen(false)}
+          closeAction={() => setIsMenuOpen(false)}
         />
-        <button className={styles.collapseButton} onClick={onToggle}>
+
+        <button className={styles.collapseButton} onClick={toggleAction}>
           <Image
             src="/nav-arrow.svg"
             alt="Toggle sidebar"

@@ -100,7 +100,7 @@ export const UploadInfo: FC<IUploadInfoProps> = ({
                 })) || []
               }
               label="Department"
-              isAvailable={isAvailable}
+              disabled={!isAvailable}
               value={field.value}
               onChange={handleDepartmentChange}
             />
@@ -121,7 +121,7 @@ export const UploadInfo: FC<IUploadInfoProps> = ({
                 })) || []
               }
               label="Position"
-              isAvailable={isAvailable}
+              disabled={!isAvailable}
               value={field.value}
               onChange={handlePositionChange}
             />
