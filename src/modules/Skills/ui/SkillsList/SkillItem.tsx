@@ -16,22 +16,29 @@ interface ISkillItemProps {
   name: string;
   mastery: TMastery;
   categoryId: string | null;
+  isAvailableToChange: boolean;
 }
 
 export const SkillItem: FC<ISkillItemProps> = ({
   name,
   mastery,
   categoryId,
+  isAvailableToChange,
 }) => {
   const { isDeleteMode, addDeleteSkill, deleteSkills } = useSkillStore();
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const handleClick = () => {
+    if (isDeleteMode) {
+      addDeleteSkill(name);
+    } else {
+      setIsEditModalOpen(true);
+    }
+  };
   return (
     <>
       <li>
         <button
-          onClick={() =>
-            isDeleteMode ? addDeleteSkill(name) : setIsEditModalOpen(true)
-          }
+          {...(isAvailableToChange ? { onClick: handleClick } : {})}
           className={clsx(
             styles.skillItem,
             deleteSkills[name] && styles.skillItemDeleteActive,

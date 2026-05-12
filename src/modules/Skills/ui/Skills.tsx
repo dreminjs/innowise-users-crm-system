@@ -5,6 +5,7 @@ import { useQuery } from "@apollo/client/react";
 import { GET_SKILL_CATEGORIES } from "../api/queries";
 import { Loading } from "@/shared/ui/Loading";
 import styles from "./Skills.module.css";
+import { Empty } from "@/shared/ui/Empty";
 
 export const Skills = () => {
   const currentUserId = useUserStore((state) => state.userId);
@@ -19,13 +20,18 @@ export const Skills = () => {
   if (error) return <div>Error: {error.message}</div>;
 
   return (
-    <section className={styles.skills}>
-      {categoriesData && currentUserId && (
+    <section>
+      {currentUserId && (
         <>
-          <SkillsList
-            userId={currentUserId}
-            categoriesData={categoriesData ?? []}
-          />
+          {categoriesData?.skillCategories.length ? (
+            <SkillsList
+              userId={currentUserId}
+              categoriesData={categoriesData}
+              isAvailableToChange={true}
+            />
+          ) : (
+            <Empty />
+          )}
           <MenagementSkills />
         </>
       )}
