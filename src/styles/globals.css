@@ -10,6 +10,7 @@
   --bread-crumbs: rgba(0, 0, 0, 0.6);
   --cancel-border: #ffffff3b;
   --cancel-text: #ffffff3b;
+  --nav-color: #00000099;
 }
 
 [data-theme="dark"] {
@@ -21,6 +22,7 @@
   --color-subtitle: rgba(255, 255, 255, 0.7);
   --link-color: #ffffff;
   --bread-crumbs: #767676;
+  --nav-color: rgba(255, 255, 255, 0.7);
 }
 
 html,
