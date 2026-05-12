@@ -30,7 +30,6 @@ body {
 
 body {
   background-color: var(--bg);
-  color: var(--color-text);
 }
 
 * {
@@ -47,9 +46,6 @@ ol {
 a {
   color: var(--link-color);
   text-decoration: none;
-}
-span {
-  color: var(--color-text);
 }
 
 button {

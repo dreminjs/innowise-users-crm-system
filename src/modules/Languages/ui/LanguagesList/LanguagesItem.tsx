@@ -2,30 +2,36 @@ import { FC, useState } from "react";
 import { languageLevelColors } from "../../model/languages.constants";
 import { EditLanguageModal } from "../EditLanguageModal/EditLanguageModal";
 import { useLanguageStore } from "../../model/language.store";
+import { Proficiency } from "@/graphql/graphql";
+
 import styles from "../Languages.module.css";
-import { Proficiency } from "@/generated/graphql";
 import clsx from "clsx";
 interface ILanguagesItemProps {
   name: string;
   proficiency: Proficiency;
+  isAvailableToChange: boolean;
 }
 
 export const LanguagesItem: FC<ILanguagesItemProps> = ({
   name,
   proficiency,
+  isAvailableToChange,
 }) => {
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const { isDeleteMode, addDeleteLanguage, deleteLanguages } =
     useLanguageStore();
+  const handleClick = () => {
+    if (isDeleteMode) {
+      addDeleteLanguage(name);
+    } else {
+      setIsEditModalOpen((prev) => !prev);
+    }
+  };
   return (
     <>
       <li>
         <button
-          onClick={() =>
-            isDeleteMode
-              ? addDeleteLanguage(name)
-              : setIsEditModalOpen((prev) => !prev)
-          }
+          {...(isAvailableToChange ? { onClick: handleClick } : {})}
           className={clsx(
             styles.languagesItem,
             deleteLanguages[name] && styles.languagesItemActive,

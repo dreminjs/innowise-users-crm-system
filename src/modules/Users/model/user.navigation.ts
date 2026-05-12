@@ -5,10 +5,10 @@ export const userNavigation = [
   },
   {
     label: "СКИЛЛЫ",
-    to: "/skills",
+    to: "skills",
   },
   {
     label: "ЯЗЫКИ",
-    to: "/languages",
+    to: "languages",
   },
 ];

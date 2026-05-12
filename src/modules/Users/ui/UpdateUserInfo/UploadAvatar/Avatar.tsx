@@ -5,9 +5,14 @@ import { useDeleteAvatar } from "@/modules/Users/model/hooks/useDeleteAvatar";
 interface IAvatarProps {
   avatarUrl: string | null;
   firstLetter: string;
+  isAvailable: boolean;
 }
 
-export const Avatar: FC<IAvatarProps> = ({ avatarUrl, firstLetter }) => {
+export const Avatar: FC<IAvatarProps> = ({
+  avatarUrl,
+  firstLetter,
+  isAvailable,
+}) => {
   const { deleteAvatar } = useDeleteAvatar();
 
   return (
@@ -21,9 +26,11 @@ export const Avatar: FC<IAvatarProps> = ({ avatarUrl, firstLetter }) => {
             src={avatarUrl}
             alt="avatar"
           />
-          <button className={styles.deleteAvatar} onClick={deleteAvatar}>
-            ❌
-          </button>
+          {isAvailable && (
+            <button className={styles.deleteAvatar} onClick={deleteAvatar}>
+              ❌
+            </button>
+          )}
         </>
       ) : (
         <div className={styles.avatarSkeleton}>{firstLetter}</div>

@@ -22,7 +22,6 @@ export const EditLanguageModal: FC<TEditLanguageModalProps> = ({
       {currentUserId && (
         <EditLanguageForm
           onToggle={onToggle}
-          currentUserId={currentUserId}
           name={name}
           proficiency={proficiency}
         />

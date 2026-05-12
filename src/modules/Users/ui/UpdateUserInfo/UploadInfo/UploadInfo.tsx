@@ -7,11 +7,12 @@ import {
   updateUserSchema,
 } from "@/modules/Users/model/uploadUserInfo.schema";
 import { Controller, useForm } from "react-hook-form";
-import { FC } from "react";
 import { CustomSelect } from "@/shared/ui/CustomSelect";
 import { useUpdateProfile } from "@/modules/Users/model/hooks/useUpdateProfile";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useUpdateUser } from "@/modules/Users/model/hooks/useUpdateUser";
+import { FC } from "react";
+import { Loading } from "@/shared/ui/Loading";
 
 interface IUploadInfoProps {
   isAvailable: boolean;
@@ -62,7 +63,7 @@ export const UploadInfo: FC<IUploadInfoProps> = ({
   const handlePositionChange = (positionId: string) => {
     setValue("positionId", positionId);
   };
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <Loading />;
   if (error) return <div>Error: {error.message}</div>;
   return (
     <form
@@ -75,6 +76,7 @@ export const UploadInfo: FC<IUploadInfoProps> = ({
           register={register}
           name="firstName"
           label="First Name"
+          isAvailable={isAvailable}
         />
       )}
 
@@ -84,6 +86,7 @@ export const UploadInfo: FC<IUploadInfoProps> = ({
           register={register}
           name="lastName"
           label="Last Name"
+          isAvailable={isAvailable}
         />
       )}
 
@@ -100,7 +103,7 @@ export const UploadInfo: FC<IUploadInfoProps> = ({
                 })) || []
               }
               label="Department"
-              isAvailable={isAvailable}
+              disabled={!isAvailable}
               value={field.value}
               onChange={handleDepartmentChange}
             />
@@ -121,7 +124,7 @@ export const UploadInfo: FC<IUploadInfoProps> = ({
                 })) || []
               }
               label="Position"
-              isAvailable={isAvailable}
+              disabled={!isAvailable}
               value={field.value}
               onChange={handlePositionChange}
             />
