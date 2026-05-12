@@ -30,7 +30,7 @@ export const useUploadAvatar = (userId: string) => {
   });
 
   const handleSubmit = async (dto: UploadAvatarInput) => {
-    mutate({ variables: { dto } });
+    await mutate({ variables: { dto } });
   };
 
   return {

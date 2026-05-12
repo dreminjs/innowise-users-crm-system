@@ -68,7 +68,7 @@ export const MobileBottomNav = () => {
       <ProfileMenu
         isOpen={isMenuOpen}
         userId={userId!}
-        onClose={() => setIsMenuOpen(false)}
+        closeAction={() => setIsMenuOpen(false)}
       />
     </nav>
   );

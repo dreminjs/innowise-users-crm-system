@@ -5,17 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="40a36604-e3ff-4515-bcc0-28aae9d5db12" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/modules/Cvs/ui/CvSkills/CvSkillItem.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/layouts/dashboard/ui/DesktopSidebar/DesktopSidebar.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/dashboard/ui/DesktopSidebar/DesktopSidebar.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/layouts/dashboard/ui/DesktopSidebar/DesktopSidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/dashboard/ui/DesktopSidebar/DesktopSidebar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/layouts/dashboard/ui/MobileBottomNav/MobileBottomNav.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/dashboard/ui/MobileBottomNav/MobileBottomNav.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/layouts/dashboard/ui/MobileBottomNav/MobileBottomNav.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/dashboard/ui/MobileBottomNav/MobileBottomNav.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/layouts/dashboard/ui/NavModal/ProfileMenu.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/dashboard/ui/NavModal/ProfileMenu.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/layouts/dashboard/ui/NavModal/ProfileMenu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/dashboard/ui/NavModal/ProfileMenu.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/Users/ui/UsersTable/UsersTable.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/Users/ui/UsersTable/UsersTable.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(dashboard)/users/[userId]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboard)/users/[userId]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ui/color-mode.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/color-mode.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/Auth/model/hooks/useSignin.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/Auth/model/hooks/useSignin.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/Cvs/ui/CvSkills/CvSkills.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/Cvs/ui/CvSkills/CvSkills.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/Languages/model/hooks/useAddProfileLanguage.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/Languages/model/hooks/useAddProfileLanguage.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/Languages/model/hooks/useEditProfileLanguage.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/Languages/model/hooks/useEditProfileLanguage.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/Skills/model/hooks/useAddProfileSkill.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/Skills/model/hooks/useAddProfileSkill.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/Skills/model/hooks/useEditProfileSkill.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/Skills/model/hooks/useEditProfileSkill.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/Users/model/hooks/useUpdateProfile.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/Users/model/hooks/useUpdateProfile.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/Users/model/hooks/useUpdateUser.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/Users/model/hooks/useUpdateUser.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/Users/model/hooks/useUploadAvatar.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/Users/model/hooks/useUploadAvatar.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/Users/ui/UpdateUserInfo/UpdateUserInfo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/Users/ui/UpdateUserInfo/UpdateUserInfo.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/Users/ui/UpdateUserInfo/UploadAvatar/UploadAvatar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/Users/ui/UpdateUserInfo/UploadAvatar/UploadAvatar.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/modules/Users/ui/UsersTable/UsersTableRow/UserActions/UserActions.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/Users/ui/UsersTable/UsersTableRow/UserActions/UserActions.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/Users/ui/UsersTable/UsersTableRow/UsersTableRow.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/Users/ui/UsersTable/UsersTableRow/UsersTableRow.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/Users/ui/UsersTable/UsersTableRow/UsersTableRow.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/Users/ui/UsersTable/UsersTableRow/UsersTableRow.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/styles/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/globals.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -35,7 +40,7 @@
   &quot;isMigrated&quot;: true
 }</component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
@@ -48,41 +53,42 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "fix/user-routing",
-    "js.debugger.nextJs.config.created.client": "true",
-    "js.debugger.nextJs.config.created.server": "true",
-    "js.linters.configure.manually.selectedeslint": "true",
-    "last_opened_file_path": "D:/программирование/dev/innowise-users-crm-system/public",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.standard": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.standard": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "npm.Next.js: server-side.executor": "Run",
-    "npm.codegen.executor": "Run",
-    "npm.lint.executor": "Run",
-    "prettierjs.PrettierConfiguration.Package": "D:\\программирование\\dev\\innowise-users-crm-system\\node_modules\\prettier",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "ts.external.directory.path": "D:\\программирование\\dev\\innowise-users-crm-system\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature/cv&quot;,
+    &quot;js.debugger.nextJs.config.created.client&quot;: &quot;true&quot;,
+    &quot;js.debugger.nextJs.config.created.server&quot;: &quot;true&quot;,
+    &quot;js.linters.configure.manually.selectedeslint&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/программирование/dev/innowise-users-crm-system/public&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.Next.js: server-side.executor&quot;: &quot;Run&quot;,
+    &quot;npm.codegen.executor&quot;: &quot;Run&quot;,
+    &quot;npm.lint.executor&quot;: &quot;Run&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;D:\\программирование\\dev\\innowise-users-crm-system\\node_modules\\prettier&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;settings.qodana&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;D:\\программирование\\dev\\innowise-users-crm-system\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\программирование\dev\innowise-users-crm-system\public" />
       <recent name="D:\программирование\dev\innowise-users-crm-system\src\shared\assets\icons" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\программирование\dev\innowise-users-crm-system\src\modules\Cvs\ui\CvSkills" />
       <recent name="D:\программирование\dev\innowise-users-crm-system\src\layouts\dashboard\ui\NavModal" />
       <recent name="D:\программирование\dev\innowise-users-crm-system\public" />
     </key>
@@ -123,8 +129,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.lint" />
         <item itemvalue="npm.codegen" />
+        <item itemvalue="npm.lint" />
       </list>
     </recent_temporary>
   </component>
@@ -150,10 +156,32 @@
       <workItem from="1778136342649" duration="6363000" />
       <workItem from="1778162803638" duration="3113000" />
       <workItem from="1778483287599" duration="19565000" />
+      <workItem from="1778592857468" duration="1522000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/modules/Users/ui/UsersNavigation.tsx</url>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

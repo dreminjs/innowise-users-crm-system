@@ -10,33 +10,33 @@ import { useTokens } from "@/modules/Tokens";
 type Props = {
   isOpen: boolean;
   userId: string;
-  onClose: () => void;
+  closeAction: () => void;
 };
 
-export const ProfileMenu = ({ isOpen, userId, onClose }: Props) => {
+export const ProfileMenu = ({ isOpen, userId, closeAction }: Props) => {
   const router = useRouter();
   const resetUser = useUserStore((state) => state.resetUser);
   const clearToken = useTokens((state) => state.deleteAccessToken);
   const handleLogout = () => {
     resetUser();
     clearToken();
-    onClose();
+    closeAction();
     router.push("/auth/signin");
   };
   if (!isOpen) return null;
   return (
     <>
-      <div className={styles.backdrop} onClick={onClose} />
+      <div className={styles.backdrop} onClick={closeAction} />
       <div className={styles.modal}>
         <Link
           className={styles.item}
           href={`/users/${userId}`}
-          onClick={onClose}
+          onClick={closeAction}
         >
           <Image src="/account.svg" alt="Profile" width={20} height={20} />
           <span>Profile</span>
         </Link>
-        <Link className={styles.item} href="/settings" onClick={onClose}>
+        <Link className={styles.item} href="/settings" onClick={closeAction}>
           <Image src="/settings.svg" alt="Settings" width={20} height={20} />
           <span>Settings</span>
         </Link>

@@ -29,7 +29,7 @@ export const UploadAvatar: FC<IUploadAvatarProps> = ({
     setPreviewUrl(objectUrl);
     const base64 = await toBase64(file);
     console.log(base64);
-    onSubmit({
+    await onSubmit({
       userId,
       base64,
       size: file.size,

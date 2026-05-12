@@ -1,14 +1,11 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import {
-  useForm,
-
-} from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { forgotPasswordSchema } from "../model/auth.schema";
 import { TForgotPasswordFormData } from "../model/auth.types";
 import { useForgotPassword } from "../model/hooks/useForgotPassword";
 import { AuthFormLayout } from "./AuthFormLayout";
-import { AuthFormField } from "./AuthFormField";
 import { AuthButtons } from "./AuthButtons";
+import { FormField } from "@/shared/ui/FormField";
 
 export const ForgotPasswordForm = () => {
   const {
@@ -27,7 +24,7 @@ export const ForgotPasswordForm = () => {
       subtitle={"Мы отправили вам инструкции по сбросу пароля"}
     >
       <form onSubmit={handleSubmit(onSubmit)}>
-        <AuthFormField<TForgotPasswordFormData>
+        <FormField<TForgotPasswordFormData>
           type={"email"}
           register={register}
           name={"email"}

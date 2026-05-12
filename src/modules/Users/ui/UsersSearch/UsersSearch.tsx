@@ -5,11 +5,10 @@ import styles from "./UsersSearch.module.css";
 
 type Props = {
   value: string;
-
-  onChange: (value: string) => void;
+  changeAction: (value: string) => void;
 };
 
-export const UsersSearch = ({ value, onChange }: Props) => {
+export const UsersSearch = ({ value, changeAction }: Props) => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.search}>
@@ -25,7 +24,7 @@ export const UsersSearch = ({ value, onChange }: Props) => {
           type="text"
           placeholder="Search users..."
           value={value}
-          onChange={(event) => onChange(event.target.value)}
+          onChange={(event) => changeAction(event.target.value)}
         />
       </div>
     </div>

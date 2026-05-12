@@ -14,13 +14,12 @@ import { useTranslations } from "next-intl";
 
 type Props = {
   collapsed: boolean;
-  onToggle: () => void;
+  toggleAction: () => void;
 };
 
-export const DesktopSidebar = ({ collapsed, onToggle }: Props) => {
+export const DesktopSidebar = ({ collapsed, toggleAction }: Props) => {
   const pathname = usePathname();
   const t = useTranslations("DesktopNavigation");
-  console.log(t);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const userId = useUserStore((state) => state.userId);
   const email = useUserStore((state) => state.email);
@@ -82,18 +81,21 @@ export const DesktopSidebar = ({ collapsed, onToggle }: Props) => {
               loading="eager"
             />
           )}
+
           {!collapsed && (
             <div className={styles.userInfo}>
               <span className={styles.name}>{displayName}</span>
             </div>
           )}
         </button>
+
         <ProfileMenu
           isOpen={isMenuOpen}
           userId={userId!}
-          onClose={() => setIsMenuOpen(false)}
+          closeAction={() => setIsMenuOpen(false)}
         />
-        <button className={styles.collapseButton} onClick={onToggle}>
+
+        <button className={styles.collapseButton} onClick={toggleAction}>
           <Image
             src="/nav-arrow.svg"
             alt="Toggle sidebar"

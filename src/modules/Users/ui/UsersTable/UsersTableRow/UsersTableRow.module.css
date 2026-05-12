@@ -17,7 +17,11 @@
   font-size: 14px;
   color: #374151;
 }
-
+.firstNameColumn div, .lastNameColumn div, .emailColumn div,
+.departmentColumn div, .positionColumn div{
+  max-height: 24px;
+  overflow: hidden;
+}
 .email {
   color: #6b7280;
 }

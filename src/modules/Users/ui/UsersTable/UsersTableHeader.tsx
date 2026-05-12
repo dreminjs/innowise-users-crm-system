@@ -20,7 +20,6 @@ export const UsersTableHeader = ({ sortField, sortOrder, onSort }: Props) => {
     <thead>
       <tr className={styles.header}>
         <th className={styles.avatarColumn} />
-
         <th className={styles.nameColumn}>
           <button
             className={styles.sortButton}

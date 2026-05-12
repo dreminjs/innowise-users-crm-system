@@ -1,6 +1,5 @@
 .tableWrapper {
     width: 100%;
-    overflow-x: auto;
     border: 1px solid #e5e7eb;
     border-radius: 20px;
     background: #ffffff;
@@ -17,6 +16,10 @@
 }
 
 .header th {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    background: #ffffff;
     padding: 15px 16px;
     text-align: left;
     font-size: 14px;
@@ -104,7 +107,7 @@
     justify-content: center;
     min-height: 300px;
     border-radius: 20px;
-    background: #ffffff;
     border: 1px solid #e5e7eb;
+    background: #ffffff;
     color: #6b7280;
 }

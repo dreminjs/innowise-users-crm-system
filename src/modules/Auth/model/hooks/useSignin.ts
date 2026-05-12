@@ -13,7 +13,7 @@ export const useSignin = () => {
   const setAccessToken = useTokens((state) => state.setAccessToken);
   const setRefreshToken = useTokens((state) => state.setRefreshToken);
   const setUser = useUserStore((state) => state.setUser);
-  const router = useRouter();
+  useRouter();
   const [mutate, { data, loading, error }] = useLazyQuery(SIGNIN);
 
   useEffect(() => {
