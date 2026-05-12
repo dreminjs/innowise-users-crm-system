@@ -29,13 +29,13 @@ export const UserTableRow = ({ user }: Props) => {
         />
       </td>
 
-      <td className={styles.nameColumn}>
+      <td className={styles.firstNameColumn}>
         <div className={styles.cellContent}>
           {user.profile?.first_name ?? "-"}
         </div>
       </td>
 
-      <td className={styles.nameColumn}>
+      <td className={styles.lastNameColumn}>
         <div className={styles.cellContent}>
           {user.profile?.last_name ?? "-"}
         </div>

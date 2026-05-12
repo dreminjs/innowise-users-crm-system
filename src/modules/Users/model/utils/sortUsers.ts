@@ -9,34 +9,41 @@ export const sortUsers = (
   return [...users].sort((a, b) => {
     let firstValue = "";
     let secondValue = "";
-
     switch (sortField) {
       case "first_name":
-        firstValue = a.profile?.first_name ?? "";
-        secondValue = b.profile?.first_name ?? "";
+        firstValue = a.profile?.first_name?.trim() ?? "";
+        secondValue = b.profile?.first_name?.trim() ?? "";
         break;
-
       case "last_name":
-        firstValue = a.profile?.last_name ?? "";
-        secondValue = b.profile?.last_name ?? "";
+        firstValue = a.profile?.last_name?.trim() ?? "";
+        secondValue = b.profile?.last_name?.trim() ?? "";
         break;
-
       case "email":
         firstValue = a.email;
         secondValue = b.email;
         break;
-
       case "department":
         firstValue = a?.department_name ?? "";
         secondValue = b?.department_name ?? "";
         break;
-
       case "position":
         firstValue = a?.position_name ?? "";
         secondValue = b?.position_name ?? "";
         break;
     }
-
+    const firstEmpty = !firstValue;
+    const secondEmpty = !secondValue;
+    if (sortField === "first_name" || sortField === "last_name") {
+      if (firstEmpty && secondEmpty) {
+        return 0;
+      }
+      if (firstEmpty) {
+        return 1;
+      }
+      if (secondEmpty) {
+        return -1;
+      }
+    }
     return sortOrder === "asc"
       ? firstValue.localeCompare(secondValue)
       : secondValue.localeCompare(firstValue);
