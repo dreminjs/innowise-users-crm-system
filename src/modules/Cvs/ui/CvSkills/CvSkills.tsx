@@ -8,8 +8,8 @@ import { Loading } from "@/shared/ui/Loading";
 import { SkillItem } from "@/modules/Skills/ui/SkillsList/SkillItem";
 import styles from "@/modules/Skills/ui/Skills.module.css";
 import { TMastery } from "@/modules/Skills/model/skill.interface";
-import { MenagementSkills } from "@/modules/Skills/ui/MenagementSkills/MenagementSkills";
 import { CvManagementSkills } from "@/modules/Cvs/ui/CvSkills/CvManagementSkills";
+import { CvSkillItem } from "@/modules/Cvs/ui/CvSkills/CvSkillItem";
 
 type Props = {
   cvId: string;
@@ -79,7 +79,7 @@ export const CvSkills = ({ cvId }: Props) => {
             <h3 className={styles.categoryName}>{groupName}</h3>
             <ul className={styles.skillsList}>
               {skills.map((skill, index) => (
-                <SkillItem
+                <CvSkillItem
                   key={index}
                   name={skill.name}
                   mastery={skill.mastery as TMastery}

@@ -36,7 +36,7 @@ export const useUpdateUser = () => {
     dto: Pick<TUpdateUserForm, "departmentId" | "positionId">,
   ) => {
     if (currentUserId) {
-      mutate({
+      await mutate({
         variables: {
           dto: {
             departmentId: dto.departmentId,

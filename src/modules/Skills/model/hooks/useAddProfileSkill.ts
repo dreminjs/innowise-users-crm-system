@@ -30,7 +30,7 @@ export const useAddProfileSkill = () => {
 
   const handleAddProfileSkill = async (dto: TSkillForm) => {
     if (currentUserId && skillsData?.skills) {
-      mutate({
+      await mutate({
         variables: {
           dto: {
             categoryId: dto.categoryId,
