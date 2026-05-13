@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="40a36604-e3ff-4515-bcc0-28aae9d5db12" name="Changes" comment="">
+<<<<<<< Updated upstream
       <change afterPath="$PROJECT_DIR$/src/modules/Cvs/ui/CvSkills/CvSkillItem.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/(dashboard)/users/[userId]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboard)/users/[userId]/page.tsx" afterDir="false" />
@@ -22,6 +23,19 @@
       <change beforePath="$PROJECT_DIR$/src/modules/Users/ui/UpdateUserInfo/UploadAvatar/UploadAvatar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/Users/ui/UpdateUserInfo/UploadAvatar/UploadAvatar.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/modules/Users/ui/UsersTable/UsersTableRow/UserActions/UserActions.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/Users/ui/UsersTable/UsersTableRow/UserActions/UserActions.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/styles/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/globals.css" afterDir="false" />
+=======
+      <change afterPath="$PROJECT_DIR$/src/modules/Projects/api/queries.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/Projects/hooks/useGetProjects.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/Projects/model/processProjects.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/Projects/pages/ProjectsPage/ProjectsPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_06-May-26_10_15_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_06-May-26_10_15__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graphql/fragment-masking.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphql/fragment-masking.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graphql/gql.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphql/gql.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graphql/graphql.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphql/graphql.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graphql/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphql/index.ts" afterDir="false" />
+>>>>>>> Stashed changes
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,6 +67,7 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+<<<<<<< Updated upstream
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
@@ -82,6 +97,46 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+=======
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "feature/projects",
+    "javascript.preferred.runtime.type.id": "node",
+    "js.debugger.nextJs.config.created.client": "true",
+    "js.debugger.nextJs.config.created.server": "true",
+    "js.linters.configure.manually.selectedeslint": "true",
+    "last_opened_file_path": "D:/программирование/dev/innowise-users-crm-system/src/shared/assets/icons",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.standard": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "npm.Next.js: server-side.executor": "Run",
+    "npm.codegen.executor": "Run",
+    "npm.lint.executor": "Run",
+    "prettierjs.PrettierConfiguration.Package": "D:\\программирование\\innowise-users-crm-system\\node_modules\\prettier",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "settings.javascript.linters.eslint",
+    "ts.external.directory.path": "D:\\программирование\\innowise-users-crm-system\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="QodanaReportsService">
+    <option name="descriptions">
+      <ReportDescription localRun="true" path="C:\Users\user\AppData\Local\Temp\qodana_output\qodana.sarif.json" reportGuid="f5ce70a6-bbf1-4af7-8c31-571822dd5577" reportId="innowise-users-crm-system/qodana/2026-05-07" />
+    </option>
+  </component>
+>>>>>>> Stashed changes
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\программирование\dev\innowise-users-crm-system\public" />
@@ -93,7 +148,7 @@
       <recent name="D:\программирование\dev\innowise-users-crm-system\public" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.Next.js: server-side">
+  <component name="RunManager" selected="npm.codegen">
     <configuration name="Next.js: debug client-side" type="JavascriptDebugType" uri="http://localhost:3000/">
       <method v="2" />
     </configuration>
@@ -137,7 +192,11 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
+<<<<<<< Updated upstream
         <option value="bundled-js-predefined-d6986cc7102b-09060db00ec0-JavaScript-WS-251.29188.39" />
+=======
+        <option value="bundled-js-predefined-d6986cc7102b-3bd3a6803838-JavaScript-WS-261.22158.274" />
+>>>>>>> Stashed changes
       </set>
     </attachedChunks>
   </component>
@@ -155,8 +214,12 @@
       <workItem from="1778136001547" duration="299000" />
       <workItem from="1778136342649" duration="6363000" />
       <workItem from="1778162803638" duration="3113000" />
+<<<<<<< Updated upstream
       <workItem from="1778483287599" duration="19565000" />
       <workItem from="1778592857468" duration="1522000" />
+=======
+      <workItem from="1778658642344" duration="3450000" />
+>>>>>>> Stashed changes
     </task>
     <servers />
   </component>

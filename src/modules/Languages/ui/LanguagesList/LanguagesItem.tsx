@@ -2,8 +2,6 @@ import { FC, useState } from "react";
 import { languageLevelColors } from "../../model/languages.constants";
 import { EditLanguageModal } from "../EditLanguageModal/EditLanguageModal";
 import { useLanguageStore } from "../../model/language.store";
-import { Proficiency } from "@/graphql/graphql";
-
 import styles from "../Languages.module.css";
 import clsx from "clsx";
 import { Proficiency } from "@/generated/graphql";

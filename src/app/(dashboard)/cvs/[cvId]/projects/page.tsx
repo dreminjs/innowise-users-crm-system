@@ -1,3 +1,5 @@
+import { ProjectsPage } from "@/modules/Projects/pages/ProjectsPage/ProjectsPage";
+
 export default function Page() {
-  return <div>Projects page</div>;
+  return <ProjectsPage />;
 }

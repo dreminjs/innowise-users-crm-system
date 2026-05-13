@@ -1,0 +1,36 @@
+.table {
+    width: 100%;
+    margin-top: 32px;
+    border-collapse: collapse;
+}
+
+.table th {
+    padding-bottom: 16px;
+    border-bottom: 1px solid #3f3f46;
+    text-align: left;
+}
+
+.table th button {
+    border: none;
+    background: transparent;
+    font-size: 14px;
+    font-weight: 600;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.row td {
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    color: #d4d4d8;
+    font-size: 14px;
+}
+
+.empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 320px;
+    color: #ffffff;
+    font-size: 18px;
+}

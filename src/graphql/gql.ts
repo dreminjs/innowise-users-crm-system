@@ -32,6 +32,7 @@ type Documents = {
     "\n  mutation updateProfileLanguage($dto: UpdateProfileLanguageInput!) {\n    updateProfileLanguage(language: $dto) {\n      id\n    }\n  }\n": typeof types.UpdateProfileLanguageDocument,
     "\n  query getProfileLanguages($userId: ID!) {\n    profile(userId: $userId) {\n      languages {\n        name\n        proficiency\n      }\n    }\n  }\n": typeof types.GetProfileLanguagesDocument,
     "\n  query getLanguages {\n    languages {\n      name\n    }\n  }\n": typeof types.GetLanguagesDocument,
+    "\n  query GetProjects {\n    projects {\n      id\n      name\n      internal_name\n      domain\n      start_date\n      end_date\n      description\n      environment\n    }\n  }\n": typeof types.GetProjectsDocument,
     "\n  mutation addProfileSkill($dto: AddProfileSkillInput!) {\n    addProfileSkill(skill: $dto) {\n      id\n    }\n  }\n": typeof types.AddProfileSkillDocument,
     "\n  mutation deleteProfileSkill($dto: DeleteProfileSkillInput!) {\n    deleteProfileSkill(skill: $dto) {\n      id\n    }\n  }\n": typeof types.DeleteProfileSkillDocument,
     "\n  mutation updateProfileSkill($dto: UpdateProfileSkillInput!) {\n    updateProfileSkill(skill: $dto) {\n      id\n    }\n  }\n": typeof types.UpdateProfileSkillDocument,
@@ -66,6 +67,7 @@ const documents: Documents = {
     "\n  mutation updateProfileLanguage($dto: UpdateProfileLanguageInput!) {\n    updateProfileLanguage(language: $dto) {\n      id\n    }\n  }\n": types.UpdateProfileLanguageDocument,
     "\n  query getProfileLanguages($userId: ID!) {\n    profile(userId: $userId) {\n      languages {\n        name\n        proficiency\n      }\n    }\n  }\n": types.GetProfileLanguagesDocument,
     "\n  query getLanguages {\n    languages {\n      name\n    }\n  }\n": types.GetLanguagesDocument,
+    "\n  query GetProjects {\n    projects {\n      id\n      name\n      internal_name\n      domain\n      start_date\n      end_date\n      description\n      environment\n    }\n  }\n": types.GetProjectsDocument,
     "\n  mutation addProfileSkill($dto: AddProfileSkillInput!) {\n    addProfileSkill(skill: $dto) {\n      id\n    }\n  }\n": types.AddProfileSkillDocument,
     "\n  mutation deleteProfileSkill($dto: DeleteProfileSkillInput!) {\n    deleteProfileSkill(skill: $dto) {\n      id\n    }\n  }\n": types.DeleteProfileSkillDocument,
     "\n  mutation updateProfileSkill($dto: UpdateProfileSkillInput!) {\n    updateProfileSkill(skill: $dto) {\n      id\n    }\n  }\n": types.UpdateProfileSkillDocument,
@@ -168,6 +170,10 @@ export function graphql(source: "\n  query getProfileLanguages($userId: ID!) {\n
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(source: "\n  query getLanguages {\n    languages {\n      name\n    }\n  }\n"): (typeof documents)["\n  query getLanguages {\n    languages {\n      name\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n  query GetProjects {\n    projects {\n      id\n      name\n      internal_name\n      domain\n      start_date\n      end_date\n      description\n      environment\n    }\n  }\n"): (typeof documents)["\n  query GetProjects {\n    projects {\n      id\n      name\n      internal_name\n      domain\n      start_date\n      end_date\n      description\n      environment\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
