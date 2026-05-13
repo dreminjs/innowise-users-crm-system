@@ -2,10 +2,17 @@
 
 import { useMutation } from "@apollo/client/react";
 import { DELETE_PROJECT } from "../api/mutations";
-import { GET_PROJECTS } from "../api/queries";
+import { GET_CV_PROJECTS } from "../api/queries";
 
-export const useDeleteProject = () => {
+export const useDeleteProject = (cvId: string) => {
   return useMutation(DELETE_PROJECT, {
-    refetchQueries: [GET_PROJECTS],
+    refetchQueries: [
+      {
+        query: GET_CV_PROJECTS,
+        variables: {
+          cvId,
+        },
+      },
+    ],
   });
 };

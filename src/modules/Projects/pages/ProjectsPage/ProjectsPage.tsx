@@ -46,6 +46,7 @@ export const ProjectsPage = ({ cvId }: Props) => {
         createAction={() => setIsCreateModalOpen(true)}
       />
       <ProjectsTable
+        cvId={cvId}
         projects={projects}
         loading={loading}
         sortField={sortField}

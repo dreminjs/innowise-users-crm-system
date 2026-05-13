@@ -13,7 +13,6 @@ export const GET_CV_PROJECTS = graphql(`
         end_date
         description
         environment
-        roles
         responsibilities
       }
     }
@@ -26,6 +25,20 @@ export const GET_PROJECT_OPTIONS = graphql(`
       id
       name
       domain
+      description
+      environment
+    }
+  }
+`);
+
+export const GET_CV_PROJECT = graphql(`
+  query GetCvProject($projectId: ID!) {
+    project(projectId: $projectId) {
+      id
+      name
+      domain
+      start_date
+      end_date
       description
       environment
     }

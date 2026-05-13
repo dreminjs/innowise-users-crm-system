@@ -1,12 +1,18 @@
 "use client";
 
 import { useMutation } from "@apollo/client/react";
-
 import { CREATE_PROJECT } from "../api/mutations";
-import { GET_PROJECTS } from "../api/queries";
+import { GET_CV_PROJECTS } from "../api/queries";
 
-export const useCreateProject = () => {
+export const useCreateProject = (cvId: string) => {
   return useMutation(CREATE_PROJECT, {
-    refetchQueries: [GET_PROJECTS],
+    refetchQueries: [
+      {
+        query: GET_CV_PROJECTS,
+        variables: {
+          cvId,
+        },
+      },
+    ],
   });
 };

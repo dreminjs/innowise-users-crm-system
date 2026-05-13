@@ -1,11 +1,6 @@
 import { GetCvProjectsQuery } from "@/graphql/graphql";
 
-export type ProjectSortField =
-  | "name"
-  | "internal_name"
-  | "domain"
-  | "start_date"
-  | "end_date";
+export type ProjectSortField = "name" | "domain" | "start_date" | "end_date";
 
 export type ProjectSortOrder = "asc" | "desc";
 export const processProjects = (

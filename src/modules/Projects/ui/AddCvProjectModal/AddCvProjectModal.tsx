@@ -11,7 +11,6 @@ type Props = {
 
 export const AddCvProjectModal = ({ cvId, open, onClose }: Props) => {
   if (!open) return null;
-
   return (
     <>
       <div className={styles.backdrop} onClick={onClose} />

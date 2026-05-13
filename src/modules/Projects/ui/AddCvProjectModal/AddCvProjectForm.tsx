@@ -16,7 +16,6 @@ export const AddCvProjectForm = ({ cvId, onClose }: Props) => {
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
   const [responsibilities, setResponsibilities] = useState("");
-  const [roles, setRoles] = useState("");
   const { data } = useQuery(GET_PROJECT_OPTIONS);
   const [addCvProject] = useAddCvProject(cvId);
 
@@ -35,7 +34,7 @@ export const AddCvProjectForm = ({ cvId, onClose }: Props) => {
             projectId,
             start_date: startDate,
             end_date: endDate || null,
-            roles: [roles],
+            roles: [],
             responsibilities: [responsibilities],
           },
         },
@@ -54,7 +53,7 @@ export const AddCvProjectForm = ({ cvId, onClose }: Props) => {
           <select
             value={projectId}
             onChange={(e) => setProjectId(e.target.value)}
-            className={styles.select}
+            className={styles.input}
           >
             <option value="">Select project</option>
             {data?.projects.map((project) => (
@@ -115,15 +114,6 @@ export const AddCvProjectForm = ({ cvId, onClose }: Props) => {
           className={styles.input}
         />
         <label className={styles.label}>Environment</label>
-      </div>
-      <div className={styles.field}>
-        <input
-          value={roles}
-          onChange={(e) => setRoles(e.target.value)}
-          placeholder=" "
-          className={styles.input}
-        />
-        <label className={styles.label}>Roles</label>
       </div>
       <div className={styles.field}>
         <textarea

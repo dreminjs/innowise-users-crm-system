@@ -10,8 +10,8 @@ import { ProjectTableRow } from "./ProjectTableRow";
 import styles from "./ProjectsTable.module.css";
 
 type Props = {
+  cvId: string;
   projects: NonNullable<NonNullable<GetCvProjectsQuery["cv"]>["projects"]>;
-
   loading: boolean;
   sortField: ProjectSortField;
   sortOrder: ProjectSortOrder;
@@ -24,6 +24,7 @@ export const ProjectsTable = ({
   sortField,
   sortOrder,
   onSort,
+  cvId,
 }: Props) => {
   if (loading) {
     return <div className={styles.empty}>Loading...</div>;
@@ -39,9 +40,6 @@ export const ProjectsTable = ({
         <tr>
           <th>
             <button onClick={() => onSort("name")}>Name</button>
-          </th>
-          <th>
-            <button onClick={() => onSort("internal_name")}>Name</button>
           </th>
           <th>
             <button onClick={() => onSort("domain")}>Domain</button>
@@ -60,7 +58,7 @@ export const ProjectsTable = ({
 
       <tbody>
         {projects.map((project) => (
-          <ProjectTableRow key={project.id} project={project} />
+          <ProjectTableRow key={project.id} project={project} cvId={cvId} />
         ))}
       </tbody>
     </table>

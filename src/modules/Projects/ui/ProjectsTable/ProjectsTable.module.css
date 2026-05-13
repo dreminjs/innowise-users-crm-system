@@ -15,14 +15,14 @@
     background: transparent;
     font-size: 14px;
     font-weight: 600;
-    color: #ffffff;
+    color: var(--color-text);
     cursor: pointer;
 }
 
 .row td {
     padding: 20px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-    color: #d4d4d8;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--color-text);
     font-size: 14px;
 }
 

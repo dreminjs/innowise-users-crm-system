@@ -8,11 +8,12 @@ import styles from "./ProjectActions.module.css";
 
 interface Props {
   projectId: string;
+  cvId: string;
 }
 
-export const ProjectActions: FC<Props> = ({ projectId }) => {
+export const ProjectActions: FC<Props> = ({ projectId, cvId }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [deleteProject] = useDeleteProject();
+  const [deleteProject] = useDeleteProject(cvId);
   const handleDelete = async () => {
     try {
       await deleteProject({
@@ -38,7 +39,10 @@ export const ProjectActions: FC<Props> = ({ projectId }) => {
       <Popover.Positioner>
         <Popover.Content width="140px" className={styles.content}>
           <div className={styles.menu}>
-            <Link href={`/projects/${projectId}`} className={styles.item}>
+            <Link
+              href={`/cvs/${cvId}/projects/${projectId}`}
+              className={styles.item}
+            >
               Edit Project
             </Link>
             <button

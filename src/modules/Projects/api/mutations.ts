@@ -14,9 +14,18 @@ export const CREATE_PROJECT = graphql(`
     }
   }
 `);
+
 export const ADD_CV_PROJECT = graphql(`
   mutation AddCvProject($project: AddCvProjectInput!) {
     addCvProject(project: $project) {
+      id
+    }
+  }
+`);
+
+export const UPDATE_CV_PROJECT = graphql(`
+  mutation UpdateCvProject($project: UpdateCvProjectInput!) {
+    updateCvProject(project: $project) {
       id
     }
   }
