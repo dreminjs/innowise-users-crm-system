@@ -3,7 +3,7 @@ import { GET_PROFILE_LANGUAGES } from "../api/queries";
 import { MenagementLanguages } from "./MenagementLanguages/MenagementLanguages";
 import { FC } from "react";
 import { Loading } from "@/shared/ui/Loading";
-import { LanguagesList } from "./LanguagesList/LanguagesList";
+import { LanguagesList } from "@/modules/Languages";
 import { Empty } from "@/shared/ui/Empty";
 
 interface ILanguagesProps {
@@ -23,7 +23,7 @@ export const Languages: FC<ILanguagesProps> = ({ usersLanguagesId }) => {
     <section>
       <>
         {data?.profile.languages.length ? (
-          <LanguagesList languagesData={data} isAvailableToChange={true} />
+          <LanguagesList languagesData={data} />
         ) : (
           <Empty />
         )}
