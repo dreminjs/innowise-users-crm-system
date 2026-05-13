@@ -1,4 +1,4 @@
-import { GetProjectsQuery } from "@/graphql/graphql";
+import { GetCvProjectsQuery } from "@/graphql/graphql";
 
 export type ProjectSortField =
   | "name"
@@ -8,15 +8,13 @@ export type ProjectSortField =
   | "end_date";
 
 export type ProjectSortOrder = "asc" | "desc";
-
 export const processProjects = (
-  projects: GetProjectsQuery["projects"],
+  projects: NonNullable<NonNullable<GetCvProjectsQuery["cv"]>["projects"]>,
   search: string,
   sortField: ProjectSortField,
   sortOrder: ProjectSortOrder,
 ) => {
   const normalized = search.toLowerCase();
-
   const filtered = projects.filter((project) => {
     return (
       project.name.toLowerCase().includes(normalized) ||
@@ -26,13 +24,10 @@ export const processProjects = (
 
   return filtered.sort((a, b) => {
     const first = (a[sortField] ?? "").toString().toLowerCase();
-
     const second = (b[sortField] ?? "").toString().toLowerCase();
-
     if (sortOrder === "asc") {
       return first.localeCompare(second);
     }
-
     return second.localeCompare(first);
   });
 };

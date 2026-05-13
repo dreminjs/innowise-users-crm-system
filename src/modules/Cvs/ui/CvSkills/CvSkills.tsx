@@ -5,7 +5,6 @@ import { useQuery } from "@apollo/client/react";
 import { GET_SKILL_CATEGORIES } from "@/modules/Skills/api/queries";
 import { GET_CV_SKILLS } from "@/modules/Cvs/api/queries";
 import { Loading } from "@/shared/ui/Loading";
-import { SkillItem } from "@/modules/Skills/ui/SkillsList/SkillItem";
 import styles from "@/modules/Skills/ui/Skills.module.css";
 import { TMastery } from "@/modules/Skills/model/skill.interface";
 import { CvManagementSkills } from "@/modules/Cvs/ui/CvSkills/CvManagementSkills";
@@ -83,7 +82,8 @@ export const CvSkills = ({ cvId }: Props) => {
                   key={index}
                   name={skill.name}
                   mastery={skill.mastery as TMastery}
-                  categoryId={skill.categoryId}
+                  categoryId={skill.categoryId!}
+                  cvId={cvId}
                 />
               ))}
             </ul>

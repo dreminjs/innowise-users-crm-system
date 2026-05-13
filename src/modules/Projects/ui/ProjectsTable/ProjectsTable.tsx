@@ -1,6 +1,6 @@
 "use client";
 
-import { GetProjectsQuery } from "@/graphql/graphql";
+import { GetCvProjectsQuery } from "@/graphql/graphql";
 import {
   ProjectSortField,
   ProjectSortOrder,
@@ -10,7 +10,8 @@ import { ProjectTableRow } from "./ProjectTableRow";
 import styles from "./ProjectsTable.module.css";
 
 type Props = {
-  projects: GetProjectsQuery["projects"];
+  projects: NonNullable<NonNullable<GetCvProjectsQuery["cv"]>["projects"]>;
+
   loading: boolean;
   sortField: ProjectSortField;
   sortOrder: ProjectSortOrder;

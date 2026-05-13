@@ -1,5 +1,10 @@
 import { ProjectsPage } from "@/modules/Projects/pages/ProjectsPage/ProjectsPage";
-
-export default function Page() {
-  return <ProjectsPage />;
+type Props = {
+  params: Promise<{
+    cvId: string;
+  }>;
+};
+export default async function Page({ params }: Props) {
+  const { cvId } = await params;
+  return <ProjectsPage cvId={cvId} />;
 }

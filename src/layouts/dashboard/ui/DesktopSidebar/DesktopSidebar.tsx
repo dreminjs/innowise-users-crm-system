@@ -38,7 +38,6 @@ export const DesktopSidebar = ({ collapsed, toggleAction }: Props) => {
       <nav className={styles.navigation}>
         {navigationItems.map((item) => {
           const isActive = pathname === item.href;
-          console.log(item.label);
           return (
             <Link
               key={item.href}
