@@ -1,26 +1,24 @@
-import { useQuery } from "@apollo/client/react";
-import { GET_PROFILE_SKILLS } from "../../api/queries";
 import { FC, useMemo } from "react";
 import { SkillItem } from "./SkillItem";
 import { TMastery } from "../../model/skill.interface";
-import { GetSkillCategoriesQuery } from "@/graphql/graphql";
+import {
+  GetProfileSkillsQuery,
+  GetSkillCategoriesQuery,
+} from "@/graphql/graphql";
+import { Empty } from "@/shared/ui/Empty";
 import styles from "../Skills.module.css";
 interface ISkillsListProps {
-  userId: string;
   categoriesData: GetSkillCategoriesQuery;
+  profileSkillsData: GetProfileSkillsQuery;
   isAvailableToChange: boolean;
 }
 
 export const SkillsList: FC<ISkillsListProps> = ({
-  userId,
   categoriesData,
   isAvailableToChange,
+  profileSkillsData,
 }) => {
-  const { data: profileData } = useQuery(GET_PROFILE_SKILLS, {
-    variables: { userId },
-  });
-
-  const skills = profileData?.profile?.skills ?? [];
+  const skills = profileSkillsData?.profile?.skills ?? [];
   const categories = categoriesData?.skillCategories ?? [];
 
   const grouped = useMemo(() => {
@@ -46,6 +44,8 @@ export const SkillsList: FC<ISkillsListProps> = ({
 
     return Object.values(result);
   }, [skills, categories]);
+
+  if (!grouped.length) return <Empty />;
 
   return (
     <>

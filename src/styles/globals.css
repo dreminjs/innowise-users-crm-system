@@ -2,14 +2,14 @@
   --bg: #f5f7fb;
   --bg-hover: #f3f4f6;
   --color-dark: #2e2e2e;
-  --color-primary: #C63031;
+  --color-primary: #c63031;
   --color-primary-hover: #992425;
   --color-text: #2e2e2e;
   --color-subtitle: #00000099;
   --link-color: #6b7280;
   --border-color: #e5e7eb;
   --bread-crumbs: rgba(0, 0, 0, 0.6);
-  --cancel-border:#00000099;
+  --cancel-border: #00000099;
   --cancel-text: #00000099;
 }
 

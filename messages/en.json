@@ -23,5 +23,15 @@
     "settings": "Settings",
     "profile": "Profile",
     "logout": "Logout"
+  },
+  "Skills": {
+    "addSkill": "ADD SKILL",
+    "editSkill": "EDIT SKILL",
+    "deleteSkill": "REMOVE SKILL",
+    "confirm": "CONFIRM"
+  },
+  "ConfirmButtons": {
+    "cancel": "CANCEL",
+    "delete": "DELETE"
   }
 }

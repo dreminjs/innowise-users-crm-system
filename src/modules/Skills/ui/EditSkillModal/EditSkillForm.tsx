@@ -10,6 +10,7 @@ import { FC } from "react";
 import { GET_SKILLS } from "@/modules/Skills/api/queries";
 import styles from "../Skills.module.css";
 import { useEditProfileSkill } from "../../model/hooks/useEditProfileSkill";
+import { useTranslations } from "next-intl";
 
 type TEditSkillFormProps = {
   onToggle: () => void;
@@ -37,6 +38,8 @@ export const EditSkillForm: FC<TEditSkillFormProps> = ({
       reset();
     });
   };
+
+  const t = useTranslations("Skills");
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={styles.addSkillForm}>
@@ -76,7 +79,7 @@ export const EditSkillForm: FC<TEditSkillFormProps> = ({
       />
       <ConfirmButtons
         onCancel={onToggle}
-        confirmLabel={"CONFIRM"}
+        confirmLabel={t("confirm")}
         confirmButtonType={"submit"}
       />
     </form>

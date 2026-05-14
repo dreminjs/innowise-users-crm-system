@@ -5,7 +5,6 @@
     minmax(0, 1fr);
   min-height: 100vh;
   transition: grid-template-columns 0.2s ease;
-
   background: var(--bg);
 }
 
@@ -17,7 +16,7 @@
 
 .content {
   min-width: 0;
-  padding: 0px 24px;
+  padding: 0 24px;
 }
 
 @media (max-width: 1023px) {

@@ -1,7 +1,7 @@
 import { FC, useState } from "react";
 import { Popover } from "@chakra-ui/react";
 import { UserAction } from "./UserAction";
-
+import styles from "./UserAction.module.css";
 interface IUserActionsProps {
   userId: string;
 }
@@ -17,7 +17,7 @@ export const UserActions: FC<IUserActionsProps> = ({ userId }) => {
       >
         <Popover.Trigger>⋮</Popover.Trigger>
         <Popover.Positioner>
-          <Popover.Content width={100} className="">
+          <Popover.Content width={100} className={styles.actionContainer}>
             <Popover.CloseTrigger />
             <ul>
               <UserAction to={`users/${userId}`}>Profile</UserAction>

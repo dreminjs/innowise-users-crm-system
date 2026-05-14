@@ -3,11 +3,11 @@
 import { useAuthForm } from "../model/hooks/useAuthForm";
 import { AuthButtons } from "./AuthButtons";
 import { AuthFormLayout } from "./AuthFormLayout";
-import styles from "./AuthForm.module.css";
 import { useSignin } from "../model/hooks/useSignin";
 import { FormField } from "@/shared/ui/FormField";
 import { TAuthFormData } from "../model/auth.types";
 import { useTranslations } from "next-intl";
+import styles from "./AuthForm.module.css";
 export const SigninForm = () => {
   const { register, handleSubmit, errors } = useAuthForm();
 

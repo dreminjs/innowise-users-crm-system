@@ -1,5 +1,6 @@
 import { FC } from "react";
 import styles from "./ConfirmButtons.module.css";
+import { useTranslations } from "next-intl";
 
 interface ConfirmButtonsProps {
   confirmLabel: string;
@@ -16,10 +17,11 @@ export const ConfirmButtons: FC<ConfirmButtonsProps> = ({
   onConfirm,
   onCancel,
 }) => {
+  const t = useTranslations("ConfirmButtons");
   return (
     <div className={styles.buttons}>
       <button type="button" className={styles.cancelButton} onClick={onCancel}>
-        CANCEL
+        {t("cancel")}
       </button>
       <button
         type={confirmButtonType}

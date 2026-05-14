@@ -2,6 +2,7 @@ import { Dialog } from "@chakra-ui/react";
 import { FC } from "react";
 import { AddSkillForm } from "./AddSkillForm";
 import styles from "../../Skills.module.css";
+import { useTranslations } from "next-intl";
 
 interface IAddSkillModalProps {
   open: boolean;
@@ -9,6 +10,7 @@ interface IAddSkillModalProps {
 }
 
 export const AddSkillModal: FC<IAddSkillModalProps> = ({ open, onToggle }) => {
+  const t = useTranslations("Skills");
   return (
     <Dialog.Root open={open} onOpenChange={onToggle}>
       <Dialog.Backdrop />
@@ -16,7 +18,7 @@ export const AddSkillModal: FC<IAddSkillModalProps> = ({ open, onToggle }) => {
         <Dialog.Content className={styles.addSkillModalContent}>
           <Dialog.Header className={styles.addSkillHeader}>
             <Dialog.Title className={styles.addSkillModalTitle}>
-              Add skill
+              {t("addSkill")}
             </Dialog.Title>
             <Dialog.CloseTrigger onClick={onToggle} />
           </Dialog.Header>

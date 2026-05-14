@@ -1,10 +1,10 @@
 .row {
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid var(--border-color);;
   transition: background 0.2s;
 }
 
 .row:hover {
-  background: #fafafa;
+  background: var(--bg);;
 }
 
 .row:last-child {
@@ -15,7 +15,7 @@
   padding: 10px 14px;
   vertical-align: middle;
   font-size: 14px;
-  color: #374151;
+  color: var(--color-text);;
 }
 .firstNameColumn div, .lastNameColumn div, .emailColumn div,
 .departmentColumn div, .positionColumn div{
@@ -23,7 +23,7 @@
   overflow: hidden;
 }
 .email {
-  color: #6b7280;
+  color: var(--color-text);;
 }
 
 .actions {
@@ -35,16 +35,16 @@
   background: transparent;
   cursor: pointer;
   font-size: 20px;
-  color: #6b7280;
+  color: var(--color-text);;
 }
 
 .actionButton:hover {
-  color: #111827;
+  color: var(--color-text);;
 }
 
 .userActionsItem {
   padding: 5px 15px;
-  color: white;
+  color: var(--color-text);;
   text-align: left;
 }
 
