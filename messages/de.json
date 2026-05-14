@@ -15,6 +15,11 @@
     "submitLabel": "REGISTRIEREN",
     "linkLabel": "Haben Sie bereits ein Konto?"
   },
+  "ForgotPassword": {
+    "title": "PASSWORT VERGESSEN?",
+    "resetPassword": "PASSWORT ZURÜCKSETZEN",
+    "subtitle": "Wir senden Ihnen Anweisungen zum Zurücksetzen Ihres Passworts."
+  },
   "DesktopNavigation": {
     "employees": "Mitarbeiter",
     "skills": "Fähigkeiten",

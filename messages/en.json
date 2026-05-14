@@ -15,6 +15,11 @@
     "submitLabel": "SIGN UP",
     "linkLabel": "Already have an account?"
   },
+  "ForgotPassword": {
+    "title": "FORGOT PASSWORD?",
+    "subtitle": "We will send you instructions to reset your password.",
+    "resetPassword": "RESET PASSWORD"
+  },
   "DesktopNavigation": {
     "employees": "Employees",
     "skills": "Skills",

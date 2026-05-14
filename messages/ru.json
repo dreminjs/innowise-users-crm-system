@@ -15,6 +15,11 @@
     "submitLabel": "ЗАРЕГИСТРИРОВАТЬСЯ",
     "linkLabel": "Уже есть аккаунт?"
   },
+  "ForgotPassword": {
+    "title": "ЗАБЫЛИ ПАРОЛЬ?",
+    "resetPassword": "СБРОСИТЬ ПАРОЛЬ",
+    "subtitle": "Мы отправим вам инструкции для сброса пароля."
+  },
   "DesktopNavigation": {
     "employees": "Сотрудники",
     "skills": "Навыки",
