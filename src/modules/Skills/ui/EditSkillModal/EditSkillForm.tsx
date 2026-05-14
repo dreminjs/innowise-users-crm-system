@@ -39,7 +39,7 @@ export const EditSkillForm: FC<TEditSkillFormProps> = ({
     });
   };
 
-  const t = useTranslations("Skills");
+  const t = useTranslations("ConfirmButtons");
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={styles.addSkillForm}>

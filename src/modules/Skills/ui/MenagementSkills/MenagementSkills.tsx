@@ -16,7 +16,7 @@ export const MenagementSkills: FC<IMenuagementSkillsProps> = ({
 }) => {
   const [isSkillModalOpen, setIsSkillModalOpen] = useState(false);
   const { toggleDeleteMode, isDeleteMode } = useSkillStore();
-  const t = useTranslations("Skills");
+  const t = useTranslations();
 
   return (
     <>
@@ -27,7 +27,7 @@ export const MenagementSkills: FC<IMenuagementSkillsProps> = ({
               className={styles.cancelDeleteButton}
               onClick={() => toggleDeleteMode()}
             >
-              {t("cancel")}
+              {t("ConfirmButtons.cancel")}
             </button>
             {<RemoveSkillsButton />}
           </>
@@ -35,12 +35,12 @@ export const MenagementSkills: FC<IMenuagementSkillsProps> = ({
           <>
             <AddNewButton
               onClick={() => setIsSkillModalOpen(true)}
-              label={t("addSkill")}
+              label={t("Skills.addSkill")}
             />
             {isAvailableToDelete && (
               <RemoveItemButton
                 onClick={() => toggleDeleteMode()}
-                label={t("deleteSkill")}
+                label={t("Skills.deleteSkill")}
               />
             )}
           </>

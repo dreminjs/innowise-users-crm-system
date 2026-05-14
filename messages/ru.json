@@ -27,11 +27,16 @@
   "Skills": {
     "addSkill": "ДОБАВИТЬ НАВЫК",
     "editSkill": "РЕДАКТИРОВАТЬ НАВЫК",
-    "deleteSkill": "УДАЛИТЬ НАВЫК",
-    "confirm": "ПОДТВЕРДИТЬ"
+    "deleteSkill": "УДАЛИТЬ НАВЫК"
   },
   "ConfirmButtons": {
     "delete": "УДАЛИТЬ",
-    "cancel": "ОТМЕНИТЬ"
+    "cancel": "ОТМЕНИТЬ",
+    "confirm": "ПОДТВЕРДИТЬ"
+  },
+  "Languages": {
+    "add": "ДОБАВИТЬ ЯЗЫК",
+    "edit": "РЕДАКТИРОВАТЬ ЯЗЫК",
+    "delete": "УДАЛИТЬ ЯЗЫК"
   }
 }

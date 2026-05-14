@@ -3,13 +3,16 @@ import { useState } from "react";
 import { AddNewButton } from "@/shared/ui/AddNewButton";
 import { RemoveItemButton } from "@/shared/ui/RemoveItemButton";
 import { useLanguageStore } from "../../model/language.store";
-import { RemoveLanguagesButton } from "./RemoveSkillsButton";
+import { RemoveLanguagesButton } from "./RemoveLanguagesButton";
 import { AddLanguageModal } from "./AddLanguageModal/AddLanguageModal";
 import styles from "../Languages.module.css";
+import { useTranslations } from "next-intl";
 
 export const MenagementLanguages = () => {
   const [isLanguageModalOpen, setIsLanguageModalOpen] = useState(false);
   const { toggleDeleteMode, isDeleteMode } = useLanguageStore();
+  const t = useTranslations();
+
   return (
     <>
       <div className={styles.menagementLanguages}>
@@ -19,7 +22,7 @@ export const MenagementLanguages = () => {
               className={styles.cancelDeleteButton}
               onClick={() => toggleDeleteMode()}
             >
-              CANCEL
+              {t("ConfirmButtons.cancel")}
             </button>
             <RemoveLanguagesButton />
           </>
@@ -27,11 +30,11 @@ export const MenagementLanguages = () => {
           <>
             <AddNewButton
               onClick={() => setIsLanguageModalOpen(true)}
-              label={"ADD LANGUAGE"}
+              label={t("Languages.add")}
             />
             <RemoveItemButton
               onClick={() => toggleDeleteMode()}
-              label={"REMOVE LANGUAGE"}
+              label={t("Languages.delete")}
             />
           </>
         )}

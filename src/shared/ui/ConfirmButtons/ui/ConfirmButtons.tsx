@@ -8,6 +8,7 @@ interface ConfirmButtonsProps {
   confirmButtonType: "button" | "submit";
   onConfirm?: () => void;
   onCancel?: () => void;
+  disabled?: boolean;
 }
 
 export const ConfirmButtons: FC<ConfirmButtonsProps> = ({
@@ -16,6 +17,7 @@ export const ConfirmButtons: FC<ConfirmButtonsProps> = ({
   confirmButtonType,
   onConfirm,
   onCancel,
+  disabled,
 }) => {
   const t = useTranslations("ConfirmButtons");
   return (
@@ -24,6 +26,7 @@ export const ConfirmButtons: FC<ConfirmButtonsProps> = ({
         {t("cancel")}
       </button>
       <button
+        disabled={disabled}
         type={confirmButtonType}
         className={styles.confirmButton}
         onClick={onConfirm}

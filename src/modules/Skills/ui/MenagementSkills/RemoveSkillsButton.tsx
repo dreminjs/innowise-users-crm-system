@@ -8,18 +8,20 @@ export const RemoveSkillsButton = () => {
 
   const { handleDeleteProfileSkills, loading } = useDeleteProfileSkills();
 
-  const t = useTranslations();
-
-  return (
-    <button
-      disabled={loading || Object.keys(deleteSkills).length === 0}
-      onClick={handleDeleteProfileSkills}
-      className={styles.removeSkillsButton}
-    >
-      <span className={styles.deleteConfirmButtonAmount}>
-        {Object.keys(deleteSkills).length}
-      </span>
-      <span>{loading ? "Loading..." : t("ConfirmButtons.delete")}</span>
-    </button>
-  );
+  const t = useTranslations("ConfirmButtons");
+  if (Object.keys(deleteSkills).length !== 0) {
+    return (
+      <button
+        disabled={loading || Object.keys(deleteSkills).length === 0}
+        onClick={handleDeleteProfileSkills}
+        className={styles.removeSkillsButton}
+      >
+        <span className={styles.deleteConfirmButtonAmount}>
+          {Object.keys(deleteSkills).length}
+        </span>
+        <span>{loading ? "Loading..." : t("delete")}</span>
+      </button>
+    );
+  }
+  return null;
 };

@@ -27,11 +27,16 @@
   "Skills": {
     "addSkill": "ADD SKILL",
     "editSkill": "EDIT SKILL",
-    "deleteSkill": "REMOVE SKILL",
-    "confirm": "CONFIRM"
+    "deleteSkill": "REMOVE SKILL"
   },
   "ConfirmButtons": {
     "cancel": "CANCEL",
-    "delete": "DELETE"
+    "delete": "DELETE",
+    "confirm": "CONFIRM"
+  },
+  "Languages": {
+    "add": "ADD LANGUAGE",
+    "edit": "EDIT LANGUAGE",
+    "delete": "REMOVE LANGUAGE"
   }
 }

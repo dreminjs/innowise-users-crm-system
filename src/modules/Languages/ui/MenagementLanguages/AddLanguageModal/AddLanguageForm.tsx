@@ -13,6 +13,7 @@ import { TLanguageForm } from "@/modules/Languages/model/languages.interface";
 import { useAddProfileLanguage } from "@/modules/Languages/model/hooks/useAddProfileLanguage";
 import { languageProfiency } from "@/modules/Languages/model/languages.constants";
 import styles from "../../Languages.module.css";
+import { useTranslations } from "next-intl";
 
 interface IEditLangugeFormProps {
   onToggle: () => void;
@@ -28,6 +29,8 @@ export const AddLanguageForm: FC<IEditLangugeFormProps> = ({
   const { data: profileData } = useQuery(GET_PROFILE_LANGUAGES, {
     variables: { userId: currentUserId },
   });
+  const t = useTranslations("ConfirmButtons");
+
   const {
     control,
     handleChangeProficiency,
@@ -88,7 +91,7 @@ export const AddLanguageForm: FC<IEditLangugeFormProps> = ({
       />
       <ConfirmButtons
         onCancel={onToggle}
-        confirmLabel={"CONFIRM"}
+        confirmLabel={t("confirm")}
         confirmButtonType={"submit"}
       />
     </form>

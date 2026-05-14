@@ -34,5 +34,10 @@
   "ConfirmButtons": {
     "cancel": "ABBRECHEN",
     "delete": "LÖSCHEN"
+  },
+  "Languages": {
+    "add": "ADD LANGUAGE",
+    "edit": "EDIT LANGUAGE",
+    "delete": "REMOVE LANGUAGE"
   }
 }
