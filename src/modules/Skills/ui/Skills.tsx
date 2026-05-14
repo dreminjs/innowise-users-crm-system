@@ -4,10 +4,14 @@ import { SkillsList } from "@/modules/Skills";
 import { useQuery } from "@apollo/client/react";
 import { GET_SKILL_CATEGORIES } from "../api/queries";
 import { Loading } from "@/shared/ui/Loading";
-import { Empty } from "@/shared/ui/Empty";
+import { FC } from "react";
 
-export const Skills = () => {
-  const currentUserId = useUserStore((state) => state.userId);
+interface ISkllsProps {
+  userSkillsId: string;
+  currentUserId: string;
+}
+
+export const Skills: FC<ISkllsProps> = ({ userSkillsId, currentUserId }) => {
   const {
     data: categoriesData,
     loading,
@@ -19,14 +23,12 @@ export const Skills = () => {
     <section>
       {currentUserId && (
         <>
-          {categoriesData?.skillCategories.length ? (
+          {categoriesData?.skillCategories.length && (
             <SkillsList
               userId={currentUserId}
               categoriesData={categoriesData}
-              isAvailableToChange={true}
+              isAvailableToChange={userSkillsId === currentUserId}
             />
-          ) : (
-            <Empty />
           )}
           <MenagementSkills />
         </>

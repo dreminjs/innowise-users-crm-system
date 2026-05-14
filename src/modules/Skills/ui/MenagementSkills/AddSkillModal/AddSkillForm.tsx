@@ -11,6 +11,7 @@ import { TSkillForm } from "@/modules/Skills/model/skill.interface";
 import { Mastery } from "@/generated/graphql";
 import { FC } from "react";
 import { useUserStore } from "@/application/store/user.store";
+import { useTranslations } from "next-intl";
 
 interface IEditSkillFormProps {
   onToggle: () => void;
@@ -31,7 +32,7 @@ export const AddSkillForm: FC<IEditSkillFormProps> = ({ onToggle }) => {
     handleSubmit,
     reset,
   } = useSkillForm();
-
+  const t = useTranslations("Skills");
   const onSubmit = async (data: TSkillForm) => {
     handleAddProfileSkill(data).then(() => {
       reset();
@@ -83,7 +84,7 @@ export const AddSkillForm: FC<IEditSkillFormProps> = ({ onToggle }) => {
       />
       <ConfirmButtons
         onCancel={onToggle}
-        confirmLabel={"CONFIRM"}
+        confirmLabel={t("confirm")}
         confirmButtonType={"submit"}
       />
     </form>

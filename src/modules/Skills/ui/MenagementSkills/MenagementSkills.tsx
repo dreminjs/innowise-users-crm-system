@@ -5,10 +5,12 @@ import { RemoveItemButton } from "@/shared/ui/RemoveItemButton";
 import { useSkillStore } from "../../model/skill.store";
 import { RemoveSkillsButton } from "./RemoveSkillsButton";
 import styles from "../Skills.module.css";
+import { useTranslations } from "next-intl";
 
 export const MenagementSkills = () => {
   const [isSkillModalOpen, setIsSkillModalOpen] = useState(false);
   const { toggleDeleteMode, isDeleteMode } = useSkillStore();
+  const t = useTranslations("Skills");
   return (
     <>
       <div className={styles.menagementSkills}>
@@ -18,7 +20,7 @@ export const MenagementSkills = () => {
               className={styles.cancelDeleteButton}
               onClick={() => toggleDeleteMode()}
             >
-              CANCEL
+              {t("cancel")}
             </button>
             <RemoveSkillsButton />
           </>
@@ -26,11 +28,11 @@ export const MenagementSkills = () => {
           <>
             <AddNewButton
               onClick={() => setIsSkillModalOpen(true)}
-              label={"ADD SKILL"}
+              label={t("addSkill")}
             />
             <RemoveItemButton
               onClick={() => toggleDeleteMode()}
-              label={"REMOVE SKILLS"}
+              label={t("deleteSkill")}
             />
           </>
         )}

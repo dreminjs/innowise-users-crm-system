@@ -70,11 +70,11 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 0 16px;
+  padding: 5px 25px;
 }
 
 .skillItem:hover {
-  background-color: var(--color-primary);
+  background-color: var(--bg-hover);
   border-radius: 6px;
 }
 .masteryLine {

@@ -5,6 +5,7 @@ import { SkillItem } from "./SkillItem";
 import { TMastery } from "../../model/skill.interface";
 import { GetSkillCategoriesQuery } from "@/graphql/graphql";
 import styles from "../Skills.module.css";
+import { Empty } from "@/shared/ui/Empty";
 interface ISkillsListProps {
   userId: string;
   categoriesData: GetSkillCategoriesQuery;
@@ -46,6 +47,8 @@ export const SkillsList: FC<ISkillsListProps> = ({
 
     return Object.values(result);
   }, [skills, categories]);
+
+  if (!grouped.length) return <Empty />;
 
   return (
     <>

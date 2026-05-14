@@ -23,5 +23,15 @@
     "settings": "Настройки",
     "profile": "Профиль",
     "logout": "Выйти"
+  },
+  "Skills": {
+    "addSkill": "ДОБАВИТЬ НАВЫК",
+    "editSkill": "РЕДАКТИРОВАТЬ НАВЫК",
+    "deleteSkill": "УДАЛИТЬ НАВЫК",
+    "confirm": "ПОДТВЕРДИТЬ"
+  },
+  "ConfirmButtons": {
+    "delete": "УДАЛИТЬ",
+    "cancel": "ОТМЕНИТЬ"
   }
 }

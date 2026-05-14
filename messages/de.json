@@ -23,5 +23,16 @@
     "settings": "Einstellungen",
     "profile": "Profil",
     "logout": "Abmelden"
+  },
+  "Skills": {
+    "addSkill": "FÄHIGKEIT HINZUFÜGEN",
+    "editSkill": "FÄHIGKEIT BEARBEITEN",
+    "deleteSkill": "FÄHIGKEIT LÖSCHEN",
+    "confirm": "FÄHIGKEIT LÖSCHEN",
+    "cancel": "ABBRECHEN"
+  },
+  "ConfirmButtons": {
+    "cancel": "ABBRECHEN",
+    "delete": "LÖSCHEN"
   }
 }

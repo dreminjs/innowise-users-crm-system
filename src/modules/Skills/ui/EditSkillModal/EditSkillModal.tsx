@@ -2,6 +2,7 @@ import { EditSkillForm } from "./EditSkillForm";
 import { TSkillForm } from "../../model/skill.interface";
 import { FC } from "react";
 import { AddItemModal } from "@/shared/ui/AddItemModal";
+import { useTranslations } from "next-intl";
 
 type TEditSkillModalProps = {
   open: boolean;
@@ -15,8 +16,9 @@ export const EditSkillModal: FC<TEditSkillModalProps> = ({
   categoryId,
   mastery,
 }) => {
+  const t = useTranslations("Skills");
   return (
-    <AddItemModal open={open} toggleAction={onToggle} title={"Edit Edit"}>
+    <AddItemModal open={open} toggleAction={onToggle} title={t("editSkill")}>
       {categoryId && (
         <EditSkillForm
           onToggle={onToggle}

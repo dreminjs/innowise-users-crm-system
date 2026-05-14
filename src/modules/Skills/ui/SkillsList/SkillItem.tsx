@@ -6,11 +6,11 @@ import {
   masteryValue,
 } from "../../model/skill.constants";
 import { Progress } from "@chakra-ui/react";
-import styles from "../Skills.module.css";
 import { useSkillStore } from "../../model/skill.store";
-import clsx from "clsx";
-import { EditSkillModal } from "../EditSkillModal/EditSkillModal";
 import { Mastery } from "@/generated/graphql";
+import { EditSkillModal } from "../EditSkillModal/EditSkillModal";
+import clsx from "clsx";
+import styles from "../Skills.module.css";
 
 interface ISkillItemProps {
   name: string;
