@@ -3,6 +3,7 @@
 import { FC, useState } from "react";
 import clsx from "clsx";
 import { Progress } from "@chakra-ui/react";
+import { Mastery } from "@/generated/graphql";
 import {
   masteryBgColor,
   masteryColorPalette,
@@ -11,7 +12,7 @@ import {
 import { TMastery } from "@/modules/Skills/model/skill.interface";
 import { useCvSkillStore } from "../../model/cv-skill.store";
 import styles from "@/modules/Skills/ui/Skills.module.css";
-import { AddCvSkillModal } from "@/modules/Cvs/ui/CvSkills/modals/AddCvSkillModal";
+import { EditCvSkillModal } from "@/modules/Cvs/ui/CvSkills/modals/EditCvSkillModal";
 
 interface Props {
   name: string;
@@ -20,14 +21,18 @@ interface Props {
   cvId: string;
 }
 
-export const CvSkillItem: FC<Props> = ({ name, mastery, cvId }) => {
+export const CvSkillItem: FC<Props> = ({ name, mastery, categoryId, cvId }) => {
   const { isDeleteMode, toggleSkill, deleteSkills } = useCvSkillStore();
+
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+
   const handleClick = () => {
     if (isDeleteMode) {
       toggleSkill(name);
+
       return;
     }
+
     setIsEditModalOpen(true);
   };
 
@@ -60,13 +65,17 @@ export const CvSkillItem: FC<Props> = ({ name, mastery, cvId }) => {
               />
             </Progress.Track>
           </Progress.Root>
+
           <span className={styles.skillName}>{name}</span>
         </button>
       </li>
-      <AddCvSkillModal
+
+      <EditCvSkillModal
         cvId={cvId}
         open={isEditModalOpen}
-        toggleAction={() => setIsEditModalOpen(false)}
+        onToggle={() => setIsEditModalOpen(false)}
+        categoryId={categoryId}
+        mastery={mastery as Mastery}
       />
     </>
   );
