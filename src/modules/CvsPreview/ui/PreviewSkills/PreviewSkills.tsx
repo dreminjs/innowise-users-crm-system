@@ -17,9 +17,16 @@ export const PreviewSkills = ({ skills }: Props) => {
       <table className={styles.table}>
         <tbody>
           {grouped.map(({ groupName, skills }) => (
-            <tr key={groupName}>
+            <tr key={groupName} className={styles.row}>
               <td className={styles.category}>{groupName}</td>
-              <td>{skills.map((skill) => skill.name).join(", ")}</td>
+              <td className={styles.skills}>
+                {skills.map((skill, index) => (
+                  <span key={skill.name}>
+                    {skill.name}
+                    {index !== skills.length - 1 && ", "}
+                  </span>
+                ))}
+              </td>
             </tr>
           ))}
         </tbody>

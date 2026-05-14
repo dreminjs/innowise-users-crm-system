@@ -1,34 +1,61 @@
 .header {
     display: flex;
     flex-direction: column;
-    gap: 32px;
+    gap: 28px;
 }
 
 .name {
-    font-size: 36px;
-    font-weight: 600;
+    margin: 0;
+    font-size: 34px;
+    font-weight: 500;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: #111827;
 }
 
 .position {
-    margin-top: 8px;
-    font-size: 14px;
+    margin-top: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
     color: #6b7280;
 }
 
 .info {
     display: grid;
-    grid-template-columns: 220px 1fr;
-    gap: 40px;
+    grid-template-columns: 170px 1fr;
+    gap: 32px;
+}
+
+.infoBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.infoSection {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
 }
 
 .info h3 {
-    margin-bottom: 12px;
-    font-size: 14px;
-    font-weight: 600;
+    margin: 0;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #111827;
 }
 
 .info p {
-    font-size: 14px;
-    line-height: 1.7;
+    margin: 0;
+    font-size: 12px;
+    line-height: 1.75;
+    color: #374151;
+}
+
+.description {
+    white-space: pre-line;
 }
