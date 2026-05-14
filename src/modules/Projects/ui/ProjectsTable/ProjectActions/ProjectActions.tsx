@@ -3,33 +3,32 @@
 import { FC, useState } from "react";
 import Link from "next/link";
 import { Popover } from "@chakra-ui/react";
+import { useDeleteProject } from "@/modules/Projects/hooks/useDeleteProject";
+import styles from "./ProjectActions.module.css";
 
-import styles from "./CvActions.module.css";
-import { useDeleteCv } from "@/modules/Cvs/hooks/useDeleteCv";
 interface Props {
+  projectId: string;
   cvId: string;
 }
 
-export const CvActions: FC<Props> = ({ cvId }) => {
+export const ProjectActions: FC<Props> = ({ projectId, cvId }) => {
   const [isOpen, setIsOpen] = useState(false);
-
-  const [deleteCv] = useDeleteCv();
-
+  const [deleteProject] = useDeleteProject(cvId);
   const handleDelete = async () => {
     try {
-      await deleteCv({
+      await deleteProject({
         variables: {
-          cv: {
-            cvId,
+          project: {
+            projectId,
           },
         },
       });
-
       setIsOpen(false);
     } catch (error) {
       throw error;
     }
   };
+
   return (
     <Popover.Root open={isOpen} onOpenChange={(e) => setIsOpen(e.open)}>
       <Popover.Trigger asChild>
@@ -37,19 +36,21 @@ export const CvActions: FC<Props> = ({ cvId }) => {
           ⋮
         </button>
       </Popover.Trigger>
-
       <Popover.Positioner>
         <Popover.Content width="140px" className={styles.content}>
           <div className={styles.menu}>
-            <Link href={`/cvs/${cvId}`} className={styles.item}>
-              Edit CV
+            <Link
+              href={`/cvs/${cvId}/projects/${projectId}`}
+              className={styles.item}
+            >
+              Edit Project
             </Link>
             <button
               type="button"
               onClick={handleDelete}
               className={styles.deleteItem}
             >
-              Delete CV
+              Delete Project
             </button>
           </div>
         </Popover.Content>

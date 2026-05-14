@@ -21,7 +21,7 @@ export const UsersPage = () => {
         <Loading />
       ) : (
         <>
-          <UsersSearch value={search} onChange={setSearch} />
+          <UsersSearch value={search} changeAction={setSearch} />
           <UsersTable
             users={users}
             sortField={sortField}

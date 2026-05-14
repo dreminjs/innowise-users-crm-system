@@ -1,0 +1,45 @@
+.trigger {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 18px;
+    line-height: 1;
+    color: #6b7280;
+}
+
+.content {
+    overflow: hidden;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    background: #ffffff;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+}
+
+.item,
+.deleteItem {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 12px 14px;
+    border: none;
+    background: transparent;
+    text-decoration: none;
+    text-align: left;
+    font-size: 14px;
+    cursor: pointer;
+    color: #374151;
+}
+
+.item:hover,
+.deleteItem:hover {
+    background: #f3f4f6;
+}
+
+.deleteItem {
+    color: #dc2626;
+}
