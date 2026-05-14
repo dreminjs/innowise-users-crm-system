@@ -2,6 +2,7 @@
 import { useUserStore } from "@/application/store/user.store";
 import { LanguagesList } from "@/modules/Languages";
 import { GET_PROFILE_LANGUAGES } from "@/modules/Languages/api/queries";
+import { Empty } from "@/shared/ui/Empty";
 import { Loading } from "@/shared/ui/Loading";
 import { useQuery } from "@apollo/client/react";
 import { usePathname } from "next/navigation";
@@ -17,7 +18,7 @@ export default function Page() {
 
   if (error) return <div>Error: {error.message}</div>;
 
-  if (!data?.profile.languages) return <div>Empty :(</div>;
+  if (!data?.profile.languages.length) return <Empty />;
   return (
     <>
       {data && (
