@@ -15,6 +15,7 @@ export const LanguagesList: FC<ILanguagesListProps> = ({ languagesData }) => {
           key={el.name}
           name={el.name}
           proficiency={el.proficiency as Proficiency}
+          isAvailableToChange={true}
         />
       ))}
     </ul>

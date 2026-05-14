@@ -4,7 +4,6 @@ import { SkillsList } from "./SkillsList/SkillsList";
 import { useQuery } from "@apollo/client/react";
 import { GET_SKILL_CATEGORIES } from "../api/queries";
 import { Loading } from "@/shared/ui/Loading";
-import styles from "./Skills.module.css";
 import { Empty } from "@/shared/ui/Empty";
 
 export const Skills = () => {
