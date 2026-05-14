@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { FC, useState } from "react";
 import { AddSkillModal } from "./AddSkillModal/AddSkillModal";
 import { AddNewButton } from "@/shared/ui/AddNewButton";
 import { RemoveItemButton } from "@/shared/ui/RemoveItemButton";
@@ -7,10 +7,17 @@ import { RemoveSkillsButton } from "./RemoveSkillsButton";
 import styles from "../Skills.module.css";
 import { useTranslations } from "next-intl";
 
-export const MenagementSkills = () => {
+interface IMenuagementSkillsProps {
+  isAvailableToDelete: boolean;
+}
+
+export const MenagementSkills: FC<IMenuagementSkillsProps> = ({
+  isAvailableToDelete,
+}) => {
   const [isSkillModalOpen, setIsSkillModalOpen] = useState(false);
   const { toggleDeleteMode, isDeleteMode } = useSkillStore();
   const t = useTranslations("Skills");
+
   return (
     <>
       <div className={styles.menagementSkills}>
@@ -22,7 +29,7 @@ export const MenagementSkills = () => {
             >
               {t("cancel")}
             </button>
-            <RemoveSkillsButton />
+            {<RemoveSkillsButton />}
           </>
         ) : (
           <>
@@ -30,10 +37,12 @@ export const MenagementSkills = () => {
               onClick={() => setIsSkillModalOpen(true)}
               label={t("addSkill")}
             />
-            <RemoveItemButton
-              onClick={() => toggleDeleteMode()}
-              label={t("deleteSkill")}
-            />
+            {isAvailableToDelete && (
+              <RemoveItemButton
+                onClick={() => toggleDeleteMode()}
+                label={t("deleteSkill")}
+              />
+            )}
           </>
         )}
       </div>

@@ -25,11 +25,11 @@ export const SkillItem: FC<ISkillItemProps> = ({
   categoryId,
   isAvailableToChange,
 }) => {
-  const { isDeleteMode, addDeleteSkill, deleteSkills } = useSkillStore();
+  const { isDeleteMode, toggleDeleteSkill, deleteSkills } = useSkillStore();
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const handleClick = () => {
     if (isDeleteMode) {
-      addDeleteSkill(name);
+      toggleDeleteSkill(name);
     } else {
       setIsEditModalOpen(true);
     }
