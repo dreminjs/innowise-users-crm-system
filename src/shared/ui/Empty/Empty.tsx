@@ -1,6 +1,8 @@
+import { useTranslations } from "next-intl";
 import styles from "./Empty.module.css";
 
 export const Empty = () => {
-  console.log("Empty!!");
-  return <div className={styles.empty}>Empty :(</div>;
+  const t = useTranslations();
+
+  return <div className={styles.empty}>{t("empty")}</div>;
 };

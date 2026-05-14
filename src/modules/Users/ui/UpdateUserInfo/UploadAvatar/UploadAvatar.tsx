@@ -36,10 +36,13 @@ export const UploadAvatar: FC<IUploadAvatarProps> = ({
       type: file.type,
     });
   };
-
+  const handleClearAvatar = () => {
+    setPreviewUrl(null);
+  };
   return (
     <div className={styles.uploadAvatar}>
       <Avatar
+        onClearAvatar={handleClearAvatar}
         avatarUrl={previewUrl || avatarUrl}
         firstLetter={firstLetter}
         isAvailable={isUploadAvailable}

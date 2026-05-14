@@ -44,5 +44,6 @@
     "add": "ADD LANGUAGE",
     "edit": "EDIT LANGUAGE",
     "delete": "REMOVE LANGUAGE"
-  }
+  },
+  "empty": "Empty :("
 }
