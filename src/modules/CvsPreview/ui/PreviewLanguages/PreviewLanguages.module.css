@@ -4,7 +4,7 @@
     font-weight: 500;
     line-height: 1.1;
     letter-spacing: -0.02em;
-    color: #111827;
+    color: var(--color-text);;
 }
 
 .list {
@@ -26,11 +26,11 @@
     font-size: 12px;
     font-weight: 600;
     line-height: 1.4;
-    color: #111827;
+    color: var(--color-text);;
 }
 
 .list span {
     font-size: 11px;
     line-height: 1.5;
-    color: #6b7280;
+    color:var(--color-text);;
 }

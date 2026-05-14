@@ -5,7 +5,7 @@
     min-width: 140px;
     height: 40px;
     padding: 0 20px;
-    border: 1px solid #ef4444;
+    border: 1px solid var(--color-primary);;
     border-radius: 999px;
     background: transparent;
     cursor: pointer;

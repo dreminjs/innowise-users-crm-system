@@ -4,7 +4,7 @@
     font-weight: 500;
     line-height: 1.1;
     letter-spacing: -0.02em;
-    color: #111827;
+    color: var(--color-text);
 }
 
 .list {
@@ -18,7 +18,7 @@
     grid-template-columns: 2fr 1fr;
     gap: 32px;
     padding-bottom: 28px;
-    border-bottom: 1px solid #e5e7eb;
+    border-bottom: 1px solid var(--border-color);
     break-inside: avoid;
     page-break-inside: avoid;
 }
@@ -47,7 +47,7 @@
     margin: 0;
     font-size: 12px;
     line-height: 1.75;
-    color: #374151;
+    color: var(--color-text);;
 }
 
 .project strong {
@@ -58,7 +58,7 @@
     line-height: 1.4;
     letter-spacing: 0.04em;
     text-transform: uppercase;
-    color: #111827;
+    color: var(--color-text);;
 }
 
 .project ul {
@@ -72,12 +72,12 @@
 .project li {
     font-size: 12px;
     line-height: 1.7;
-    color: #374151;
+    color: var(--color-text);;
 }
 
 .environment {
     margin-top: 6px;
     font-size: 11px;
     line-height: 1.6;
-    color: #6b7280;
+    color: var(--color-text);;
 }
