@@ -36,13 +36,17 @@ export const CvPreviewPage = ({ cvId }: Props) => {
       <div className={styles.actions}>
         <PreviewExportButton previewRef={previewRef} />
       </div>
-      <div ref={previewRef} id="cv-preview" className={styles.preview}>
+      <div
+        ref={previewRef}
+        id="cv-preview"
+        className={`${styles.preview} preview-root`}
+      >
         <PreviewHeader cv={cv} />
-        <div className={styles.content}>
+        <div className={`${styles.content} preview-content`}>
           <div className={styles.sidebar}>
             <PreviewLanguages languages={cv.languages ?? []} />
           </div>
-          <div className={styles.main}>
+          <div className={`${styles.main} preview-main`}>
             <PreviewProjects projects={cv.projects ?? []} />
             <PreviewSkills skills={cv.skills ?? []} />
           </div>

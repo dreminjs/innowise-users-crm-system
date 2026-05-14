@@ -8,10 +8,13 @@ type Props = {
 export const PreviewProjects = ({ projects }: Props) => {
   return (
     <section>
-      <h2 className={styles.title}>Projects</h2>
+      <h2 className={`${styles.title} preview-title`}>Projects</h2>
       <div className={styles.list}>
         {projects?.map((project) => (
-          <article key={project.id} className={styles.project}>
+          <article
+            key={project.id}
+            className={`${styles.project} project-block`}
+          >
             <div className={styles.projectInfo}>
               <div>
                 <h3>{project.project?.name}</h3>

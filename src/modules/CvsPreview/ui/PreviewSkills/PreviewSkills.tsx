@@ -13,7 +13,7 @@ export const PreviewSkills = ({ skills }: Props) => {
   const grouped = groupSkillsByCategory(skills, data?.skillCategories ?? []);
   return (
     <section>
-      <h2 className={styles.title}>Professional skills</h2>
+      <h2 className={`${styles.title} preview-title`}>Professional skills</h2>
       <table className={styles.table}>
         <tbody>
           {grouped.map(({ groupName, skills }) => (

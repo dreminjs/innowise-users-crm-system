@@ -8,7 +8,7 @@ type Props = {
 export const PreviewLanguages = ({ languages }: Props) => {
   return (
     <section>
-      <h2 className={styles.title}>Languages</h2>
+      <h2 className={`${styles.title} preview-title`}>Languages</h2>
       <ul className={styles.list}>
         {languages.map((language) => (
           <li key={language.name} className={styles.item}>

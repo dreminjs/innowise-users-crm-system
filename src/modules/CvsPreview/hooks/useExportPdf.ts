@@ -2,11 +2,12 @@
 
 import { useMutation } from "@apollo/client/react";
 import { EXPORT_PDF } from "../api/mutations";
+import { buildPrintableHtml } from "@/modules/CvsPreview/lib/buildPrintableHtml";
 
 export const useExportPdf = () => {
   const [exportPdf, state] = useMutation(EXPORT_PDF);
-
-  const handleExportPdf = async (html: string) => {
+  const handleExportPdf = async (content: string) => {
+    const html = buildPrintableHtml(content);
     const result = await exportPdf({
       variables: {
         pdf: {
@@ -33,7 +34,6 @@ export const useExportPdf = () => {
     const blob = new Blob([byteArray], {
       type: "application/pdf",
     });
-
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.href = url;
@@ -41,7 +41,6 @@ export const useExportPdf = () => {
     link.click();
     URL.revokeObjectURL(url);
   };
-
   return {
     handleExportPdf,
     ...state,
