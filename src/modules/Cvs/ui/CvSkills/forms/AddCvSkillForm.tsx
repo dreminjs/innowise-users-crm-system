@@ -4,6 +4,7 @@ import { Controller } from "react-hook-form";
 import { useQuery } from "@apollo/client/react";
 import { Mastery } from "@/generated/graphql";
 import { GET_SKILLS } from "@/modules/Skills/api/queries";
+import { GET_CV_SKILLS } from "@/modules/Cvs/api/queries";
 import { CustomSelect } from "@/shared/ui/CustomSelect";
 import { ConfirmButtons } from "@/shared/ui/ConfirmButtons";
 import { skillLevels } from "@/modules/Skills/model/skill.constants";
@@ -19,6 +20,12 @@ type Props = {
 export const AddCvSkillForm = ({ cvId, toggleAction }: Props) => {
   const [addCvSkill, { loading }] = useAddCvSkill(cvId);
   const { data: skillsData } = useQuery(GET_SKILLS);
+  const { data: cvSkillsData } = useQuery(GET_CV_SKILLS, {
+    variables: {
+      cvId,
+    },
+  });
+
   const {
     control,
     handleSubmit,
@@ -30,7 +37,12 @@ export const AddCvSkillForm = ({ cvId, toggleAction }: Props) => {
     categoryId: "",
     mastery: Mastery.Novice,
   });
-
+  const existingSkillIds =
+    cvSkillsData?.cv?.skills.map((skill) => skill.categoryId) || [];
+  const availableSkills =
+    skillsData?.skills.filter(
+      (skill) => !existingSkillIds.includes(skill.id),
+    ) || [];
   const onSubmit = async (data: {
     categoryId: string | null;
     mastery: Mastery | null;
@@ -38,7 +50,7 @@ export const AddCvSkillForm = ({ cvId, toggleAction }: Props) => {
     if (!data.categoryId || !data.mastery) {
       return;
     }
-    const selectedSkill = skillsData?.skills.find(
+    const selectedSkill = availableSkills.find(
       (skill) => skill.id === data.categoryId,
     );
     if (!selectedSkill) {
@@ -55,7 +67,6 @@ export const AddCvSkillForm = ({ cvId, toggleAction }: Props) => {
           },
         },
       });
-
       reset();
       toggleAction();
     } catch (error) {
@@ -70,12 +81,10 @@ export const AddCvSkillForm = ({ cvId, toggleAction }: Props) => {
         render={({ field }) => (
           <CustomSelect
             label={"Skill"}
-            options={
-              skillsData?.skills.map((el) => ({
-                value: el.id,
-                label: el.name,
-              })) || []
-            }
+            options={availableSkills.map((el) => ({
+              value: el.id,
+              label: el.name,
+            }))}
             value={field.value}
             onChange={handleChangeSkill}
           />
