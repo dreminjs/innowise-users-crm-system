@@ -22,11 +22,12 @@
   height: 120px;
   border-radius: 50%;
   flex-shrink: 0;
-  background-color: var(--bg);;
+  background-color: var(--bg);
   display: flex;
   justify-content: center;
   align-items: center;
-  color: var(--color-text);;
+  color: var(--color-text);
+  border: 1px solid var(--border-color);
 }
 
 .avatar {
