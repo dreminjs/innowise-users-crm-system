@@ -1,0 +1,34 @@
+.title {
+    margin-bottom: 32px;
+    font-size: 32px;
+    font-weight: 500;
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.project {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid #e5e7eb;
+    break-inside: avoid;
+    page-break-inside: avoid;
+}
+
+.project h3 {
+    margin-bottom: 16px;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--color-primary);
+}
+
+.project p,
+.project li {
+    font-size: 14px;
+    line-height: 1.7;
+}

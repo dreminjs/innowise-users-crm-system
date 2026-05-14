@@ -1,0 +1,25 @@
+.title {
+    margin-bottom: 32px;
+    font-size: 32px;
+    font-weight: 500;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table tr {
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.table td {
+    padding: 16px 0;
+    font-size: 14px;
+}
+
+.category {
+    width: 240px;
+    font-weight: 600;
+    color: var(--color-primary);
+}

@@ -1,0 +1,21 @@
+import { GetCvQuery } from "@/graphql/graphql";
+import styles from "./PreviewLanguages.module.css";
+type Props = {
+  languages: GetCvQuery["cv"]["languages"];
+};
+
+export const PreviewLanguages = ({ languages }: Props) => {
+  return (
+    <section>
+      <h2 className={styles.title}>Languages</h2>
+      <ul className={styles.list}>
+        {languages.map((language) => (
+          <li key={language.name}>
+            <strong>{language.name}</strong>
+            <span>{language.proficiency}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+};
