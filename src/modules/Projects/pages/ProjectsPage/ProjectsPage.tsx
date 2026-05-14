@@ -20,16 +20,18 @@ export const ProjectsPage = ({ cvId }: Props) => {
   const { data, loading } = useGetProjects(cvId);
   const [search, setSearch] = useState("");
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
-  const [sortField, setSortField] = useState<ProjectSortField>("end_date");
-  const [sortOrder, setSortOrder] = useState<ProjectSortOrder>("desc");
+  const [sortField, setSortField] = useState<ProjectSortField>("name");
+  const [sortOrder, setSortOrder] = useState<ProjectSortOrder>("asc");
   const handleSort = (field: ProjectSortField) => {
     if (field === sortField) {
       setSortOrder((prev) => (prev === "asc" ? "desc" : "asc"));
       return;
     }
+
     setSortField(field);
     setSortOrder("asc");
   };
+
   const projects = useMemo(() => {
     return processProjects(
       data?.cv?.projects ?? [],
@@ -38,6 +40,7 @@ export const ProjectsPage = ({ cvId }: Props) => {
       sortOrder,
     );
   }, [data, search, sortField, sortOrder]);
+
   return (
     <section className={styles.page}>
       <ProjectsSearch
