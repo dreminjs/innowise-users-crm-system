@@ -21,7 +21,6 @@ export const Skills: FC<ISkllsProps> = ({ userSkillsId, currentUserId }) => {
   });
   if (loading) return <Loading />;
   if (error) return <div>Error: {error.message}</div>;
-  console.log(profileData?.profile?.skills);
   return (
     <section>
       {currentUserId && (
