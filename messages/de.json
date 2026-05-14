@@ -45,5 +45,9 @@
     "edit": "EDIT LANGUAGE",
     "delete": "REMOVE LANGUAGE"
   },
-  "empty": "Empty :("
+  "empty": "Empty :(",
+  "profile": {
+    "uploadTitle": "Avatar hochladen",
+    "uploadDescription": "png, jpg oder gif, maximal 0,5 MB"
+  }
 }

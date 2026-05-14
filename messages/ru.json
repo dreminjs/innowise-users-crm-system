@@ -44,5 +44,9 @@
     "edit": "РЕДАКТИРОВАТЬ ЯЗЫК",
     "delete": "УДАЛИТЬ ЯЗЫК"
   },
-  "empty": "Пусто :("
+  "empty": "Пусто :(",
+  "profile": {
+    "uploadTitle": "Загрузите аватар",
+    "uploadDescription": "png, jpg or gif не более 0.5MB"
+  }
 }

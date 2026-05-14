@@ -44,5 +44,9 @@
     "edit": "EDIT LANGUAGE",
     "delete": "REMOVE LANGUAGE"
   },
-  "empty": "Empty :("
+  "empty": "Empty :(",
+  "profile": {
+    "uploadTitle": "Upload your avatar",
+    "uploadDescription": "png, jpg or gif no more than 0.5MB"
+  }
 }
