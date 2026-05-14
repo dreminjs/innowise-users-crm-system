@@ -1,10 +1,11 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useQuery } from "@apollo/client/react";
 import styles from "./EditCvProjectPage.module.css";
-import { useUpdateCvProject } from "@/modules/Projects/hooks/useUpdateProject";
 import { GET_CV_PROJECTS } from "@/modules/Projects/api/queries";
+import { useUpdateCvProject } from "@/modules/Projects/hooks/useUpdateProject";
+import { useRouter } from "next/navigation";
 
 type Props = {
   cvId: string;
@@ -17,46 +18,50 @@ export const EditCvProjectPage = ({ cvId, projectId }: Props) => {
       cvId,
     },
   });
-
+  const router = useRouter();
   const [updateCvProject, { loading: saving }] = useUpdateCvProject(cvId);
-
   const project = useMemo(() => {
-    return data?.cv?.projects?.find((project) => project.id === projectId);
+    return data?.cv?.projects?.find(
+      (project) => project.project.id === projectId,
+    );
   }, [data, projectId]);
 
-  const [isInitialized, setIsInitialized] = useState(false);
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
   const [responsibilities, setResponsibilities] = useState("");
 
-  if (project && !isInitialized) {
+  useEffect(() => {
+    if (!project) {
+      return;
+    }
     setStartDate(project.start_date ?? "");
     setEndDate(project.end_date ?? "");
     setResponsibilities(project.responsibilities?.[0] ?? "");
-    setIsInitialized(true);
-  }
+  }, [project]);
+
   const handleSubmit = async () => {
-    if (!project || !project.id) return;
-    try {
-      await updateCvProject({
-        variables: {
-          project: {
-            cvId,
-            projectId: project.id,
-            start_date: startDate,
-            end_date: endDate || null,
-            roles: [],
-            responsibilities: [responsibilities],
-          },
-        },
-      });
-    } catch (error) {
-      throw error;
+    if (!project) {
+      return;
     }
+    await updateCvProject({
+      variables: {
+        project: {
+          cvId,
+          projectId: project.project.id,
+          start_date: startDate,
+          end_date: endDate || null,
+          roles: project.roles ?? [],
+          responsibilities: responsibilities ? [responsibilities] : [],
+        },
+      },
+    });
+    router.replace(`/cvs/${cvId}/projects`);
   };
+
   if (loading) {
     return <div className={styles.loaderWrapper}>Loading...</div>;
   }
+
   if (!project) {
     return <div className={styles.notFound}>Project not found</div>;
   }
@@ -65,19 +70,25 @@ export const EditCvProjectPage = ({ cvId, projectId }: Props) => {
     <div className={styles.page}>
       <div className={styles.container}>
         <div className={styles.header}>
-          <div>
-            <h1 className={styles.title}>Edit Project</h1>
-          </div>
+          <h1 className={styles.title}>Edit Project</h1>
         </div>
         <div className={styles.card}>
           <div className={styles.grid}>
             <div className={styles.field}>
               <label className={styles.label}>Project</label>
-              <input value={project.name} disabled className={styles.input} />
+              <input
+                value={project.project.name}
+                disabled
+                className={styles.input}
+              />
             </div>
             <div className={styles.field}>
               <label className={styles.label}>Domain</label>
-              <input value={project.domain} disabled className={styles.input} />
+              <input
+                value={project.project.domain}
+                disabled
+                className={styles.input}
+              />
             </div>
             <div className={styles.field}>
               <label className={styles.label}>Start Date</label>
@@ -101,7 +112,7 @@ export const EditCvProjectPage = ({ cvId, projectId }: Props) => {
           <div className={styles.field}>
             <label className={styles.label}>Description</label>
             <textarea
-              value={project.description}
+              value={project.project.description}
               disabled
               className={styles.textarea}
             />
@@ -109,7 +120,7 @@ export const EditCvProjectPage = ({ cvId, projectId }: Props) => {
           <div className={styles.field}>
             <label className={styles.label}>Environment</label>
             <input
-              value={project.environment.join(", ")}
+              value={project.project.environment.join(", ")}
               disabled
               className={styles.input}
             />
@@ -121,15 +132,15 @@ export const EditCvProjectPage = ({ cvId, projectId }: Props) => {
               onChange={(e) => setResponsibilities(e.target.value)}
               className={styles.textarea}
             />
-            <div className={styles.actions}>
-              <button
-                onClick={handleSubmit}
-                disabled={saving || !project}
-                className={styles.saveButton}
-              >
-                {saving ? "Saving..." : "Save"}
-              </button>
-            </div>
+          </div>
+          <div className={styles.actions}>
+            <button
+              onClick={handleSubmit}
+              disabled={saving}
+              className={styles.saveButton}
+            >
+              {saving ? "Saving..." : "Save"}
+            </button>
           </div>
         </div>
       </div>

@@ -5,7 +5,6 @@ import {
   ProjectSortField,
   ProjectSortOrder,
 } from "../../model/processProjects";
-
 import { ProjectTableRow } from "./ProjectTableRow";
 import styles from "./ProjectsTable.module.css";
 
@@ -31,36 +30,55 @@ export const ProjectsTable = ({
   }
 
   if (!projects.length) {
-    return <div className={styles.empty}>No results found</div>;
+    return <div className={styles.empty}>No projects found</div>;
   }
 
   return (
-    <table className={styles.table}>
-      <thead>
-        <tr>
-          <th>
-            <button onClick={() => onSort("name")}>Name</button>
-          </th>
-          <th>
-            <button onClick={() => onSort("domain")}>Domain</button>
-          </th>
-          <th>
-            <button onClick={() => onSort("start_date")}>Start date</button>
-          </th>
-          <th>
-            <button onClick={() => onSort("end_date")}>
-              End date
-              {sortField === "end_date" && (sortOrder === "asc" ? " ↑" : " ↓")}
-            </button>
-          </th>
-        </tr>
-      </thead>
-
-      <tbody>
-        {projects.map((project) => (
-          <ProjectTableRow key={project.id} project={project} cvId={cvId} />
-        ))}
-      </tbody>
-    </table>
+    <div className={styles.wrapper}>
+      <table className={styles.table}>
+        <thead>
+          <tr>
+            <th>
+              <button onClick={() => onSort("name")}>
+                Name
+                {sortField === "name" && (
+                  <span>{sortOrder === "asc" ? " ↑" : " ↓"}</span>
+                )}
+              </button>
+            </th>
+            <th>
+              <button onClick={() => onSort("domain")}>
+                Domain
+                {sortField === "domain" && (
+                  <span>{sortOrder === "asc" ? " ↑" : " ↓"}</span>
+                )}
+              </button>
+            </th>
+            <th>
+              <button onClick={() => onSort("start_date")}>
+                Start date
+                {sortField === "start_date" && (
+                  <span>{sortOrder === "asc" ? " ↑" : " ↓"}</span>
+                )}
+              </button>
+            </th>
+            <th>
+              <button onClick={() => onSort("end_date")}>
+                End date
+                {sortField === "end_date" && (
+                  <span>{sortOrder === "asc" ? " ↑" : " ↓"}</span>
+                )}
+              </button>
+            </th>
+            <th />
+          </tr>
+        </thead>
+        <tbody>
+          {projects.map((project) => (
+            <ProjectTableRow key={project.id} project={project} cvId={cvId} />
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 };

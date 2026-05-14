@@ -1,7 +1,6 @@
 "use client";
 
 import { AddItemModal } from "@/shared/ui/AddItemModal";
-
 import { AddCvSkillForm } from "../forms/AddCvSkillForm";
 
 type Props = {

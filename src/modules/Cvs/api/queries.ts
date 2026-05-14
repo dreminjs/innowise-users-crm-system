@@ -40,10 +40,17 @@ export const GET_CV = graphql(`
         id
         email
         role
+        position {
+          name
+        }
+        profile {
+          full_name
+        }
       }
       skills {
         name
         mastery
+        categoryId
       }
       languages {
         name
@@ -51,15 +58,18 @@ export const GET_CV = graphql(`
       }
       projects {
         id
-        name
-        internal_name
-        description
-        domain
         start_date
         end_date
-        environment
-        roles
         responsibilities
+        roles
+        project {
+          id
+          name
+          internal_name
+          domain
+          description
+          environment
+        }
       }
     }
   }

@@ -1,13 +1,32 @@
+"use client";
+
 import { FC, useMemo } from "react";
 import { Portal, Select, createListCollection } from "@chakra-ui/react";
 import styles from "./CustomSelect.module.css";
+
+type SelectOption = {
+  label: string;
+  value: string;
+};
+
+type SelectGroup = {
+  label: string;
+  items: SelectOption[];
+};
+
 interface ICustomSelectProps {
   label: string;
-  options: { label: string; value: string }[];
+  options: SelectOption[] | SelectGroup[];
   disabled?: boolean;
   value: string | null;
   onChange?: (value: string) => void;
 }
+
+const isGroupedOptions = (
+  options: SelectOption[] | SelectGroup[],
+): options is SelectGroup[] => {
+  return options.length > 0 && "items" in options[0];
+};
 
 export const CustomSelect: FC<ICustomSelectProps> = ({
   label,
@@ -16,9 +35,19 @@ export const CustomSelect: FC<ICustomSelectProps> = ({
   value,
   onChange,
 }) => {
+  const flatItems = useMemo(() => {
+    if (!options.length) {
+      return [];
+    }
+    if (isGroupedOptions(options)) {
+      return options.flatMap((group) => group.items);
+    }
+    return options;
+  }, [options]);
+
   const collection = useMemo(
-    () => createListCollection({ items: options }),
-    [options],
+    () => createListCollection({ items: flatItems }),
+    [flatItems],
   );
 
   return (
@@ -43,16 +72,32 @@ export const CustomSelect: FC<ICustomSelectProps> = ({
       <Portal>
         <Select.Positioner>
           <Select.Content>
-            {collection.items.map((item) => (
-              <Select.Item
-                item={item}
-                className={styles.selectItem}
-                key={item.value}
-              >
-                {item.label}
-                <Select.ItemIndicator />
-              </Select.Item>
-            ))}
+            {isGroupedOptions(options)
+              ? options.map((group) => (
+                  <Select.ItemGroup key={group.label}>
+                    <Select.ItemGroupLabel>{group.label}</Select.ItemGroupLabel>
+                    {group.items.map((item) => (
+                      <Select.Item
+                        item={item}
+                        className={styles.selectItem}
+                        key={item.value}
+                      >
+                        {item.label}
+                        <Select.ItemIndicator />
+                      </Select.Item>
+                    ))}
+                  </Select.ItemGroup>
+                ))
+              : options.map((item) => (
+                  <Select.Item
+                    item={item}
+                    className={styles.selectItem}
+                    key={item.value}
+                  >
+                    {item.label}
+                    <Select.ItemIndicator />
+                  </Select.Item>
+                ))}
           </Select.Content>
         </Select.Positioner>
       </Portal>

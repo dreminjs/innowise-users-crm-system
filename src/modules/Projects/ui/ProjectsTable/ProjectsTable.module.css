@@ -1,16 +1,28 @@
-.table {
+.wrapper {
     width: 100%;
     margin-top: 32px;
+    overflow-x: auto;
+}
+
+.table {
+    width: 100%;
     border-collapse: collapse;
 }
 
 .table th {
-    padding-bottom: 16px;
-    border-bottom: 1px solid #3f3f46;
+    padding: 16px;
+    border-bottom: 1px solid var(--border-color);
     text-align: left;
+    vertical-align: middle;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-text);
 }
 
 .table th button {
+    display: flex;
+    align-items: center;
+    gap: 4px;
     border: none;
     background: transparent;
     font-size: 14px;
@@ -20,10 +32,84 @@
 }
 
 .row td {
-    padding: 20px 0;
-    border-bottom: 1px solid var(--border-color);
-    color: var(--color-text);
+    padding: 24px 16px 12px;
+    vertical-align: top;
     font-size: 14px;
+    color: var(--color-text);
+}
+
+.row td:first-child {
+    width: 35%;
+}
+
+.row td:nth-child(2) {
+    width: 22%;
+}
+
+.row td:nth-child(3) {
+    width: 18%;
+}
+
+.row td:nth-child(4) {
+    width: 18%;
+}
+
+.actions {
+    width: 60px;
+    text-align: right;
+}
+
+.detailsRow td {
+    padding: 0 16px 24px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.details {
+    width: 100%;
+}
+
+.projectName {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.description {
+    margin-bottom: 16px;
+    color: #a1a1aa;
+    line-height: 1.7;
+    font-size: 14px;
+}
+
+.responsibilities {
+    margin: 0 0 16px;
+    padding-left: 18px;
+}
+
+.responsibilities li {
+    margin-bottom: 6px;
+    line-height: 1.6;
+    color: var(--color-text);
+}
+
+.environment {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.tag {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 28px;
+    padding: 4px 12px;
+    border-radius: 999px;
+    border: 1px solid var(--border-color);
+    font-size: 12px;
+    line-height: 1;
+    color: var(--color-text);
+    background: rgba(255, 255, 255, 0.04);
 }
 
 .empty {
@@ -31,6 +117,6 @@
     align-items: center;
     justify-content: center;
     height: 320px;
-    color: #ffffff;
+    color: var(--color-text);
     font-size: 18px;
 }
