@@ -31,7 +31,7 @@
 .textarea {
     width: 100%;
     padding: 18px 14px;
-    border: 1px solid #5b5b5b;
+    border: 1px solid var(--border-color);
     outline: none;
     background: transparent;
     color: var(--color-text);
@@ -85,5 +85,5 @@
 
 .empty {
     padding: 40px;
-    color: #ffffff;
+    color: var(--color-text);
 }

@@ -46,8 +46,8 @@
 }
 
 .active {
-  background: #0000000a;
-  color: #111827;
+  background: var(--bg);;
+  color: var(--color-text);
 }
 
 .footer {
@@ -82,6 +82,7 @@
 
 .userInfo {
   display: flex;
+  color:var(--color-text);
   flex-direction: column;
   align-items: flex-start;
 }

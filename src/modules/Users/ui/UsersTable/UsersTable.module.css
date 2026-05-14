@@ -1,8 +1,8 @@
 .tableWrapper {
     width: 100%;
-    border: 1px solid #e5e7eb;
+    border: 1px solid var(--border-color);
     border-radius: 20px;
-    background: #ffffff;
+    background: var(--bg);
 }
 
 .table {
@@ -12,19 +12,19 @@
 }
 
 .header {
-    border-bottom: 1px solid #e5e7eb;
+    border-bottom: 1px solid var(--border-color);
 }
 
 .header th {
     position: sticky;
     top: 0;
     z-index: 2;
-    background: #ffffff;
+    background: var(--bg);
     padding: 15px 16px;
     text-align: left;
     font-size: 14px;
     font-weight: 600;
-    color: #6b7280;
+    color: var(--color-text);
     white-space: nowrap;
 }
 
@@ -37,11 +37,11 @@
     cursor: pointer;
     font-size: 14px;
     font-weight: 600;
-    color: #374151;
+    color: var(--color-text);
 }
 
 .sortButton:hover {
-    color: #111827;
+    color: var(--color-subtitle);
 }
 
 .avatarColumn {
@@ -72,12 +72,12 @@
 }
 
 .row {
-    border-bottom: 1px solid #e5e7eb;
+    border-bottom: 1px solid var(--border-color);
     transition: background 0.2s;
 }
 
 .row:hover {
-    background: #fafafa;
+    background: var(--bg-hover);
 }
 
 .row:last-child {
@@ -88,11 +88,11 @@
     padding: 16px;
     vertical-align: middle;
     font-size: 14px;
-    color: #374151;
+    color: var(--color-text);
 }
 
 .email {
-    color: #6b7280;
+    color: var(--color-text);;
 }
 
 .cellContent {
@@ -108,6 +108,6 @@
     min-height: 300px;
     border-radius: 20px;
     border: 1px solid #e5e7eb;
-    background: #ffffff;
-    color: #6b7280;
+    background: var(--bg);;
+    color: var(--color-text);;
 }
