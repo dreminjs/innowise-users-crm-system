@@ -6,6 +6,8 @@ import { useForgotPassword } from "../model/hooks/useForgotPassword";
 import { AuthFormLayout } from "./AuthFormLayout";
 import { AuthButtons } from "./AuthButtons";
 import { FormField } from "@/shared/ui/FormField";
+import { useTranslations } from "next-intl";
+import styles from "./AuthForm.module.css";
 
 export const ForgotPasswordForm = () => {
   const {
@@ -17,13 +19,13 @@ export const ForgotPasswordForm = () => {
   });
 
   const { onSubmit, loading } = useForgotPassword();
-
+  const t = useTranslations();
   return (
     <AuthFormLayout
-      title={"ЗАБЫЛИ ПАРОЛЬ"}
+      title={t("ForgotPassword.title")}
       subtitle={"Мы отправили вам инструкции по сбросу пароля"}
     >
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form className={styles.forgotPassword} onSubmit={handleSubmit(onSubmit)}>
         <FormField<TForgotPasswordFormData>
           type={"email"}
           register={register}
@@ -32,8 +34,8 @@ export const ForgotPasswordForm = () => {
           error={errors.email?.message}
         />
         <AuthButtons
-          submitLabel="СБРОСИТЬ ПАРОЛЬ"
-          linkLabel="ОТМЕНА"
+          submitLabel={t("ForgotPassword.resetPassword")}
+          linkLabel={t("ConfirmButtons.cancel")}
           linkUrl="/auth/signin"
           isLoading={loading}
         />

@@ -6,15 +6,20 @@ interface IAvatarProps {
   avatarUrl: string | null;
   firstLetter: string;
   isAvailable: boolean;
+  onClearAvatar: () => void;
 }
 
 export const Avatar: FC<IAvatarProps> = ({
   avatarUrl,
   firstLetter,
   isAvailable,
+  onClearAvatar,
 }) => {
   const { deleteAvatar } = useDeleteAvatar();
-
+  const handleDeleteAvatar = () => {
+    onClearAvatar();
+    deleteAvatar();
+  };
   return (
     <div className={styles.avatarContainer}>
       {avatarUrl ? (
@@ -27,7 +32,10 @@ export const Avatar: FC<IAvatarProps> = ({
             alt="avatar"
           />
           {isAvailable && (
-            <button className={styles.deleteAvatar} onClick={deleteAvatar}>
+            <button
+              className={styles.deleteAvatar}
+              onClick={handleDeleteAvatar}
+            >
               ❌
             </button>
           )}

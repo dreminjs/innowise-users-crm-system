@@ -55,3 +55,9 @@
 .authFormLink {
   color: #767676;
 }
+
+.forgotPassword {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}

@@ -5,6 +5,7 @@ import { navItems } from "../model/nav.items";
 import styles from "./AuthHeader.module.css";
 export const AuthHeader = () => {
   const pathname = usePathname();
+
   if (pathname === "/auth/forgot-password") return null;
   return (
     <header className={styles.authHeader}>
@@ -12,7 +13,7 @@ export const AuthHeader = () => {
         {navItems.map((el, idx) => (
           <NavigationItem
             key={idx}
-            isActive={pathname === el.to}
+            isActive={pathname.includes(el.to)}
             label={el.label}
             to={el.to}
           />

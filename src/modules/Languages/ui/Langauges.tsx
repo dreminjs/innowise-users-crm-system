@@ -23,7 +23,7 @@ export const Languages: FC<ILanguagesProps> = ({ usersLanguagesId }) => {
     <section>
       <>
         {data?.profile.languages.length ? (
-          <LanguagesList languagesData={data} />
+          <LanguagesList languagesData={data} isAvailableToChange={true} />
         ) : (
           <Empty />
         )}

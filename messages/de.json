@@ -15,6 +15,11 @@
     "submitLabel": "REGISTRIEREN",
     "linkLabel": "Haben Sie bereits ein Konto?"
   },
+  "ForgotPassword": {
+    "title": "PASSWORT VERGESSEN?",
+    "resetPassword": "PASSWORT ZURÜCKSETZEN",
+    "subtitle": "Wir senden Ihnen Anweisungen zum Zurücksetzen Ihres Passworts."
+  },
   "DesktopNavigation": {
     "employees": "Mitarbeiter",
     "skills": "Fähigkeiten",
@@ -34,5 +39,15 @@
   "ConfirmButtons": {
     "cancel": "ABBRECHEN",
     "delete": "LÖSCHEN"
+  },
+  "Languages": {
+    "add": "ADD LANGUAGE",
+    "edit": "EDIT LANGUAGE",
+    "delete": "REMOVE LANGUAGE"
+  },
+  "empty": "Empty :(",
+  "profile": {
+    "uploadTitle": "Avatar hochladen",
+    "uploadDescription": "png, jpg oder gif, maximal 0,5 MB"
   }
 }

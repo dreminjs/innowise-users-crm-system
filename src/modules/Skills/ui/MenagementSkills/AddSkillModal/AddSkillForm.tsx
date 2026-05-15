@@ -32,7 +32,7 @@ export const AddSkillForm: FC<IEditSkillFormProps> = ({ onToggle }) => {
     handleSubmit,
     reset,
   } = useSkillForm();
-  const t = useTranslations("Skills");
+  const t = useTranslations("ConfirmButtons");
   const onSubmit = async (data: TSkillForm) => {
     handleAddProfileSkill(data).then(() => {
       reset();

@@ -7,6 +7,7 @@ import { toBase64 } from "../../../model/utils/toBase64";
 import styles from "../UpdateUserInfo.module.css";
 import UploadAvatarIcon from "../../../../../../public/upload-avatar.svg";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 interface IUploadAvatarProps {
   avatarUrl: string;
   firstLetter: string;
@@ -19,8 +20,9 @@ export const UploadAvatar: FC<IUploadAvatarProps> = ({
   isUploadAvailable,
 }) => {
   const userId = useUserStore((state) => state.userId);
-  const { onSubmit } = useUploadAvatar(userId!);
+  const { onSubmit, loading } = useUploadAvatar(userId!);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+  const t = useTranslations("profile");
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file || !userId) return;
@@ -28,7 +30,6 @@ export const UploadAvatar: FC<IUploadAvatarProps> = ({
     const objectUrl = URL.createObjectURL(file);
     setPreviewUrl(objectUrl);
     const base64 = await toBase64(file);
-    console.log(base64);
     await onSubmit({
       userId,
       base64,
@@ -36,10 +37,13 @@ export const UploadAvatar: FC<IUploadAvatarProps> = ({
       type: file.type,
     });
   };
-
+  const handleClearAvatar = () => {
+    setPreviewUrl(null);
+  };
   return (
     <div className={styles.uploadAvatar}>
       <Avatar
+        onClearAvatar={handleClearAvatar}
         avatarUrl={previewUrl || avatarUrl}
         firstLetter={firstLetter}
         isAvailable={isUploadAvailable}
@@ -47,7 +51,10 @@ export const UploadAvatar: FC<IUploadAvatarProps> = ({
       {isUploadAvailable && (
         <FileUpload.Root accept={["image/png", "image/jpeg", "image/gif"]}>
           <FileUpload.HiddenInput onChange={handleFileChange} />
-          <FileUpload.Trigger className={styles.uploadAvatarTrigger}>
+          <FileUpload.Trigger
+            disabled={loading}
+            className={styles.uploadAvatarTrigger}
+          >
             <div className={styles.uploadAvatarInner}>
               <Image
                 src={UploadAvatarIcon}
@@ -56,11 +63,11 @@ export const UploadAvatar: FC<IUploadAvatarProps> = ({
                 height={23}
               />
               <span className={styles.uploadAvatarText}>
-                Upload avatar image
+                {t("uploadTitle")}
               </span>
             </div>
             <span className={styles.uploadAvatarSubtext}>
-              png, jpg or gif no more than 0.5MB
+              {t("uploadDescription")}
             </span>
           </FileUpload.Trigger>
         </FileUpload.Root>
