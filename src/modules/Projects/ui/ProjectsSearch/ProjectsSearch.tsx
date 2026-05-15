@@ -4,17 +4,21 @@ import { SearchToolbar } from "@/shared/ui/SearchToolbar/SearchToolbar";
 
 type Props = {
   value: string;
-  onChange: (value: string) => void;
+  changeAction: (value: string) => void;
   createAction: () => void;
 };
 
-export const ProjectsSearch = ({ value, onChange, createAction }: Props) => {
+export const ProjectsSearch = ({
+  value,
+  changeAction,
+  createAction,
+}: Props) => {
   return (
     <SearchToolbar
       value={value}
-      onChange={onChange}
+      changeAction={changeAction}
       buttonLabel="ADD PROJECT"
-      onCreate={createAction}
+      createAction={createAction}
     />
   );
 };

@@ -64,6 +64,7 @@ export const MobileBottomNav = () => {
         isOpen={isMenuOpen}
         userId={userId!}
         closeAction={() => setIsMenuOpen(false)}
+        collapsed={false}
       />
     </nav>
   );

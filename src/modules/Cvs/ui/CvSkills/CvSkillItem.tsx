@@ -73,7 +73,7 @@ export const CvSkillItem: FC<Props> = ({ name, mastery, categoryId, cvId }) => {
       <EditCvSkillModal
         cvId={cvId}
         open={isEditModalOpen}
-        onToggle={() => setIsEditModalOpen(false)}
+        toggleAction={() => setIsEditModalOpen(false)}
         categoryId={categoryId}
         mastery={mastery as Mastery}
       />

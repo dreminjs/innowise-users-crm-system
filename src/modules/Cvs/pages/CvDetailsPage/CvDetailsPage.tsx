@@ -1,10 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import styles from "./CvDetailsPage.module.css";
 import { useGetCv } from "@/modules/Cvs/hooks/useGetCv";
 import { useUpdateCv } from "@/modules/Cvs/hooks/useUpdateCv";
-import styles from "./CvDetailsPage.module.css";
+import { ConfirmButtons } from "@/shared/ui/ConfirmButtons";
+import { ModalField } from "@/shared/ui/ModalField/ModalField";
 
 type Props = {
   cvId: string;
@@ -21,16 +23,21 @@ export const CvDetailsPage = ({ cvId }: Props) => {
   const { data, loading } = useGetCv(cvId);
   const [updateCv, { loading: updating }] = useUpdateCv();
   const cv = data?.cv;
-  const [form, setForm] = useState<FormState | null>(null);
-  if (cv && form === null) {
+  const [form, setForm] = useState<FormState>({
+    name: "",
+    education: "",
+    description: "",
+  });
+  useEffect(() => {
+    if (!cv) return;
     setForm({
       name: cv.name,
       education: cv.education ?? "",
       description: cv.description,
     });
-  }
+  }, [cv]);
+
   const handleSubmit = async () => {
-    if (!form) return;
     try {
       await updateCv({
         variables: {
@@ -44,64 +51,62 @@ export const CvDetailsPage = ({ cvId }: Props) => {
       });
       router.push("/cvs");
     } catch (error) {
-      console.error(error);
+      throw error;
     }
   };
-  if (loading || !form) {
+  if (loading) {
     return <div className={styles.empty}>Loading...</div>;
   }
   return (
     <section className={styles.page}>
       <div className={styles.form}>
-        <div className={styles.field}>
-          <span className={styles.label}>Name</span>
+        <ModalField label="Name" active={Boolean(form.name)}>
           <input
             value={form.name}
             onChange={(e) =>
               setForm((prev) => ({
-                ...prev!,
+                ...prev,
                 name: e.target.value,
               }))
             }
-            className={styles.input}
+            placeholder=" "
           />
-        </div>
-        <div className={styles.field}>
-          <span className={styles.label}>Education</span>
+        </ModalField>
+        <ModalField label="Education" active={Boolean(form.education)}>
           <input
             value={form.education}
             onChange={(e) =>
               setForm((prev) => ({
-                ...prev!,
+                ...prev,
                 education: e.target.value,
               }))
             }
-            className={styles.input}
+            placeholder=" "
           />
-        </div>
-        <div className={styles.field}>
-          <span className={styles.label}>Description</span>
+        </ModalField>
+        <ModalField
+          label="Description"
+          textarea
+          active={Boolean(form.description)}
+        >
           <textarea
             value={form.description}
             onChange={(e) =>
               setForm((prev) => ({
-                ...prev!,
+                ...prev,
                 description: e.target.value,
               }))
             }
-            className={styles.textarea}
+            placeholder=" "
           />
-        </div>
-        <div className={styles.actions}>
-          <button
-            type="button"
-            onClick={handleSubmit}
-            disabled={updating}
-            className={styles.button}
-          >
-            UPDATE
-          </button>
-        </div>
+        </ModalField>
+        <ConfirmButtons
+          confirmLabel={updating ? "Updating..." : "Update"}
+          confirmButtonType="button"
+          onConfirm={handleSubmit}
+          onCancel={() => router.push("/cvs")}
+          disabled={updating}
+        />
       </div>
     </section>
   );

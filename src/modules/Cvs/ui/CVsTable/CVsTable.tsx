@@ -3,7 +3,7 @@
 import { GetCvsQuery } from "@/graphql/graphql";
 import { CvSortField, CvSortOrder } from "../../model/lib/processCvs";
 import { CVsTableRow } from "./CVsTableRow";
-import styles from "./CvsTable.module.css";
+import styles from "./CVsTable.module.css";
 
 type Props = {
   cvs: GetCvsQuery["cvs"];
