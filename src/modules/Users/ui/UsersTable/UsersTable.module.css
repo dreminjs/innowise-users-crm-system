@@ -1,6 +1,5 @@
 .tableWrapper {
     width: 100%;
-    border: 1px solid var(--border-color);
     border-radius: 20px;
     background: var(--bg);
 }
