@@ -15,12 +15,12 @@ import styles from "@/modules/Skills/ui/Skills.module.css";
 
 type Props = {
   cvId: string;
-  onToggle: () => void;
+  toggleAction: () => void;
 } & TSkillForm;
 
 export const EditCvSkillForm: FC<Props> = ({
   cvId,
-  onToggle,
+  toggleAction,
   mastery,
   categoryId,
 }) => {
@@ -55,7 +55,7 @@ export const EditCvSkillForm: FC<Props> = ({
         },
       },
     });
-    onToggle();
+    toggleAction();
     reset();
   };
 
@@ -98,7 +98,7 @@ export const EditCvSkillForm: FC<Props> = ({
       />
 
       <ConfirmButtons
-        onCancel={onToggle}
+        onCancel={toggleAction}
         confirmLabel={"CONFIRM"}
         confirmButtonType={"submit"}
       />

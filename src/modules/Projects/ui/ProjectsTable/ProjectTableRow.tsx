@@ -18,11 +18,7 @@ export const ProjectTableRow = ({ project, cvId }: Props) => {
         <td>{project.start_date}</td>
         <td>{project.end_date ?? "Till now"}</td>
         <td className={styles.actions}>
-          <ProjectActions
-            cvId={cvId}
-            cvProjectId={project.id}
-            projectId={project.project.id}
-          />
+          <ProjectActions cvId={cvId} projectId={project.project.id} />
         </td>
       </tr>
       <tr className={styles.detailsRow}>

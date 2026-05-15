@@ -11,7 +11,7 @@ export const UsersSearch = ({ value, changeAction }: Props) => {
   return (
     <SearchToolbar
       value={value}
-      onChange={changeAction}
+      changeAction={changeAction}
       placeholder="Search users..."
     />
   );

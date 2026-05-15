@@ -12,9 +12,9 @@ export const CVsToolbar = ({ value, changeAction, createAction }: Props) => {
   return (
     <SearchToolbar
       value={value}
-      onChange={changeAction}
+      changeAction={changeAction}
       buttonLabel="ADD CV"
-      onCreate={createAction}
+      createAction={createAction}
     />
   );
 };

@@ -8,7 +8,7 @@ import { EditCvSkillForm } from "./EditCvSkillForm";
 type Props = {
   cvId: string;
   open: boolean;
-  onToggle: () => void;
+  toggleAction: () => void;
   categoryId: string | null;
   mastery: Mastery;
 };
@@ -16,16 +16,16 @@ type Props = {
 export const EditCvSkillModal: FC<Props> = ({
   cvId,
   open,
-  onToggle,
+  toggleAction,
   categoryId,
   mastery,
 }) => {
   return (
-    <AddItemModal open={open} toggleAction={onToggle} title={"Edit Skill"}>
+    <AddItemModal open={open} toggleAction={toggleAction} title={"Edit Skill"}>
       {categoryId && (
         <EditCvSkillForm
           cvId={cvId}
-          onToggle={onToggle}
+          toggleAction={toggleAction}
           categoryId={categoryId}
           mastery={mastery}
         />

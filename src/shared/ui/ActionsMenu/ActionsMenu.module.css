@@ -20,8 +20,7 @@
     flex-direction: column;
 }
 
-.item,
-.deleteItem {
+.item {
     display: flex;
     align-items: center;
     width: 100%;
@@ -31,15 +30,14 @@
     text-decoration: none;
     text-align: left;
     font-size: 14px;
-    cursor: pointer;
     color: var(--color-text);
+    cursor: pointer;
 }
 
-.item:hover,
-.deleteItem:hover {
+.item:hover {
     background: var(--bg);
 }
 
-.deleteItem {
+.danger {
     color: var(--color-primary);
 }

@@ -14,7 +14,7 @@ type Props = {
   loading: boolean;
   sortField: ProjectSortField;
   sortOrder: ProjectSortOrder;
-  onSort: (field: ProjectSortField) => void;
+  sortAction: (field: ProjectSortField) => void;
 };
 
 export const ProjectsTable = ({
@@ -22,7 +22,7 @@ export const ProjectsTable = ({
   loading,
   sortField,
   sortOrder,
-  onSort,
+  sortAction,
   cvId,
 }: Props) => {
   if (loading) {
@@ -39,7 +39,7 @@ export const ProjectsTable = ({
         <thead>
           <tr>
             <th>
-              <button onClick={() => onSort("name")}>
+              <button onClick={() => sortAction("name")}>
                 Name
                 {sortField === "name" && (
                   <span>{sortOrder === "asc" ? " ↑" : " ↓"}</span>
@@ -47,7 +47,7 @@ export const ProjectsTable = ({
               </button>
             </th>
             <th>
-              <button onClick={() => onSort("domain")}>
+              <button onClick={() => sortAction("domain")}>
                 Domain
                 {sortField === "domain" && (
                   <span>{sortOrder === "asc" ? " ↑" : " ↓"}</span>
@@ -55,7 +55,7 @@ export const ProjectsTable = ({
               </button>
             </th>
             <th>
-              <button onClick={() => onSort("start_date")}>
+              <button onClick={() => sortAction("start_date")}>
                 Start date
                 {sortField === "start_date" && (
                   <span>{sortOrder === "asc" ? " ↑" : " ↓"}</span>
@@ -63,7 +63,7 @@ export const ProjectsTable = ({
               </button>
             </th>
             <th>
-              <button onClick={() => onSort("end_date")}>
+              <button onClick={() => sortAction("end_date")}>
                 End date
                 {sortField === "end_date" && (
                   <span>{sortOrder === "asc" ? " ↑" : " ↓"}</span>
