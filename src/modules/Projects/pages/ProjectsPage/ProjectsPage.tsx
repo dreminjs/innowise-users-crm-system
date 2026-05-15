@@ -27,7 +27,6 @@ export const ProjectsPage = ({ cvId }: Props) => {
       setSortOrder((prev) => (prev === "asc" ? "desc" : "asc"));
       return;
     }
-
     setSortField(field);
     setSortOrder("asc");
   };

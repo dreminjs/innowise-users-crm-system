@@ -38,6 +38,7 @@ export const DesktopSidebar = ({ collapsed, toggleAction }: Props) => {
       <nav className={styles.navigation}>
         {navigationItems.map((item) => {
           const isActive = pathname === item.href;
+
           return (
             <Link
               key={item.href}
@@ -45,11 +46,13 @@ export const DesktopSidebar = ({ collapsed, toggleAction }: Props) => {
               className={clsx(styles.link, isActive && styles.active)}
             >
               <Icon name={item.icon} />
+
               {!collapsed && <span>{t(item.label)}</span>}
             </Link>
           );
         })}
       </nav>
+
       <div className={styles.footer}>
         <button
           className={styles.profileButton}
@@ -70,6 +73,7 @@ export const DesktopSidebar = ({ collapsed, toggleAction }: Props) => {
               className={styles.avatarFallback}
             />
           )}
+
           {!collapsed && (
             <div className={styles.userInfo}>
               <span className={styles.name}>{displayName}</span>
@@ -79,6 +83,7 @@ export const DesktopSidebar = ({ collapsed, toggleAction }: Props) => {
         <ProfileMenu
           isOpen={isMenuOpen}
           userId={userId!}
+          collapsed={collapsed}
           closeAction={() => setIsMenuOpen(false)}
         />
         <button className={styles.collapseButton} onClick={toggleAction}>

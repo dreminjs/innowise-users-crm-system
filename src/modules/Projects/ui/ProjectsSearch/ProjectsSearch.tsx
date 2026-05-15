@@ -1,9 +1,6 @@
 "use client";
 
-import Image from "next/image";
-import styles from "./ProjectsSearch.module.css";
-import { AddNewButton } from "@/shared/ui/AddNewButton";
-import { Icon } from "@/shared/ui/Icon/Icon";
+import { SearchToolbar } from "@/shared/ui/SearchToolbar/SearchToolbar";
 
 type Props = {
   value: string;
@@ -13,17 +10,11 @@ type Props = {
 
 export const ProjectsSearch = ({ value, onChange, createAction }: Props) => {
   return (
-    <div className={styles.searchContainer}>
-      <div className={styles.search}>
-        <Icon name="search" size={18} className={styles.icon} />
-        <input
-          value={value}
-          onChange={(e) => onChange(e.target.value)}
-          placeholder="Search"
-          className={styles.input}
-        />
-      </div>
-      <AddNewButton onClick={createAction} label="ADD PROJECT" />
-    </div>
+    <SearchToolbar
+      value={value}
+      onChange={onChange}
+      buttonLabel="ADD PROJECT"
+      onCreate={createAction}
+    />
   );
 };

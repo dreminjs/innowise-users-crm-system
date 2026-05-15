@@ -6,9 +6,7 @@ import { useTokens } from "@/modules/Tokens";
 
 export default function Home() {
   const router = useRouter();
-
   const accessToken = useTokens((state) => state.accessToken);
-
   useEffect(() => {
     if (!accessToken) {
       router.replace("/auth/signin");
