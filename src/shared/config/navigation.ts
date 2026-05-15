@@ -1,30 +1,28 @@
-export const navigationItems = [
+import { IconName } from "@/shared/ui/Icon/icons";
+
+export const navigationItems: {
+  label: string;
+  href: string;
+  icon: IconName;
+}[] = [
   {
     label: "employees",
     href: "/users",
-    icon: "/Employees.svg",
+    icon: "employees",
   },
   {
     label: "skills",
     href: "/skills",
-    icon: "/Skills.svg",
+    icon: "skills",
   },
   {
     label: "languages",
     href: "/languages",
-    icon: "/Languages.svg",
+    icon: "languages",
   },
   {
     label: "cvs",
     href: "/cvs",
-    icon: "/CVs.svg",
+    icon: "cvs",
   },
 ];
-
-// "employees": "Employees",
-// "skills": "Skills",
-// "languages": "Languages",
-// "cvs": "CVs",
-// "settings": "Settings",
-// "profile": "Profile",
-// "logout": "Logout"

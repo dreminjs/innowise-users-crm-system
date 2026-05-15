@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import styles from "./ProfileMenu.module.css";
 import { useUserStore } from "@/application/store/user.store";
 import { useTokens } from "@/modules/Tokens";
+import { Icon } from "@/shared/ui/Icon/Icon";
 
 type Props = {
   isOpen: boolean;
@@ -33,16 +34,16 @@ export const ProfileMenu = ({ isOpen, userId, closeAction }: Props) => {
           href={`/users/${userId}`}
           onClick={closeAction}
         >
-          <Image src="/account.svg" alt="Profile" width={20} height={20} />
+          <Icon name="account" size={20} className={styles.avatarFallback} />
           <span>Profile</span>
         </Link>
         <Link className={styles.item} href="/settings" onClick={closeAction}>
-          <Image src="/settings.svg" alt="Settings" width={20} height={20} />
+          <Icon name="settings" size={20} className={styles.avatarFallback} />
           <span>Settings</span>
         </Link>
         <div className={styles.divider} />
         <button className={styles.item} onClick={handleLogout}>
-          <Image src="/logout.svg" alt="Logout" width={20} height={20} />
+          <Icon name="logout" size={20} />
           <span>Logout</span>
         </button>
       </div>

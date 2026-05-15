@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import styles from "./UsersSearch.module.css";
+import { Icon } from "@/shared/ui/Icon/Icon";
 
 type Props = {
   value: string;
@@ -12,13 +13,7 @@ export const UsersSearch = ({ value, changeAction }: Props) => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.search}>
-        <Image
-          src="/search.svg"
-          alt="Search"
-          width={18}
-          height={18}
-          className={styles.icon}
-        />
+        <Icon name="search" size={18} className={styles.icon} />
         <input
           className={styles.input}
           type="text"
