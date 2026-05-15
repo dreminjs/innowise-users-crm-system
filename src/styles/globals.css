@@ -23,6 +23,8 @@
   --link-color: #ffffff;
   --bread-crumbs: #767676;
   --nav-color: rgba(255, 255, 255, 0.7);
+  --cancel-border: #ffffff3b;
+  --cancel-text: #ffffff3b;
 }
 
 html,

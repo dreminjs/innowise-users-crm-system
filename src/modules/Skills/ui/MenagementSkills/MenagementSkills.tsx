@@ -29,7 +29,7 @@ export const MenagementSkills: FC<IMenuagementSkillsProps> = ({
             >
               {t("ConfirmButtons.cancel")}
             </button>
-            {<RemoveSkillsButton />}
+            <RemoveSkillsButton />
           </>
         ) : (
           <>
