@@ -5,6 +5,7 @@ import { useQuery } from "@apollo/client/react";
 import styles from "./AddCvProjectModal.module.css";
 import { useAddCvProject } from "@/modules/Projects/hooks/useAddCvProject";
 import { GET_PROJECT_OPTIONS } from "@/modules/Projects/api/queries";
+import { CustomSelect } from "@/shared/ui/CustomSelect/CustomSelect";
 
 type Props = {
   cvId: string;
@@ -18,14 +19,11 @@ export const AddCvProjectForm = ({ cvId, onClose }: Props) => {
   const [responsibilities, setResponsibilities] = useState("");
   const { data } = useQuery(GET_PROJECT_OPTIONS);
   const [addCvProject] = useAddCvProject(cvId);
-
   const selectedProject = useMemo(() => {
     return data?.projects.find((project) => project.id === projectId);
   }, [data, projectId]);
-
   const handleSubmit = async () => {
     if (!projectId) return;
-
     try {
       await addCvProject({
         variables: {
@@ -39,30 +37,26 @@ export const AddCvProjectForm = ({ cvId, onClose }: Props) => {
           },
         },
       });
-
       onClose();
     } catch (error) {
       throw error;
     }
   };
-
   return (
     <div className={styles.form}>
       <div className={styles.row}>
         <div className={styles.field}>
-          <select
+          <CustomSelect
+            label="Project"
             value={projectId}
-            onChange={(e) => setProjectId(e.target.value)}
-            className={styles.input}
-          >
-            <option value="">Select project</option>
-            {data?.projects.map((project) => (
-              <option key={project.id} value={project.id}>
-                {project.name}
-              </option>
-            ))}
-          </select>
-          <label className={styles.label}>Project</label>
+            onChange={setProjectId}
+            options={
+              data?.projects.map((project) => ({
+                label: project.name,
+                value: project.id,
+              })) ?? []
+            }
+          />
         </div>
         <div className={styles.field}>
           <input
@@ -105,7 +99,6 @@ export const AddCvProjectForm = ({ cvId, onClose }: Props) => {
         />
         <label className={styles.label}>Description</label>
       </div>
-
       <div className={styles.field}>
         <input
           value={selectedProject?.environment.join(", ") ?? ""}
