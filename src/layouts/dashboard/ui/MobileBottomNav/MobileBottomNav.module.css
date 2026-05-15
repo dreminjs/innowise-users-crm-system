@@ -22,9 +22,10 @@
 }
 
 .active {
-  color: var(--color-text);;
+  color: var(--color-text);
 }
 .profileMobileButton{
+  color: var(--color-text);
   display: flex;
   gap: 16px;
   align-items: center;

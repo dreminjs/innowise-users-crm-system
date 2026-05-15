@@ -1,11 +1,8 @@
 "use client";
 
 import { GetCvsQuery } from "@/graphql/graphql";
-
 import { CvSortField, CvSortOrder } from "../../model/lib/processCvs";
-
-import { CVsTableRow } from "./CvsTableRow";
-
+import { CVsTableRow } from "./CVsTableRow";
 import styles from "./CvsTable.module.css";
 
 type Props = {

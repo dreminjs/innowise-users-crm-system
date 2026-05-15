@@ -5,9 +5,8 @@ import { useUploadAvatar } from "../../../model/hooks/useUploadAvatar";
 import { useUserStore } from "@/application/store/user.store";
 import { toBase64 } from "../../../model/utils/toBase64";
 import styles from "../UpdateUserInfo.module.css";
-import UploadAvatarIcon from "../../../../../../public/upload-avatar.svg";
-import Image from "next/image";
 import { useTranslations } from "next-intl";
+import { Icon } from "@/shared/ui/Icon/Icon";
 interface IUploadAvatarProps {
   avatarUrl: string;
   firstLetter: string;
@@ -56,12 +55,7 @@ export const UploadAvatar: FC<IUploadAvatarProps> = ({
             className={styles.uploadAvatarTrigger}
           >
             <div className={styles.uploadAvatarInner}>
-              <Image
-                src={UploadAvatarIcon}
-                alt="avatar"
-                width={23}
-                height={23}
-              />
+              <Icon name="upload" size={23} className={styles.avatarFallback} />
               <span className={styles.uploadAvatarText}>
                 {t("uploadTitle")}
               </span>

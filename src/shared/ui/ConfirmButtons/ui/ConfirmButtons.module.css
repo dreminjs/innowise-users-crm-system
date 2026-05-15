@@ -6,7 +6,7 @@
 
 .cancelButton {
   width: 220px;
-  padding: 10px 0px;
+  padding: 10px 0;
   color: var(--color-text);
   text-align: center;
   border-radius: 20px;
@@ -16,7 +16,7 @@
 .confirmButton {
   text-align: center;
   width: 220px;
-  padding: 10px 0px;
+  padding: 10px 0;
   background-color: var(--color-primary);
   border-radius: 20px;
   color: white;

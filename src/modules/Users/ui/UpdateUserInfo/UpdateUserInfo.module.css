@@ -103,7 +103,7 @@
 .uploadInfoSubmit {
   background-color: var(--color-primary);
   border-radius: 40px;
-  padding: 16px 0px;
+  padding: 16px 0;
   color: white;
   text-align: center;
   grid-column: 2 / 3;

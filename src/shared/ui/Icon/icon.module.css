@@ -1,0 +1,5 @@
+.icon {
+    color: var(--color-text);
+    flex-shrink: 0;
+    transition: color 0.2s ease;
+}
