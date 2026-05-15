@@ -26,6 +26,10 @@
   -webkit-text-fill-color: var(--color-title);
 }
 
+.togglePasswordTypeBtn {
+  color: var(--color-text);
+}
+
 .formLabel {
   font-size: 16px;
   line-height: 23px;

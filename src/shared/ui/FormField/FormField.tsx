@@ -2,12 +2,12 @@
 import { useState } from "react";
 import { Path, UseFormRegister } from "react-hook-form";
 import { FieldValues } from "react-hook-form";
-import PasswordEye from "../../../../public/password-eye.svg";
-import Image from "next/image";
 import styles from "./FormField.module.css";
 type TInputType = "password" | "email" | "text";
 type TExcludeEmail<T> = T extends "email" ? "text" : T;
-
+import { IoEyeSharp } from "react-icons/io5";
+import { FaEyeSlash } from "react-icons/fa";
+import { useTheme } from "next-themes";
 interface IFormFieldProps<T extends FieldValues> {
   type: TInputType;
   register: UseFormRegister<T>;
@@ -28,6 +28,9 @@ export const FormField = <T extends FieldValues>({
   const [inputType, setInputType] = useState<TExcludeEmail<TInputType>>(
     type === "email" ? "text" : type,
   );
+  const { theme } = useTheme();
+
+  const themeColor = theme === "dark" ? "white" : "black";
 
   return (
     <>
@@ -44,13 +47,14 @@ export const FormField = <T extends FieldValues>({
           {type === "password" && (
             <button
               type="button"
+              className={styles.togglePasswordTypeBtn}
               onClick={() =>
                 setInputType((prev) =>
                   prev === "password" ? "text" : "password",
                 )
               }
             >
-              <Image height={20} width={20} alt="pass" src={PasswordEye} />
+              {inputType === "password" ? <FaEyeSlash /> : <IoEyeSharp />}
             </button>
           )}
         </div>
