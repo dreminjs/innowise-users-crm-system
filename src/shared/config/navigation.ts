@@ -1,25 +1,30 @@
+import { IoLanguageSharp } from "react-icons/io5";
+import { HiUsers } from "react-icons/hi";
+import { AiOutlineRise } from "react-icons/ai";
+import { RiFileUserFill } from "react-icons/ri";
+
 export const navigationItems = [
   {
     label: "employees",
     href: "/users",
-    icon: "/Employees.svg",
+    icon: HiUsers,
   },
   {
     label: "skills",
     href: "/skills",
-    icon: "/Skills.svg",
+    icon: AiOutlineRise,
   },
   {
     label: "languages",
     href: "/languages",
-    icon: "/Languages.svg",
+    icon: IoLanguageSharp,
   },
   {
     label: "cvs",
     href: "/cvs",
-    icon: "/CVs.svg",
+    icon: RiFileUserFill,
   },
-];
+] as const;
 
 // "employees": "Employees",
 // "skills": "Skills",

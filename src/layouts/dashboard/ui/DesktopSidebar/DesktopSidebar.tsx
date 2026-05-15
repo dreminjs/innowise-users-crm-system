@@ -36,7 +36,7 @@ export const DesktopSidebar = ({ collapsed, toggleAction }: Props) => {
   return (
     <aside className={clsx(styles.sidebar, collapsed && styles.collapsed)}>
       <nav className={styles.navigation}>
-        {navigationItems.map((item) => {
+        {navigationItems.map(({ icon: Icon, ...item }) => {
           const isActive = pathname === item.href;
           return (
             <Link
@@ -44,13 +44,7 @@ export const DesktopSidebar = ({ collapsed, toggleAction }: Props) => {
               href={item.href}
               className={clsx(styles.link, isActive && styles.active)}
             >
-              <Image
-                loading="eager"
-                src={item.icon}
-                alt={item.label}
-                width={20}
-                height={20}
-              />
+              <Icon />
               {!collapsed && <span>{t(item.label)}</span>}
             </Link>
           );

@@ -28,9 +28,6 @@ export const FormField = <T extends FieldValues>({
   const [inputType, setInputType] = useState<TExcludeEmail<TInputType>>(
     type === "email" ? "text" : type,
   );
-  const { theme } = useTheme();
-
-  const themeColor = theme === "dark" ? "white" : "black";
 
   return (
     <>
