@@ -2,10 +2,7 @@
 import { useState } from "react";
 import { Path, UseFormRegister } from "react-hook-form";
 import { FieldValues } from "react-hook-form";
-import PasswordEye from "../../../../public/password-eye.svg";
-import Image from "next/image";
 import styles from "./FormField.module.css";
-import clsx from "clsx";
 import { Icon } from "@/shared/ui/Icon/Icon";
 type TInputType = "password" | "email" | "text";
 type TExcludeEmail<T> = T extends "email" ? "text" : T;

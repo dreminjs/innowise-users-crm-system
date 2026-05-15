@@ -1,7 +1,5 @@
 import { FC } from "react";
-import TrashIcon from "../../../../../public/trash-icon.svg";
 import styles from "./RemoveItemButton.module.css";
-import Image from "next/image";
 import clsx from "clsx";
 import { Icon } from "@/shared/ui/Icon/Icon";
 
