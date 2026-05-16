@@ -52,5 +52,10 @@
   "profile": {
     "uploadTitle": "Загрузите аватар",
     "uploadDescription": "png, jpg or gif не более 0.5MB"
+  },
+  "Settings": {
+    "appearance": "Внешний вид",
+    "language": "Язык",
+    "resumeLanguage": "Язык Резюме"
   }
 }

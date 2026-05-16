@@ -52,5 +52,10 @@
   "profile": {
     "uploadTitle": "Upload your avatar",
     "uploadDescription": "png, jpg or gif no more than 0.5MB"
+  },
+  "Settings": {
+    "appearance": "Appearance",
+    "language": "Language",
+    "resumeLanguage": "Resume Language"
   }
 }

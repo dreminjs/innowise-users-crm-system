@@ -53,5 +53,10 @@
   "profile": {
     "uploadTitle": "Avatar hochladen",
     "uploadDescription": "png, jpg oder gif, maximal 0,5 MB"
+  },
+  "Settings": {
+    "appearance": "Aussehen",
+    "language": "Sprache",
+    "resumeLanguage": "Lebenslauf Sprache"
   }
 }

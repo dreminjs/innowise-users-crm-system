@@ -60,12 +60,20 @@ export const CustomSelect: FC<ICustomSelectProps> = ({
       <Select.HiddenSelect />
       <Select.Control className={styles.formField}>
         <Select.Trigger>
-          <Select.ValueText placeholder=" " className={styles.formInput} />
+          <Select.ValueText
+            suppressHydrationWarning
+            placeholder=" "
+            className={styles.formInput}
+          />
           <Select.IndicatorGroup>
             <Select.Indicator />
           </Select.IndicatorGroup>
         </Select.Trigger>
-        <Select.Label data-has-value={!!value} className={styles.formLabel}>
+        <Select.Label
+          suppressHydrationWarning
+          data-has-value={!!value}
+          className={styles.formLabel}
+        >
           {label}
         </Select.Label>
       </Select.Control>
@@ -74,7 +82,7 @@ export const CustomSelect: FC<ICustomSelectProps> = ({
           <Select.Content>
             {isGroupedOptions(options)
               ? options.map((group) => (
-                  <Select.ItemGroup key={group.label}>
+                  <Select.ItemGroup suppressHydrationWarning key={group.label}>
                     <Select.ItemGroupLabel>{group.label}</Select.ItemGroupLabel>
                     {group.items.map((item) => (
                       <Select.Item
