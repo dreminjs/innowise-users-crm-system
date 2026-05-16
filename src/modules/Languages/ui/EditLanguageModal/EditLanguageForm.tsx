@@ -59,6 +59,7 @@ export const EditLanguageForm: FC<TEditLanguageFormProps> = ({
             }
             value={field.value}
             onChange={handleChangeName}
+            disabled={true}
           />
         )}
       />

@@ -34,7 +34,26 @@
     "editSkill": "EDIT SKILL",
     "deleteSkill": "REMOVE SKILL",
     "chooseSkill": "Skill",
-    "skillMastery": "Skill Mastery"
+    "skillMastery": "Skill Mastery",
+    "Programming languages": "Programming languages",
+    "Frontend": "Frontend",
+    "Frontend technologies": "Frontend technologies",
+    "State management libraries": "State management libraries",
+    "Form libraries": "Form libraries",
+    "UI libraries": "UI libraries",
+    "Data visualization": "Data visualization",
+    "Internationalization": "Internationalization",
+    "Backend": "Backend",
+    "Backend technologies": "Backend technologies",
+    "Databases": "Databases",
+    "Cloud": "Cloud",
+    "Testing frameworks and tools": "Testing frameworks and tools",
+    "DevOps": "DevOps",
+    "CI/CD": "CI/CD",
+    "Containerization": "Containerization",
+    "Source control systems": "Source control systems",
+    "Documentation": "Documentation",
+    "Graphic editors": "Graphic editors"
   },
   "ConfirmButtons": {
     "cancel": "CANCEL",
@@ -57,5 +76,16 @@
     "appearance": "Appearance",
     "language": "Language",
     "resumeLanguage": "Resume Language"
+  },
+  "Profile": {
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "department": "Department",
+    "position": "Position"
+  },
+  "UsersNavigation": {
+    "profile": "Profile",
+    "skills": "Skills",
+    "languages": "Languages"
   }
 }

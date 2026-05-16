@@ -36,11 +36,31 @@
     "confirm": "FÄHIGKEIT LÖSCHEN",
     "cancel": "ABBRECHEN",
     "chooseSkill": "FÄHIGKEIT WÄHLEN",
-    "skillMastery": "MASTERSTUDE FÄHIGKEIT"
+    "skillMastery": "MASTERSTUDE FÄHIGKEIT",
+    "Programming languages": "Programmiersprachen",
+    "Frontend": "Frontend",
+    "Frontend technologies": "Frontend-Technologien",
+    "State management libraries": "State-Management-Bibliotheken",
+    "Form libraries": "Formular-Bibliotheken",
+    "UI libraries": "UI-Bibliotheken",
+    "Data visualization": "Datenvisualisierung",
+    "Internationalization": "Internationalisierung",
+    "Backend": "Backend",
+    "Backend technologies": "Backend-Technologien",
+    "Databases": "Datenbanken",
+    "Cloud": "Cloud",
+    "Testing frameworks and tools": "Test-Frameworks und Tools",
+    "DevOps": "DevOps",
+    "CI/CD": "CI/CD",
+    "Containerization": "Containerisierung",
+    "Source control systems": "Versionskontrollsysteme",
+    "Documentation": "Dokumentation",
+    "Graphic editors": "Grafikeditoren"
   },
   "ConfirmButtons": {
     "cancel": "ABBRECHEN",
-    "delete": "LÖSCHEN"
+    "delete": "LÖSCHEN",
+    "confirm": "BESTÄTIGEN"
   },
   "Languages": {
     "add": "SPRACHE HINZUFÜGEN",
@@ -58,5 +78,16 @@
     "appearance": "Aussehen",
     "language": "Sprache",
     "resumeLanguage": "Lebenslauf Sprache"
+  },
+  "Profile": {
+    "firstName": "Vorname",
+    "lastName": "Nachname",
+    "department": "Abteilung",
+    "position": "Position"
+  },
+  "UsersNavigation": {
+    "profile": "Profil",
+    "skills": "Fähigkeiten",
+    "languages": "Sprachen"
   }
 }

@@ -10,6 +10,7 @@ import styles from "../Skills.module.css";
 import { EditSkillModal } from "../EditSkillModal/EditSkillModal";
 import { useSkillStore } from "../../model/skill.store";
 import { Mastery } from "@/generated/graphql";
+import { useTranslations } from "next-intl";
 
 interface ISkillsListProps {
   categoriesData: GetSkillCategoriesQuery;
@@ -27,7 +28,7 @@ export const SkillsList: FC<ISkillsListProps> = ({
   const [skillToEdit, setSkillToEdit] = useState<TSkillForm | null>(null);
   const skills = profileSkillsData?.profile?.skills ?? [];
   const categories = categoriesData?.skillCategories ?? [];
-
+  const t = useTranslations("Skills");
   const handleClick = (dto: TSkillForm & { name: string }) => {
     if (isDeleteMode) {
       toggleDeleteSkill(dto.name);
@@ -71,7 +72,7 @@ export const SkillsList: FC<ISkillsListProps> = ({
       <div className={styles.skillsLists}>
         {grouped.map(({ groupName, skills }) => (
           <div key={groupName} className={styles.group}>
-            <h3 className={styles.categoryName}>{groupName}</h3>
+            <h3 className={styles.categoryName}>{t(groupName)}</h3>
             <ul className={styles.skillsList}>
               {skills.map((skill, i) => (
                 <SkillItem

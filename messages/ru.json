@@ -34,7 +34,26 @@
     "editSkill": "РЕДАКТИРОВАТЬ НАВЫК",
     "deleteSkill": "УДАЛИТЬ НАВЫК",
     "chooseSkill": "Навык",
-    "skillMastery": "Мастерство Навыка"
+    "skillMastery": "Мастерство Навыка",
+    "Programming languages": "Языки программирования",
+    "Frontend": "Фронтенд",
+    "Frontend technologies": "Фронтенд-технологии",
+    "State management libraries": "Библиотеки управления состоянием",
+    "Form libraries": "Библиотеки для форм",
+    "UI libraries": "UI-библиотеки",
+    "Data visualization": "Визуализация данных",
+    "Internationalization": "Интернационализация",
+    "Backend": "Бэкенд",
+    "Backend technologies": "Бэкенд-технологии",
+    "Databases": "Базы данных",
+    "Cloud": "Облачные технологии",
+    "Testing frameworks and tools": "Фреймворки и инструменты тестирования",
+    "DevOps": "DevOps",
+    "CI/CD": "CI/CD",
+    "Containerization": "Контейнеризация",
+    "Source control systems": "Системы контроля версий",
+    "Documentation": "Документация",
+    "Graphic editors": "Графические редакторы"
   },
   "ConfirmButtons": {
     "delete": "УДАЛИТЬ",
@@ -57,5 +76,16 @@
     "appearance": "Внешний вид",
     "language": "Язык",
     "resumeLanguage": "Язык Резюме"
+  },
+  "Profile": {
+    "firstName": "Имя",
+    "lastName": "Фамилия",
+    "department": "Отдел",
+    "position": "Должность"
+  },
+  "UsersNavigation": {
+    "profile": "Профиль",
+    "skills": "Навыки",
+    "languages": "Языки"
   }
 }
