@@ -6,42 +6,30 @@ import {
   masteryValue,
 } from "../../model/skill.constants";
 import { Progress } from "@chakra-ui/react";
-import { useSkillStore } from "../../model/skill.store";
-import { Mastery } from "@/generated/graphql";
-import { EditSkillModal } from "../EditSkillModal/EditSkillModal";
 import clsx from "clsx";
 import styles from "../Skills.module.css";
 
 interface ISkillItemProps {
   name: string;
   mastery: TMastery;
-  categoryId: string | null;
-  isAvailableToChange: boolean;
+  isActive: boolean;
+  onClick?: () => void;
 }
 
 export const SkillItem: FC<ISkillItemProps> = ({
   name,
   mastery,
-  categoryId,
-  isAvailableToChange,
+  isActive,
+  onClick,
 }) => {
-  const { isDeleteMode, toggleDeleteSkill, deleteSkills } = useSkillStore();
-  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
-  const handleClick = () => {
-    if (isDeleteMode) {
-      toggleDeleteSkill(name);
-    } else {
-      setIsEditModalOpen(true);
-    }
-  };
   return (
     <>
       <li>
         <button
-          {...(isAvailableToChange ? { onClick: handleClick } : {})}
+          {...(onClick && { onClick: onClick })}
           className={clsx(
             styles.skillItem,
-            deleteSkills[name] && styles.skillItemDeleteActive,
+            isActive && styles.skillItemDeleteActive,
           )}
         >
           <Progress.Root
@@ -62,12 +50,6 @@ export const SkillItem: FC<ISkillItemProps> = ({
           <span className={styles.skillName}>{name}</span>
         </button>
       </li>
-      <EditSkillModal
-        open={isEditModalOpen}
-        onToggle={() => setIsEditModalOpen(false)}
-        categoryId={categoryId}
-        mastery={mastery as Mastery}
-      />
     </>
   );
 };

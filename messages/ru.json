@@ -32,7 +32,9 @@
   "Skills": {
     "addSkill": "ДОБАВИТЬ НАВЫК",
     "editSkill": "РЕДАКТИРОВАТЬ НАВЫК",
-    "deleteSkill": "УДАЛИТЬ НАВЫК"
+    "deleteSkill": "УДАЛИТЬ НАВЫК",
+    "chooseSkill": "Навык",
+    "skillMastery": "Мастерство Навыка"
   },
   "ConfirmButtons": {
     "delete": "УДАЛИТЬ",

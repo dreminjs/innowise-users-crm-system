@@ -1,18 +1,18 @@
-.addItemPositioner {
+.formPositioner {
   display: flex;
   align-items: center;
   justify-content: center;
   position: fixed;
   inset: 0;
 }
-.addItemModalContent {
+.formModalContent {
   background-color: var(--bg);
   padding: 20px;
   color: var(--color-text);
 }
-.addItemHeader {
+.formHeader {
   margin-bottom: 25px;
 }
-.addItemModalTitle {
+.formModalTitle {
   font-size: 18px;
 }

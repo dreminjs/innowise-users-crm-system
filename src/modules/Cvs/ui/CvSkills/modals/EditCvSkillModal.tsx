@@ -2,8 +2,8 @@
 
 import { FC } from "react";
 import { Mastery } from "@/generated/graphql";
-import { AddItemModal } from "@/shared/ui/AddItemModal";
 import { EditCvSkillForm } from "./EditCvSkillForm";
+import { FormModal } from "@/shared/ui/FormModal";
 
 type Props = {
   cvId: string;
@@ -21,7 +21,7 @@ export const EditCvSkillModal: FC<Props> = ({
   mastery,
 }) => {
   return (
-    <AddItemModal open={open} toggleAction={toggleAction} title={"Edit Skill"}>
+    <FormModal open={open} toggleAction={toggleAction} title={"Edit Skill"}>
       {categoryId && (
         <EditCvSkillForm
           cvId={cvId}
@@ -30,6 +30,6 @@ export const EditCvSkillModal: FC<Props> = ({
           mastery={mastery}
         />
       )}
-    </AddItemModal>
+    </FormModal>
   );
 };

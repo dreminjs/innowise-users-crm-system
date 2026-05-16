@@ -34,7 +34,9 @@
     "editSkill": "FÄHIGKEIT BEARBEITEN",
     "deleteSkill": "FÄHIGKEIT LÖSCHEN",
     "confirm": "FÄHIGKEIT LÖSCHEN",
-    "cancel": "ABBRECHEN"
+    "cancel": "ABBRECHEN",
+    "chooseSkill": "FÄHIGKEIT WÄHLEN",
+    "skillMastery": "MASTERSTUDE FÄHIGKEIT"
   },
   "ConfirmButtons": {
     "cancel": "ABBRECHEN",
