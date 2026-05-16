@@ -69,7 +69,6 @@ export const AddLanguageForm: FC<IEditLangugeFormProps> = ({
             }
             value={field.value}
             onChange={handleChangeName}
-            disabled={false}
           />
         )}
       />
