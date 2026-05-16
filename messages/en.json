@@ -44,7 +44,9 @@
   "Languages": {
     "add": "ADD LANGUAGE",
     "edit": "EDIT LANGUAGE",
-    "delete": "REMOVE LANGUAGE"
+    "delete": "REMOVE LANGUAGE",
+    "languageMastery": "Language Mastery",
+    "chooseLanguage": "Language"
   },
   "empty": "Empty :(",
   "profile": {

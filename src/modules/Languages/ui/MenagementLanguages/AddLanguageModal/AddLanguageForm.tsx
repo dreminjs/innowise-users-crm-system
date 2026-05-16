@@ -12,8 +12,8 @@ import { useLanguageForm } from "@/modules/Languages/model/hooks/useLanguageForm
 import { TLanguageForm } from "@/modules/Languages/model/languages.interface";
 import { useAddProfileLanguage } from "@/modules/Languages/model/hooks/useAddProfileLanguage";
 import { languageProfiency } from "@/modules/Languages/model/languages.constants";
-import styles from "../../Languages.module.css";
 import { useTranslations } from "next-intl";
+import styles from "../../Languages.module.css";
 
 interface IEditLangugeFormProps {
   onToggle: () => void;
@@ -29,7 +29,7 @@ export const AddLanguageForm: FC<IEditLangugeFormProps> = ({
   const { data: profileData } = useQuery(GET_PROFILE_LANGUAGES, {
     variables: { userId: currentUserId },
   });
-  const t = useTranslations("ConfirmButtons");
+  const t = useTranslations();
 
   const {
     control,
@@ -54,7 +54,7 @@ export const AddLanguageForm: FC<IEditLangugeFormProps> = ({
         name={"name"}
         render={({ field }) => (
           <CustomSelect
-            label={"Language"}
+            label={t("Languages.chooseLanguage")}
             options={
               languagesData?.languages
                 ?.filter((el) =>
@@ -78,7 +78,7 @@ export const AddLanguageForm: FC<IEditLangugeFormProps> = ({
         name={"proficiency"}
         render={({ field }) => (
           <CustomSelect
-            label={"Skill mastery"}
+            label={t("Languages.languageMastery")}
             options={languageProfiency.map((el) => ({
               value: el,
               label: el,
@@ -91,7 +91,7 @@ export const AddLanguageForm: FC<IEditLangugeFormProps> = ({
       />
       <ConfirmButtons
         onCancel={onToggle}
-        confirmLabel={t("confirm")}
+        confirmLabel={t("ConfirmButtons.confirm")}
         confirmButtonType={"submit"}
       />
     </form>

@@ -7,9 +7,10 @@ import { TLanguageForm } from "../../model/languages.interface";
 import { useLanguageForm } from "../../model/hooks/useLanguageForm";
 import { GET_LANGUAGES } from "../../api/queries";
 import { FC } from "react";
-import styles from "../Languages.module.css";
 import { languageProfiency } from "../../model/languages.constants";
 import { Proficiency } from "@/generated/graphql";
+import styles from "../Languages.module.css";
+import { useTranslations } from "next-intl";
 
 type TEditLanguageFormProps = {
   toggleAction: () => void;
@@ -22,7 +23,7 @@ export const EditLanguageForm: FC<TEditLanguageFormProps> = ({
 }) => {
   const { handleEditProfileLanguage } = useEditProfileLanguage();
   const { data: languagesData } = useQuery(GET_LANGUAGES);
-
+  const t = useTranslations("Languages");
   const {
     control,
     handleSubmit,
@@ -49,16 +50,15 @@ export const EditLanguageForm: FC<TEditLanguageFormProps> = ({
         name={"name"}
         render={({ field }) => (
           <CustomSelect
-            label={"Language"}
+            label={t("chooseLanguage")}
             options={
               languagesData?.languages.map((el) => ({
-                value: el?.name || "Unknow",
-                label: el?.name || "Unknow",
+                value: el!.name,
+                label: el!.name,
               })) || []
             }
             value={field.value}
             onChange={handleChangeName}
-            disabled={true}
           />
         )}
       />
@@ -67,7 +67,7 @@ export const EditLanguageForm: FC<TEditLanguageFormProps> = ({
         name={"proficiency"}
         render={({ field }) => (
           <CustomSelect
-            label={"Proficiency"}
+            label={t("languageMastery")}
             options={languageProfiency.map((el) => ({
               value: el,
               label: el,

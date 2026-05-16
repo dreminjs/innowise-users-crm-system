@@ -43,9 +43,11 @@
     "delete": "LÖSCHEN"
   },
   "Languages": {
-    "add": "ADD LANGUAGE",
-    "edit": "EDIT LANGUAGE",
-    "delete": "REMOVE LANGUAGE"
+    "add": "SPRACHE HINZUFÜGEN",
+    "edit": "SPRACHE BEARBEITEN",
+    "delete": "SPRACHE ENTFERNEN",
+    "languageMastery": "Sprachmastery",
+    "chooseLanguage": "Sprache wählen"
   },
   "empty": "Empty :(",
   "profile": {
