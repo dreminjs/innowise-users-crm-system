@@ -23,7 +23,7 @@ export const EditLanguageForm: FC<TEditLanguageFormProps> = ({
 }) => {
   const { handleEditProfileLanguage } = useEditProfileLanguage();
   const { data: languagesData } = useQuery(GET_LANGUAGES);
-  const t = useTranslations("Languages");
+  const t = useTranslations("");
   const {
     control,
     handleSubmit,
@@ -50,7 +50,7 @@ export const EditLanguageForm: FC<TEditLanguageFormProps> = ({
         name={"name"}
         render={({ field }) => (
           <CustomSelect
-            label={t("chooseLanguage")}
+            label={t("Languages.chooseLanguage")}
             options={
               languagesData?.languages.map((el) => ({
                 value: el!.name,
@@ -68,7 +68,7 @@ export const EditLanguageForm: FC<TEditLanguageFormProps> = ({
         name={"proficiency"}
         render={({ field }) => (
           <CustomSelect
-            label={t("languageMastery")}
+            label={t("Languages.languageMastery")}
             options={languageProfiency.map((el) => ({
               value: el,
               label: el,
@@ -81,7 +81,7 @@ export const EditLanguageForm: FC<TEditLanguageFormProps> = ({
       />
       <ConfirmButtons
         onCancel={toggleAction}
-        confirmLabel={"CONFIRM"}
+        confirmLabel={t("ConfirmButtons.confirm")}
         confirmButtonType={"submit"}
       />
     </form>

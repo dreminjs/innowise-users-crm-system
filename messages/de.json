@@ -1,4 +1,8 @@
 {
+  "Auth": {
+    "signin": "Anmelden",
+    "signup": "Registrieren"
+  },
   "Login": {
     "title": "Willkommen zurück!",
     "subtitle": "Willkommen! Bitte melden Sie sich an, um fortzufahren.",
@@ -89,5 +93,11 @@
     "profile": "Profil",
     "skills": "Fähigkeiten",
     "languages": "Sprachen"
+  },
+  "Navigation": {
+    "skills": "Skills",
+    "languages": "Sprachen",
+    "users": "Mitarbeiter",
+    "cvs": "Lebensläufe"
   }
 }

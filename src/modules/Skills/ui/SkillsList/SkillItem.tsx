@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC } from "react";
 import { TMastery } from "../../model/skill.interface";
 import {
   masteryBgColor,

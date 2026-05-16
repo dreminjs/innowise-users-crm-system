@@ -2,22 +2,24 @@ import { usePathname } from "next/navigation";
 import { NavigationItem } from "./NavigationItem";
 import { useDynamicSegment } from "@/application/store/dynamicSegment.store";
 import { Fragment } from "react/jsx-runtime";
-import { getLabel } from "../../model/getLabel";
-import styles from "./Navigation.module.css";
 import { Icon } from "@/shared/ui/Icon/Icon";
+import { useTranslations } from "next-intl";
+import styles from "./Navigation.module.css";
 import clsx from "clsx";
-
+import UserIcon from "../../../../../public/user-icon.svg";
 export const Navigation = () => {
   const pathname = usePathname();
   const segment = useDynamicSegment((state) => state.segment);
   const pathSegments = pathname.split("/").filter((el) => el !== "");
+  const t = useTranslations("Navigation");
   return (
     <nav>
       <ul className={styles.navigationList}>
         {pathSegments.map((el, idx, array) => (
           <Fragment key={idx}>
+            {idx === 1 && <UserIcon />}
             <NavigationItem
-              label={getLabel(idx, el, segment)}
+              label={idx === 1 ? segment || t(el) : t(el)}
               href={idx === 1 ? `` : `/${el}`}
               isActive={idx === 1}
             />

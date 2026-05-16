@@ -1,4 +1,8 @@
 {
+  "Auth": {
+    "signin": "Signin",
+    "signup": "Signup"
+  },
   "Login": {
     "title": "Welcome back!",
     "subtitle": "Welcome! Please sign in to continue.",
@@ -87,5 +91,11 @@
     "profile": "Profile",
     "skills": "Skills",
     "languages": "Languages"
+  },
+  "Navigation": {
+    "skills": "Skills",
+    "languages": "Languages",
+    "users": "Employees",
+    "cvs": "CVs"
   }
 }

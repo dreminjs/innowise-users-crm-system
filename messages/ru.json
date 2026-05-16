@@ -1,4 +1,8 @@
 {
+  "Auth": {
+    "signin": "Войти",
+    "signup": "Зарегистрироваться"
+  },
   "Login": {
     "title": "С возвращением!",
     "subtitle": "Добро пожаловать! Пожалуйста, войдите, чтобы продолжить.",
@@ -73,7 +77,7 @@
     "uploadDescription": "png, jpg or gif не более 0.5MB"
   },
   "Settings": {
-    "appearance": "Внешний вид",
+    "appearance": "Тема",
     "language": "Язык",
     "resumeLanguage": "Язык Резюме"
   },
@@ -87,5 +91,11 @@
     "profile": "Профиль",
     "skills": "Навыки",
     "languages": "Языки"
+  },
+  "Navigation": {
+    "skills": "Навыки",
+    "languages": "Языки",
+    "users": "Сотрудники",
+    "cvs": "Резюме"
   }
 }
