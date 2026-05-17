@@ -5,13 +5,13 @@ import { CustomSelect } from "@/shared/ui/CustomSelect";
 import { useQuery } from "@apollo/client/react";
 import { Controller } from "react-hook-form";
 import { useSkillForm } from "@/modules/Skills/model/hooks/useSkillForm";
-import styles from "../../Skills.module.css";
 import { ConfirmButtons } from "@/shared/ui/ConfirmButtons";
 import { TSkillForm } from "@/modules/Skills/model/skill.interface";
 import { Mastery } from "@/generated/graphql";
 import { FC } from "react";
 import { useUserStore } from "@/application/store/user.store";
 import { useTranslations } from "next-intl";
+import styles from "../../Skills.module.css";
 
 interface IEditSkillFormProps {
   onToggle: () => void;
@@ -32,7 +32,7 @@ export const AddSkillForm: FC<IEditSkillFormProps> = ({ onToggle }) => {
     handleSubmit,
     reset,
   } = useSkillForm();
-  const t = useTranslations("ConfirmButtons");
+  const t = useTranslations();
   const onSubmit = async (data: TSkillForm) => {
     handleAddProfileSkill(data).then(() => {
       reset();
@@ -47,7 +47,7 @@ export const AddSkillForm: FC<IEditSkillFormProps> = ({ onToggle }) => {
         name={"categoryId"}
         render={({ field }) => (
           <CustomSelect
-            label={"Skill"}
+            label={t("Skills.chooseSkill")}
             options={
               skillsData?.skills
                 ?.filter((el) =>
@@ -71,7 +71,7 @@ export const AddSkillForm: FC<IEditSkillFormProps> = ({ onToggle }) => {
         name={"mastery"}
         render={({ field }) => (
           <CustomSelect
-            label={"Skill mastery"}
+            label={t("Skills.skillMastery")}
             options={skillLevels.map((el) => ({
               value: el,
               label: el,
@@ -84,7 +84,7 @@ export const AddSkillForm: FC<IEditSkillFormProps> = ({ onToggle }) => {
       />
       <ConfirmButtons
         onCancel={onToggle}
-        confirmLabel={t("confirm")}
+        confirmLabel={t("ConfirmButtons.confirm")}
         confirmButtonType={"submit"}
       />
     </form>

@@ -2,16 +2,16 @@
 
 import { navigationItems } from "@/shared/config/navigation";
 import { usePathname } from "next/navigation";
-import Link from "next/link";
-import clsx from "clsx";
-import styles from "./DesktopSidebar.module.css";
 import { useUserStore } from "@/application/store/user.store";
 import { useGetProfile } from "@/modules/Users";
 import { ProfileMenu } from "@/layouts/dashboard/ui/NavModal/ProfileMenu";
 import { useState } from "react";
 import { useTranslations } from "next-intl";
-import Image from "next/image";
 import { Icon } from "@/shared/ui/Icon/Icon";
+import Image from "next/image";
+import styles from "./DesktopSidebar.module.css";
+import Link from "next/link";
+import clsx from "clsx";
 
 type Props = {
   collapsed: boolean;

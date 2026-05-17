@@ -2,7 +2,8 @@ import { FC } from "react";
 import { EditLanguageForm } from "./EditLanguageForm";
 import { useUserStore } from "@/application/store/user.store";
 import { TLanguageForm } from "../../model/languages.interface";
-import { AddItemModal } from "@/shared/ui/AddItemModal";
+import { FormModal } from "@/shared/ui/FormModal";
+import { useTranslations } from "next-intl";
 
 type TEditLanguageModalProps = {
   open: boolean;
@@ -16,13 +17,10 @@ export const EditLanguageModal: FC<TEditLanguageModalProps> = ({
   proficiency,
 }) => {
   const currentUserId = useUserStore((state) => state.userId);
+  const t = useTranslations("Languages");
 
   return (
-    <AddItemModal
-      open={open}
-      toggleAction={toggleAction}
-      title={"Edit Language"}
-    >
+    <FormModal open={open} toggleAction={toggleAction} title={t("edit")}>
       {currentUserId && (
         <EditLanguageForm
           toggleAction={toggleAction}
@@ -30,6 +28,6 @@ export const EditLanguageModal: FC<TEditLanguageModalProps> = ({
           proficiency={proficiency}
         />
       )}
-    </AddItemModal>
+    </FormModal>
   );
 };

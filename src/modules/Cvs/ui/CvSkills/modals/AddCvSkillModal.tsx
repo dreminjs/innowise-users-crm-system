@@ -1,6 +1,6 @@
 "use client";
 
-import { AddItemModal } from "@/shared/ui/AddItemModal";
+import { FormModal } from "@/shared/ui/FormModal";
 import { AddCvSkillForm } from "../forms/AddCvSkillForm";
 
 type Props = {
@@ -11,8 +11,8 @@ type Props = {
 
 export const AddCvSkillModal = ({ cvId, open, toggleAction }: Props) => {
   return (
-    <AddItemModal open={open} toggleAction={toggleAction} title={"Add Skill"}>
+    <FormModal open={open} toggleAction={toggleAction} title={"Add Skill"}>
       <AddCvSkillForm cvId={cvId} toggleAction={toggleAction} />
-    </AddItemModal>
+    </FormModal>
   );
 };

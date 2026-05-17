@@ -7,6 +7,7 @@ import styles from "./ProfileMenu.module.css";
 import { useUserStore } from "@/application/store/user.store";
 import { useTokens } from "@/modules/Tokens";
 import { Icon } from "@/shared/ui/Icon/Icon";
+import { useTranslations } from "next-intl";
 
 type Props = {
   isOpen: boolean;
@@ -21,6 +22,8 @@ export const ProfileMenu = ({
   collapsed,
   closeAction,
 }: Props) => {
+  const t = useTranslations("DesktopNavigation");
+
   const router = useRouter();
   const resetUser = useUserStore((state) => state.resetUser);
   const clearToken = useTokens((state) => state.deleteAccessToken);
@@ -41,16 +44,16 @@ export const ProfileMenu = ({
           onClick={closeAction}
         >
           <Icon name="account" size={20} />
-          <span>Profile</span>
+          <span>{t("profile")}</span>
         </Link>
         <Link className={styles.item} href="/settings" onClick={closeAction}>
           <Icon name="settings" size={20} />
-          <span>Settings</span>
+          <span>{t("settings")}</span>
         </Link>
         <div className={styles.divider} />
         <button className={styles.item} onClick={handleLogout}>
           <Icon name="logout" size={20} />
-          <span>Logout</span>
+          <span>{t("logout")}</span>
         </button>
       </div>
     </>

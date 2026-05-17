@@ -3,6 +3,7 @@ import { Navigation, NavigationItem } from "@/components/Navigation";
 import { userNavigation } from "@/modules/Users/model/user.navigation";
 import { usePathname } from "next/navigation";
 import styles from "./layout.module.css";
+import { useTranslations } from "next-intl";
 export default function RootLayout({
   children,
 }: {
@@ -10,6 +11,7 @@ export default function RootLayout({
 }) {
   const pathname = usePathname();
   const userId = pathname.split("/")[2];
+  const t = useTranslations("UsersNavigation");
   return (
     <>
       <Navigation>
@@ -22,7 +24,7 @@ export default function RootLayout({
                 ? el.to === "/"
                 : pathname.split("/").pop() === el.to
             }
-            label={el.label}
+            label={t(el.label).toUpperCase()}
             to={`/users/${userId}/${el.to}`}
           />
         ))}

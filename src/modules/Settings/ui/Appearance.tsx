@@ -1,5 +1,7 @@
+"use client";
 import { CustomSelect } from "@/shared/ui/CustomSelect";
 import { useTheme } from "next-themes";
+import { FC, useEffect, useState } from "react";
 
 const options = [
   {
@@ -16,16 +18,24 @@ const options = [
   },
 ];
 
-export const Appearance = () => {
+interface IAppearanceProps {
+  label: string;
+}
+
+export const Appearance: FC<IAppearanceProps> = ({ label }) => {
   const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setMounted(true);
+  }, []);
   return (
-    <>
-      <CustomSelect
-        label={"Appearance"}
-        options={options}
-        value={theme || "light"}
-        onChange={(value) => setTheme(value)}
-      />
-    </>
+    <CustomSelect
+      label={label}
+      options={options}
+      value={mounted ? (theme ?? "light") : "light"}
+      onChange={(value) => setTheme(value)}
+    />
   );
 };

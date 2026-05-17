@@ -11,6 +11,7 @@
   --bread-crumbs: rgba(0, 0, 0, 0.6);
   --cancel-border: #00000099;
   --cancel-text: #00000099;
+  --spinner-color: #00000099;
 }
 
 [data-theme="dark"] {
@@ -25,6 +26,7 @@
   --nav-color: rgba(255, 255, 255, 0.7);
   --cancel-border: #ffffff3b;
   --cancel-text: #ffffff3b;
+  --spinner-color: white;
 }
 
 html,

@@ -1,31 +1,31 @@
 import { EditSkillForm } from "./EditSkillForm";
 import { TSkillForm } from "../../model/skill.interface";
 import { FC } from "react";
-import { AddItemModal } from "@/shared/ui/AddItemModal";
 import { useTranslations } from "next-intl";
+import { FormModal } from "@/shared/ui/FormModal";
 
 type TEditSkillModalProps = {
   open: boolean;
-  onToggle: () => void;
+  onClose: () => void;
   categoryId: string | null;
 } & Omit<TSkillForm, "categoryId">;
 
 export const EditSkillModal: FC<TEditSkillModalProps> = ({
   open,
-  onToggle,
+  onClose,
   categoryId,
   mastery,
 }) => {
   const t = useTranslations("Skills");
   return (
-    <AddItemModal open={open} toggleAction={onToggle} title={t("editSkill")}>
-      {categoryId && (
+    <FormModal open={open} toggleAction={onClose} title={t("editSkill")}>
+      {open && categoryId && (
         <EditSkillForm
-          onToggle={onToggle}
+          onToggle={onClose}
           categoryId={categoryId}
           mastery={mastery}
         />
       )}
-    </AddItemModal>
+    </FormModal>
   );
 };

@@ -32,7 +32,7 @@ export const ConfirmButtons: FC<ConfirmButtonsProps> = ({
         onClick={onConfirm}
       >
         <span>{confirmLabel}</span>
-        <span className={styles.confirmButtonAmount}>{amount}</span>
+        {amount && <span className={styles.confirmButtonAmount}>{amount}</span>}
       </button>
     </div>
   );

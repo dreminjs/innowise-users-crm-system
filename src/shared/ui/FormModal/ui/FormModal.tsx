@@ -1,26 +1,26 @@
 import { Dialog } from "@chakra-ui/react";
 import { FC } from "react";
-import styles from "./AddItemModal.module.css";
-interface IAddItemModalProps {
+import styles from "./FormModal.module.css";
+interface IFormModalProps {
   children: React.ReactNode;
   open: boolean;
   toggleAction: () => void;
   title: string;
 }
 
-export const AddItemModal: FC<IAddItemModalProps> = ({
+export const FormModal: FC<IFormModalProps> = ({
   toggleAction,
   open,
   title,
   children,
 }) => {
   return (
-    <Dialog.Root open={open} onOpenChange={() => toggleAction()}>
+    <Dialog.Root open={open} onOpenChange={toggleAction}>
       <Dialog.Backdrop />
-      <Dialog.Positioner className={styles.addItemPositioner}>
-        <Dialog.Content className={styles.addItemModalContent}>
-          <Dialog.Header className={styles.addItemHeader}>
-            <Dialog.Title className={styles.addItemModalTitle}>
+      <Dialog.Positioner className={styles.formPositioner}>
+        <Dialog.Content className={styles.formModalContent}>
+          <Dialog.Header className={styles.formHeader}>
+            <Dialog.Title className={styles.formModalTitle}>
               {title}
             </Dialog.Title>
             <Dialog.CloseTrigger onClick={toggleAction} />
