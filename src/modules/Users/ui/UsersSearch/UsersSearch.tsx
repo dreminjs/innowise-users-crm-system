@@ -1,7 +1,6 @@
 "use client";
 
-import Image from "next/image";
-import styles from "./UsersSearch.module.css";
+import { SearchToolbar } from "@/shared/ui/SearchToolbar/SearchToolbar";
 
 type Props = {
   value: string;
@@ -10,23 +9,10 @@ type Props = {
 
 export const UsersSearch = ({ value, changeAction }: Props) => {
   return (
-    <div className={styles.wrapper}>
-      <div className={styles.search}>
-        <Image
-          src="/search.svg"
-          alt="Search"
-          width={18}
-          height={18}
-          className={styles.icon}
-        />
-        <input
-          className={styles.input}
-          type="text"
-          placeholder="Search users..."
-          value={value}
-          onChange={(event) => changeAction(event.target.value)}
-        />
-      </div>
-    </div>
+    <SearchToolbar
+      value={value}
+      changeAction={changeAction}
+      placeholder="Search users..."
+    />
   );
 };

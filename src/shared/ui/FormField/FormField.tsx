@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Path, UseFormRegister } from "react-hook-form";
 import { FieldValues } from "react-hook-form";
 import styles from "./FormField.module.css";
+import { Icon } from "@/shared/ui/Icon/Icon";
 type TInputType = "password" | "email" | "text";
 type TExcludeEmail<T> = T extends "email" ? "text" : T;
 import { IoEyeSharp } from "react-icons/io5";

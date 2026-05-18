@@ -1,15 +1,5 @@
 import { graphql } from "@/graphql/gql";
 
-export const GET_USER_FULLNAME = graphql(`
-  query getCurrentProfile($userId: ID!) {
-    user(userId: $userId) {
-      profile {
-        full_name
-      }
-    }
-  }
-`);
-
 export const GET_USERS = graphql(`
   query GetUsers {
     users {

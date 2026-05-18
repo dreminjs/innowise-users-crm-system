@@ -23,14 +23,14 @@ export const ForgotPasswordForm = () => {
   return (
     <AuthFormLayout
       title={t("ForgotPassword.title")}
-      subtitle={"Мы отправили вам инструкции по сбросу пароля"}
+      subtitle={t("ForgotPassword.subtitle")}
     >
       <form className={styles.forgotPassword} onSubmit={handleSubmit(onSubmit)}>
         <FormField<TForgotPasswordFormData>
           type={"email"}
           register={register}
           name={"email"}
-          label={"Почта"}
+          label={t("Login.email")}
           error={errors.email?.message}
         />
         <AuthButtons

@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import styles from "./MobileBottomNav.module.css";
@@ -9,6 +8,8 @@ import { ProfileMenu } from "@/layouts/dashboard/ui/NavModal/ProfileMenu";
 import { useState } from "react";
 import { useUserStore } from "@/application/store/user.store";
 import { useGetProfile } from "@/modules/Users";
+import Image from "next/image";
+import { Icon } from "@/shared/ui/Icon/Icon";
 
 export const MobileBottomNav = () => {
   const pathname = usePathname();
@@ -24,6 +25,7 @@ export const MobileBottomNav = () => {
     firstName || lastName
       ? `${firstName ?? ""} ${lastName ?? ""}`.trim()
       : email;
+
   return (
     <nav className={styles.navigation}>
       {navigationItems.slice(0, 2).map((item) => {
@@ -34,7 +36,7 @@ export const MobileBottomNav = () => {
             href={item.href}
             className={`${styles.link} ${isActive ? styles.active : ""}`}
           >
-            <Image src={item.icon} alt={item.label} width={40} height={40} />
+            <Icon name={item.icon} size={24} className={styles.icon} />
             <span>{item.label}</span>
           </Link>
         );
@@ -52,14 +54,7 @@ export const MobileBottomNav = () => {
             alt={displayName ?? "User"}
           />
         ) : (
-          <Image
-            className={styles.image}
-            src="/Employees.svg"
-            alt="user avatar"
-            width={24}
-            height={24}
-            loading="eager"
-          />
+          <Icon name="employees" size={24} className={styles.image} />
         )}
         <div className={styles.userInfo}>
           <span className={styles.name}>{displayName}</span>
@@ -69,6 +64,7 @@ export const MobileBottomNav = () => {
         isOpen={isMenuOpen}
         userId={userId!}
         closeAction={() => setIsMenuOpen(false)}
+        collapsed={false}
       />
     </nav>
   );

@@ -27,7 +27,6 @@ export const ProjectsPage = ({ cvId }: Props) => {
       setSortOrder((prev) => (prev === "asc" ? "desc" : "asc"));
       return;
     }
-
     setSortField(field);
     setSortOrder("asc");
   };
@@ -45,7 +44,7 @@ export const ProjectsPage = ({ cvId }: Props) => {
     <section className={styles.page}>
       <ProjectsSearch
         value={search}
-        onChange={setSearch}
+        changeAction={setSearch}
         createAction={() => setIsCreateModalOpen(true)}
       />
       <ProjectsTable
@@ -54,11 +53,11 @@ export const ProjectsPage = ({ cvId }: Props) => {
         loading={loading}
         sortField={sortField}
         sortOrder={sortOrder}
-        onSort={handleSort}
+        sortAction={handleSort}
       />
       <AddCvProjectModal
         open={isCreateModalOpen}
-        onClose={() => setIsCreateModalOpen(false)}
+        closeAction={() => setIsCreateModalOpen(false)}
         cvId={cvId}
       />
     </section>

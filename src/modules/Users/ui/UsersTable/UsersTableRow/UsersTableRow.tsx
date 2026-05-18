@@ -1,11 +1,10 @@
 import Link from "next/link";
-import Image from "next/image";
-
 import { GetUsersQuery } from "@/graphql/graphql";
 import { Avatar } from "@/shared/ui/Avatar/Avatar";
 import { UserActions } from "./UserActions/UserActions";
 import { useUserStore } from "@/application/store/user.store";
 import styles from "./UsersTableRow.module.css";
+import { Icon } from "@/shared/ui/Icon/Icon";
 
 type Props = {
   user: GetUsersQuery["users"][number];
@@ -58,12 +57,7 @@ export const UserTableRow = ({ user }: Props) => {
           <UserActions userId={user.id} />
         ) : (
           <Link href={`/users/${user.id}`}>
-            <Image
-              src="/nav-arrow.svg"
-              alt="Open profile"
-              width={12}
-              height={12}
-            />
+            <Icon name={"arrow"} size={12} />
           </Link>
         )}
       </td>

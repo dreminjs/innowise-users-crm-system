@@ -1,12 +1,10 @@
 "use client";
 
 import { GetCvsQuery } from "@/graphql/graphql";
-
 import { CvSortField, CvSortOrder } from "../../model/lib/processCvs";
-
-import { CVsTableRow } from "./CvsTableRow";
-
-import styles from "./CvsTable.module.css";
+import { CVsTableRow } from "./CVsTableRow";
+import styles from "./CVsTable.module.css";
+import { Loading } from "@/shared/ui/Loading";
 
 type Props = {
   cvs: GetCvsQuery["cvs"];
@@ -24,7 +22,7 @@ export const CVsTable = ({
   loading,
 }: Props) => {
   if (loading) {
-    return <div className={styles.empty}>Loading...</div>;
+    return <Loading />;
   }
 
   if (!cvs.length) {

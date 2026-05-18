@@ -39,7 +39,7 @@ export const EditSkillForm: FC<TEditSkillFormProps> = ({
     });
   };
 
-  const t = useTranslations("ConfirmButtons");
+  const t = useTranslations();
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={styles.addSkillForm}>
@@ -48,7 +48,7 @@ export const EditSkillForm: FC<TEditSkillFormProps> = ({
         name={"categoryId"}
         render={({ field }) => (
           <CustomSelect
-            label={"Skill"}
+            label={t("Skills.chooseSkill")}
             options={
               skillsData?.skills.map((el) => ({
                 value: el.id,
@@ -66,7 +66,7 @@ export const EditSkillForm: FC<TEditSkillFormProps> = ({
         name={"mastery"}
         render={({ field }) => (
           <CustomSelect
-            label={"Skill mastery"}
+            label={t("Skills.skillMastery")}
             options={skillLevels.map((el) => ({
               value: el,
               label: el,
@@ -79,7 +79,7 @@ export const EditSkillForm: FC<TEditSkillFormProps> = ({
       />
       <ConfirmButtons
         onCancel={onToggle}
-        confirmLabel={t("confirm")}
+        confirmLabel={t("ConfirmButtons.confirm")}
         confirmButtonType={"submit"}
       />
     </form>

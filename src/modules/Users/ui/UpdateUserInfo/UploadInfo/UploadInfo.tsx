@@ -13,6 +13,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useUpdateUser } from "@/modules/Users/model/hooks/useUpdateUser";
 import { FC } from "react";
 import { Loading } from "@/shared/ui/Loading";
+import { useTranslations } from "next-intl";
 
 interface IUploadInfoProps {
   isAvailable: boolean;
@@ -33,7 +34,7 @@ export const UploadInfo: FC<IUploadInfoProps> = ({
     useUpdateProfile();
   const { onSubmit: updateUser, loading: loadingUpdatingUser } =
     useUpdateUser();
-
+  const t = useTranslations("Profile");
   const handleUpdateUserInfo = async (dto: TUpdateUserForm) => {
     await updateProfile({
       firstName: dto.firstName,
@@ -75,7 +76,7 @@ export const UploadInfo: FC<IUploadInfoProps> = ({
           type="text"
           register={register}
           name="firstName"
-          label="First Name"
+          label={t("firstName")}
           isAvailable={isAvailable}
         />
       )}
@@ -85,7 +86,7 @@ export const UploadInfo: FC<IUploadInfoProps> = ({
           type="text"
           register={register}
           name="lastName"
-          label="Last Name"
+          label={t("lastName")}
           isAvailable={isAvailable}
         />
       )}
@@ -102,7 +103,7 @@ export const UploadInfo: FC<IUploadInfoProps> = ({
                   label: el.name,
                 })) || []
               }
-              label="Department"
+              label={t("department")}
               disabled={!isAvailable}
               value={field.value}
               onChange={handleDepartmentChange}
@@ -123,7 +124,7 @@ export const UploadInfo: FC<IUploadInfoProps> = ({
                   label: el.name,
                 })) || []
               }
-              label="Position"
+              label={t("position")}
               disabled={!isAvailable}
               value={field.value}
               onChange={handlePositionChange}

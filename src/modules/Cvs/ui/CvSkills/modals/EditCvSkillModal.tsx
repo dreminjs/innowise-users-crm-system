@@ -2,13 +2,13 @@
 
 import { FC } from "react";
 import { Mastery } from "@/generated/graphql";
-import { AddItemModal } from "@/shared/ui/AddItemModal";
 import { EditCvSkillForm } from "./EditCvSkillForm";
+import { FormModal } from "@/shared/ui/FormModal";
 
 type Props = {
   cvId: string;
   open: boolean;
-  onToggle: () => void;
+  toggleAction: () => void;
   categoryId: string | null;
   mastery: Mastery;
 };
@@ -16,20 +16,20 @@ type Props = {
 export const EditCvSkillModal: FC<Props> = ({
   cvId,
   open,
-  onToggle,
+  toggleAction,
   categoryId,
   mastery,
 }) => {
   return (
-    <AddItemModal open={open} toggleAction={onToggle} title={"Edit Skill"}>
+    <FormModal open={open} toggleAction={toggleAction} title={"Edit Skill"}>
       {categoryId && (
         <EditCvSkillForm
           cvId={cvId}
-          onToggle={onToggle}
+          toggleAction={toggleAction}
           categoryId={categoryId}
           mastery={mastery}
         />
       )}
-    </AddItemModal>
+    </FormModal>
   );
 };

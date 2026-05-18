@@ -1,10 +1,10 @@
 export const navItems = [
   {
     to: "signin",
-    label: "ВОЙТИ",
+    label: "signin",
   },
   {
     to: "signup",
-    label: "СОЗДАТЬ",
+    label: "signup",
   },
 ];

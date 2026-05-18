@@ -2,8 +2,13 @@ import { CustomSelect } from "@/shared/ui/CustomSelect";
 import { useSettingsStore } from "../model/settings.store";
 import { languageOptions, languages } from "../model/settings.data";
 import { TLanguage } from "../model/settings.types";
+import { FC } from "react";
 
-export const Language = () => {
+interface ILanguageProps {
+  label: string;
+}
+
+export const Language: FC<ILanguageProps> = ({ label }) => {
   const { language, setLanguage } = useSettingsStore();
 
   const handleLanguageChange = (value: TLanguage) => {
@@ -19,7 +24,7 @@ export const Language = () => {
   return (
     <>
       <CustomSelect
-        label={"Language"}
+        label={label}
         options={languageOptions}
         value={language}
         onChange={(value) => handleLanguageChange(value as TLanguage)}

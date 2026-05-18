@@ -1,7 +1,7 @@
 .removeItemButton {
   display: flex;
   color: var(--color-primary);
-  padding: 15px 0px;
+  padding: 15px 0;
   gap: 16px;
   width: 220px;
   justify-content: center;

@@ -1,4 +1,8 @@
 {
+  "Auth": {
+    "signin": "Signin",
+    "signup": "Signup"
+  },
   "Login": {
     "title": "Welcome back!",
     "subtitle": "Welcome! Please sign in to continue.",
@@ -32,7 +36,28 @@
   "Skills": {
     "addSkill": "ADD SKILL",
     "editSkill": "EDIT SKILL",
-    "deleteSkill": "REMOVE SKILL"
+    "deleteSkill": "REMOVE SKILL",
+    "chooseSkill": "Skill",
+    "skillMastery": "Skill Mastery",
+    "Programming languages": "Programming languages",
+    "Frontend": "Frontend",
+    "Frontend technologies": "Frontend technologies",
+    "State management libraries": "State management libraries",
+    "Form libraries": "Form libraries",
+    "UI libraries": "UI libraries",
+    "Data visualization": "Data visualization",
+    "Internationalization": "Internationalization",
+    "Backend": "Backend",
+    "Backend technologies": "Backend technologies",
+    "Databases": "Databases",
+    "Cloud": "Cloud",
+    "Testing frameworks and tools": "Testing frameworks and tools",
+    "DevOps": "DevOps",
+    "CI/CD": "CI/CD",
+    "Containerization": "Containerization",
+    "Source control systems": "Source control systems",
+    "Documentation": "Documentation",
+    "Graphic editors": "Graphic editors"
   },
   "ConfirmButtons": {
     "cancel": "CANCEL",
@@ -42,11 +67,35 @@
   "Languages": {
     "add": "ADD LANGUAGE",
     "edit": "EDIT LANGUAGE",
-    "delete": "REMOVE LANGUAGE"
+    "delete": "REMOVE LANGUAGE",
+    "languageMastery": "Language Mastery",
+    "chooseLanguage": "Language"
   },
   "empty": "Empty :(",
   "profile": {
     "uploadTitle": "Upload your avatar",
     "uploadDescription": "png, jpg or gif no more than 0.5MB"
+  },
+  "Settings": {
+    "appearance": "Appearance",
+    "language": "Language",
+    "resumeLanguage": "Resume Language"
+  },
+  "Profile": {
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "department": "Department",
+    "position": "Position"
+  },
+  "UsersNavigation": {
+    "profile": "Profile",
+    "skills": "Skills",
+    "languages": "Languages"
+  },
+  "Navigation": {
+    "skills": "Skills",
+    "languages": "Languages",
+    "users": "Employees",
+    "cvs": "CVs"
   }
 }

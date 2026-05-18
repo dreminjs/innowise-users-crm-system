@@ -1,6 +1,5 @@
 .tableWrapper {
     width: 100%;
-    border: 1px solid var(--border-color);
     border-radius: 20px;
     background: var(--bg);
 }
@@ -13,6 +12,13 @@
 
 .header {
     border-bottom: 1px solid var(--border-color);
+}
+.header th:first-child {
+    border-top-left-radius: 20px;
+}
+
+.header th:last-child {
+    border-top-right-radius: 20px;
 }
 
 .header th {

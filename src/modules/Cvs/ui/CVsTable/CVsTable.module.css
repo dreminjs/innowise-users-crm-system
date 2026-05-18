@@ -1,25 +1,31 @@
 .tableWrapper {
-    overflow-x: auto;
     border-radius: 20px;
-    border: 1px solid var(--border-color);
     background: var(--bg);
 }
 
 .table {
     width: 100%;
-    border-collapse: collapse;
-}
-
-.header {
-    border-bottom: 1px solid var(--border-color);
+    border-collapse: separate;
+    border-spacing: 0;
 }
 
 .header th {
+    position: sticky;
+    top: 0;
+    z-index: 2;
     padding: 16px 24px;
     text-align: left;
     font-size: 14px;
     font-weight: 600;
     color: var(--color-text);
+    background: color-mix(
+            in srgb,
+            var(--bg) 85%,
+            transparent
+    );
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-color);
 }
 
 .nameColumn {
@@ -53,14 +59,14 @@
 .description {
     font-size: 14px;
     line-height: 1.7;
-    color: var(--color-text);
+    color: var(--color-subtitle);
 }
 
 .name,
 .education,
 .employee {
-    white-space: nowrap;
     overflow: hidden;
+    white-space: nowrap;
     text-overflow: ellipsis;
 }
 

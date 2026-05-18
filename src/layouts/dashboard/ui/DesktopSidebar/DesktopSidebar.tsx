@@ -2,15 +2,16 @@
 
 import { navigationItems } from "@/shared/config/navigation";
 import { usePathname } from "next/navigation";
-import Image from "next/image";
-import Link from "next/link";
-import clsx from "clsx";
-import styles from "./DesktopSidebar.module.css";
 import { useUserStore } from "@/application/store/user.store";
 import { useGetProfile } from "@/modules/Users";
 import { ProfileMenu } from "@/layouts/dashboard/ui/NavModal/ProfileMenu";
 import { useState } from "react";
 import { useTranslations } from "next-intl";
+import { Icon } from "@/shared/ui/Icon/Icon";
+import Image from "next/image";
+import styles from "./DesktopSidebar.module.css";
+import Link from "next/link";
+import clsx from "clsx";
 
 type Props = {
   collapsed: boolean;
@@ -32,12 +33,12 @@ export const DesktopSidebar = ({ collapsed, toggleAction }: Props) => {
     firstName || lastName
       ? `${firstName ?? ""} ${lastName ?? ""}`.trim()
       : email;
-
   return (
     <aside className={clsx(styles.sidebar, collapsed && styles.collapsed)}>
       <nav className={styles.navigation}>
         {navigationItems.map(({ icon: Icon, ...item }) => {
           const isActive = pathname === item.href;
+
           return (
             <Link
               key={item.href}
@@ -65,13 +66,10 @@ export const DesktopSidebar = ({ collapsed, toggleAction }: Props) => {
               alt={displayName ?? "User"}
             />
           ) : (
-            <Image
-              className={styles.image}
-              src="/Employees.svg"
-              alt="user avatar"
-              width={40}
-              height={40}
-              loading="eager"
+            <Icon
+              name="employees"
+              size={40}
+              className={styles.avatarFallback}
             />
           )}
 
@@ -81,20 +79,16 @@ export const DesktopSidebar = ({ collapsed, toggleAction }: Props) => {
             </div>
           )}
         </button>
-
         <ProfileMenu
           isOpen={isMenuOpen}
           userId={userId!}
+          collapsed={collapsed}
           closeAction={() => setIsMenuOpen(false)}
         />
-
         <button className={styles.collapseButton} onClick={toggleAction}>
-          <Image
-            src="/nav-arrow.svg"
-            alt="Toggle sidebar"
-            loading="eager"
-            width={16}
-            height={16}
+          <Icon
+            name="arrow"
+            size={18}
             className={clsx(styles.arrow, collapsed && styles.rotated)}
           />
         </button>

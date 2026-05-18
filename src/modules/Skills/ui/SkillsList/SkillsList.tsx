@@ -1,12 +1,17 @@
-import { FC, useMemo } from "react";
+import { FC, useMemo, useState } from "react";
 import { SkillItem } from "./SkillItem";
-import { TMastery } from "../../model/skill.interface";
+import { TMastery, TSkillForm } from "../../model/skill.interface";
 import {
   GetProfileSkillsQuery,
   GetSkillCategoriesQuery,
 } from "@/graphql/graphql";
 import { Empty } from "@/shared/ui/Empty";
 import styles from "../Skills.module.css";
+import { EditSkillModal } from "../EditSkillModal/EditSkillModal";
+import { useSkillStore } from "../../model/skill.store";
+import { Mastery } from "@/generated/graphql";
+import { useTranslations } from "next-intl";
+
 interface ISkillsListProps {
   categoriesData: GetSkillCategoriesQuery;
   profileSkillsData: GetProfileSkillsQuery;
@@ -18,8 +23,23 @@ export const SkillsList: FC<ISkillsListProps> = ({
   isAvailableToChange,
   profileSkillsData,
 }) => {
+  const { deleteSkills, toggleDeleteSkill, isDeleteMode } = useSkillStore();
+
+  const [skillToEdit, setSkillToEdit] = useState<TSkillForm | null>(null);
   const skills = profileSkillsData?.profile?.skills ?? [];
   const categories = categoriesData?.skillCategories ?? [];
+  const t = useTranslations("Skills");
+  const handleClick = (dto: TSkillForm & { name: string }) => {
+    if (isDeleteMode) {
+      toggleDeleteSkill(dto.name);
+    } else {
+      setSkillToEdit({ ...dto });
+    }
+  };
+
+  const handleCloseModal = () => {
+    setSkillToEdit(null);
+  };
 
   const grouped = useMemo(() => {
     const categoryMap = Object.fromEntries(
@@ -52,21 +72,34 @@ export const SkillsList: FC<ISkillsListProps> = ({
       <div className={styles.skillsLists}>
         {grouped.map(({ groupName, skills }) => (
           <div key={groupName} className={styles.group}>
-            <h3 className={styles.categoryName}>{groupName}</h3>
+            <h3 className={styles.categoryName}>{t(groupName)}</h3>
             <ul className={styles.skillsList}>
               {skills.map((skill, i) => (
                 <SkillItem
                   key={i}
                   name={skill.name}
                   mastery={skill.mastery as TMastery}
-                  categoryId={skill.categoryId}
-                  isAvailableToChange={isAvailableToChange}
+                  isActive={Boolean(deleteSkills[skill.name])}
+                  {...(isAvailableToChange && {
+                    onClick: () =>
+                      handleClick({
+                        categoryId: skill.categoryId!,
+                        mastery: skill.mastery as TMastery,
+                        name: skill.name,
+                      }),
+                  })}
                 />
               ))}
             </ul>
           </div>
         ))}
       </div>
+      <EditSkillModal
+        open={Boolean(skillToEdit)}
+        onClose={handleCloseModal}
+        categoryId={skillToEdit?.categoryId ?? ""}
+        mastery={(skillToEdit?.mastery as Mastery) ?? ""}
+      />
     </>
   );
 };

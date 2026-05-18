@@ -1,19 +1,29 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import clsx from "clsx";
 import styles from "./ProfileMenu.module.css";
 import { useUserStore } from "@/application/store/user.store";
 import { useTokens } from "@/modules/Tokens";
+import { Icon } from "@/shared/ui/Icon/Icon";
+import { useTranslations } from "next-intl";
 
 type Props = {
   isOpen: boolean;
   userId: string;
+  collapsed: boolean;
   closeAction: () => void;
 };
 
-export const ProfileMenu = ({ isOpen, userId, closeAction }: Props) => {
+export const ProfileMenu = ({
+  isOpen,
+  userId,
+  collapsed,
+  closeAction,
+}: Props) => {
+  const t = useTranslations("DesktopNavigation");
+
   const router = useRouter();
   const resetUser = useUserStore((state) => state.resetUser);
   const clearToken = useTokens((state) => state.deleteAccessToken);
@@ -27,23 +37,23 @@ export const ProfileMenu = ({ isOpen, userId, closeAction }: Props) => {
   return (
     <>
       <div className={styles.backdrop} onClick={closeAction} />
-      <div className={styles.modal}>
+      <div className={clsx(styles.modal, collapsed && styles.collapsedModal)}>
         <Link
           className={styles.item}
           href={`/users/${userId}`}
           onClick={closeAction}
         >
-          <Image src="/account.svg" alt="Profile" width={20} height={20} />
-          <span>Profile</span>
+          <Icon name="account" size={20} />
+          <span>{t("profile")}</span>
         </Link>
         <Link className={styles.item} href="/settings" onClick={closeAction}>
-          <Image src="/settings.svg" alt="Settings" width={20} height={20} />
-          <span>Settings</span>
+          <Icon name="settings" size={20} />
+          <span>{t("settings")}</span>
         </Link>
         <div className={styles.divider} />
         <button className={styles.item} onClick={handleLogout}>
-          <Image src="/logout.svg" alt="Logout" width={20} height={20} />
-          <span>Logout</span>
+          <Icon name="logout" size={20} />
+          <span>{t("logout")}</span>
         </button>
       </div>
     </>
