@@ -5,6 +5,12 @@ import { NotificationList } from "@/modules/Notifications";
 import { Provider } from "@/components/ui/provider";
 import { ThemeProvider } from "next-themes";
 import { NextIntlClientProvider } from "next-intl";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Curriculum vitae",
+  description: "CRM system for Innowise",
+};
 const roboto = Roboto({
   weight: "400",
   subsets: ["latin"],

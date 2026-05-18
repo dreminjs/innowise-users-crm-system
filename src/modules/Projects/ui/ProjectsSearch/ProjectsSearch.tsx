@@ -1,6 +1,7 @@
 "use client";
 
 import { SearchToolbar } from "@/shared/ui/SearchToolbar/SearchToolbar";
+import { useTranslations } from "next-intl";
 
 type Props = {
   value: string;
@@ -13,11 +14,12 @@ export const ProjectsSearch = ({
   changeAction,
   createAction,
 }: Props) => {
+  const t = useTranslations("AddCvProject");
   return (
     <SearchToolbar
       value={value}
       changeAction={changeAction}
-      buttonLabel="ADD PROJECT"
+      buttonLabel={t("title")}
       createAction={createAction}
     />
   );

@@ -162,5 +162,21 @@
     "tillNow": "Bis heute",
     "roles": "Rollen",
     "responsibilities": "Verantwortlichkeiten"
+  },
+  "CVsToolbar": {
+    "search": "Lebenslauf suchen",
+    "addCv": "LEBENSLAUF HINZUFÜGEN"
+  },
+  "AddCvProject": {
+    "title": "Projekt hinzufügen",
+    "project": "Projekt",
+    "domain": "Domäne",
+    "startDate": "Startdatum",
+    "endDate": "Enddatum",
+    "description": "Beschreibung",
+    "environment": "Umgebung",
+    "responsibilities": "Verantwortlichkeiten",
+    "cancel": "ABBRECHEN",
+    "add": "HINZUFÜGEN"
   }
 }

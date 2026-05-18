@@ -157,5 +157,21 @@
     "tillNow": "Till now",
     "roles": "Roles",
     "responsibilities": "Responsibilities"
+  },
+  "CVsToolbar": {
+    "search": "Search CV",
+    "addCv": "ADD CV"
+  },
+  "AddCvProject": {
+    "title": "Add project",
+    "project": "Project",
+    "domain": "Domain",
+    "startDate": "Start Date",
+    "endDate": "End Date",
+    "description": "Description",
+    "environment": "Environment",
+    "responsibilities": "Responsibilities",
+    "cancel": "CANCEL",
+    "add": "ADD"
   }
 }

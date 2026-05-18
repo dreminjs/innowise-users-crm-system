@@ -160,5 +160,21 @@
     "tillNow": "По настоящее время",
     "roles": "Роли",
     "responsibilities": "Обязанности"
+  },
+  "CVsToolbar": {
+    "search": "Поиск резюме",
+    "addCv": "ДОБАВИТЬ РЕЗЮМЕ"
+  },
+  "AddCvProject": {
+    "title": "Добавить проект",
+    "project": "Проект",
+    "domain": "Домен",
+    "startDate": "Дата начала",
+    "endDate": "Дата окончания",
+    "description": "Описание",
+    "environment": "Окружение",
+    "responsibilities": "Обязанности",
+    "cancel": "ОТМЕНА",
+    "add": "ДОБАВИТЬ"
   }
 }

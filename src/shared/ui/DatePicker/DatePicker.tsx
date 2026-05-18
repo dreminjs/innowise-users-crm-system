@@ -10,7 +10,7 @@ type Props = {
   changeAction: (value: string) => void;
 };
 
-export const DatePicker = ({ label, value, changeAction }: Props) => {
+export const DatePicker = ({ value, changeAction }: Props) => {
   return (
     <ReactDatePicker
       selected={value ? new Date(value) : null}
