@@ -79,7 +79,7 @@
   "Settings": {
     "appearance": "Appearance",
     "language": "Language",
-    "resumeLanguage": "Resume Language"
+    "resumeLanguage": "Language"
   },
   "Profile": {
     "firstName": "First Name",
@@ -97,5 +97,93 @@
     "languages": "Languages",
     "users": "Employees",
     "cvs": "CVs"
+  },
+  "Appearance": {
+    "system": "Device settings",
+    "dark": "Dark",
+    "light": "Light"
+  },
+  "CvTabs": {
+  "DETAILS": "Details",
+  "SKILLS": "Skills",
+  "PROJECTS": "Projects",
+  "PREVIEW": "Preview"
+ },
+  "CvDetails": {
+    "name": "Name",
+    "education": "Education",
+    "description": "Description",
+    "update": "Update",
+    "updating": "Updating..."
+  },
+  "CVsTable": {
+    "name": "Name",
+    "education": "Education",
+    "employee": "Employee"
+  },
+  "UserActions": {
+    "profile": "Profile",
+    "edit": "Edit"
+  },
+  "SearchToolbar": {
+    "search": "Search"
+  },
+  "CreateCv": {
+    "title": "Create CV",
+    "cvName": "CV Name",
+    "education": "Education",
+    "description": "Description",
+    "create": "Create"
+  },
+  "CvActions": {
+    "edit": "Edit CV",
+    "delete": "Delete CV"
+  },
+  "ProjectsTable": {
+    "name": "Name",
+    "domain": "Domain",
+    "startDate": "Start date",
+    "endDate": "End date"
+  },
+  "ProjectActions": {
+    "edit": "Edit Project",
+    "remove": "Remove Project"
+  },
+  "Preview": {
+    "languages": "Languages",
+    "projects": "Projects",
+    "professionalSkills": "Professional skills",
+    "period": "Period",
+    "tillNow": "Till now",
+    "roles": "Roles",
+    "responsibilities": "Responsibilities"
+  },
+  "CVsToolbar": {
+    "search": "Search CV",
+    "addCv": "ADD CV"
+  },
+  "AddCvProject": {
+    "title": "Add project",
+    "project": "Project",
+    "domain": "Domain",
+    "startDate": "Start Date",
+    "endDate": "End Date",
+    "description": "Description",
+    "environment": "Environment",
+    "responsibilities": "Responsibilities",
+    "cancel": "CANCEL",
+    "add": "ADD"
+  },
+  "EditCvProject": {
+    "title": "Edit Project",
+    "project": "Project",
+    "domain": "Domain",
+    "startDate": "Start Date",
+    "endDate": "End Date",
+    "description": "Description",
+    "environment": "Environment",
+    "responsibilities": "Responsibilities",
+    "save": "Save",
+    "saving": "Saving..."
   }
 }

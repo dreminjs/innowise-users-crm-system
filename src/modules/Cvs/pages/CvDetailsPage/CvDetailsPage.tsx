@@ -2,11 +2,13 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 import styles from "./CvDetailsPage.module.css";
 import { useGetCv } from "@/modules/Cvs/hooks/useGetCv";
 import { useUpdateCv } from "@/modules/Cvs/hooks/useUpdateCv";
 import { ConfirmButtons } from "@/shared/ui/ConfirmButtons";
 import { ModalField } from "@/shared/ui/ModalField/ModalField";
+import { Loading } from "@/shared/ui/Loading";
 
 type Props = {
   cvId: string;
@@ -20,23 +22,26 @@ type FormState = {
 
 export const CvDetailsPage = ({ cvId }: Props) => {
   const router = useRouter();
+  const t = useTranslations("CvDetails");
   const { data, loading } = useGetCv(cvId);
   const [updateCv, { loading: updating }] = useUpdateCv();
   const cv = data?.cv;
+
   const [form, setForm] = useState<FormState>({
     name: "",
     education: "",
     description: "",
   });
   useEffect(() => {
-    if (!cv) return;
+    if (!cv) {
+      return;
+    }
     setForm({
       name: cv.name,
       education: cv.education ?? "",
       description: cv.description,
     });
   }, [cv]);
-
   const handleSubmit = async () => {
     try {
       await updateCv({
@@ -55,12 +60,12 @@ export const CvDetailsPage = ({ cvId }: Props) => {
     }
   };
   if (loading) {
-    return <div className={styles.empty}>Loading...</div>;
+    return <Loading />;
   }
   return (
     <section className={styles.page}>
       <div className={styles.form}>
-        <ModalField label="Name" active={Boolean(form.name)}>
+        <ModalField label={t("name")} active={Boolean(form.name)}>
           <input
             value={form.name}
             onChange={(e) =>
@@ -72,7 +77,7 @@ export const CvDetailsPage = ({ cvId }: Props) => {
             placeholder=" "
           />
         </ModalField>
-        <ModalField label="Education" active={Boolean(form.education)}>
+        <ModalField label={t("education")} active={Boolean(form.education)}>
           <input
             value={form.education}
             onChange={(e) =>
@@ -85,7 +90,7 @@ export const CvDetailsPage = ({ cvId }: Props) => {
           />
         </ModalField>
         <ModalField
-          label="Description"
+          label={t("description")}
           textarea
           active={Boolean(form.description)}
         >
@@ -101,7 +106,7 @@ export const CvDetailsPage = ({ cvId }: Props) => {
           />
         </ModalField>
         <ConfirmButtons
-          confirmLabel={updating ? "Updating..." : "Update"}
+          confirmLabel={updating ? t("updating") : t("update")}
           confirmButtonType="button"
           onConfirm={handleSubmit}
           onCancel={() => router.push("/cvs")}

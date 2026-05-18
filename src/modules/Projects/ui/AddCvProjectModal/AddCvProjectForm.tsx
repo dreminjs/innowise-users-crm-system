@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { useTranslations } from "next-intl";
 import { useQuery } from "@apollo/client/react";
 import styles from "./AddCvProjectModal.module.css";
 import { GET_PROJECT_OPTIONS } from "@/modules/Projects/api/queries";
@@ -15,6 +16,7 @@ type Props = {
 };
 
 export const AddCvProjectForm = ({ cvId, closeAction }: Props) => {
+  const t = useTranslations("AddCvProject");
   const [projectId, setProjectId] = useState("");
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
@@ -26,8 +28,9 @@ export const AddCvProjectForm = ({ cvId, closeAction }: Props) => {
   }, [data, projectId]);
 
   const handleSubmit = async () => {
-    if (!projectId) return;
-
+    if (!projectId) {
+      return;
+    }
     try {
       await addCvProject({
         variables: {
@@ -50,43 +53,47 @@ export const AddCvProjectForm = ({ cvId, closeAction }: Props) => {
     <div className={styles.form}>
       <div className={styles.row}>
         <CustomSelect
-          label="Project"
+          label={t("project")}
           value={projectId}
           onChange={setProjectId}
           options={
             data?.projects.map((project) => ({
               label: project.name,
+
               value: project.id,
             })) ?? []
           }
         />
-        <ModalField label="Domain" active={Boolean(selectedProject?.domain)}>
+        <ModalField
+          label={t("domain")}
+          active={Boolean(selectedProject?.domain)}
+        >
           <input value={selectedProject?.domain ?? ""} readOnly />
         </ModalField>
       </div>
       <div className={styles.row}>
-        <ModalField label="Start Date" active={Boolean(startDate)}>
+        <ModalField label={t("startDate")} active={Boolean(startDate)}>
           <DatePicker label="" value={startDate} changeAction={setStartDate} />
         </ModalField>
-        <ModalField label="End Date" active={Boolean(endDate)}>
+        <ModalField label={t("endDate")} active={Boolean(endDate)}>
           <DatePicker label="" value={endDate} changeAction={setEndDate} />
         </ModalField>
       </div>
       <ModalField
-        label="Description"
+        label={t("description")}
         textarea
         active={Boolean(selectedProject?.description)}
       >
         <textarea value={selectedProject?.description ?? ""} readOnly />
       </ModalField>
       <ModalField
-        label="Environment"
+        label={t("environment")}
         active={Boolean(selectedProject?.environment?.length)}
       >
         <input value={selectedProject?.environment.join(", ") ?? ""} readOnly />
       </ModalField>
       <ModalField
-        label="Responsibilities"
+        label={t("responsibilities")}
         textarea
         active={Boolean(responsibilities)}
       >
@@ -101,14 +108,14 @@ export const AddCvProjectForm = ({ cvId, closeAction }: Props) => {
           onClick={closeAction}
           className={styles.cancelButton}
         >
-          CANCEL
+          {t("cancel")}
         </button>
         <button
           type="button"
           onClick={handleSubmit}
           className={styles.submitButton}
         >
-          ADD
+          {t("add")}
         </button>
       </div>
     </div>

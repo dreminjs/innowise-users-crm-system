@@ -1,22 +1,9 @@
 "use client";
+
 import { CustomSelect } from "@/shared/ui/CustomSelect";
 import { useTheme } from "next-themes";
-import { FC, useEffect, useState } from "react";
-
-const options = [
-  {
-    label: "Device settings",
-    value: "Device settings",
-  },
-  {
-    label: "Dark",
-    value: "dark",
-  },
-  {
-    label: "Light",
-    value: "light",
-  },
-];
+import { FC, useEffect, useMemo, useState } from "react";
+import { useTranslations } from "next-intl";
 
 interface IAppearanceProps {
   label: string;
@@ -24,17 +11,38 @@ interface IAppearanceProps {
 
 export const Appearance: FC<IAppearanceProps> = ({ label }) => {
   const { theme, setTheme } = useTheme();
+
   const [mounted, setMounted] = useState(false);
 
+  const t = useTranslations("Appearance");
+
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
   }, []);
+
+  const options = useMemo(
+    () => [
+      {
+        label: t("system"),
+        value: "system",
+      },
+      {
+        label: t("dark"),
+        value: "dark",
+      },
+      {
+        label: t("light"),
+        value: "light",
+      },
+    ],
+    [t],
+  );
+
   return (
     <CustomSelect
       label={label}
       options={options}
-      value={mounted ? (theme ?? "light") : "light"}
+      value={mounted ? (theme ?? "system") : "system"}
       onChange={(value) => setTheme(value)}
     />
   );

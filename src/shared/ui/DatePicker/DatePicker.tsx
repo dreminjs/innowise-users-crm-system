@@ -1,5 +1,6 @@
 "use client";
 
+import { forwardRef } from "react";
 import ReactDatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import styles from "./DatePicker.module.css";
@@ -10,7 +11,24 @@ type Props = {
   changeAction: (value: string) => void;
 };
 
-export const DatePicker = ({ label, value, changeAction }: Props) => {
+type CustomInputProps = {
+  value?: string;
+  onClick?: () => void;
+};
+
+const CustomInput = forwardRef<HTMLDivElement, CustomInputProps>(
+  ({ value, onClick }, ref) => {
+    return (
+      <div ref={ref} onClick={onClick} className={styles.trigger}>
+        {value || "Select date"}
+      </div>
+    );
+  },
+);
+
+CustomInput.displayName = "CustomInput";
+
+export const DatePicker = ({ value, changeAction }: Props) => {
   return (
     <ReactDatePicker
       selected={value ? new Date(value) : null}
@@ -23,8 +41,8 @@ export const DatePicker = ({ label, value, changeAction }: Props) => {
         changeAction(formatted);
       }}
       dateFormat="yyyy-MM-dd"
-      className={styles.input}
       calendarClassName={styles.calendar}
+      customInput={<CustomInput />}
     />
   );
 };

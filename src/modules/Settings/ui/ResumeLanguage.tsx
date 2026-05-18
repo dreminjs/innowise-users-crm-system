@@ -1,8 +1,8 @@
+import { FC } from "react";
 import { CustomSelect } from "@/shared/ui/CustomSelect";
 import { useSettingsStore } from "../model/settings.store";
 import { languageOptions } from "../model/settings.data";
-import { TLanguage } from "../model/settings.types";
-import { FC } from "react";
+import { TLanguageLocale } from "../model/settings.types";
 
 interface IResumeLanguageProps {
   label: string;
@@ -11,15 +11,11 @@ interface IResumeLanguageProps {
 export const ResumeLanguage: FC<IResumeLanguageProps> = ({ label }) => {
   const { resumeLanguage, setResumeLanguage } = useSettingsStore();
   return (
-    <>
-      <>
-        <CustomSelect
-          label={label}
-          options={languageOptions}
-          value={resumeLanguage || "English"}
-          onChange={(value) => setResumeLanguage(value as TLanguage)}
-        />
-      </>
-    </>
+    <CustomSelect
+      label={label}
+      options={languageOptions}
+      value={resumeLanguage}
+      onChange={(value) => setResumeLanguage(value as TLanguageLocale)}
+    />
   );
 };

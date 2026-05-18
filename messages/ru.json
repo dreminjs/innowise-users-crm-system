@@ -79,7 +79,7 @@
   "Settings": {
     "appearance": "Тема",
     "language": "Язык",
-    "resumeLanguage": "Язык Резюме"
+    "resumeLanguage": "Язык"
   },
   "Profile": {
     "firstName": "Имя",
@@ -96,6 +96,97 @@
     "skills": "Навыки",
     "languages": "Языки",
     "users": "Сотрудники",
-    "cvs": "Резюме"
+    "cvs": "Резюме",
+    "preview": "Превью",
+    "settings": "Настройки",
+    "projects": "Проекты"
+  },
+  "Appearance": {
+    "system": "Настройки устройства",
+    "dark": "Тёмная",
+    "light": "Светлая"
+  },
+  "CvTabs": {
+    "DETAILS": "Детали",
+    "SKILLS": "Навыки",
+    "PROJECTS": "Проекты",
+    "PREVIEW": "Превью"
+  },
+  "CvDetails": {
+    "name": "Название",
+    "education": "Образование",
+    "description": "Описание",
+    "update": "Обновить",
+    "updating": "Обновление..."
+  },
+  "CVsTable": {
+    "name": "Название",
+    "education": "Образование",
+    "employee": "Сотрудник"
+  },
+  "UserActions": {
+    "profile": "Профиль",
+    "edit": "Редактировать"
+  },
+  "SearchToolbar": {
+    "search": "Поиск"
+  },
+  "CreateCv": {
+    "title": "Создать резюме",
+    "cvName": "Название",
+    "education": "Образование",
+    "description": "Описание",
+    "create": "Создать"
+  },
+  "CvActions": {
+    "edit": "Редактировать CV",
+    "delete": "Удалить CV"
+  },
+  "ProjectsTable": {
+    "name": "Название",
+    "domain": "Домен",
+    "startDate": "Дата начала",
+    "endDate": "Дата окончания"
+  },
+  "ProjectActions": {
+    "edit": "Редактировать проект",
+    "remove": "Удалить проект"
+  },
+  "Preview": {
+    "languages": "Языки",
+    "projects": "Проекты",
+    "professionalSkills": "Профессиональные навыки",
+    "period": "Период",
+    "tillNow": "По настоящее время",
+    "roles": "Роли",
+    "responsibilities": "Обязанности"
+  },
+  "CVsToolbar": {
+    "search": "Поиск резюме",
+    "addCv": "ДОБАВИТЬ РЕЗЮМЕ"
+  },
+  "AddCvProject": {
+    "title": "Добавить проект",
+    "project": "Проект",
+    "domain": "Домен",
+    "startDate": "Дата начала",
+    "endDate": "Дата окончания",
+    "description": "Описание",
+    "environment": "Окружение",
+    "responsibilities": "Обязанности",
+    "cancel": "ОТМЕНА",
+    "add": "ДОБАВИТЬ"
+  },
+  "EditCvProject": {
+    "title": "Редактировать проект",
+    "project": "Проект",
+    "domain": "Домен",
+    "startDate": "Дата начала",
+    "endDate": "Дата окончания",
+    "description": "Описание",
+    "environment": "Окружение",
+    "responsibilities": "Обязанности",
+    "save": "Сохранить",
+    "saving": "Сохранение..."
   }
 }

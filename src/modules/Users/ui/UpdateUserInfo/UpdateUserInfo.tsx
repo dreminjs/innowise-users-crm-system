@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { UploadAvatar } from "./UploadAvatar/UploadAvatar";
-import { useGetProfile } from "../../model/hooks/useGetProfile";
+import { useGetProfile } from "@/modules/Users";
 import { useUserStore } from "@/application/store/user.store";
 import { UserInfo } from "./UserInfo";
 import { UploadInfo } from "./UploadInfo/UploadInfo";

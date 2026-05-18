@@ -1,3 +1,5 @@
+import { useTranslations } from "next-intl";
+
 import styles from "./UsersTable.module.css";
 import { SortField, SortOrder } from "@/modules/Users/model/usersTable.types";
 
@@ -8,14 +10,13 @@ type Props = {
 };
 
 export const UsersTableHeader = ({ sortField, sortOrder, onSort }: Props) => {
+  const t = useTranslations("Profile");
   const renderArrow = (field: SortField) => {
     if (sortField !== field) {
       return null;
     }
-
     return sortOrder === "asc" ? "↑" : "↓";
   };
-
   return (
     <thead>
       <tr className={styles.header}>
@@ -25,7 +26,7 @@ export const UsersTableHeader = ({ sortField, sortOrder, onSort }: Props) => {
             className={styles.sortButton}
             onClick={() => onSort("first_name")}
           >
-            First Name
+            {t("firstName")}
             <span>{renderArrow("first_name")}</span>
           </button>
         </th>
@@ -35,38 +36,34 @@ export const UsersTableHeader = ({ sortField, sortOrder, onSort }: Props) => {
             className={styles.sortButton}
             onClick={() => onSort("last_name")}
           >
-            Last Name
+            {t("lastName")}
             <span>{renderArrow("last_name")}</span>
           </button>
         </th>
-
         <th className={styles.emailColumn}>
           <button className={styles.sortButton} onClick={() => onSort("email")}>
             Email
             <span>{renderArrow("email")}</span>
           </button>
         </th>
-
         <th>
           <button
             className={styles.sortButton}
             onClick={() => onSort("department")}
           >
-            Department
+            {t("department")}
             <span>{renderArrow("department")}</span>
           </button>
         </th>
-
         <th>
           <button
             className={styles.sortButton}
             onClick={() => onSort("position")}
           >
-            Position
+            {t("position")}
             <span>{renderArrow("position")}</span>
           </button>
         </th>
-
         <th className={styles.actionsColumn} />
       </tr>
     </thead>

@@ -1,21 +1,27 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import { TLanguage } from "./settings.types";
+import { TLanguageLocale } from "./settings.types";
 
 interface ISettingsStore {
-  language: TLanguage;
-  setLanguage: (language: TLanguage) => void;
-  resumeLanguage: TLanguage;
-  setResumeLanguage: (resumeLanguage: TLanguage) => void;
+  language: TLanguageLocale;
+  setLanguage: (language: TLanguageLocale) => void;
+  resumeLanguage: TLanguageLocale;
+  setResumeLanguage: (resumeLanguage: TLanguageLocale) => void;
 }
 
 export const useSettingsStore = create<ISettingsStore>()(
   persist(
     (set) => ({
-      resumeLanguage: "English",
-      setResumeLanguage: (resumeLanguage) => set({ resumeLanguage }),
-      language: "English",
-      setLanguage: (language) => set({ language }),
+      language: "en",
+      setLanguage: (language) =>
+        set({
+          language,
+        }),
+      resumeLanguage: "en",
+      setResumeLanguage: (resumeLanguage) =>
+        set({
+          resumeLanguage,
+        }),
     }),
     {
       name: "settings",

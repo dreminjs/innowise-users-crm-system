@@ -76,7 +76,7 @@
 
 .description {
     margin-bottom: 16px;
-    color: #a1a1aa;
+    color: var(--color-subtitle);
     line-height: 1.7;
     font-size: 14px;
 }

@@ -35,7 +35,7 @@
 }
 
 .item:hover {
-    background: var(--bg);
+    background: var(--bg-hover);
 }
 
 .danger {
