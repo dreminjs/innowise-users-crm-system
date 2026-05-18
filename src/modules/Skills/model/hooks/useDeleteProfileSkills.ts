@@ -4,22 +4,25 @@ import { useUserStore } from "@/application/store/user.store";
 import { useNotification } from "@/modules/Notifications";
 import { DELETE_PROFILE_SKILL } from "../../api/mutations";
 import { GET_PROFILE_SKILLS } from "../../api/queries";
+import { useTranslations } from "next-intl";
 
 export const useDeleteProfileSkills = () => {
   const addNotification = useNotification((state) => state.addNotification);
   const currentUserId = useUserStore((state) => state.userId);
   const { deleteSkills, clearDeleteSkills, toggleDeleteMode } = useSkillStore();
+  const t = useTranslations("Skills");
+
   const [mutate, { loading, error }] = useMutation(DELETE_PROFILE_SKILL, {
     onCompleted: () => {
       addNotification({
-        message: "Skills deleted successfully",
+        message: t("deletedSuccessfully"),
         type: "success",
       });
       clearDeleteSkills();
       toggleDeleteMode();
     },
     onError: () => {
-      addNotification({ message: "Failed to delete skills", type: "error" });
+      addNotification({ message: t("failedDelete"), type: "error" });
       clearDeleteSkills();
       toggleDeleteMode();
     },

@@ -4,22 +4,23 @@ import { useNotification } from "@/modules/Notifications";
 import { GET_LANGUAGES, GET_PROFILE_LANGUAGES } from "../../api/queries";
 import { UPDATE_PROFILE_LANGUAGE } from "../../api/mutations";
 import { TLanguageForm } from "../languages.interface";
+import { useTranslations } from "next-intl";
 
 export const useEditProfileLanguage = () => {
   const { data: languagesData } = useQuery(GET_LANGUAGES);
 
   const currentUserId = useUserStore((state) => state.userId);
-
+  const t = useTranslations("Languages");
   const addNotification = useNotification((state) => state.addNotification);
   const [mutate, { loading, error }] = useMutation(UPDATE_PROFILE_LANGUAGE, {
     onCompleted: () => {
       addNotification({
-        message: "Language edited successfully",
+        message: t("editSuccessfully"),
         type: "success",
       });
     },
     onError: () => {
-      addNotification({ message: "Failed to edit language", type: "error" });
+      addNotification({ message: t("failedEdit"), type: "error" });
     },
     refetchQueries: [
       { query: GET_PROFILE_LANGUAGES, variables: { userId: currentUserId } },

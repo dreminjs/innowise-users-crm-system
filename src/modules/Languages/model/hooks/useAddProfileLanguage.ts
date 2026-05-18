@@ -4,6 +4,7 @@ import { useNotification } from "@/modules/Notifications";
 import { TLanguageForm } from "../languages.interface";
 import { GET_LANGUAGES, GET_PROFILE_LANGUAGES } from "../../api/queries";
 import { ADD_PROFILE_LANGUAGE } from "../../api/mutations";
+import { useTranslations } from "next-intl";
 
 export const useAddProfileLanguage = () => {
   const { data: languageData } = useQuery(GET_LANGUAGES);
@@ -11,15 +12,17 @@ export const useAddProfileLanguage = () => {
   const currentUserId = useUserStore((state) => state.userId);
 
   const addNotification = useNotification((state) => state.addNotification);
+  const t = useTranslations("Languages");
+
   const [mutate, { loading, error }] = useMutation(ADD_PROFILE_LANGUAGE, {
     onCompleted: () => {
       addNotification({
-        message: "Language added successfully",
+        message: t("addedSuccessfully"),
         type: "success",
       });
     },
     onError: () => {
-      addNotification({ message: "Failed to add language", type: "error" });
+      addNotification({ message: t("failedAdd"), type: "error" });
     },
     refetchQueries: [
       { query: GET_PROFILE_LANGUAGES, variables: { userId: currentUserId } },

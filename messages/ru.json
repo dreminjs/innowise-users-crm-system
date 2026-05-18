@@ -62,7 +62,13 @@
     "Proficient": "Профилиент",
     "Advanced": "Продвинутый",
     "Novice": "Новичок",
-    "Expert": "Эксперт"
+    "Expert": "Эксперт",
+    "addedSuccessfully": "Навык успешно добавлен",
+    "deletedSuccessfully": "Навык успешно удален",
+    "editSuccessfully": "Навык успешно отредактирован",
+    "failedDelete": "Не получилось удалить",
+    "failedAdd": "Не получилось добавить",
+    "failedEdit": "Не получилось отредактировать"
   },
   "ConfirmButtons": {
     "delete": "УДАЛИТЬ",
@@ -82,7 +88,13 @@
     "Portugal": "португальский",
     "Italian": "итальянский",
     "Belarusian": "белорусский",
-    "Native": "Родной"
+    "Native": "Родной",
+    "addedSuccessfully": "Язык успешно добавлен",
+    "deletedSuccessfully": "Язык успешно удален",
+    "editSuccessfully": "Язык успешно отредактирован",
+    "failedDelete": "Не получилось удалить",
+    "failedAdd": "Не получилось добавить",
+    "failedEdit": "Не получилось отредактировать"
   },
   "empty": "Пусто :(",
   "profile": {

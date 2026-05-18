@@ -82,7 +82,13 @@
     "Portugal": "Portuguese",
     "Italian": "Italian",
     "Belarusian": "Belarusian",
-    "Native": "Native"
+    "Native": "Native",
+    "addedSuccessfully": "Language added successfully",
+    "failedAdd": "Failed to add language",
+    "deletedSuccessfully": "Language deleted successfully",
+    "editSuccessfully": "Language edited successfully",
+    "failedDelete": "Failed to delete language",
+    "failedEdit": "Failed to edit language"
   },
   "empty": "Empty :(",
   "profile": {

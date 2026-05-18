@@ -8,19 +8,20 @@ import {
   GET_SKILLS,
 } from "../../api/queries";
 import { TSkillForm } from "../skill.interface";
+import { useTranslations } from "next-intl";
 
 export const useAddProfileSkill = () => {
   const { data: skillsData } = useQuery(GET_SKILLS);
 
   const currentUserId = useUserStore((state) => state.userId);
-
+  const t = useTranslations("Skills");
   const addNotification = useNotification((state) => state.addNotification);
   const [mutate, { loading, error }] = useMutation(ADD_PROFILE_SKILL, {
     onCompleted: () => {
-      addNotification({ message: "Skill added successfully", type: "success" });
+      addNotification({ message: t("addedSuccessfully"), type: "success" });
     },
     onError: () => {
-      addNotification({ message: "Failed to add skill", type: "error" });
+      addNotification({ message: t("failedAdd"), type: "error" });
     },
     refetchQueries: [
       { query: GET_PROFILE_SKILLS, variables: { userId: currentUserId } },

@@ -8,22 +8,23 @@ import {
   GET_SKILLS,
 } from "../../api/queries";
 import { TSkillForm } from "../skill.interface";
+import { useTranslations } from "next-intl";
 
 export const useEditProfileSkill = () => {
   const { data: skillsData } = useQuery(GET_SKILLS);
-  // const { data: categoriesData } = useQuery(GET_SKILL_CATEGORIES);
   const currentUserId = useUserStore((state) => state.userId);
+  const t = useTranslations("Skills");
 
   const addNotification = useNotification((state) => state.addNotification);
   const [mutate, { loading, error }] = useMutation(UPDATE_PROFILE_SKILL, {
     onCompleted: () => {
       addNotification({
-        message: "Skill edited successfully",
+        message: t("editSuccessfully"),
         type: "success",
       });
     },
     onError: () => {
-      addNotification({ message: "Failed to edit skill", type: "error" });
+      addNotification({ message: t("failedEdit"), type: "error" });
     },
     refetchQueries: [
       { query: GET_PROFILE_SKILLS, variables: { userId: currentUserId } },

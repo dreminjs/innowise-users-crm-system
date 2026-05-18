@@ -4,23 +4,25 @@ import { useNotification } from "@/modules/Notifications";
 import { useLanguageStore } from "../language.store";
 import { DELETE_PROFILE_LANGUAGE } from "../../api/mutations";
 import { GET_PROFILE_LANGUAGES } from "../../api/queries";
+import { useTranslations } from "next-intl";
 
 export const useDeleteProfileLanguages = () => {
   const addNotification = useNotification((state) => state.addNotification);
   const currentUserId = useUserStore((state) => state.userId);
+  const t = useTranslations("Languages");
   const { clearDeleteLanguages, toggleDeleteMode, deleteLanguages } =
     useLanguageStore();
   const [mutate, { loading, error }] = useMutation(DELETE_PROFILE_LANGUAGE, {
     onCompleted: () => {
       addNotification({
-        message: "Languages deleted successfully",
+        message: t("deletedSuccessfully"),
         type: "success",
       });
       clearDeleteLanguages();
       toggleDeleteMode();
     },
     onError: () => {
-      addNotification({ message: "Failed to delete Languages", type: "error" });
+      addNotification({ message: t("failedDelete"), type: "error" });
       clearDeleteLanguages();
       toggleDeleteMode();
     },

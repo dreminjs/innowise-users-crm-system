@@ -84,7 +84,13 @@
     "Portugal": "Portugiesisch",
     "Italian": "Italienisch",
     "Belarusian": "Weißrussisch",
-    "Native": "Muttersprache"
+    "Native": "Muttersprache",
+    "addedSuccessfully": "Sprache erfolgreich hinzugefügt",
+    "deletedSuccessfully": "Sprache erfolgreich entfernt",
+    "editSuccessfully": "Sprache erfolgreich bearbeitet",
+    "failedDelete": "Sprache konnte nicht gelöscht werden",
+    "failedAdd": "Sprache konnte nicht hinzugefügt werden",
+    "failedEdit": "Sprache konnte nicht bearbeitet werden"
   },
   "empty": "Empty :(",
   "profile": {
