@@ -76,7 +76,15 @@
     "edit": "SPRACHE BEARBEITEN",
     "delete": "SPRACHE ENTFERNEN",
     "languageMastery": "Sprachmastery",
-    "chooseLanguage": "Sprache wählen"
+    "chooseLanguage": "Sprache wählen",
+    "English": "Englisch",
+    "Russian": "Russisch",
+    "German": "Deutsch",
+    "Polish": "Polnisch",
+    "Portugal": "Portugiesisch",
+    "Italian": "Italienisch",
+    "Belarusian": "Weißrussisch",
+    "Native": "Muttersprache"
   },
   "empty": "Empty :(",
   "profile": {

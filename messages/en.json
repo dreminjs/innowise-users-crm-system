@@ -74,7 +74,15 @@
     "edit": "EDIT LANGUAGE",
     "delete": "REMOVE LANGUAGE",
     "languageMastery": "Language Mastery",
-    "chooseLanguage": "Language"
+    "chooseLanguage": "Language",
+    "English": "English",
+    "Russian": "Russian",
+    "German": "German",
+    "Polish": "Polish",
+    "Portugal": "Portuguese",
+    "Italian": "Italian",
+    "Belarusian": "Belarusian",
+    "Native": "Native"
   },
   "empty": "Empty :(",
   "profile": {

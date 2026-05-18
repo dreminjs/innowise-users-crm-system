@@ -74,7 +74,15 @@
     "edit": "РЕДАКТИРОВАТЬ ЯЗЫК",
     "delete": "УДАЛИТЬ ЯЗЫК",
     "languageMastery": "Мастерство Языка",
-    "chooseLanguage": "Язык"
+    "chooseLanguage": "Язык",
+    "English": "английский",
+    "Russian": "русский",
+    "German": "немецкий",
+    "Polish": "польский",
+    "Portugal": "португальский",
+    "Italian": "итальянский",
+    "Belarusian": "белорусский",
+    "Native": "Родной"
   },
   "empty": "Пусто :(",
   "profile": {
