@@ -90,7 +90,7 @@ export const EditCvSkillForm: FC<Props> = ({
             label={t("Skills.skillMastery")}
             options={skillLevels.map((el) => ({
               value: el,
-              label: el,
+              label: t(`Skills.${el}`),
             }))}
             value={field.value}
             disabled={!Boolean(currentCategoryId)}

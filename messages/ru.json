@@ -61,7 +61,8 @@
     "Competent": "Компетент",
     "Proficient": "Профилиент",
     "Advanced": "Продвинутый",
-    "Novice": "Новичок"
+    "Novice": "Новичок",
+    "Expert": "Эксперт"
   },
   "ConfirmButtons": {
     "delete": "УДАЛИТЬ",
