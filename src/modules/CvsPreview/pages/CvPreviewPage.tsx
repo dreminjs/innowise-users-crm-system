@@ -47,7 +47,7 @@ export const CvPreviewPage = ({ cvId }: Props) => {
         id="cv-preview"
         className={`${styles.preview} preview-root`}
       >
-        <PreviewHeader cv={cv} />
+        <PreviewHeader cv={cv} messages={messages} />
         <div className={`${styles.content} preview-content`}>
           <div className={styles.sidebar}>
             <PreviewLanguages
