@@ -59,7 +59,12 @@
     "Containerization": "Containerisierung",
     "Source control systems": "Versionskontrollsysteme",
     "Documentation": "Dokumentation",
-    "Graphic editors": "Grafikeditoren"
+    "Graphic editors": "Grafikeditoren",
+    "Competent": "Kompetent",
+    "Proficient": "Profi",
+    "Advanced": "Fortgeschritten",
+    "Novice": "Neuling",
+    "Expert": "Experte"
   },
   "ConfirmButtons": {
     "cancel": "ABBRECHEN",

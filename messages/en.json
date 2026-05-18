@@ -57,7 +57,12 @@
     "Containerization": "Containerization",
     "Source control systems": "Source control systems",
     "Documentation": "Documentation",
-    "Graphic editors": "Graphic editors"
+    "Graphic editors": "Graphic editors",
+    "Expert": "Expert",
+    "Competent": "Competent",
+    "Proficient": "Proficient",
+    "Advanced": "Advanced",
+    "Novice": "Novice"
   },
   "ConfirmButtons": {
     "cancel": "CANCEL",
@@ -104,11 +109,11 @@
     "light": "Light"
   },
   "CvTabs": {
-  "DETAILS": "Details",
-  "SKILLS": "Skills",
-  "PROJECTS": "Projects",
-  "PREVIEW": "Preview"
- },
+    "DETAILS": "Details",
+    "SKILLS": "Skills",
+    "PROJECTS": "Projects",
+    "PREVIEW": "Preview"
+  },
   "CvDetails": {
     "name": "Name",
     "education": "Education",

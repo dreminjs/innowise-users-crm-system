@@ -57,7 +57,11 @@
     "Containerization": "Контейнеризация",
     "Source control systems": "Системы контроля версий",
     "Documentation": "Документация",
-    "Graphic editors": "Графические редакторы"
+    "Graphic editors": "Графические редакторы",
+    "Competent": "Компетент",
+    "Proficient": "Профилиент",
+    "Advanced": "Продвинутый",
+    "Novice": "Новичок"
   },
   "ConfirmButtons": {
     "delete": "УДАЛИТЬ",

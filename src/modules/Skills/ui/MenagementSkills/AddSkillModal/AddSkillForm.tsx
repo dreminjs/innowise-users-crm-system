@@ -24,6 +24,7 @@ export const AddSkillForm: FC<IEditSkillFormProps> = ({ onToggle }) => {
   const { data: profileData } = useQuery(GET_PROFILE_SKILLS, {
     variables: { userId: currentUserId || "" },
   });
+
   const {
     control,
     handleChangeSkill,
@@ -39,7 +40,6 @@ export const AddSkillForm: FC<IEditSkillFormProps> = ({ onToggle }) => {
       onToggle();
     });
   };
-
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={styles.addSkillForm}>
       <Controller
@@ -74,7 +74,7 @@ export const AddSkillForm: FC<IEditSkillFormProps> = ({ onToggle }) => {
             label={t("Skills.skillMastery")}
             options={skillLevels.map((el) => ({
               value: el,
-              label: el,
+              label: t(`Skills.${el}`),
             }))}
             value={field.value}
             disabled={!currentCategoryId}

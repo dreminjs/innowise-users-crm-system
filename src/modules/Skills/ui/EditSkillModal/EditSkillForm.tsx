@@ -69,7 +69,7 @@ export const EditSkillForm: FC<TEditSkillFormProps> = ({
             label={t("Skills.skillMastery")}
             options={skillLevels.map((el) => ({
               value: el,
-              label: el,
+              label: t(`Skills.${el}`),
             }))}
             value={field.value}
             disabled={!Boolean(currentCategoryId)}
