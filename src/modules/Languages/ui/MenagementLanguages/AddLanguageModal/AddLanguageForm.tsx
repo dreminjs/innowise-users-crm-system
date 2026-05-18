@@ -80,7 +80,7 @@ export const AddLanguageForm: FC<IEditLangugeFormProps> = ({
             label={t("Languages.languageMastery")}
             options={languageProfiency.map((el) => ({
               value: el,
-              label: el === "Native" ? t("Native") : el,
+              label: el === "Native" ? t("Languages.Native") : el,
             }))}
             value={field.value}
             disabled={!Boolean(currentName)}
