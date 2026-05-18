@@ -12,6 +12,7 @@ import { CustomSelect } from "@/shared/ui/CustomSelect";
 import { ConfirmButtons } from "@/shared/ui/ConfirmButtons";
 import { useUpdateCvSkill } from "@/modules/Cvs/hooks/useUpdateCvSkill";
 import styles from "@/modules/Skills/ui/Skills.module.css";
+import { useTranslations } from "next-intl";
 
 type Props = {
   cvId: string;
@@ -37,6 +38,7 @@ export const EditCvSkillForm: FC<Props> = ({
     categoryId,
     mastery,
   });
+  const t = useTranslations("ConfirmButtons");
 
   const onSubmit = async (data: TSkillForm) => {
     const selectedSkill = skillsData?.skills.find(
@@ -99,7 +101,7 @@ export const EditCvSkillForm: FC<Props> = ({
 
       <ConfirmButtons
         onCancel={toggleAction}
-        confirmLabel={"CONFIRM"}
+        confirmLabel={t("confirm")}
         confirmButtonType={"submit"}
       />
     </form>

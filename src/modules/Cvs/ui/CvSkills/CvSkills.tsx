@@ -11,6 +11,7 @@ import { useCvSkillStore } from "../../model/cv-skill.store";
 import styles from "@/modules/Skills/ui/Skills.module.css";
 import { SkillItem } from "@/modules/Skills/ui/SkillsList/SkillItem";
 import { EditCvSkillModal } from "./modals/EditCvSkillModal";
+import { useTranslations } from "next-intl";
 
 type Props = {
   cvId: string;
@@ -37,6 +38,7 @@ export const CvSkills = ({ cvId }: Props) => {
   const { isDeleteMode, toggleSkill, deleteSkills } = useCvSkillStore();
 
   const [skillToEdit, setSkillToEdit] = useState<TSkillForm | null>(null);
+  const t = useTranslations("Skills");
 
   const handleClick = (dto: TSkillForm & { name: string }) => {
     if (isDeleteMode) {
@@ -89,7 +91,7 @@ export const CvSkills = ({ cvId }: Props) => {
         <div className={styles.skillsLists}>
           {grouped.map(({ groupName, skills }) => (
             <div key={groupName} className={styles.group}>
-              <h3 className={styles.categoryName}>{groupName}</h3>
+              <h3 className={styles.categoryName}>{t(groupName)}</h3>
               <ul className={styles.skillsList}>
                 {skills.map((skill, index) => (
                   <SkillItem
