@@ -38,7 +38,7 @@ export const EditCvSkillForm: FC<Props> = ({
     categoryId,
     mastery,
   });
-  const t = useTranslations("ConfirmButtons");
+  const t = useTranslations("");
 
   const onSubmit = async (data: TSkillForm) => {
     const selectedSkill = skillsData?.skills.find(
@@ -68,7 +68,7 @@ export const EditCvSkillForm: FC<Props> = ({
         name={"categoryId"}
         render={({ field }) => (
           <CustomSelect
-            label={"Skill"}
+            label={t("Skills.chooseSkill")}
             options={
               skillsData?.skills.map((el) => ({
                 value: el.id,
@@ -87,7 +87,7 @@ export const EditCvSkillForm: FC<Props> = ({
         name={"mastery"}
         render={({ field }) => (
           <CustomSelect
-            label={"Skill mastery"}
+            label={t("Skills.skillMastery")}
             options={skillLevels.map((el) => ({
               value: el,
               label: el,
@@ -101,7 +101,7 @@ export const EditCvSkillForm: FC<Props> = ({
 
       <ConfirmButtons
         onCancel={toggleAction}
-        confirmLabel={t("confirm")}
+        confirmLabel={t("ConfirmButtons.confirm")}
         confirmButtonType={"submit"}
       />
     </form>

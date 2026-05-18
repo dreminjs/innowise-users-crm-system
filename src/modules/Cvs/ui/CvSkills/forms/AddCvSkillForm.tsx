@@ -12,6 +12,7 @@ import { skillLevels } from "@/modules/Skills/model/skill.constants";
 import { useSkillForm } from "@/modules/Skills/model/hooks/useSkillForm";
 import { useAddCvSkill } from "@/modules/Cvs/hooks/useAddCvSkill";
 import styles from "@/modules/Skills/ui/Skills.module.css";
+import { useTranslations } from "next-intl";
 
 type Props = {
   cvId: string;
@@ -27,6 +28,8 @@ export const AddCvSkillForm = ({ cvId, toggleAction }: Props) => {
       cvId,
     },
   });
+
+  const t = useTranslations();
 
   const {
     control,
@@ -119,7 +122,7 @@ export const AddCvSkillForm = ({ cvId, toggleAction }: Props) => {
         name={"categoryId"}
         render={({ field }) => (
           <CustomSelect
-            label={"Skill"}
+            label={t("Skills.chooseSkill")}
             options={groupedSkills}
             value={field.value}
             onChange={handleChangeSkill}
@@ -131,7 +134,7 @@ export const AddCvSkillForm = ({ cvId, toggleAction }: Props) => {
         name={"mastery"}
         render={({ field }) => (
           <CustomSelect
-            label={"Skill mastery"}
+            label={t("Skills.skillMastery")}
             options={skillLevels.map((el) => ({
               value: el,
               label: el,
@@ -144,7 +147,7 @@ export const AddCvSkillForm = ({ cvId, toggleAction }: Props) => {
       />
       <ConfirmButtons
         onCancel={toggleAction}
-        confirmLabel={loading ? "LOADING..." : "CONFIRM"}
+        confirmLabel={loading ? "LOADING..." : t("ConfirmButtons.confirm")}
         confirmButtonType={"submit"}
       />
     </form>
