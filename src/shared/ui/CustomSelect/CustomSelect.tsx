@@ -75,7 +75,7 @@ export const CustomSelect: FC<ICustomSelectProps> = ({
         </Select.Label>
       </Select.Control>
       <Portal>
-        <Select.Positioner>
+        <Select.Positioner className={styles.selectPositioner}>
           <Select.Content className={styles.selectContent}>
             {isGroupedOptions(options)
               ? options.map((group) => (

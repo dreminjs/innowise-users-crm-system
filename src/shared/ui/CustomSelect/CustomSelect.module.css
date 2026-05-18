@@ -1,3 +1,7 @@
+.selectPositioner {
+  z-index: 9999 !important;
+}
+
 .formLabel {
   font-size: 16px;
   color: var(--color-text);
@@ -7,9 +11,9 @@
   z-index: 1;
   pointer-events: none;
   transition:
-          top 0.2s ease,
-          font-size 0.2s ease,
-          background-color 0.2s ease;
+    top 0.2s ease,
+    font-size 0.2s ease,
+    background-color 0.2s ease;
 }
 
 .formField {
@@ -43,7 +47,7 @@
   overflow: hidden;
   color: var(--color-text);
   box-shadow: 0 4px 20px rgb(0 0 0 / 10%);
-  z-index: 999;
+  z-index: auto;
 }
 
 .selectItem {
