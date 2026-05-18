@@ -178,5 +178,17 @@
     "responsibilities": "Verantwortlichkeiten",
     "cancel": "ABBRECHEN",
     "add": "HINZUFÜGEN"
+  },
+  "EditCvProject": {
+    "title": "Projekt bearbeiten",
+    "project": "Projekt",
+    "domain": "Domäne",
+    "startDate": "Startdatum",
+    "endDate": "Enddatum",
+    "description": "Beschreibung",
+    "environment": "Umgebung",
+    "responsibilities": "Verantwortlichkeiten",
+    "save": "Speichern",
+    "saving": "Wird gespeichert..."
   }
 }

@@ -173,5 +173,17 @@
     "responsibilities": "Responsibilities",
     "cancel": "CANCEL",
     "add": "ADD"
+  },
+  "EditCvProject": {
+    "title": "Edit Project",
+    "project": "Project",
+    "domain": "Domain",
+    "startDate": "Start Date",
+    "endDate": "End Date",
+    "description": "Description",
+    "environment": "Environment",
+    "responsibilities": "Responsibilities",
+    "save": "Save",
+    "saving": "Saving..."
   }
 }
