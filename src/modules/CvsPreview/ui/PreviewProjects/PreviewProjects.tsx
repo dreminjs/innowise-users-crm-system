@@ -75,7 +75,7 @@ export const PreviewProjects = ({ projects, messages }: Props) => {
   return (
     <section>
       <h2 className={`${styles.title} preview-title`}>
-        {messages.Preview.projects}
+        {messages?.Preview.projects}
       </h2>
       <div className={styles.list}>
         {projects?.map((project) => {

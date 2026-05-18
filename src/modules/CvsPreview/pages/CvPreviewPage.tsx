@@ -22,6 +22,7 @@ export const CvPreviewPage = ({ cvId }: Props) => {
   const previewRef = useRef<HTMLDivElement>(null);
   const { resumeLanguage } = useSettingsStore();
   const messages = getMessages(resumeLanguage);
+  console.log(messages?.Settings);
   const { data, loading, error } = useQuery(GET_CV, {
     variables: {
       cvId,
@@ -38,7 +39,7 @@ export const CvPreviewPage = ({ cvId }: Props) => {
     <section className={styles.page}>
       <div className={styles.actions}>
         <div className={styles.language}>
-          <ResumeLanguage label={messages.Settings.resumeLanguage} />
+          <ResumeLanguage label={messages?.Settings.resumeLanguage} />
         </div>
         <PreviewExportButton previewRef={previewRef} />
       </div>

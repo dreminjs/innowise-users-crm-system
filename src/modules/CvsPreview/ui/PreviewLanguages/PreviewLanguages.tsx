@@ -9,7 +9,8 @@ import styles from "./PreviewLanguages.module.css";
 
 type Props = {
   languages: GetCvQuery["cv"]["languages"];
-  messages: AppMessages;
+  // messages: AppMessages;
+  messages: any;
 };
 
 type TTranslatedLanguage = {
@@ -57,7 +58,7 @@ export const PreviewLanguages = ({ languages, messages }: Props) => {
   return (
     <section>
       <h2 className={`${styles.title} preview-title`}>
-        {messages.Preview.languages}
+        {/*{messages.Preview.languages}*/}
       </h2>
       <ul className={styles.list}>
         {languages.map((language) => {

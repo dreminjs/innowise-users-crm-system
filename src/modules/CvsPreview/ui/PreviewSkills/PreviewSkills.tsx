@@ -16,14 +16,14 @@ export const PreviewSkills = ({ skills, messages }: Props) => {
   return (
     <section>
       <h2 className={`${styles.title} preview-title`}>
-        {messages.Preview.professionalSkills}
+        {messages?.Preview.professionalSkills}
       </h2>
       <table className={styles.table}>
         <tbody>
           {grouped.map(({ groupName, skills }) => (
             <tr key={groupName} className={styles.row}>
               <td className={styles.category}>
-                {messages.Skills[groupName as keyof typeof messages.Skills] ??
+                {messages?.Skills[groupName as keyof typeof messages.Skills] ??
                   groupName}
               </td>
               <td className={styles.skills}>

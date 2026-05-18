@@ -7,6 +7,7 @@ import { useCvSkillStore } from "../../model/cv-skill.store";
 import { CvRemoveSkillsButton } from "./CvRemoveSkillsButton";
 import { AddCvSkillModal } from "./modals/AddCvSkillModal";
 import styles from "@/modules/Skills/ui/Skills.module.css";
+import { useTranslations } from "next-intl";
 
 type Props = {
   cvId: string;
@@ -21,6 +22,7 @@ export const CvManagementSkills = ({ cvId }: Props) => {
   const handleCloseModal = () => {
     setIsSkillModalOpen(false);
   };
+  const t = useTranslations();
 
   return (
     <>
@@ -31,16 +33,19 @@ export const CvManagementSkills = ({ cvId }: Props) => {
               className={styles.cancelDeleteButton}
               onClick={() => toggleDeleteMode()}
             >
-              CANCEL
+              {t("ConfirmButtons.cancel")}
             </button>
             <CvRemoveSkillsButton cvId={cvId} />
           </>
         ) : (
           <>
-            <AddNewButton onClick={handleOpenModal} label={"ADD SKILL"} />
+            <AddNewButton
+              onClick={handleOpenModal}
+              label={t("Skills.addSkill")}
+            />
             <RemoveItemButton
               onClick={() => toggleDeleteMode()}
-              label={"REMOVE SKILLS"}
+              label={t("Skills.deleteSkill")}
             />
           </>
         )}
