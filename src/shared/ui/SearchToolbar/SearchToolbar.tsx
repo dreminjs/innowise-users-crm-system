@@ -3,6 +3,7 @@
 import { Icon } from "@/shared/ui/Icon/Icon";
 import { AddNewButton } from "@/shared/ui/AddNewButton";
 import styles from "./SearchToolbar.module.css";
+import { useTranslations } from "next-intl";
 
 type Props = {
   value: string;
@@ -16,11 +17,12 @@ type Props = {
 export const SearchToolbar = ({
   value,
   changeAction,
-  placeholder = "Search",
+  placeholder,
   buttonLabel,
   createAction,
   className,
 }: Props) => {
+  const t = useTranslations("SearchToolbar");
   return (
     <div className={className || styles.container}>
       <div className={styles.search}>
@@ -28,7 +30,7 @@ export const SearchToolbar = ({
         <input
           value={value}
           onChange={(e) => changeAction(e.target.value)}
-          placeholder={placeholder}
+          placeholder={placeholder || t("search")}
           className={styles.input}
         />
       </div>

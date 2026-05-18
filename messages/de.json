@@ -95,9 +95,72 @@
     "languages": "Sprachen"
   },
   "Navigation": {
-    "skills": "Skills",
+    "skills": "Fähigkeiten",
     "languages": "Sprachen",
     "users": "Mitarbeiter",
-    "cvs": "Lebensläufe"
+    "cvs": "Lebensläufe",
+    "preview": "Vorschau",
+    "settings": "Einstellungen",
+    "projects": "Projekte"
+  },
+  "Appearance": {
+    "system": "Systemeinstellungen",
+    "dark": "Dunkel",
+    "light": "Hell"
+  },
+  "CvTabs": {
+    "DETAILS": "Details",
+    "SKILLS": "Fähigkeiten",
+    "PROJECTS": "Projekte",
+    "PREVIEW": "Vorschau"
+  },
+  "CvDetails": {
+    "name": "Name",
+    "education": "Ausbildung",
+    "description": "Beschreibung",
+    "update": "Aktualisieren",
+    "updating": "Wird aktualisiert..."
+  },
+  "CVsTable": {
+    "name": "Name",
+    "education": "Ausbildung",
+    "employee": "Mitarbeiter"
+  },
+  "UserActions": {
+    "profile": "Profil",
+    "edit": "Bearbeiten"
+  },
+  "SearchToolbar": {
+    "search": "Suche"
+  },
+  "CreateCv": {
+    "title": "CV erstellen",
+    "cvName": "CV-Name",
+    "education": "Ausbildung",
+    "description": "Beschreibung",
+    "create": "Erstellen"
+  },
+  "CvActions": {
+    "edit": "CV bearbeiten",
+    "delete": "CV löschen"
+  },
+  "ProjectsTable": {
+    "name": "Name",
+    "domain": "Domäne",
+    "startDate": "Startdatum",
+    "endDate": "Enddatum"
+  },
+  "ProjectActions": {
+    "edit": "Projekt bearbeiten",
+    "remove": "Projekt entfernen"
+  },
+  "Preview": {
+    "languages": "Sprachen",
+    "projects": "Projekte",
+    "professionalSkills": "Berufliche Fähigkeiten",
+    "period": "Zeitraum",
+    "tillNow": "Bis heute",
+    "roles": "Rollen",
+    "responsibilities": "Verantwortlichkeiten"
   }
 }

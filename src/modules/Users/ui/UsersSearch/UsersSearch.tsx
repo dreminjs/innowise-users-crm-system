@@ -8,11 +8,5 @@ type Props = {
 };
 
 export const UsersSearch = ({ value, changeAction }: Props) => {
-  return (
-    <SearchToolbar
-      value={value}
-      changeAction={changeAction}
-      placeholder="Search users..."
-    />
-  );
+  return <SearchToolbar value={value} changeAction={changeAction} />;
 };

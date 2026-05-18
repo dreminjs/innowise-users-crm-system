@@ -27,7 +27,6 @@ const isGroupedOptions = (
 ): options is SelectGroup[] => {
   return options.length > 0 && "items" in options[0];
 };
-
 export const CustomSelect: FC<ICustomSelectProps> = ({
   label,
   options,
@@ -44,12 +43,10 @@ export const CustomSelect: FC<ICustomSelectProps> = ({
     }
     return options;
   }, [options]);
-
   const collection = useMemo(
     () => createListCollection({ items: flatItems }),
     [flatItems],
   );
-
   return (
     <Select.Root
       collection={collection}
@@ -79,11 +76,13 @@ export const CustomSelect: FC<ICustomSelectProps> = ({
       </Select.Control>
       <Portal>
         <Select.Positioner>
-          <Select.Content>
+          <Select.Content className={styles.selectContent}>
             {isGroupedOptions(options)
               ? options.map((group) => (
-                  <Select.ItemGroup suppressHydrationWarning key={group.label}>
-                    <Select.ItemGroupLabel>{group.label}</Select.ItemGroupLabel>
+                  <Select.ItemGroup key={group.label}>
+                    <Select.ItemGroupLabel className={styles.groupLabel}>
+                      {group.label}
+                    </Select.ItemGroupLabel>
                     {group.items.map((item) => (
                       <Select.Item
                         item={item}

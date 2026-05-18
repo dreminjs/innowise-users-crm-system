@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { GetCvProjectsQuery } from "@/graphql/graphql";
 import {
   ProjectSortField,
@@ -7,6 +8,8 @@ import {
 } from "../../model/processProjects";
 import { ProjectTableRow } from "./ProjectTableRow";
 import styles from "./ProjectsTable.module.css";
+import { Empty } from "@/shared/ui/Empty";
+import { Loading } from "@/shared/ui/Loading";
 
 type Props = {
   cvId: string;
@@ -25,12 +28,14 @@ export const ProjectsTable = ({
   sortAction,
   cvId,
 }: Props) => {
+  const t = useTranslations("ProjectsTable");
+
   if (loading) {
-    return <div className={styles.empty}>Loading...</div>;
+    return <Loading />;
   }
 
   if (!projects.length) {
-    return <div className={styles.empty}>No projects found</div>;
+    return <Empty />;
   }
 
   return (
@@ -40,7 +45,7 @@ export const ProjectsTable = ({
           <tr>
             <th>
               <button onClick={() => sortAction("name")}>
-                Name
+                {t("name")}
                 {sortField === "name" && (
                   <span>{sortOrder === "asc" ? " ↑" : " ↓"}</span>
                 )}
@@ -48,7 +53,8 @@ export const ProjectsTable = ({
             </th>
             <th>
               <button onClick={() => sortAction("domain")}>
-                Domain
+                {t("domain")}
+
                 {sortField === "domain" && (
                   <span>{sortOrder === "asc" ? " ↑" : " ↓"}</span>
                 )}
@@ -56,7 +62,7 @@ export const ProjectsTable = ({
             </th>
             <th>
               <button onClick={() => sortAction("start_date")}>
-                Start date
+                {t("startDate")}
                 {sortField === "start_date" && (
                   <span>{sortOrder === "asc" ? " ↑" : " ↓"}</span>
                 )}
@@ -64,7 +70,7 @@ export const ProjectsTable = ({
             </th>
             <th>
               <button onClick={() => sortAction("end_date")}>
-                End date
+                {t("endDate")}
                 {sortField === "end_date" && (
                   <span>{sortOrder === "asc" ? " ↑" : " ↓"}</span>
                 )}

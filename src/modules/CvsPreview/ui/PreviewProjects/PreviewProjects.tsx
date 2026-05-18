@@ -1,14 +1,18 @@
 import { GetCvQuery } from "@/graphql/graphql";
 import styles from "./PreviewProjects.module.css";
+import { AppMessages } from "@/shared/lib/getMessages";
 
 type Props = {
   projects: GetCvQuery["cv"]["projects"];
+  messages: AppMessages;
 };
 
-export const PreviewProjects = ({ projects }: Props) => {
+export const PreviewProjects = ({ projects, messages }: Props) => {
   return (
     <section>
-      <h2 className={`${styles.title} preview-title`}>Projects</h2>
+      <h2 className={`${styles.title} preview-title`}>
+        {messages.Preview.projects}
+      </h2>
       <div className={styles.list}>
         {projects?.map((project) => (
           <article
@@ -26,16 +30,16 @@ export const PreviewProjects = ({ projects }: Props) => {
             </div>
             <div className={styles.projectMeta}>
               <div>
-                <strong>Period</strong>
+                <strong>{messages.Preview.period}</strong>
                 <p>
                   {project.start_date}
                   {" — "}
-                  {project.end_date ?? "Till now"}
+                  {project.end_date ?? messages.Preview.tillNow}
                 </p>
               </div>
               {!!project.roles.length && (
                 <div>
-                  <strong>Roles</strong>
+                  <strong>{messages.Preview.roles}</strong>
                   <ul>
                     {project.roles.map((role) => (
                       <li key={role}>{role}</li>
@@ -45,7 +49,7 @@ export const PreviewProjects = ({ projects }: Props) => {
               )}
               {!!project.responsibilities.length && (
                 <div>
-                  <strong>Responsibilities</strong>
+                  <strong>{messages.Preview.responsibilities}</strong>
                   <ul>
                     {project.responsibilities.map((responsibility) => (
                       <li key={responsibility}>{responsibility}</li>
