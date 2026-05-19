@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { FC } from "react";
 import styles from "./AuthForm.module.css";
+import { useTranslations } from "next-intl";
 
 interface IAuthButtons {
   submitLabel: string;
@@ -15,6 +16,7 @@ export const AuthButtons: FC<IAuthButtons> = ({
   linkUrl,
   isLoading,
 }) => {
+  const t = useTranslations("Login");
   return (
     <div className={styles.authButtons}>
       <button
@@ -22,7 +24,7 @@ export const AuthButtons: FC<IAuthButtons> = ({
         className={styles.authFormSubmit}
         type="submit"
       >
-        {isLoading ? "Загрузка..." : submitLabel}
+        {isLoading ? t("loading") : submitLabel}
       </button>
       <Link className={styles.authFormLink} href={linkUrl}>
         {linkLabel}

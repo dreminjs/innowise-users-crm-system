@@ -9,7 +9,8 @@
     "email": "Эл. почта",
     "password": "Пароль",
     "forgotPassword": "ЗАБЫЛИ ПАРОЛЬ",
-    "submitLabel": "ВОЙТИ"
+    "submitLabel": "ВОЙТИ",
+    "loading": "Загрузка..."
   },
   "Signup": {
     "title": "Регистрация",
@@ -160,7 +161,8 @@
   },
   "UserActions": {
     "profile": "Профиль",
-    "edit": "Редактировать"
+    "edit": "Редактировать",
+    "delete": "Удалить"
   },
   "SearchToolbar": {
     "search": "Поиск"
@@ -268,6 +270,40 @@
     "profileUpdatedSuccessfully": "Профиль успешно обновлён",
     "userUpdatedSuccessfully": "Пользователь успешно обновлён",
     "avatarUploadedSuccessfully": "Аватар успешно загружен",
-    "failedToUploadAvatar": "Не удалось загрузить аватар"
+    "failedToUploadAvatar": "Не удалось загрузить аватар",
+    "userDeletedSuccessfully": "Пользователь успешно удален",
+    "emailAlreadyExists": "Данный емейл не подходит",
+    "userCreatedSuccessfully": "Пользователь успешно создан",
+    "createUserTitle": "Создать пользователя"
+  },
+  "Users": {
+    "fields": {
+      "email": "Почта",
+      "password": "Пароль",
+      "firstName": "Имя",
+      "lastName": "Фамилия",
+      "department": "Отдел",
+      "position": "Должность",
+      "role": "Роль"
+    },
+    "create": {
+      "title": "Создать пользователя",
+      "submit": "Создать"
+    },
+    "edit": {
+      "title": "Редактирование пользователя",
+      "submit": "Сохранить"
+    },
+    "errors": {
+      "emailRequired": "Обязательно укажите адрес электронной почты",
+      "invalidEmail": "Неверный адрес электронной почты",
+      "passwordMin": "Пароль должен содержать не менее 6 символов",
+      "firstNameRequired": "Обязательно укажите имя",
+      "firstNameMax": "Имя слишком длинное",
+      "lastNameRequired": "Обязательно укажите фамилия",
+      "lastNameMax": "Фамилия слишком длинная",
+      "departmentRequired": "Обязательно укажите отдел",
+      "positionRequired": "Обязательно укажите должность"
+    }
   }
 }

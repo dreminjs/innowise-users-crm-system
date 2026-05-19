@@ -1,3 +1,12 @@
 .actionContainer{
     background: var(--bg);
+    border: 1px solid var(--border-color);;
+}
+.userActionsItem {
+    padding: 5px 15px;
+    color: var(--color-text);;
+    text-align: left;
+}
+.userActionsItem:hover {
+    background: var(--bg-hover);
 }

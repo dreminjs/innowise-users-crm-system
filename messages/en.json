@@ -9,7 +9,8 @@
     "email": "Email",
     "password": "Password",
     "forgotPassword": "FORGOT PASSWORD",
-    "submitLabel": "LOGIN"
+    "submitLabel": "LOGIN",
+    "loading": "Loading..."
   },
   "Signup": {
     "title": "Sign up",
@@ -151,7 +152,8 @@
   },
   "UserActions": {
     "profile": "Profile",
-    "edit": "Edit"
+    "edit": "Edit",
+    "delete": "Delete"
   },
   "SearchToolbar": {
     "search": "Search"
@@ -259,6 +261,40 @@
     "profileUpdatedSuccessfully": "Profile updated successfully",
     "userUpdatedSuccessfully": "User updated successfully",
     "avatarUploadedSuccessfully": "Avatar uploaded successfully",
-    "failedToUploadAvatar": "Failed to upload avatar"
+    "failedToUploadAvatar": "Failed to upload avatar",
+    "userDeletedSuccessfully": "User deleted successfully",
+    "emailAlreadyExists": "This email already exists",
+    "userCreatedSuccessfully": "User created successfully",
+    "createUserTitle": "Create user"
+  },
+  "Users": {
+    "fields": {
+      "email": "Email",
+      "password": "Password",
+      "firstName": "First name",
+      "lastName": "Last name",
+      "department": "Department",
+      "position": "Position",
+      "role": "Role"
+    },
+    "create": {
+      "title": "Create user",
+      "submit": "Create"
+    },
+    "edit": {
+      "title": "Edit user",
+      "submit": "Save"
+    },
+    "errors": {
+      "emailRequired": "Email is required",
+      "invalidEmail": "Invalid email",
+      "passwordMin": "Password must contain at least 6 characters",
+      "firstNameRequired": "First name is required",
+      "firstNameMax": "First name is too long",
+      "lastNameRequired": "Last name is required",
+      "lastNameMax": "Last name is too long",
+      "departmentRequired": "Department is required",
+      "positionRequired": "Position is required"
+    }
   }
 }

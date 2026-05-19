@@ -5,6 +5,7 @@
 
 .table {
     width: 100%;
+    table-layout: fixed;
     border-collapse: separate;
     border-spacing: 0;
 }
@@ -30,14 +31,20 @@
 
 .nameColumn {
     width: 35%;
+    max-height: 24px;
+    overflow: hidden;
 }
 
 .educationColumn {
     width: 25%;
+    max-height: 24px;
+    overflow: hidden;
 }
 
 .employeeColumn {
     width: 30%;
+    max-height: 24px;
+    overflow: hidden;
 }
 
 .actionsColumn {
@@ -60,16 +67,31 @@
     font-size: 14px;
     line-height: 1.7;
     color: var(--color-subtitle);
+    word-break: break-word;
 }
 
-.name,
-.education,
+.name {
+    width: 35%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.education {
+    width: 25%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
 .employee {
+    width: 30%;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
 }
 
 .actions {
+    width: 40px;
     text-align: right;
 }
