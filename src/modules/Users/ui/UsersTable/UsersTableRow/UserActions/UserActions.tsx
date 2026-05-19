@@ -23,6 +23,7 @@ export const UserActions: FC<IUserActionsProps> = ({ userId }) => {
           <ul>
             <UserAction to={`users/${userId}`}>{t("profile")}</UserAction>
             <UserAction to={`users/${userId}/edit`}>{t("edit")}</UserAction>
+            <UserAction to={`users/${userId}/edit`}>{t("delete")}</UserAction>
           </ul>
         </Popover.Content>
       </Popover.Positioner>

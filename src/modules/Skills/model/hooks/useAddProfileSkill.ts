@@ -1,3 +1,5 @@
+"use client";
+import { useTranslations } from "next-intl";
 import { useMutation, useQuery } from "@apollo/client/react";
 import { useUserStore } from "@/application/store/user.store";
 import { useNotification } from "@/modules/Notifications";
@@ -8,24 +10,37 @@ import {
   GET_SKILLS,
 } from "../../api/queries";
 import { TSkillForm } from "../skill.interface";
-import { useTranslations } from "next-intl";
 
 export const useAddProfileSkill = () => {
   const { data: skillsData } = useQuery(GET_SKILLS);
-
   const currentUserId = useUserStore((state) => state.userId);
-  const t = useTranslations("Skills");
+  const t = useTranslations("Notifications");
   const addNotification = useNotification((state) => state.addNotification);
   const [mutate, { loading, error }] = useMutation(ADD_PROFILE_SKILL, {
     onCompleted: () => {
-      addNotification({ message: t("addedSuccessfully"), type: "success" });
+      addNotification({
+        message: t("skillAddedSuccessfully"),
+        type: "success",
+      });
     },
+
     onError: () => {
-      addNotification({ message: t("failedAdd"), type: "error" });
+      addNotification({
+        message: t("failedToAddSkill"),
+        type: "error",
+      });
     },
+
     refetchQueries: [
-      { query: GET_PROFILE_SKILLS, variables: { userId: currentUserId } },
-      { query: GET_SKILL_CATEGORIES },
+      {
+        query: GET_PROFILE_SKILLS,
+        variables: {
+          userId: currentUserId,
+        },
+      },
+      {
+        query: GET_SKILL_CATEGORIES,
+      },
     ],
   });
 
@@ -45,6 +60,9 @@ export const useAddProfileSkill = () => {
       });
     }
   };
-
-  return { handleAddProfileSkill, loading, error };
+  return {
+    handleAddProfileSkill,
+    loading,
+    error,
+  };
 };

@@ -1,3 +1,5 @@
+"use client";
+import { useTranslations } from "next-intl";
 import { useUserStore } from "@/application/store/user.store";
 import { useNotification } from "@/modules/Notifications";
 import { UPDATE_USER } from "../../api/mutations";
@@ -7,12 +9,12 @@ import { GET_USER_PROFILE } from "../../api/queries";
 
 export const useUpdateUser = () => {
   const currentUserId = useUserStore((state) => state.userId);
-
+  const t = useTranslations("Notifications");
   const addNotification = useNotification((state) => state.addNotification);
   const [mutate, { loading, error }] = useMutation(UPDATE_USER, {
     onCompleted: () => {
       addNotification({
-        message: "User updated successfully",
+        message: t("userUpdatedSuccessfully"),
         type: "success",
       });
     },
@@ -31,7 +33,6 @@ export const useUpdateUser = () => {
       },
     ],
   });
-
   const handleUpdateUser = async (
     dto: Pick<TUpdateUserForm, "departmentId" | "positionId">,
   ) => {
@@ -47,7 +48,6 @@ export const useUpdateUser = () => {
       });
     }
   };
-
   return {
     loading,
     error,

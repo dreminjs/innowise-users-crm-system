@@ -1,3 +1,5 @@
+"use client";
+import { useTranslations } from "next-intl";
 import { useMutation } from "@apollo/client/react";
 import { UPDATE_PROFILE } from "../../api/mutations";
 import { useNotification } from "@/modules/Notifications";
@@ -7,12 +9,12 @@ import { GET_USER_PROFILE } from "../../api/queries";
 
 export const useUpdateProfile = () => {
   const currentUserId = useUserStore((state) => state.userId);
-
+  const t = useTranslations("Notifications");
   const addNotification = useNotification((state) => state.addNotification);
   const [mutate, { loading, error }] = useMutation(UPDATE_PROFILE, {
     onCompleted: () => {
       addNotification({
-        message: "Profile updated successfully",
+        message: t("profileUpdatedSuccessfully"),
         type: "success",
       });
     },
@@ -31,7 +33,6 @@ export const useUpdateProfile = () => {
       },
     ],
   });
-
   const handleUpdateProfile = async (
     dto: Pick<TUpdateUserForm, "firstName" | "lastName">,
   ) => {
@@ -47,7 +48,6 @@ export const useUpdateProfile = () => {
       });
     }
   };
-
   return {
     loading,
     error,

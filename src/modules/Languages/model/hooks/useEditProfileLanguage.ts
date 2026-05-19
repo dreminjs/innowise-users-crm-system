@@ -1,32 +1,40 @@
+"use client";
+import { useTranslations } from "next-intl";
 import { useMutation, useQuery } from "@apollo/client/react";
 import { useUserStore } from "@/application/store/user.store";
 import { useNotification } from "@/modules/Notifications";
 import { GET_LANGUAGES, GET_PROFILE_LANGUAGES } from "../../api/queries";
 import { UPDATE_PROFILE_LANGUAGE } from "../../api/mutations";
 import { TLanguageForm } from "../languages.interface";
-import { useTranslations } from "next-intl";
 
 export const useEditProfileLanguage = () => {
   const { data: languagesData } = useQuery(GET_LANGUAGES);
-
   const currentUserId = useUserStore((state) => state.userId);
-  const t = useTranslations("Languages");
+  const t = useTranslations("Notifications");
   const addNotification = useNotification((state) => state.addNotification);
   const [mutate, { loading, error }] = useMutation(UPDATE_PROFILE_LANGUAGE, {
     onCompleted: () => {
       addNotification({
-        message: t("editSuccessfully"),
+        message: t("languageUpdatedSuccessfully"),
         type: "success",
       });
     },
+
     onError: () => {
-      addNotification({ message: t("failedEdit"), type: "error" });
+      addNotification({
+        message: t("failedToUpdateLanguage"),
+        type: "error",
+      });
     },
     refetchQueries: [
-      { query: GET_PROFILE_LANGUAGES, variables: { userId: currentUserId } },
+      {
+        query: GET_PROFILE_LANGUAGES,
+        variables: {
+          userId: currentUserId,
+        },
+      },
     ],
   });
-
   const handleEditProfileLanguage = async (dto: TLanguageForm) => {
     if (currentUserId && languagesData?.languages) {
       await mutate({
@@ -40,6 +48,9 @@ export const useEditProfileLanguage = () => {
       });
     }
   };
-
-  return { handleEditProfileLanguage, loading, error };
+  return {
+    handleEditProfileLanguage,
+    loading,
+    error,
+  };
 };

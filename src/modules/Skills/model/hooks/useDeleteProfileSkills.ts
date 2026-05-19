@@ -1,36 +1,43 @@
+"use client";
+import { useTranslations } from "next-intl";
 import { useMutation } from "@apollo/client/react";
 import { useSkillStore } from "../skill.store";
 import { useUserStore } from "@/application/store/user.store";
 import { useNotification } from "@/modules/Notifications";
 import { DELETE_PROFILE_SKILL } from "../../api/mutations";
 import { GET_PROFILE_SKILLS } from "../../api/queries";
-import { useTranslations } from "next-intl";
 
 export const useDeleteProfileSkills = () => {
   const addNotification = useNotification((state) => state.addNotification);
   const currentUserId = useUserStore((state) => state.userId);
   const { deleteSkills, clearDeleteSkills, toggleDeleteMode } = useSkillStore();
-  const t = useTranslations("Skills");
-
+  const t = useTranslations("Notifications");
   const [mutate, { loading, error }] = useMutation(DELETE_PROFILE_SKILL, {
     onCompleted: () => {
       addNotification({
-        message: t("deletedSuccessfully"),
+        message: t("skillDeletedSuccessfully"),
         type: "success",
       });
       clearDeleteSkills();
       toggleDeleteMode();
     },
     onError: () => {
-      addNotification({ message: t("failedDelete"), type: "error" });
+      addNotification({
+        message: t("failedToDeleteSkill"),
+        type: "error",
+      });
       clearDeleteSkills();
       toggleDeleteMode();
     },
     refetchQueries: [
-      { query: GET_PROFILE_SKILLS, variables: { userId: currentUserId } },
+      {
+        query: GET_PROFILE_SKILLS,
+        variables: {
+          userId: currentUserId,
+        },
+      },
     ],
   });
-
   const handleDeleteProfileSkills = () => {
     if (currentUserId) {
       mutate({
@@ -43,7 +50,6 @@ export const useDeleteProfileSkills = () => {
       });
     }
   };
-
   return {
     handleDeleteProfileSkills,
     loading,
