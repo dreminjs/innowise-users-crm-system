@@ -6,6 +6,7 @@ import { UserInfo } from "./UserInfo";
 import { UploadInfo } from "./UploadInfo/UploadInfo";
 import styles from "./UpdateUserInfo.module.css";
 import { Loading } from "@/shared/ui/Loading";
+import { UserRole } from "@/generated/graphql";
 
 interface IUpdateUserInfoProps {
   userId: string;
@@ -13,16 +14,19 @@ interface IUpdateUserInfoProps {
 
 export const UpdateUserInfo: FC<IUpdateUserInfoProps> = ({ userId }) => {
   const { data, error, loading } = useGetProfile(userId);
+  const role = useUserStore((state) => state.role);
   const currentUserId = useUserStore((state) => state.userId);
+  const isEditable = currentUserId === userId || role === UserRole.Admin;
   if (loading) return <Loading />;
   if (error || !data)
     return <div className={styles.uploadInfoError}>Error!</div>;
   return (
     <div className={styles.updateUserInfo}>
       <UploadAvatar
+        userId={userId}
         avatarUrl={data.user.profile.avatar || ""}
         firstLetter={data.user?.profile?.first_name?.charAt(0) || "Unknow"}
-        isUploadAvailable={currentUserId === userId}
+        isUploadAvailable={isEditable}
       />
       <UserInfo
         fullName={
@@ -34,7 +38,8 @@ export const UpdateUserInfo: FC<IUpdateUserInfoProps> = ({ userId }) => {
         hiredDate={`A member since ${new Date(+data.user.created_at || 0).toDateString()}`}
       />
       <UploadInfo
-        isAvailable={currentUserId === userId}
+        userId={userId}
+        isAvailable={isEditable}
         firstName={data.user.profile.first_name || ""}
         lastName={data.user.profile.last_name || ""}
         positionId={data.user.position?.id || ""}

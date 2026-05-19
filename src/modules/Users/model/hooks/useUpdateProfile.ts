@@ -4,11 +4,9 @@ import { useMutation } from "@apollo/client/react";
 import { UPDATE_PROFILE } from "../../api/mutations";
 import { useNotification } from "@/modules/Notifications";
 import { TUpdateUserForm } from "../uploadUserInfo.schema";
-import { useUserStore } from "@/application/store/user.store";
 import { GET_USER_PROFILE } from "../../api/queries";
 
-export const useUpdateProfile = () => {
-  const currentUserId = useUserStore((state) => state.userId);
+export const useUpdateProfile = (userId: string) => {
   const t = useTranslations("Notifications");
   const addNotification = useNotification((state) => state.addNotification);
   const [mutate, { loading, error }] = useMutation(UPDATE_PROFILE, {
@@ -28,7 +26,7 @@ export const useUpdateProfile = () => {
       {
         query: GET_USER_PROFILE,
         variables: {
-          userId: currentUserId,
+          userId: userId,
         },
       },
     ],
@@ -36,13 +34,13 @@ export const useUpdateProfile = () => {
   const handleUpdateProfile = async (
     dto: Pick<TUpdateUserForm, "firstName" | "lastName">,
   ) => {
-    if (currentUserId) {
+    if (userId) {
       await mutate({
         variables: {
           dto: {
             first_name: dto.firstName,
             last_name: dto.lastName,
-            userId: currentUserId,
+            userId: userId,
           },
         },
       });
