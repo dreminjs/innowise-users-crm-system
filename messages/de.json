@@ -9,7 +9,8 @@
     "email": "E-Mail",
     "password": "Passwort",
     "forgotPassword": "PASSWORT VERGESSEN",
-    "submitLabel": "ANMELDEN"
+    "submitLabel": "ANMELDEN",
+    "loading": "Loading..."
   },
   "Signup": {
     "title": "Registrieren",
@@ -260,7 +261,10 @@
     "userUpdatedSuccessfully": "Benutzer erfolgreich aktualisiert",
     "avatarUploadedSuccessfully": "Avatar erfolgreich hochgeladen",
     "failedToUploadAvatar": "Avatar konnte nicht hochgeladen werden",
-    "userDeletedSuccessfully": "Benutzer erfolgreich gelöscht"
+    "userDeletedSuccessfully": "Benutzer erfolgreich gelöscht",
+    "emailAlreadyExists": "Benutzer mit dieser E-Mail existiert bereits",
+    "userCreatedSuccessfully": "Benutzer erfolgreich erstellt",
+    "createUserTitle": "Benutzer erstellen"
   },
   "Users": {
     "fields": {
@@ -279,6 +283,18 @@
     "edit": {
       "title": "Benutzer bearbeiten",
       "submit": "Speichern"
+    },
+    "errors": {
+      "emailRequired": "E-Mail-Adresse erforderlich",
+      "invalidEmail": "Ungültige E-Mail-Adresse",
+      "passwordMin": "Das Passwort muss mindestens 6 Zeichen lang sein",
+      "firstNameRequired": "Vorname erforderlich",
+      "firstNameMax": "Der Vorname ist zu lang",
+      "lastNameRequired": "Nachname erforderlich",
+      "lastNameMax": "Der Nachname ist zu lang",
+      "departmentRequired": "Die Abteilung ist erforderlich",
+      "positionRequired": "Die Position ist erforderlich"
+
     }
   }
 }

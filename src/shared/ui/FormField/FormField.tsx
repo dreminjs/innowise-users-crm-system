@@ -1,11 +1,10 @@
 "use client";
+
 import { useState } from "react";
-import { Path, UseFormRegister } from "react-hook-form";
-import { FieldValues } from "react-hook-form";
+import { FieldValues, Path, UseFormRegister } from "react-hook-form";
 import styles from "./FormField.module.css";
 import { Icon } from "@/shared/ui/Icon/Icon";
 type TInputType = "password" | "email" | "text";
-type TExcludeEmail<T> = T extends "email" ? "text" : T;
 
 interface IFormFieldProps<T extends FieldValues> {
   type: TInputType;
@@ -24,37 +23,34 @@ export const FormField = <T extends FieldValues>({
   name,
   isAvailable = true,
 }: IFormFieldProps<T>) => {
-  const [inputType, setInputType] = useState<TExcludeEmail<TInputType>>(
-    type === "email" ? "text" : type,
+  const [inputType, setInputType] = useState<"text" | "password">(
+    type === "password" ? "password" : "text",
   );
-
   return (
-    <>
-      <div className={styles.formField}>
-        <div className={styles.formFieldInner}>
-          <input
-            disabled={!isAvailable}
-            {...register(name)}
-            placeholder=" "
-            className={styles.formInput}
-            type={inputType}
-          />
-          <span className={styles.formLabel}>{label}</span>
-          {type === "password" && (
-            <button
-              type="button"
-              onClick={() =>
-                setInputType((prev) =>
-                  prev === "password" ? "text" : "password",
-                )
-              }
-            >
-              <Icon name="password" size={20} />
-            </button>
-          )}
-        </div>
-        {error && <span className={styles.error}>{error}</span>}
+    <div className={styles.formField}>
+      <div className={styles.formFieldInner}>
+        <input
+          disabled={!isAvailable}
+          {...register(name)}
+          placeholder=" "
+          className={styles.formInput}
+          type={inputType}
+        />
+        <span className={styles.formLabel}>{label}</span>
+        {type === "password" && (
+          <button
+            type="button"
+            onClick={() =>
+              setInputType((prev) =>
+                prev === "password" ? "text" : "password",
+              )
+            }
+          >
+            <Icon name="password" size={20} />
+          </button>
+        )}
       </div>
-    </>
+      {error && <span className={styles.error}>{error}</span>}
+    </div>
   );
 };

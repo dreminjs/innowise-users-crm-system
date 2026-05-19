@@ -1,4 +1,5 @@
 "use client";
+
 import { Controller } from "react-hook-form";
 import { useQuery } from "@apollo/client/react";
 import { useTranslations } from "next-intl";
@@ -16,12 +17,22 @@ export const UserForm = ({
   mode,
   defaultValues,
   loading,
+  serverError,
   submitAction,
   cancelAction,
 }: TUserFormProps) => {
   const t = useTranslations("Users");
   const { data, loading: loadingMeta, error } = useQuery(GET_USERS_CREATERIES);
-  const { register, control, handleSubmit, setValue } = useUserForm({
+  const isCreating = mode === "create";
+
+  const {
+    register,
+    control,
+    handleSubmit,
+    setValue,
+    formState: { errors },
+  } = useUserForm({
+    mode,
     defaultValues,
   });
   if (loadingMeta) {
@@ -33,33 +44,37 @@ export const UserForm = ({
   return (
     <form onSubmit={handleSubmit(submitAction)} className={styles.form}>
       <div className={styles.grid}>
-        <FormField
-          type="email"
-          register={register}
-          name="email"
-          label={t("fields.email")}
-          isAvailable={false}
-        />
-        <FormField
-          type="password"
-          register={register}
-          name="password"
-          label={t("fields.password")}
-          isAvailable={false}
-        />
+        {isCreating && (
+          <FormField
+            type="email"
+            register={register}
+            name="email"
+            label={t("fields.email")}
+            error={errors.email?.message || serverError}
+          />
+        )}
+        {isCreating && (
+          <FormField
+            type="password"
+            register={register}
+            name="password"
+            label={t("fields.password")}
+            error={errors.password?.message}
+          />
+        )}
         <FormField
           type="text"
           register={register}
           name="firstName"
           label={t("fields.firstName")}
-          isAvailable={true}
+          error={errors.firstName?.message}
         />
         <FormField
           type="text"
           register={register}
           name="lastName"
           label={t("fields.lastName")}
-          isAvailable={true}
+          error={errors.lastName?.message}
         />
         <Controller
           control={control}

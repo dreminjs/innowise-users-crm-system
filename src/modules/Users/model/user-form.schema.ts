@@ -1,14 +1,34 @@
 import { z } from "zod";
-import { UserRole } from "@/graphql/graphql";
 
-export const userFormSchema = z.object({
-  email: z.string().email(),
-  password: z.string(),
-  firstName: z.string(),
-  lastName: z.string(),
-  departmentId: z.string(),
-  positionId: z.string(),
-  role: z.enum(["Admin", "Employee"]),
-});
+export const createUserSchema = (t: (key: string) => string) =>
+  z.object({
+    email: z
+      .string()
+      .trim()
+      .min(1, t("errors.emailRequired"))
+      .email(t("errors.invalidEmail")),
+    password: z.string().trim().min(6, t("errors.passwordMin")),
+    firstName: z
+      .string()
+      .trim()
+      .min(1, t("errors.firstNameRequired"))
+      .max(50, t("errors.firstNameMax")),
+    lastName: z
+      .string()
+      .trim()
+      .min(1, t("errors.lastNameRequired"))
+      .max(50, t("errors.lastNameMax")),
+    departmentId: z.string().min(1, t("errors.departmentRequired")),
+    positionId: z.string().min(1, t("errors.positionRequired")),
+    role: z.enum(["Admin", "Employee"]),
+  });
 
-export type TUserFormValues = z.infer<typeof userFormSchema>;
+export const editUserSchema = (t: (key: string) => string) =>
+  createUserSchema(t).omit({
+    email: true,
+    password: true,
+  });
+export type TCreateUserFormValues = z.infer<
+  ReturnType<typeof createUserSchema>
+>;
+export type TEditUserFormValues = z.infer<ReturnType<typeof editUserSchema>>;
