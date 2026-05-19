@@ -48,8 +48,10 @@ type Documents = {
     "\n  mutation updateProfile($dto: UpdateProfileInput!) {\n    updateProfile(profile: $dto) {\n      id\n    }\n  }\n": typeof types.UpdateProfileDocument,
     "\n  mutation updateUser($dto: UpdateUserInput!) {\n    updateUser(user: $dto) {\n      id\n    }\n  }\n": typeof types.UpdateUserDocument,
     "\n  mutation deleteAvatar($dto: DeleteAvatarInput!) {\n    deleteAvatar(avatar: $dto)\n  }\n": typeof types.DeleteAvatarDocument,
-    "\n  query getCurrentProfile($userId: ID!) {\n    user(userId: $userId) {\n      profile {\n        full_name\n      }\n    }\n  }\n": typeof types.GetCurrentProfileDocument,
-    "\n  query GetUsers {\n    users {\n      id\n      email\n      role\n      department_name\n      position_name\n\n      profile {\n        id\n        first_name\n        last_name\n        avatar\n      }\n    }\n  }\n": typeof types.GetUsersDocument,
+    "\n  mutation DeleteUser($userId: ID!) {\n    deleteUser(userId: $userId) {\n      affected\n    }\n  }\n": typeof types.DeleteUserDocument,
+    "\n  mutation CreateUser($user: CreateUserInput!) {\n    createUser(user: $user) {\n      id\n      email\n      role\n      department_name\n      position_name\n      profile {\n        first_name\n        last_name\n      }\n    }\n  }\n": typeof types.CreateUserDocument,
+    "\n  mutation UpdateUserData($user: UpdateUserInput!) {\n    updateUser(user: $user) {\n      id\n      role\n      department_name\n      position_name\n      profile {\n        first_name\n        last_name\n      }\n    }\n  }\n": typeof types.UpdateUserDataDocument,
+    "\n  query GetUsers {\n    users {\n      id\n      email\n      role\n      department_name\n      position_name\n\n      department {\n        id\n      }\n      position {\n        id\n      }\n      profile {\n        id\n        first_name\n        last_name\n        avatar\n      }\n    }\n  }\n": typeof types.GetUsersDocument,
     "\n  query getUserProfile($userId: ID!) {\n    user(userId: $userId) {\n      profile {\n        id\n        first_name\n        last_name\n        avatar\n      }\n\n      department {\n        id\n        name\n      }\n      position {\n        id\n        name\n      }\n      role\n      email\n      created_at\n    }\n  }\n": typeof types.GetUserProfileDocument,
     "\n  query GetUsersCriteries {\n    positions {\n      id\n      name\n    }\n    departments {\n      id\n      name\n    }\n  }\n": typeof types.GetUsersCriteriesDocument,
 };
@@ -88,8 +90,10 @@ const documents: Documents = {
     "\n  mutation updateProfile($dto: UpdateProfileInput!) {\n    updateProfile(profile: $dto) {\n      id\n    }\n  }\n": types.UpdateProfileDocument,
     "\n  mutation updateUser($dto: UpdateUserInput!) {\n    updateUser(user: $dto) {\n      id\n    }\n  }\n": types.UpdateUserDocument,
     "\n  mutation deleteAvatar($dto: DeleteAvatarInput!) {\n    deleteAvatar(avatar: $dto)\n  }\n": types.DeleteAvatarDocument,
-    "\n  query getCurrentProfile($userId: ID!) {\n    user(userId: $userId) {\n      profile {\n        full_name\n      }\n    }\n  }\n": types.GetCurrentProfileDocument,
-    "\n  query GetUsers {\n    users {\n      id\n      email\n      role\n      department_name\n      position_name\n\n      profile {\n        id\n        first_name\n        last_name\n        avatar\n      }\n    }\n  }\n": types.GetUsersDocument,
+    "\n  mutation DeleteUser($userId: ID!) {\n    deleteUser(userId: $userId) {\n      affected\n    }\n  }\n": types.DeleteUserDocument,
+    "\n  mutation CreateUser($user: CreateUserInput!) {\n    createUser(user: $user) {\n      id\n      email\n      role\n      department_name\n      position_name\n      profile {\n        first_name\n        last_name\n      }\n    }\n  }\n": types.CreateUserDocument,
+    "\n  mutation UpdateUserData($user: UpdateUserInput!) {\n    updateUser(user: $user) {\n      id\n      role\n      department_name\n      position_name\n      profile {\n        first_name\n        last_name\n      }\n    }\n  }\n": types.UpdateUserDataDocument,
+    "\n  query GetUsers {\n    users {\n      id\n      email\n      role\n      department_name\n      position_name\n\n      department {\n        id\n      }\n      position {\n        id\n      }\n      profile {\n        id\n        first_name\n        last_name\n        avatar\n      }\n    }\n  }\n": types.GetUsersDocument,
     "\n  query getUserProfile($userId: ID!) {\n    user(userId: $userId) {\n      profile {\n        id\n        first_name\n        last_name\n        avatar\n      }\n\n      department {\n        id\n        name\n      }\n      position {\n        id\n        name\n      }\n      role\n      email\n      created_at\n    }\n  }\n": types.GetUserProfileDocument,
     "\n  query GetUsersCriteries {\n    positions {\n      id\n      name\n    }\n    departments {\n      id\n      name\n    }\n  }\n": types.GetUsersCriteriesDocument,
 };
@@ -247,11 +251,19 @@ export function graphql(source: "\n  mutation deleteAvatar($dto: DeleteAvatarInp
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n  query getCurrentProfile($userId: ID!) {\n    user(userId: $userId) {\n      profile {\n        full_name\n      }\n    }\n  }\n"): (typeof documents)["\n  query getCurrentProfile($userId: ID!) {\n    user(userId: $userId) {\n      profile {\n        full_name\n      }\n    }\n  }\n"];
+export function graphql(source: "\n  mutation DeleteUser($userId: ID!) {\n    deleteUser(userId: $userId) {\n      affected\n    }\n  }\n"): (typeof documents)["\n  mutation DeleteUser($userId: ID!) {\n    deleteUser(userId: $userId) {\n      affected\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n  query GetUsers {\n    users {\n      id\n      email\n      role\n      department_name\n      position_name\n\n      profile {\n        id\n        first_name\n        last_name\n        avatar\n      }\n    }\n  }\n"): (typeof documents)["\n  query GetUsers {\n    users {\n      id\n      email\n      role\n      department_name\n      position_name\n\n      profile {\n        id\n        first_name\n        last_name\n        avatar\n      }\n    }\n  }\n"];
+export function graphql(source: "\n  mutation CreateUser($user: CreateUserInput!) {\n    createUser(user: $user) {\n      id\n      email\n      role\n      department_name\n      position_name\n      profile {\n        first_name\n        last_name\n      }\n    }\n  }\n"): (typeof documents)["\n  mutation CreateUser($user: CreateUserInput!) {\n    createUser(user: $user) {\n      id\n      email\n      role\n      department_name\n      position_name\n      profile {\n        first_name\n        last_name\n      }\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n  mutation UpdateUserData($user: UpdateUserInput!) {\n    updateUser(user: $user) {\n      id\n      role\n      department_name\n      position_name\n      profile {\n        first_name\n        last_name\n      }\n    }\n  }\n"): (typeof documents)["\n  mutation UpdateUserData($user: UpdateUserInput!) {\n    updateUser(user: $user) {\n      id\n      role\n      department_name\n      position_name\n      profile {\n        first_name\n        last_name\n      }\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n  query GetUsers {\n    users {\n      id\n      email\n      role\n      department_name\n      position_name\n\n      department {\n        id\n      }\n      position {\n        id\n      }\n      profile {\n        id\n        first_name\n        last_name\n        avatar\n      }\n    }\n  }\n"): (typeof documents)["\n  query GetUsers {\n    users {\n      id\n      email\n      role\n      department_name\n      position_name\n\n      department {\n        id\n      }\n      position {\n        id\n      }\n      profile {\n        id\n        first_name\n        last_name\n        avatar\n      }\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */

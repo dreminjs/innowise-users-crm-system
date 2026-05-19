@@ -9,6 +9,12 @@ export const GET_USERS = graphql(`
       department_name
       position_name
 
+      department {
+        id
+      }
+      position {
+        id
+      }
       profile {
         id
         first_name

@@ -160,7 +160,8 @@
   },
   "UserActions": {
     "profile": "Профиль",
-    "edit": "Редактировать"
+    "edit": "Редактировать",
+    "delete": "Удалить"
   },
   "SearchToolbar": {
     "search": "Поиск"
@@ -268,6 +269,26 @@
     "profileUpdatedSuccessfully": "Профиль успешно обновлён",
     "userUpdatedSuccessfully": "Пользователь успешно обновлён",
     "avatarUploadedSuccessfully": "Аватар успешно загружен",
-    "failedToUploadAvatar": "Не удалось загрузить аватар"
+    "failedToUploadAvatar": "Не удалось загрузить аватар",
+    "userDeletedSuccessfully": "Пользователь успешно удален"
+  },
+  "Users": {
+    "fields": {
+      "email": "Почта",
+      "password": "Пароль",
+      "firstName": "Имя",
+      "lastName": "Фамилия",
+      "department": "Отдел",
+      "position": "Должность",
+      "role": "Роль"
+    },
+    "create": {
+      "title": "Создание пользователя",
+      "submit": "Создать"
+    },
+    "edit": {
+      "title": "Редактирование пользователя",
+      "submit": "Сохранить"
+    }
   }
 }

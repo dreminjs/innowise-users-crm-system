@@ -156,7 +156,8 @@
   },
   "UserActions": {
     "profile": "Profil",
-    "edit": "Bearbeiten"
+    "edit": "Bearbeiten",
+    "delete": "Löschen"
   },
   "SearchToolbar": {
     "search": "Suche"
@@ -258,6 +259,26 @@
     "profileUpdatedSuccessfully": "Profil erfolgreich aktualisiert",
     "userUpdatedSuccessfully": "Benutzer erfolgreich aktualisiert",
     "avatarUploadedSuccessfully": "Avatar erfolgreich hochgeladen",
-    "failedToUploadAvatar": "Avatar konnte nicht hochgeladen werden"
+    "failedToUploadAvatar": "Avatar konnte nicht hochgeladen werden",
+    "userDeletedSuccessfully": "Benutzer erfolgreich gelöscht"
+  },
+  "Users": {
+    "fields": {
+      "email": "E-Mail",
+      "password": "Passwort",
+      "firstName": "Vorname",
+      "lastName": "Nachname",
+      "department": "Abteilung",
+      "position": "Position",
+      "role": "Rolle"
+    },
+    "create": {
+      "title": "Benutzer erstellen",
+      "submit": "Erstellen"
+    },
+    "edit": {
+      "title": "Benutzer bearbeiten",
+      "submit": "Speichern"
+    }
   }
 }

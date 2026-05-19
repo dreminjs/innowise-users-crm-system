@@ -13,11 +13,9 @@ type Props = {
 export const UserTableRow = ({ user }: Props) => {
   const role = useUserStore((state) => state.role);
   const currentUserId = useUserStore((state) => state.userId);
-
   const isAdmin = role === "Admin";
   const isCurrentUser = currentUserId === user.id;
   const canManageUser = isAdmin || isCurrentUser;
-
   return (
     <tr className={styles.row}>
       <td className={styles.avatarColumn}>
@@ -27,34 +25,28 @@ export const UserTableRow = ({ user }: Props) => {
           avatar={user.profile?.avatar}
         />
       </td>
-
       <td className={styles.firstNameColumn}>
         <div className={styles.cellContent}>
           {user.profile?.first_name ?? "-"}
         </div>
       </td>
-
       <td className={styles.lastNameColumn}>
         <div className={styles.cellContent}>
           {user.profile?.last_name ?? "-"}
         </div>
       </td>
-
       <td className={styles.emailColumn}>
         <div className={styles.cellContent}>{user.email}</div>
       </td>
-
       <td className={styles.departmentColumn}>
         <div className={styles.cellContent}>{user.department_name ?? "-"}</div>
       </td>
-
       <td className={styles.positionColumn}>
         <div className={styles.cellContent}>{user.position_name ?? "-"}</div>
       </td>
-
       <td className={styles.actionsColumn}>
         {canManageUser ? (
-          <UserActions userId={user.id} />
+          <UserActions user={user} />
         ) : (
           <Link href={`/users/${user.id}`}>
             <Icon name={"arrow"} size={12} />
