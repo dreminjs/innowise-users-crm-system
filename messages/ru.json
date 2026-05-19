@@ -10,7 +10,7 @@
     "password": "Пароль",
     "forgotPassword": "ЗАБЫЛИ ПАРОЛЬ",
     "submitLabel": "ВОЙТИ",
-    "loading": "Loading..."
+    "loading": "Загрузка..."
   },
   "Signup": {
     "title": "Регистрация",
