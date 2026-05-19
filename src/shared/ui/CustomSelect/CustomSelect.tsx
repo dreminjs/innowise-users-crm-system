@@ -1,7 +1,7 @@
 "use client";
-
 import { FC, useMemo } from "react";
 import { Portal, Select, createListCollection } from "@chakra-ui/react";
+import clsx from "clsx";
 import styles from "./CustomSelect.module.css";
 
 type SelectOption = {
@@ -19,6 +19,7 @@ interface ICustomSelectProps {
   options: SelectOption[] | SelectGroup[];
   disabled?: boolean;
   value: string | null;
+  error?: string;
   onChange?: (value: string) => void;
 }
 
@@ -27,11 +28,13 @@ const isGroupedOptions = (
 ): options is SelectGroup[] => {
   return options.length > 0 && "items" in options[0];
 };
+
 export const CustomSelect: FC<ICustomSelectProps> = ({
   label,
   options,
   disabled,
   value,
+  error,
   onChange,
 }) => {
   const flatItems = useMemo(() => {
@@ -43,71 +46,86 @@ export const CustomSelect: FC<ICustomSelectProps> = ({
     }
     return options;
   }, [options]);
+
   const collection = useMemo(
     () => createListCollection({ items: flatItems }),
     [flatItems],
   );
+
   return (
-    <Select.Root
-      collection={collection}
-      disabled={disabled}
-      value={value ? [value] : []}
-      onValueChange={(e) => onChange?.(e.value[0])}
-    >
-      <Select.HiddenSelect />
-      <Select.Control className={styles.formField}>
-        <Select.Trigger>
-          <Select.ValueText
-            suppressHydrationWarning
-            placeholder=" "
-            className={styles.formInput}
-          />
-          <Select.IndicatorGroup>
-            <Select.Indicator />
-          </Select.IndicatorGroup>
-        </Select.Trigger>
-        <Select.Label
-          suppressHydrationWarning
-          data-has-value={!!value}
-          className={styles.formLabel}
+    <div className={styles.wrapper}>
+      <Select.Root
+        collection={collection}
+        disabled={disabled}
+        value={value ? [value] : []}
+        onValueChange={(e) => onChange?.(e.value[0])}
+      >
+        <Select.HiddenSelect />
+
+        <Select.Control
+          className={clsx(styles.formField, {
+            [styles.errorBorder]: error,
+          })}
         >
-          {label}
-        </Select.Label>
-      </Select.Control>
-      <Portal>
-        <Select.Positioner className={styles.selectPositioner}>
-          <Select.Content className={styles.selectContent}>
-            {isGroupedOptions(options)
-              ? options.map((group) => (
-                  <Select.ItemGroup key={group.label}>
-                    <Select.ItemGroupLabel className={styles.groupLabel}>
-                      {group.label}
-                    </Select.ItemGroupLabel>
-                    {group.items.map((item) => (
-                      <Select.Item
-                        item={item}
-                        className={styles.selectItem}
-                        key={item.value}
-                      >
-                        {item.label}
-                        <Select.ItemIndicator />
-                      </Select.Item>
-                    ))}
-                  </Select.ItemGroup>
-                ))
-              : options.map((item) => (
-                  <Select.Item
-                    item={item}
-                    className={styles.selectItem}
-                    key={item.value}
-                  >
-                    {item.label}
-                    <Select.ItemIndicator />
-                  </Select.Item>
-                ))}
-          </Select.Content>
-        </Select.Positioner>
-      </Portal>
-    </Select.Root>
+          <Select.Trigger>
+            <Select.ValueText
+              suppressHydrationWarning
+              placeholder=" "
+              className={styles.formInput}
+            />
+
+            <Select.IndicatorGroup>
+              <Select.Indicator />
+            </Select.IndicatorGroup>
+          </Select.Trigger>
+
+          <Select.Label
+            suppressHydrationWarning
+            data-has-value={!!value}
+            className={clsx(styles.formLabel, {
+              [styles.errorLabel]: error,
+            })}
+          >
+            {label}
+          </Select.Label>
+        </Select.Control>
+        <Portal>
+          <Select.Positioner className={styles.selectPositioner}>
+            <Select.Content className={styles.selectContent}>
+              {isGroupedOptions(options)
+                ? options.map((group) => (
+                    <Select.ItemGroup key={group.label}>
+                      <Select.ItemGroupLabel className={styles.groupLabel}>
+                        {group.label}
+                      </Select.ItemGroupLabel>
+
+                      {group.items.map((item) => (
+                        <Select.Item
+                          item={item}
+                          className={styles.selectItem}
+                          key={item.value}
+                        >
+                          {item.label}
+                          <Select.ItemIndicator />
+                        </Select.Item>
+                      ))}
+                    </Select.ItemGroup>
+                  ))
+                : options.map((item) => (
+                    <Select.Item
+                      item={item}
+                      className={styles.selectItem}
+                      key={item.value}
+                    >
+                      {item.label}
+                      <Select.ItemIndicator />
+                    </Select.Item>
+                  ))}
+            </Select.Content>
+          </Select.Positioner>
+        </Portal>
+      </Select.Root>
+      {error && <span className={styles.error}>{error}</span>}
+    </div>
   );
 };

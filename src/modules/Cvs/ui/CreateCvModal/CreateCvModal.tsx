@@ -1,12 +1,18 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslations } from "next-intl";
 import { useUserStore } from "@/application/store/user.store";
 import { useCreateCv } from "../../model/hooks/useCreateCv";
 import { ConfirmButtons } from "@/shared/ui/ConfirmButtons";
 import { ModalField } from "@/shared/ui/ModalField/ModalField";
 import styles from "./CreateCvModal.module.css";
+import {
+  createCvDetailsSchema,
+  TCvDetailsFormData,
+} from "@/modules/Cvs/model/cvDetails.schema";
 
 type Props = {
   isOpen: boolean;
@@ -14,16 +20,31 @@ type Props = {
 };
 
 export const CreateCvModal = ({ isOpen, closeAction }: Props) => {
-  const t = useTranslations("CreateCv");
+  const t = useTranslations("CvDetails");
+  const schema = createCvDetailsSchema(t);
   const userId = useUserStore((state) => state.userId);
-  const [name, setName] = useState("");
-  const [education, setEducation] = useState("");
-  const [description, setDescription] = useState("");
   const [createCv, { loading }] = useCreateCv();
-  const handleSubmit = async () => {
-    if (!name.trim()) {
-      return;
+  const {
+    register,
+    handleSubmit,
+    reset,
+    watch,
+    formState: { errors },
+  } = useForm<TCvDetailsFormData>({
+    resolver: zodResolver(schema),
+    defaultValues: {
+      name: "",
+      education: "",
+      description: "",
+    },
+  });
+  useEffect(() => {
+    if (!isOpen) {
+      reset();
     }
+  }, [isOpen, reset]);
+
+  const onSubmit = async (form: TCvDetailsFormData) => {
     if (!userId) {
       return;
     }
@@ -31,16 +52,14 @@ export const CreateCvModal = ({ isOpen, closeAction }: Props) => {
       await createCv({
         variables: {
           cv: {
-            name,
-            education,
-            description,
+            name: form.name,
+            education: form.education,
+            description: form.description,
             userId,
           },
         },
       });
-      setName("");
-      setEducation("");
-      setDescription("");
+      reset();
       closeAction();
     } catch (error) {
       throw error;
@@ -49,6 +68,7 @@ export const CreateCvModal = ({ isOpen, closeAction }: Props) => {
   if (!isOpen) {
     return null;
   }
+
   return (
     <>
       <div className={styles.backdrop} onClick={closeAction} />
@@ -61,40 +81,36 @@ export const CreateCvModal = ({ isOpen, closeAction }: Props) => {
           ×
         </button>
         <h2 className={styles.title}>{t("title")}</h2>
-        <div className={styles.form}>
-          <ModalField label={t("cvName")} active={Boolean(name)}>
-            <input
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              placeholder=" "
-            />
+        <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+          <ModalField
+            label={t("name")}
+            active={Boolean(watch("name"))}
+            error={errors.name?.message}
+          >
+            <input {...register("name")} placeholder=" " />
           </ModalField>
-          <ModalField label={t("education")} active={Boolean(education)}>
-            <input
-              value={education}
-              onChange={(e) => setEducation(e.target.value)}
-              placeholder=" "
-            />
+          <ModalField
+            label={t("education")}
+            active={Boolean(watch("education"))}
+            error={errors.education?.message}
+          >
+            <input {...register("education")} placeholder=" " />
           </ModalField>
           <ModalField
             label={t("description")}
             textarea
-            active={Boolean(description)}
+            active={Boolean(watch("description"))}
+            error={errors.description?.message}
           >
-            <textarea
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-              placeholder=" "
-            />
+            <textarea {...register("description")} placeholder=" " />
           </ModalField>
           <ConfirmButtons
             confirmLabel={t("create")}
-            confirmButtonType="button"
-            onConfirm={handleSubmit}
+            confirmButtonType="submit"
             onCancel={closeAction}
             disabled={loading}
           />
-        </div>
+        </form>
       </div>
     </>
   );

@@ -104,7 +104,7 @@
   "Settings": {
     "appearance": "Тема",
     "language": "Язык",
-    "resumeLanguage": "Язык"
+    "resumeLanguage": "Язык резюме"
   },
   "Profile": {
     "firstName": "Имя",
@@ -142,7 +142,16 @@
     "education": "Образование",
     "description": "Описание",
     "update": "Обновить",
-    "updating": "Обновление..."
+    "updating": "Обновление...",
+    "title": "Создать резюме",
+    "create": "Создать",
+    "validation": {
+      "nameRequired": "Введите название",
+      "nameMax": "Максимум 100 символов",
+      "educationMax": "Максимум 200 символов",
+      "descriptionRequired": "Введите описание",
+      "descriptionMax": "Максимум 1000 символов"
+    }
   },
   "CVsTable": {
     "name": "Название",
@@ -200,7 +209,13 @@
     "environment": "Окружение",
     "responsibilities": "Обязанности",
     "cancel": "ОТМЕНА",
-    "add": "ДОБАВИТЬ"
+    "add": "ДОБАВИТЬ",
+    "validation": {
+      "projectRequired": "Выберите проект",
+      "startDateRequired": "Выберите дату начала",
+      "responsibilitiesRequired": "Введите обязанности",
+      "responsibilitiesMax": "Максимум 2000 символов"
+    }
   },
   "EditCvProject": {
     "title": "Редактировать проект",
@@ -212,6 +227,17 @@
     "environment": "Окружение",
     "responsibilities": "Обязанности",
     "save": "Сохранить",
-    "saving": "Сохранение..."
+    "saving": "Сохранение...",
+    "validation": {
+      "projectRequired": "Выберите проект",
+      "startDateRequired": "Выберите дату начала",
+      "responsibilitiesRequired": "Введите обязанности",
+      "responsibilitiesMax": "Максимум 2000 символов"
+    }
+  },
+  "NotFound": {
+    "title": "Страница не найдена",
+    "description": "Страница не существует или была перемещена.",
+    "button": "На главную"
   }
 }

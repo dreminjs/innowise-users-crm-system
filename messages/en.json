@@ -98,7 +98,7 @@
   "Settings": {
     "appearance": "Appearance",
     "language": "Language",
-    "resumeLanguage": "Language"
+    "resumeLanguage": "CV Language"
   },
   "Profile": {
     "firstName": "First Name",
@@ -129,11 +129,20 @@
     "PREVIEW": "Preview"
   },
   "CvDetails": {
+    "title": "Create CV",
+    "create": "Create",
     "name": "Name",
     "education": "Education",
     "description": "Description",
     "update": "Update",
-    "updating": "Updating..."
+    "updating": "Updating...",
+    "validation": {
+      "nameRequired": "Name is required",
+      "nameMax": "Maximum 100 characters",
+      "educationMax": "Maximum 200 characters",
+      "descriptionRequired": "Description is required",
+      "descriptionMax": "Maximum 1000 characters"
+    }
   },
   "CVsTable": {
     "name": "Name",
@@ -191,7 +200,13 @@
     "environment": "Environment",
     "responsibilities": "Responsibilities",
     "cancel": "CANCEL",
-    "add": "ADD"
+    "add": "ADD",
+    "validation": {
+      "projectRequired": "Select a project",
+      "startDateRequired": "Select a start date",
+      "responsibilitiesRequired": "Responsibilities are required",
+      "responsibilitiesMax": "Maximum 2000 characters"
+    }
   },
   "EditCvProject": {
     "title": "Edit Project",
@@ -203,6 +218,17 @@
     "environment": "Environment",
     "responsibilities": "Responsibilities",
     "save": "Save",
-    "saving": "Saving..."
+    "saving": "Saving...",
+    "validation": {
+      "projectRequired": "Select a project",
+      "startDateRequired": "Select a start date",
+      "responsibilitiesRequired": "Responsibilities are required",
+      "responsibilitiesMax": "Maximum 2000 characters"
+    }
+  },
+  "NotFound": {
+    "title": "Page not found",
+    "description": "The page you are looking for does not exist or has been moved.",
+    "button": "Go to homepage"
   }
 }

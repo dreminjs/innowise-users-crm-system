@@ -100,7 +100,7 @@
   "Settings": {
     "appearance": "Aussehen",
     "language": "Sprache",
-    "resumeLanguage": "Sprache"
+    "resumeLanguage": "Lebenslauf Sprache"
   },
   "Profile": {
     "firstName": "Vorname",
@@ -138,7 +138,16 @@
     "education": "Ausbildung",
     "description": "Beschreibung",
     "update": "Aktualisieren",
-    "updating": "Wird aktualisiert..."
+    "updating": "Wird aktualisiert...",
+    "title": "CV erstellen",
+    "create": "Erstellen",
+      "validation": {
+        "nameRequired": "Name ist erforderlich",
+        "nameMax": "Maximal 100 Zeichen",
+        "educationMax": "Maximal 200 Zeichen",
+        "descriptionRequired": "Beschreibung ist erforderlich",
+        "descriptionMax": "Maximal 1000 Zeichen"
+      }
   },
   "CVsTable": {
     "name": "Name",
@@ -208,6 +217,17 @@
     "environment": "Umgebung",
     "responsibilities": "Verantwortlichkeiten",
     "save": "Speichern",
-    "saving": "Wird gespeichert..."
+    "saving": "Wird gespeichert...",
+    "validation": {
+      "projectRequired": "Projekt auswählen",
+      "startDateRequired": "Startdatum auswählen",
+      "responsibilitiesRequired": "Verantwortlichkeiten eingeben",
+      "responsibilitiesMax": "Maximal 2000 Zeichen"
+    }
+  },
+  "NotFound": {
+    "title": "Seite nicht gefunden",
+    "description": "Die Seite existiert nicht oder wurde verschoben.",
+    "button": "Zur Startseite"
   }
 }
