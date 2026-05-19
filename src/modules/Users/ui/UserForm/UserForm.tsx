@@ -12,6 +12,8 @@ import { Loading } from "@/shared/ui/Loading";
 import { CustomSelect } from "@/shared/ui/CustomSelect";
 import { ConfirmButtons } from "@/shared/ui/ConfirmButtons";
 import { roleOptions } from "@/modules/Users/model/user-form.constants";
+import { useUserStore } from "@/application/store/user.store";
+import { UserRole } from "@/generated/graphql";
 
 export const UserForm = ({
   mode,
@@ -24,7 +26,8 @@ export const UserForm = ({
   const t = useTranslations("Users");
   const { data, loading: loadingMeta, error } = useQuery(GET_USERS_CREATERIES);
   const isCreating = mode === "create";
-
+  const role = useUserStore((state) => state.role);
+  const isAdmin = role === UserRole.Admin;
   const {
     register,
     control,
@@ -110,20 +113,22 @@ export const UserForm = ({
             />
           )}
         />
-        <Controller
-          control={control}
-          name="role"
-          render={({ field }) => (
-            <CustomSelect
-              label={t("fields.role")}
-              options={roleOptions}
-              value={field.value}
-              onChange={(value) =>
-                setValue("role", value as typeof field.value)
-              }
-            />
-          )}
-        />
+        {isAdmin && (
+          <Controller
+            control={control}
+            name="role"
+            render={({ field }) => (
+              <CustomSelect
+                label={t("fields.role")}
+                options={roleOptions}
+                value={field.value}
+                onChange={(value) =>
+                  setValue("role", value as typeof field.value)
+                }
+              />
+            )}
+          />
+        )}
       </div>
       <ConfirmButtons
         cancelAction={cancelAction}

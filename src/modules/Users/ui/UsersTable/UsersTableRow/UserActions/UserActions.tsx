@@ -36,7 +36,7 @@ export const UserActions: FC<IUserActionsProps> = ({ user }) => {
       >
         <Popover.Trigger>⋮</Popover.Trigger>
         <Popover.Positioner>
-          <Popover.Content width={100} className={styles.actionContainer}>
+          <Popover.Content width={130} className={styles.actionContainer}>
             <Popover.CloseTrigger />
             <ul>
               <UserAction to={`users/${user.id}`}>{t("profile")}</UserAction>
