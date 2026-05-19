@@ -63,7 +63,10 @@
     "Competent": "Competent",
     "Proficient": "Proficient",
     "Advanced": "Advanced",
-    "Novice": "Novice"
+    "Novice": "Novice",
+    "Name": "Name",
+    "Type": "Type",
+    "Category": "Category"
   },
   "ConfirmButtons": {
     "cancel": "CANCEL",

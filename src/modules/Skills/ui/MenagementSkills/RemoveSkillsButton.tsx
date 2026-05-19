@@ -1,7 +1,7 @@
 import { useTranslations } from "next-intl";
 import { useDeleteProfileSkills } from "../../model/hooks/useDeleteProfileSkills";
 import { useSkillStore } from "../../model/skill.store";
-import styles from "../Skills.module.css";
+import styles from "../UsersSkill/Skills.module.css";
 
 export const RemoveSkillsButton = () => {
   const { deleteSkills } = useSkillStore();

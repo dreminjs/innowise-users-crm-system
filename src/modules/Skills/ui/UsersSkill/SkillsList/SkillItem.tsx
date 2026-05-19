@@ -1,10 +1,10 @@
 import { FC } from "react";
-import { TMastery } from "../../model/skill.interface";
+import { TMastery } from "../../../model/skill.interface";
 import {
   masteryBgColor,
   masteryColorPalette,
   masteryValue,
-} from "../../model/skill.constants";
+} from "../../../model/skill.constants";
 import { Progress } from "@chakra-ui/react";
 import clsx from "clsx";
 import styles from "../Skills.module.css";

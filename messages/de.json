@@ -65,7 +65,10 @@
     "Proficient": "Profi",
     "Advanced": "Fortgeschritten",
     "Novice": "Neuling",
-    "Expert": "Experte"
+    "Expert": "Experte",
+    "Name": "Name",
+    "Type": "Typ",
+    "Category": "Kategorie"
   },
   "ConfirmButtons": {
     "cancel": "ABBRECHEN",
@@ -142,13 +145,13 @@
     "updating": "Wird aktualisiert...",
     "title": "CV erstellen",
     "create": "Erstellen",
-      "validation": {
-        "nameRequired": "Name ist erforderlich",
-        "nameMax": "Maximal 100 Zeichen",
-        "educationMax": "Maximal 200 Zeichen",
-        "descriptionRequired": "Beschreibung ist erforderlich",
-        "descriptionMax": "Maximal 1000 Zeichen"
-      }
+    "validation": {
+      "nameRequired": "Name ist erforderlich",
+      "nameMax": "Maximal 100 Zeichen",
+      "educationMax": "Maximal 200 Zeichen",
+      "descriptionRequired": "Beschreibung ist erforderlich",
+      "descriptionMax": "Maximal 1000 Zeichen"
+    }
   },
   "CVsTable": {
     "name": "Name",
@@ -294,7 +297,6 @@
       "lastNameMax": "Der Nachname ist zu lang",
       "departmentRequired": "Die Abteilung ist erforderlich",
       "positionRequired": "Die Position ist erforderlich"
-
     }
   }
 }

@@ -1,7 +1,7 @@
-import { MenagementSkills } from "./MenagementSkills/MenagementSkills";
+import { MenagementSkills } from "../MenagementSkills/MenagementSkills";
 import { SkillsList } from "@/modules/Skills";
 import { useQuery } from "@apollo/client/react";
-import { GET_PROFILE_SKILLS, GET_SKILL_CATEGORIES } from "../api/queries";
+import { GET_PROFILE_SKILLS, GET_SKILL_CATEGORIES } from "../../api/queries";
 import { Loading } from "@/shared/ui/Loading";
 import { FC } from "react";
 
@@ -10,7 +10,10 @@ interface ISkllsProps {
   currentUserId: string;
 }
 
-export const Skills: FC<ISkllsProps> = ({ userSkillsId, currentUserId }) => {
+export const UserSkills: FC<ISkllsProps> = ({
+  userSkillsId,
+  currentUserId,
+}) => {
   const {
     data: categoriesData,
     loading,

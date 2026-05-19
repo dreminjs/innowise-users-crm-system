@@ -11,7 +11,7 @@ import { Mastery } from "@/generated/graphql";
 import { FC } from "react";
 import { useUserStore } from "@/application/store/user.store";
 import { useTranslations } from "next-intl";
-import styles from "../../Skills.module.css";
+import styles from "../../UsersSkill/Skills.module.css";
 
 interface IEditSkillFormProps {
   onToggle: () => void;

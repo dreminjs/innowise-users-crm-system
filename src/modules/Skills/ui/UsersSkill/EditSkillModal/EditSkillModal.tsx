@@ -1,5 +1,5 @@
 import { EditSkillForm } from "./EditSkillForm";
-import { TSkillForm } from "../../model/skill.interface";
+import { TSkillForm } from "../../../model/skill.interface";
 import { FC } from "react";
 import { useTranslations } from "next-intl";
 import { FormModal } from "@/shared/ui/FormModal";

@@ -1,6 +1,6 @@
 import { FC, useMemo, useState } from "react";
 import { SkillItem } from "./SkillItem";
-import { TMastery, TSkillForm } from "../../model/skill.interface";
+import { TMastery, TSkillForm } from "../../../model/skill.interface";
 import {
   GetProfileSkillsQuery,
   GetSkillCategoriesQuery,
@@ -8,7 +8,7 @@ import {
 import { Empty } from "@/shared/ui/Empty";
 import styles from "../Skills.module.css";
 import { EditSkillModal } from "../EditSkillModal/EditSkillModal";
-import { useSkillStore } from "../../model/skill.store";
+import { useSkillStore } from "../../../model/skill.store";
 import { Mastery } from "@/generated/graphql";
 import { useTranslations } from "next-intl";
 

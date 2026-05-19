@@ -9,7 +9,7 @@ import { Mastery } from "@/generated/graphql";
 import { FC } from "react";
 import { GET_SKILLS } from "@/modules/Skills/api/queries";
 import styles from "../Skills.module.css";
-import { useEditProfileSkill } from "../../model/hooks/useEditProfileSkill";
+import { useEditProfileSkill } from "../../../model/hooks/useEditProfileSkill";
 import { useTranslations } from "next-intl";
 
 type TEditSkillFormProps = {
