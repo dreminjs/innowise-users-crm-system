@@ -1,7 +1,7 @@
 "use client";
 
-import { LanguagesPage } from "@/modules/Languages/pages/LanguagesPage";
+import { Languages } from "@/modules/Languages/pages/Languages";
 
 export default function Page() {
-  return <LanguagesPage />;
+  return <Languages />;
 }

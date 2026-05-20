@@ -1,0 +1,23 @@
+.nameColumn {
+    width: 30%;
+}
+
+.nativeNameColumn {
+    width: 35%;
+}
+
+.isoColumn {
+    width: 20%;
+}
+
+.actionsColumn {
+    width: 72px;
+    min-width: 72px;
+    text-align: center;
+}
+
+.cellContent {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

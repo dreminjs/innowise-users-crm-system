@@ -23,3 +23,32 @@ export const UPDATE_PROFILE_LANGUAGE = graphql(`
     }
   }
 `);
+export const CREATE_LANGUAGE = graphql(`
+  mutation CreateLanguage($language: CreateLanguageInput!) {
+    createLanguage(language: $language) {
+      id
+      name
+      native_name
+      iso2
+    }
+  }
+`);
+
+export const UPDATE_LANGUAGE = graphql(`
+  mutation UpdateLanguage($language: UpdateLanguageInput!) {
+    updateLanguage(language: $language) {
+      id
+      name
+      native_name
+      iso2
+    }
+  }
+`);
+
+export const DELETE_LANGUAGE = graphql(`
+  mutation DeleteLanguage($language: DeleteLanguageInput!) {
+    deleteLanguage(language: $language) {
+      affected
+    }
+  }
+`);

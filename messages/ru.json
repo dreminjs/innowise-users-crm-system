@@ -30,6 +30,7 @@
     "skills": "Навыки",
     "languages": "Языки",
     "cvs": "Резюме",
+    "positions": "Должности",
     "departments": "Депортаменты",
     "settings": "Настройки",
     "profile": "Профиль",
@@ -358,6 +359,59 @@
     "save": "Сохранить",
     "validation": {
       "nameRequired": "Название отдела обязательно"
+    }
+  },
+  "PositionsToolbar": {
+    "search": "Поиск позиции",
+    "create": "ДОБАВИТЬ ПОЗИЦИЮ"
+  },
+
+  "PositionsTable": {
+    "name": "Название"
+  },
+
+  "PositionActions": {
+    "edit": "Редактировать позицию",
+    "delete": "Удалить позицию"
+  },
+
+  "PositionModal": {
+    "createTitle": "Создание позиции",
+    "editTitle": "Редактирование позиции",
+    "name": "Название позиции",
+    "create": "Создать",
+    "save": "Сохранить",
+    "validation": {
+      "nameRequired": "Название позиции обязательно"
+    }
+  },
+  "LanguagesToolbar": {
+    "search": "Поиск языка",
+    "create": "ДОБАВИТЬ ЯЗЫК"
+  },
+
+  "LanguagesTable": {
+    "name": "Язык",
+    "nativeName": "Нативное название",
+    "iso2": "ISO2"
+  },
+
+  "LanguageActions": {
+    "edit": "Редактировать язык",
+    "delete": "Удалить язык"
+  },
+  "LanguageModal": {
+    "createTitle": "Создание языка",
+    "editTitle": "Редактирование языка",
+    "name": "Язык",
+    "nativeName": "Нативное название",
+    "iso2": "ISO2 код",
+    "create": "Создать",
+    "save": "Сохранить",
+    "validation": {
+      "nameRequired": "Язык обязателен",
+      "nativeNameRequired": "Нативное название обязательно",
+      "iso2Required": "ISO2 код обязателен"
     }
   }
 }

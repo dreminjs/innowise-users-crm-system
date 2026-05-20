@@ -35,8 +35,15 @@ type Documents = {
     "\n  mutation addProfileLanguage($dto: AddProfileLanguageInput!) {\n    addProfileLanguage(language: $dto) {\n      id\n    }\n  }\n": typeof types.AddProfileLanguageDocument,
     "\n  mutation deleteProfileLanguage($dto: DeleteProfileLanguageInput!) {\n    deleteProfileLanguage(language: $dto) {\n      id\n    }\n  }\n": typeof types.DeleteProfileLanguageDocument,
     "\n  mutation updateProfileLanguage($dto: UpdateProfileLanguageInput!) {\n    updateProfileLanguage(language: $dto) {\n      id\n    }\n  }\n": typeof types.UpdateProfileLanguageDocument,
+    "\n  mutation CreateLanguage($language: CreateLanguageInput!) {\n    createLanguage(language: $language) {\n      id\n      name\n      native_name\n      iso2\n    }\n  }\n": typeof types.CreateLanguageDocument,
+    "\n  mutation UpdateLanguage($language: UpdateLanguageInput!) {\n    updateLanguage(language: $language) {\n      id\n      name\n      native_name\n      iso2\n    }\n  }\n": typeof types.UpdateLanguageDocument,
+    "\n  mutation DeleteLanguage($language: DeleteLanguageInput!) {\n    deleteLanguage(language: $language) {\n      affected\n    }\n  }\n": typeof types.DeleteLanguageDocument,
     "\n  query getProfileLanguages($userId: ID!) {\n    profile(userId: $userId) {\n      languages {\n        name\n        proficiency\n      }\n    }\n  }\n": typeof types.GetProfileLanguagesDocument,
-    "\n  query getLanguages {\n    languages {\n      name\n    }\n  }\n": typeof types.GetLanguagesDocument,
+    "\n  query GetLanguages {\n    languages {\n      id\n      name\n      native_name\n      iso2\n    }\n  }\n": typeof types.GetLanguagesDocument,
+    "\n  mutation CreatePosition($position: CreatePositionInput!) {\n    createPosition(position: $position) {\n      id\n      name\n    }\n  }\n": typeof types.CreatePositionDocument,
+    "\n  mutation UpdatePosition($position: UpdatePositionInput!) {\n    updatePosition(position: $position) {\n      id\n      name\n    }\n  }\n": typeof types.UpdatePositionDocument,
+    "\n  mutation DeletePosition($position: DeletePositionInput!) {\n    deletePosition(position: $position) {\n      affected\n    }\n  }\n": typeof types.DeletePositionDocument,
+    "\n  query GetPositions {\n    positions {\n      id\n      name\n    }\n  }\n": typeof types.GetPositionsDocument,
     "\n  mutation AddCvProject($project: AddCvProjectInput!) {\n    addCvProject(project: $project) {\n      id\n    }\n  }\n": typeof types.AddCvProjectDocument,
     "\n  mutation UpdateCvProject($project: UpdateCvProjectInput!) {\n    updateCvProject(project: $project) {\n      id\n    }\n  }\n": typeof types.UpdateCvProjectDocument,
     "\n  mutation RemoveCvProject($project: RemoveCvProjectInput!) {\n    removeCvProject(project: $project) {\n      id\n    }\n  }\n": typeof types.RemoveCvProjectDocument,
@@ -84,8 +91,15 @@ const documents: Documents = {
     "\n  mutation addProfileLanguage($dto: AddProfileLanguageInput!) {\n    addProfileLanguage(language: $dto) {\n      id\n    }\n  }\n": types.AddProfileLanguageDocument,
     "\n  mutation deleteProfileLanguage($dto: DeleteProfileLanguageInput!) {\n    deleteProfileLanguage(language: $dto) {\n      id\n    }\n  }\n": types.DeleteProfileLanguageDocument,
     "\n  mutation updateProfileLanguage($dto: UpdateProfileLanguageInput!) {\n    updateProfileLanguage(language: $dto) {\n      id\n    }\n  }\n": types.UpdateProfileLanguageDocument,
+    "\n  mutation CreateLanguage($language: CreateLanguageInput!) {\n    createLanguage(language: $language) {\n      id\n      name\n      native_name\n      iso2\n    }\n  }\n": types.CreateLanguageDocument,
+    "\n  mutation UpdateLanguage($language: UpdateLanguageInput!) {\n    updateLanguage(language: $language) {\n      id\n      name\n      native_name\n      iso2\n    }\n  }\n": types.UpdateLanguageDocument,
+    "\n  mutation DeleteLanguage($language: DeleteLanguageInput!) {\n    deleteLanguage(language: $language) {\n      affected\n    }\n  }\n": types.DeleteLanguageDocument,
     "\n  query getProfileLanguages($userId: ID!) {\n    profile(userId: $userId) {\n      languages {\n        name\n        proficiency\n      }\n    }\n  }\n": types.GetProfileLanguagesDocument,
-    "\n  query getLanguages {\n    languages {\n      name\n    }\n  }\n": types.GetLanguagesDocument,
+    "\n  query GetLanguages {\n    languages {\n      id\n      name\n      native_name\n      iso2\n    }\n  }\n": types.GetLanguagesDocument,
+    "\n  mutation CreatePosition($position: CreatePositionInput!) {\n    createPosition(position: $position) {\n      id\n      name\n    }\n  }\n": types.CreatePositionDocument,
+    "\n  mutation UpdatePosition($position: UpdatePositionInput!) {\n    updatePosition(position: $position) {\n      id\n      name\n    }\n  }\n": types.UpdatePositionDocument,
+    "\n  mutation DeletePosition($position: DeletePositionInput!) {\n    deletePosition(position: $position) {\n      affected\n    }\n  }\n": types.DeletePositionDocument,
+    "\n  query GetPositions {\n    positions {\n      id\n      name\n    }\n  }\n": types.GetPositionsDocument,
     "\n  mutation AddCvProject($project: AddCvProjectInput!) {\n    addCvProject(project: $project) {\n      id\n    }\n  }\n": types.AddCvProjectDocument,
     "\n  mutation UpdateCvProject($project: UpdateCvProjectInput!) {\n    updateCvProject(project: $project) {\n      id\n    }\n  }\n": types.UpdateCvProjectDocument,
     "\n  mutation RemoveCvProject($project: RemoveCvProjectInput!) {\n    removeCvProject(project: $project) {\n      id\n    }\n  }\n": types.RemoveCvProjectDocument,
@@ -213,11 +227,39 @@ export function graphql(source: "\n  mutation updateProfileLanguage($dto: Update
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
+export function graphql(source: "\n  mutation CreateLanguage($language: CreateLanguageInput!) {\n    createLanguage(language: $language) {\n      id\n      name\n      native_name\n      iso2\n    }\n  }\n"): (typeof documents)["\n  mutation CreateLanguage($language: CreateLanguageInput!) {\n    createLanguage(language: $language) {\n      id\n      name\n      native_name\n      iso2\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n  mutation UpdateLanguage($language: UpdateLanguageInput!) {\n    updateLanguage(language: $language) {\n      id\n      name\n      native_name\n      iso2\n    }\n  }\n"): (typeof documents)["\n  mutation UpdateLanguage($language: UpdateLanguageInput!) {\n    updateLanguage(language: $language) {\n      id\n      name\n      native_name\n      iso2\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n  mutation DeleteLanguage($language: DeleteLanguageInput!) {\n    deleteLanguage(language: $language) {\n      affected\n    }\n  }\n"): (typeof documents)["\n  mutation DeleteLanguage($language: DeleteLanguageInput!) {\n    deleteLanguage(language: $language) {\n      affected\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
 export function graphql(source: "\n  query getProfileLanguages($userId: ID!) {\n    profile(userId: $userId) {\n      languages {\n        name\n        proficiency\n      }\n    }\n  }\n"): (typeof documents)["\n  query getProfileLanguages($userId: ID!) {\n    profile(userId: $userId) {\n      languages {\n        name\n        proficiency\n      }\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n  query getLanguages {\n    languages {\n      name\n    }\n  }\n"): (typeof documents)["\n  query getLanguages {\n    languages {\n      name\n    }\n  }\n"];
+export function graphql(source: "\n  query GetLanguages {\n    languages {\n      id\n      name\n      native_name\n      iso2\n    }\n  }\n"): (typeof documents)["\n  query GetLanguages {\n    languages {\n      id\n      name\n      native_name\n      iso2\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n  mutation CreatePosition($position: CreatePositionInput!) {\n    createPosition(position: $position) {\n      id\n      name\n    }\n  }\n"): (typeof documents)["\n  mutation CreatePosition($position: CreatePositionInput!) {\n    createPosition(position: $position) {\n      id\n      name\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n  mutation UpdatePosition($position: UpdatePositionInput!) {\n    updatePosition(position: $position) {\n      id\n      name\n    }\n  }\n"): (typeof documents)["\n  mutation UpdatePosition($position: UpdatePositionInput!) {\n    updatePosition(position: $position) {\n      id\n      name\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n  mutation DeletePosition($position: DeletePositionInput!) {\n    deletePosition(position: $position) {\n      affected\n    }\n  }\n"): (typeof documents)["\n  mutation DeletePosition($position: DeletePositionInput!) {\n    deletePosition(position: $position) {\n      affected\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n  query GetPositions {\n    positions {\n      id\n      name\n    }\n  }\n"): (typeof documents)["\n  query GetPositions {\n    positions {\n      id\n      name\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */

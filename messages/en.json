@@ -31,6 +31,7 @@
     "languages": "Languages",
     "cvs": "CVs",
     "departments": "Departments",
+    "positions": "Positions",
     "settings": "Settings",
     "profile": "Profile",
     "logout": "Logout"
@@ -346,6 +347,59 @@
     "save": "Save",
     "validation": {
       "nameRequired": "Department name is required"
+    }
+  },
+  "PositionsToolbar": {
+    "search": "Search position",
+    "create": "CREATE POSITION"
+  },
+
+  "PositionsTable": {
+    "name": "Name"
+  },
+
+  "PositionActions": {
+    "edit": "Edit position",
+    "delete": "Delete position"
+  },
+
+  "PositionModal": {
+    "createTitle": "Create position",
+    "editTitle": "Edit position",
+    "name": "Position name",
+    "create": "Create",
+    "save": "Save",
+    "validation": {
+      "nameRequired": "Position name is required"
+    }
+  },
+  "LanguagesToolbar": {
+    "search": "Search language",
+    "create": "CREATE LANGUAGE"
+  },
+
+  "LanguagesTable": {
+    "name": "Language",
+    "nativeName": "Native name",
+    "iso2": "ISO2"
+  },
+
+  "LanguageActions": {
+    "edit": "Edit language",
+    "delete": "Delete language"
+  },
+  "LanguageModal": {
+    "createTitle": "Create language",
+    "editTitle": "Edit language",
+    "name": "Language",
+    "nativeName": "Native name",
+    "iso2": "ISO2 code",
+    "create": "Create",
+    "save": "Save",
+    "validation": {
+      "nameRequired": "Language is required",
+      "nativeNameRequired": "Native name is required",
+      "iso2Required": "ISO2 code is required"
     }
   }
 }

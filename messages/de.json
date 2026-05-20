@@ -30,6 +30,7 @@
     "skills": "Fähigkeiten",
     "languages": "Sprachen",
     "cvs": "Lebensläufe",
+    "positions": "Positionen",
     "departments": "Abteilungen",
     "settings": "Einstellungen",
     "profile": "Profil",
@@ -348,6 +349,59 @@
     "save": "Speichern",
     "validation": {
       "nameRequired": "Abteilungsname ist erforderlich"
+    }
+  },
+  "PositionsToolbar": {
+    "search": "Position suchen",
+    "create": "POSITION HINZUFÜGEN"
+  },
+
+  "PositionsTable": {
+    "name": "Name"
+  },
+
+  "PositionActions": {
+    "edit": "Position bearbeiten",
+    "delete": "Position löschen"
+  },
+
+  "PositionModal": {
+    "createTitle": "Position erstellen",
+    "editTitle": "Position bearbeiten",
+    "name": "Positionsname",
+    "create": "Erstellen",
+    "save": "Speichern",
+    "validation": {
+      "nameRequired": "Positionsname ist erforderlich"
+    }
+  },
+  "LanguagesToolbar": {
+    "search": "Sprache suchen",
+    "create": "SPRACHE HINZUFÜGEN"
+  },
+
+  "LanguagesTable": {
+    "name": "Sprache",
+    "nativeName": "Native Name",
+    "iso2": "ISO2"
+  },
+
+  "LanguageActions": {
+    "edit": "Sprache bearbeiten",
+    "delete": "Sprache löschen"
+  },
+  "LanguageModal": {
+    "createTitle": "Sprache erstellen",
+    "editTitle": "Sprache bearbeiten",
+    "name": "Sprache",
+    "nativeName": "Native Name",
+    "iso2": "ISO2 Code",
+    "create": "Erstellen",
+    "save": "Speichern",
+    "validation": {
+      "nameRequired": "Sprache ist erforderlich",
+      "nativeNameRequired": "Native Name ist erforderlich",
+      "iso2Required": "ISO2 Code ist erforderlich"
     }
   }
 }
