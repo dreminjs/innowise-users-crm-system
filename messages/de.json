@@ -298,5 +298,31 @@
       "departmentRequired": "Die Abteilung ist erforderlich",
       "positionRequired": "Die Position ist erforderlich"
     }
+  },
+  "SkillsToolbar": {
+    "search": "Skill suchen",
+    "create": "SKILL HINZUFÜGEN"
+  },
+
+  "SkillsTable": {
+    "name": "Name",
+    "category": "Kategorie"
+  },
+
+  "SkillActions": {
+    "edit": "Skill bearbeiten",
+    "delete": "Skill löschen"
+  },
+
+  "SkillModal": {
+    "createTitle": "Skill erstellen",
+    "editTitle": "Skill bearbeiten",
+    "name": "Skillname",
+    "category": "Kategorie",
+    "create": "Erstellen",
+    "save": "Speichern",
+    "validation": {
+      "nameRequired": "Skillname ist erforderlich"
+    }
   }
 }

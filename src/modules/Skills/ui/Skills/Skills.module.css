@@ -49,3 +49,8 @@
   white-space: nowrap;
   text-overflow: ellipsis;
 }
+.actionsColumn {
+  width: 72px;
+  min-width: 72px;
+  text-align: center;
+}

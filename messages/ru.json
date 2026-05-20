@@ -308,5 +308,31 @@
       "departmentRequired": "Обязательно укажите отдел",
       "positionRequired": "Обязательно укажите должность"
     }
+  },
+  "SkillsToolbar": {
+    "search": "Поиск навыка",
+    "create": "ДОБАВИТЬ НАВЫК"
+  },
+
+  "SkillsTable": {
+    "name": "Название",
+    "category": "Категория"
+  },
+
+  "SkillActions": {
+    "edit": "Редактировать навык",
+    "delete": "Удалить навык"
+  },
+
+  "SkillModal": {
+    "createTitle": "Создание навыка",
+    "editTitle": "Редактирование навыка",
+    "name": "Название навыка",
+    "category": "Категория",
+    "create": "Создать",
+    "save": "Сохранить",
+    "validation": {
+      "nameRequired": "Название навыка обязательно"
+    }
   }
 }

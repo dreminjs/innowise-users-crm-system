@@ -299,5 +299,31 @@
       "departmentRequired": "Department is required",
       "positionRequired": "Position is required"
     }
+  },
+  "SkillsToolbar": {
+    "search": "Search skill",
+    "create": "CREATE SKILL"
+  },
+
+  "SkillsTable": {
+    "name": "Name",
+    "category": "Category"
+  },
+
+  "SkillActions": {
+    "edit": "Edit skill",
+    "delete": "Delete skill"
+  },
+
+  "SkillModal": {
+    "createTitle": "Create skill",
+    "editTitle": "Edit skill",
+    "name": "Skill name",
+    "category": "Category",
+    "create": "Create",
+    "save": "Save",
+    "validation": {
+      "nameRequired": "Skill name is required"
+    }
   }
 }

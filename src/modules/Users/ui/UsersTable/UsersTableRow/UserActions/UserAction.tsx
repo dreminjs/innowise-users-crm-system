@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { FC } from "react";
-import styles from "../UsersTableRow.module.css";
+import styles from "./UserAction.module.css";
 interface IUserActionProps {
   children: React.ReactNode;
   to: string;

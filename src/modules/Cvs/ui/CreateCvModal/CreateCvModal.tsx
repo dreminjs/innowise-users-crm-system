@@ -107,7 +107,7 @@ export const CreateCvModal = ({ isOpen, closeAction }: Props) => {
           <ConfirmButtons
             confirmLabel={t("create")}
             confirmButtonType="submit"
-            onCancel={closeAction}
+            cancelAction={closeAction}
             disabled={loading}
           />
         </form>

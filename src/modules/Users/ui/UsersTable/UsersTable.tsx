@@ -1,36 +1,138 @@
-import { GetUsersQuery } from "@/graphql/graphql";
+"use client";
 
-import { UsersTableHeader } from "./UsersTableHeader";
-import styles from "./UsersTable.module.css";
+import Link from "next/link";
+import { useMemo } from "react";
+import { useTranslations } from "next-intl";
+import { GetUsersQuery } from "@/graphql/graphql";
+import { Avatar } from "@/shared/ui/Avatar/Avatar";
+import { GenericTable } from "@/shared/ui/GenericTable/GenericTable";
+import { Icon } from "@/shared/ui/Icon/Icon";
+import { useUserStore } from "@/application/store/user.store";
+import { UserActions } from "./UsersTableRow/UserActions/UserActions";
 import { SortField, SortOrder } from "@/modules/Users/model/usersTable.types";
-import { UserTableRow } from "@/modules/Users/ui/UsersTable/UsersTableRow/UsersTableRow";
+import styles from "./UsersTable.module.css";
 
 type Props = {
   users: GetUsersQuery["users"];
+  loading: boolean;
   sortField: SortField;
   sortOrder: SortOrder;
   onSort: (field: SortField) => void;
 };
 
-export const UsersTable = ({ users, sortField, sortOrder, onSort }: Props) => {
-  if (!users.length) {
-    return <div className={styles.empty}>No users found</div>;
-  }
+export const UsersTable = ({
+  users,
+  loading,
+  sortField,
+  sortOrder,
+  onSort,
+}: Props) => {
+  const t = useTranslations("Profile");
+
+  const role = useUserStore((state) => state.role);
+  const currentUserId = useUserStore((state) => state.userId);
+
+  const columns = useMemo(() => {
+    return [
+      {
+        key: "avatar" as SortField,
+        title: "",
+        sortable: false,
+        className: styles.avatarColumn,
+        render: (user: GetUsersQuery["users"][number]) => (
+          <Avatar
+            firstName={user.profile?.first_name}
+            lastName={user.profile?.last_name}
+            avatar={user.profile?.avatar}
+          />
+        ),
+      },
+
+      {
+        key: "first_name" as SortField,
+        title: t("firstName"),
+        sortable: true,
+        className: styles.nameColumn,
+        render: (user: GetUsersQuery["users"][number]) => (
+          <div className={styles.cellContent}>
+            {user.profile?.first_name ?? "-"}
+          </div>
+        ),
+      },
+
+      {
+        key: "last_name" as SortField,
+        title: t("lastName"),
+        sortable: true,
+        className: styles.nameColumn,
+        render: (user: GetUsersQuery["users"][number]) => (
+          <div className={styles.cellContent}>
+            {user.profile?.last_name ?? "-"}
+          </div>
+        ),
+      },
+
+      {
+        key: "email" as SortField,
+        title: "Email",
+        sortable: true,
+        className: styles.emailColumn,
+        render: (user: GetUsersQuery["users"][number]) => (
+          <div className={styles.cellContent}>{user.email}</div>
+        ),
+      },
+
+      {
+        key: "department" as SortField,
+        title: t("department"),
+        sortable: true,
+        render: (user: GetUsersQuery["users"][number]) => (
+          <div className={styles.cellContent}>
+            {user.department_name ?? "-"}
+          </div>
+        ),
+      },
+
+      {
+        key: "position" as SortField,
+        title: t("position"),
+        sortable: true,
+        render: (user: GetUsersQuery["users"][number]) => (
+          <div className={styles.cellContent}>{user.position_name ?? "-"}</div>
+        ),
+      },
+
+      {
+        key: "actions" as SortField,
+        title: "",
+        sortable: false,
+        className: styles.actionsColumn,
+        render: (user: GetUsersQuery["users"][number]) => {
+          const isAdmin = role === "Admin";
+          const isCurrentUser = currentUserId === user.id;
+          const canManageUser = isAdmin || isCurrentUser;
+
+          return canManageUser ? (
+            <UserActions user={user} />
+          ) : (
+            <Link href={`/users/${user.id}`}>
+              <Icon name="arrow" size={12} />
+            </Link>
+          );
+        },
+      },
+    ];
+  }, [t, role, currentUserId]);
 
   return (
-    <div className={styles.tableWrapper}>
-      <table className={styles.table}>
-        <UsersTableHeader
-          sortField={sortField}
-          sortOrder={sortOrder}
-          onSort={onSort}
-        />
-        <tbody>
-          {users.map((user) => (
-            <UserTableRow key={user.id} user={user} />
-          ))}
-        </tbody>
-      </table>
-    </div>
+    <GenericTable
+      data={users}
+      columns={columns}
+      rowKey={(user) => user.id}
+      loading={loading}
+      sortField={sortField}
+      sortOrder={sortOrder}
+      onSort={onSort}
+    />
   );
 };

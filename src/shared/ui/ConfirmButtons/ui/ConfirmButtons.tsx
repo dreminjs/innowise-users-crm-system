@@ -20,6 +20,7 @@ export const ConfirmButtons: FC<ConfirmButtonsProps> = ({
   disabled,
 }) => {
   const t = useTranslations("ConfirmButtons");
+  console.log(confirmLabel);
   return (
     <div className={styles.buttons}>
       <button
@@ -35,7 +36,7 @@ export const ConfirmButtons: FC<ConfirmButtonsProps> = ({
         className={styles.confirmButton}
         onClick={confirmAction}
       >
-        <span>{confirmLabel}</span>
+        <span>{confirmLabel ?? t("confirm")}</span>
         {amount && <span className={styles.confirmButtonAmount}>{amount}</span>}
       </button>
     </div>
