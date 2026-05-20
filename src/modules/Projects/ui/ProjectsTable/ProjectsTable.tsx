@@ -1,16 +1,23 @@
 "use client";
 
+import { useMemo } from "react";
 import { useTranslations } from "next-intl";
 import { GetCvProjectsQuery } from "@/graphql/graphql";
 import {
   ProjectSortField,
   ProjectSortOrder,
 } from "../../model/processProjects";
-import { ProjectTableRow } from "./ProjectTableRow";
+import {
+  DetailsTable,
+  DetailsColumn,
+} from "@/shared/ui/DetailsTable/DetailsTable";
+import { ProjectActions } from "./ProjectActions/ProjectActions";
 import styles from "./ProjectsTable.module.css";
-import { Empty } from "@/shared/ui/Empty";
-import { Loading } from "@/shared/ui/Loading";
+type Project = NonNullable<
+  NonNullable<GetCvProjectsQuery["cv"]>["projects"]
+>[number];
 
+type ColumnField = "name" | "domain" | "start_date" | "end_date" | "actions";
 type Props = {
   cvId: string;
   projects: NonNullable<NonNullable<GetCvProjectsQuery["cv"]>["projects"]>;
@@ -29,62 +36,94 @@ export const ProjectsTable = ({
   cvId,
 }: Props) => {
   const t = useTranslations("ProjectsTable");
-
-  if (loading) {
-    return <Loading />;
-  }
-
-  if (!projects.length) {
-    return <Empty />;
-  }
+  const columns = useMemo<
+    DetailsColumn<Project, ColumnField, ProjectSortField>[]
+  >(() => {
+    return [
+      {
+        key: "name",
+        title: t("name"),
+        sortable: true,
+        sortKey: "name",
+        className: styles.nameColumn,
+        render: (project) => (
+          <span className={styles.cellContent}>{project.project.name}</span>
+        ),
+      },
+      {
+        key: "domain",
+        title: t("domain"),
+        sortable: true,
+        sortKey: "domain",
+        className: styles.domainColumn,
+        render: (project) => (
+          <span className={styles.cellContent}>{project.project.domain}</span>
+        ),
+      },
+      {
+        key: "start_date",
+        title: t("startDate"),
+        sortable: true,
+        sortKey: "start_date",
+        className: styles.dateColumn,
+        render: (project) => (
+          <span className={styles.cellContent}>{project.start_date}</span>
+        ),
+      },
+      {
+        key: "end_date",
+        title: t("endDate"),
+        sortable: true,
+        sortKey: "end_date",
+        className: styles.dateColumn,
+        render: (project) => (
+          <span className={styles.cellContent}>
+            {project.end_date ?? "Till now"}
+          </span>
+        ),
+      },
+      {
+        key: "actions",
+        title: "",
+        className: styles.actionsColumn,
+        render: (project) => (
+          <ProjectActions cvId={cvId} projectId={project.project.id} />
+        ),
+      },
+    ];
+  }, [cvId, t]);
 
   return (
-    <div className={styles.wrapper}>
-      <table className={styles.table}>
-        <thead>
-          <tr>
-            <th>
-              <button onClick={() => sortAction("name")}>
-                {t("name")}
-                {sortField === "name" && (
-                  <span>{sortOrder === "asc" ? " ↑" : " ↓"}</span>
-                )}
-              </button>
-            </th>
-            <th>
-              <button onClick={() => sortAction("domain")}>
-                {t("domain")}
+    <DetailsTable<Project, ColumnField, ProjectSortField>
+      data={projects}
+      columns={columns}
+      loading={loading}
+      rowKey={(project) => project.project.id}
+      sortField={sortField}
+      sortOrder={sortOrder}
+      onSort={sortAction}
+      renderDetails={(project) => (
+        <div className={styles.details}>
+          <p className={styles.description}>{project.project.description}</p>
 
-                {sortField === "domain" && (
-                  <span>{sortOrder === "asc" ? " ↑" : " ↓"}</span>
-                )}
-              </button>
-            </th>
-            <th>
-              <button onClick={() => sortAction("start_date")}>
-                {t("startDate")}
-                {sortField === "start_date" && (
-                  <span>{sortOrder === "asc" ? " ↑" : " ↓"}</span>
-                )}
-              </button>
-            </th>
-            <th>
-              <button onClick={() => sortAction("end_date")}>
-                {t("endDate")}
-                {sortField === "end_date" && (
-                  <span>{sortOrder === "asc" ? " ↑" : " ↓"}</span>
-                )}
-              </button>
-            </th>
-            <th />
-          </tr>
-        </thead>
-        <tbody>
-          {projects.map((project) => (
-            <ProjectTableRow key={project.id} project={project} cvId={cvId} />
-          ))}
-        </tbody>
-      </table>
-    </div>
+          {!!project.responsibilities.length && (
+            <ul className={styles.responsibilities}>
+              {project.responsibilities.map((responsibility) => (
+                <li key={responsibility}>{responsibility}</li>
+              ))}
+            </ul>
+          )}
+          {!!project.project.environment.length && (
+            <div className={styles.environment}>
+              {project.project.environment.map((item) => (
+                <span key={item} className={styles.tag}>
+                  {item}
+                </span>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
+    />
   );
 };

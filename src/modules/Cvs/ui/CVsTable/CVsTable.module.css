@@ -1,97 +1,49 @@
-.tableWrapper {
-    border-radius: 20px;
-    background: var(--bg);
-}
-
-.table {
-    width: 100%;
-    table-layout: fixed;
-    border-collapse: separate;
-    border-spacing: 0;
-}
-
-.header th {
-    position: sticky;
-    top: 0;
-    z-index: 2;
-    padding: 16px 24px;
-    text-align: left;
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--color-text);
-    background: color-mix(
-            in srgb,
-            var(--bg) 85%,
-            transparent
-    );
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border-color);
-}
-
 .nameColumn {
     width: 35%;
-    max-height: 24px;
-    overflow: hidden;
 }
 
 .educationColumn {
     width: 25%;
-    max-height: 24px;
-    overflow: hidden;
 }
 
 .employeeColumn {
     width: 30%;
-    max-height: 24px;
-    overflow: hidden;
 }
 
 .actionsColumn {
-    width: 40px;
+    width: 72px;
+    min-width: 72px;
+    text-align: right;
 }
 
-.metaRow td {
-    padding: 16px 24px 8px;
-    font-size: 14px;
-    color: var(--color-text);
-    vertical-align: top;
-}
-
-.descriptionRow td {
-    padding: 0 24px 20px;
-    border-bottom: 1px solid var(--border-color);
+.cellContent {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .description {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
     font-size: 14px;
     line-height: 1.7;
     color: var(--color-subtitle);
     word-break: break-word;
 }
 
-.name {
-    width: 35%;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-}
-
-.education {
-    width: 25%;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-}
-
-.employee {
-    width: 30%;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-}
-
-.actions {
-    width: 40px;
-    text-align: right;
+@media (max-width: 768px) {
+    .nameColumn {
+        width: 40%;
+    }
+    .educationColumn {
+        width: 30%;
+    }
+    .employeeColumn {
+        width: 30%;
+    }
+    .description {
+        font-size: 13px;
+    }
 }
