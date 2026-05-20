@@ -30,6 +30,7 @@
     "skills": "Навыки",
     "languages": "Языки",
     "cvs": "Резюме",
+    "departments": "Депортаменты",
     "settings": "Настройки",
     "profile": "Профиль",
     "logout": "Выйти"
@@ -333,6 +334,30 @@
     "save": "Сохранить",
     "validation": {
       "nameRequired": "Название навыка обязательно"
+    }
+  },
+  "DepartmentsToolbar": {
+    "search": "Поиск отдела",
+    "create": "ДОБАВИТЬ ОТДЕЛ"
+  },
+
+  "DepartmentsTable": {
+    "name": "Название"
+  },
+
+  "DepartmentActions": {
+    "edit": "Редактировать отдел",
+    "delete": "Удалить отдел"
+  },
+
+  "DepartmentModal": {
+    "createTitle": "Создание отдела",
+    "editTitle": "Редактирование отдела",
+    "name": "Название отдела",
+    "create": "Создать",
+    "save": "Сохранить",
+    "validation": {
+      "nameRequired": "Название отдела обязательно"
     }
   }
 }

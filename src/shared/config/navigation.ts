@@ -25,4 +25,9 @@ export const navigationItems: {
     href: "/cvs",
     icon: "cvs",
   },
+  {
+    label: "departments",
+    href: "/departments",
+    icon: "cvs",
+  },
 ];

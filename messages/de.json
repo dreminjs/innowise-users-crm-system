@@ -30,6 +30,7 @@
     "skills": "Fähigkeiten",
     "languages": "Sprachen",
     "cvs": "Lebensläufe",
+    "departments": "Abteilungen",
     "settings": "Einstellungen",
     "profile": "Profil",
     "logout": "Abmelden"
@@ -323,6 +324,30 @@
     "save": "Speichern",
     "validation": {
       "nameRequired": "Skillname ist erforderlich"
+    }
+  },
+  "DepartmentsToolbar": {
+    "search": "Abteilung suchen",
+    "create": "ABTEILUNG HINZUFÜGEN"
+  },
+
+  "DepartmentsTable": {
+    "name": "Name"
+  },
+
+  "DepartmentActions": {
+    "edit": "Abteilung bearbeiten",
+    "delete": "Abteilung löschen"
+  },
+
+  "DepartmentModal": {
+    "createTitle": "Abteilung erstellen",
+    "editTitle": "Abteilung bearbeiten",
+    "name": "Abteilungsname",
+    "create": "Erstellen",
+    "save": "Speichern",
+    "validation": {
+      "nameRequired": "Abteilungsname ist erforderlich"
     }
   }
 }

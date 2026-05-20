@@ -30,6 +30,7 @@
     "skills": "Skills",
     "languages": "Languages",
     "cvs": "CVs",
+    "departments": "Departments",
     "settings": "Settings",
     "profile": "Profile",
     "logout": "Logout"
@@ -324,6 +325,27 @@
     "save": "Save",
     "validation": {
       "nameRequired": "Skill name is required"
+    }
+  },
+  "DepartmentsToolbar": {
+    "search": "Search department",
+    "create": "CREATE DEPARTMENT"
+  },
+  "DepartmentsTable": {
+    "name": "Name"
+  },
+  "DepartmentActions": {
+    "edit": "Edit department",
+    "delete": "Delete department"
+  },
+  "DepartmentModal": {
+    "createTitle": "Create department",
+    "editTitle": "Edit department",
+    "name": "Department name",
+    "create": "Create",
+    "save": "Save",
+    "validation": {
+      "nameRequired": "Department name is required"
     }
   }
 }
