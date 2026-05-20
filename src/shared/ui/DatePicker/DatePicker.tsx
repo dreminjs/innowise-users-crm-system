@@ -27,7 +27,6 @@ const CustomInput = forwardRef<
       ref={ref}
     >
       <span>{value || placeholder}</span>
-
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="20"
@@ -60,9 +59,7 @@ const CustomInput = forwardRef<
     </button>
   );
 });
-
 CustomInput.displayName = "CustomInput";
-
 export const DatePicker = ({
   value,
   changeAction,
@@ -70,13 +67,14 @@ export const DatePicker = ({
 }: Props) => {
   return (
     <ReactDatePicker
+      withPortal
       selected={value ? new Date(value) : null}
       onChange={(date: Date | null) => {
         if (!date) {
           changeAction("");
+
           return;
         }
-
         changeAction(date.toISOString().split("T")[0]);
       }}
       dateFormat="yyyy-MM-dd"

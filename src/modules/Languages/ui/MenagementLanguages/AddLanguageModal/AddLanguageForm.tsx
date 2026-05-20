@@ -24,7 +24,7 @@ export const AddLanguageForm: FC<IEditLangugeFormProps> = ({
   onToggle,
   currentUserId,
 }) => {
-  const { handleAddProfileLanguage } = useAddProfileLanguage();
+  const { handleAddProfileLanguage } = useAddProfileLanguage(currentUserId);
   const { data: languagesData } = useQuery(GET_LANGUAGES);
   const { data: profileData } = useQuery(GET_PROFILE_LANGUAGES, {
     variables: { userId: currentUserId },
@@ -89,7 +89,7 @@ export const AddLanguageForm: FC<IEditLangugeFormProps> = ({
         )}
       />
       <ConfirmButtons
-        onCancel={onToggle}
+        cancelAction={onToggle}
         confirmLabel={t("ConfirmButtons.confirm")}
         confirmButtonType={"submit"}
       />

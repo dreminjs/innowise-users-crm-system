@@ -1,14 +1,13 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { AddNewButton } from "@/shared/ui/AddNewButton";
 import { RemoveItemButton } from "@/shared/ui/RemoveItemButton";
 import { useCvSkillStore } from "../../model/cv-skill.store";
 import { CvRemoveSkillsButton } from "./CvRemoveSkillsButton";
 import { AddCvSkillModal } from "./modals/AddCvSkillModal";
-import styles from "@/modules/Skills/ui/Skills.module.css";
-import { useTranslations } from "next-intl";
-
+import styles from "./CvManagementSkills.module.css";
 type Props = {
   cvId: string;
 };
@@ -16,17 +15,16 @@ type Props = {
 export const CvManagementSkills = ({ cvId }: Props) => {
   const [isSkillModalOpen, setIsSkillModalOpen] = useState(false);
   const { toggleDeleteMode, isDeleteMode } = useCvSkillStore();
+  const t = useTranslations();
   const handleOpenModal = () => {
     setIsSkillModalOpen(true);
   };
   const handleCloseModal = () => {
     setIsSkillModalOpen(false);
   };
-  const t = useTranslations();
-
   return (
     <>
-      <div className={styles.menagementSkills}>
+      <div className={styles.managementSkills}>
         {isDeleteMode ? (
           <>
             <button

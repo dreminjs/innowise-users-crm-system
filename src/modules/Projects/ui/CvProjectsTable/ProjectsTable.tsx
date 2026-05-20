@@ -2,22 +2,25 @@
 
 import { useMemo } from "react";
 import { useTranslations } from "next-intl";
-import { GetProjectsQuery } from "@/graphql/graphql";
+import { GetCvProjectsQuery } from "@/graphql/graphql";
+import {
+  ProjectSortField,
+  ProjectSortOrder,
+} from "../../model/processProjects";
 import {
   DetailsTable,
   DetailsColumn,
 } from "@/shared/ui/DetailsTable/DetailsTable";
-import {
-  ProjectSortField,
-  ProjectSortOrder,
-} from "../../model/lib/processProjects";
-import { ProjectActions } from "./ProjectActions";
+import { ProjectActions } from "./ProjectActions/ProjectActions";
 import styles from "./ProjectsTable.module.css";
-type Project = NonNullable<GetProjectsQuery["projects"][number]>;
-type ColumnField = "name" | "domain" | "start_date" | "end_date" | "actions";
+type Project = NonNullable<
+  NonNullable<GetCvProjectsQuery["cv"]>["projects"]
+>[number];
 
+type ColumnField = "name" | "domain" | "start_date" | "end_date" | "actions";
 type Props = {
-  projects: Project[];
+  cvId: string;
+  projects: NonNullable<NonNullable<GetCvProjectsQuery["cv"]>["projects"]>;
   loading: boolean;
   sortField: ProjectSortField;
   sortOrder: ProjectSortOrder;
@@ -30,9 +33,9 @@ export const ProjectsTable = ({
   sortField,
   sortOrder,
   sortAction,
+  cvId,
 }: Props) => {
   const t = useTranslations("ProjectsTable");
-
   const columns = useMemo<
     DetailsColumn<Project, ColumnField, ProjectSortField>[]
   >(() => {
@@ -44,10 +47,9 @@ export const ProjectsTable = ({
         sortKey: "name",
         className: styles.nameColumn,
         render: (project) => (
-          <div className={styles.cellContent}>{project.name}</div>
+          <span className={styles.cellContent}>{project.project.name}</span>
         ),
       },
-
       {
         key: "domain",
         title: t("domain"),
@@ -55,10 +57,9 @@ export const ProjectsTable = ({
         sortKey: "domain",
         className: styles.domainColumn,
         render: (project) => (
-          <div className={styles.cellContent}>{project.domain ?? "-"}</div>
+          <span className={styles.cellContent}>{project.project.domain}</span>
         ),
       },
-
       {
         key: "start_date",
         title: t("startDate"),
@@ -66,10 +67,9 @@ export const ProjectsTable = ({
         sortKey: "start_date",
         className: styles.dateColumn,
         render: (project) => (
-          <div className={styles.cellContent}>{project.start_date}</div>
+          <span className={styles.cellContent}>{project.start_date}</span>
         ),
       },
-
       {
         key: "end_date",
         title: t("endDate"),
@@ -77,34 +77,45 @@ export const ProjectsTable = ({
         sortKey: "end_date",
         className: styles.dateColumn,
         render: (project) => (
-          <div className={styles.cellContent}>
+          <span className={styles.cellContent}>
             {project.end_date ?? "Till now"}
-          </div>
+          </span>
         ),
       },
       {
         key: "actions",
         title: "",
         className: styles.actionsColumn,
-        render: (project) => <ProjectActions project={project} />,
+        render: (project) => (
+          <ProjectActions cvId={cvId} projectId={project.project.id} />
+        ),
       },
     ];
-  }, [t]);
+  }, [cvId, t]);
+
   return (
     <DetailsTable<Project, ColumnField, ProjectSortField>
       data={projects}
       columns={columns}
       loading={loading}
-      rowKey={(project) => project.id}
+      rowKey={(project) => project.project.id}
       sortField={sortField}
       sortOrder={sortOrder}
       onSort={sortAction}
       renderDetails={(project) => (
         <div className={styles.details}>
-          <p className={styles.description}>{project.description}</p>
-          {!!project.environment?.length && (
+          <p className={styles.description}>{project.project.description}</p>
+
+          {!!project.responsibilities.length && (
+            <ul className={styles.responsibilities}>
+              {project.responsibilities.map((responsibility) => (
+                <li key={responsibility}>{responsibility}</li>
+              ))}
+            </ul>
+          )}
+          {!!project.project.environment.length && (
             <div className={styles.environment}>
-              {project.environment.map((item) => (
+              {project.project.environment.map((item) => (
                 <span key={item} className={styles.tag}>
                   {item}
                 </span>

@@ -11,7 +11,7 @@ import { ConfirmButtons } from "@/shared/ui/ConfirmButtons";
 import { skillLevels } from "@/modules/Skills/model/skill.constants";
 import { useSkillForm } from "@/modules/Skills/model/hooks/useSkillForm";
 import { useAddCvSkill } from "@/modules/Cvs/hooks/useAddCvSkill";
-import styles from "@/modules/Skills/ui/Skills.module.css";
+import styles from "../CvSkills.module.css";
 import { useTranslations } from "next-intl";
 
 type Props = {
@@ -146,7 +146,7 @@ export const AddCvSkillForm = ({ cvId, toggleAction }: Props) => {
         )}
       />
       <ConfirmButtons
-        onCancel={toggleAction}
+        cancelAction={toggleAction}
         confirmLabel={loading ? "LOADING..." : t("ConfirmButtons.confirm")}
         confirmButtonType={"submit"}
       />

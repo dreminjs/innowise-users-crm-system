@@ -30,6 +30,7 @@
     "skills": "Fähigkeiten",
     "languages": "Sprachen",
     "cvs": "Lebensläufe",
+    "projects": "Projekten",
     "positions": "Positionen",
     "departments": "Abteilungen",
     "settings": "Einstellungen",
@@ -212,7 +213,13 @@
     "environment": "Umgebung",
     "responsibilities": "Verantwortlichkeiten",
     "cancel": "ABBRECHEN",
-    "add": "HINZUFÜGEN"
+    "add": "HINZUFÜGEN",
+    "validation": {
+      "projectRequired": "Projekt ist erforderlich",
+      "startDateRequired": "Startdatum ist erforderlich",
+      "responsibilitiesRequired": "Verantwortlichkeiten sind erforderlich",
+      "responsibilitiesMax": "Maximal 2000 Zeichen"
+    }
   },
   "EditCvProject": {
     "title": "Projekt bearbeiten",
@@ -402,6 +409,26 @@
       "nameRequired": "Sprache ist erforderlich",
       "nativeNameRequired": "Native Name ist erforderlich",
       "iso2Required": "ISO2 Code ist erforderlich"
+    }
+  },
+  "ProjectsToolbar": {
+    "search": "Projekt suchen",
+    "create": "PROJEKT ERSTELLEN"
+  },
+  "ProjectModal": {
+    "createTitle": "Projekt erstellen",
+    "editTitle": "Projekt bearbeiten",
+    "name": "Projektname",
+    "domain": "Domäne",
+    "description": "Beschreibung",
+    "environment": "Umgebung",
+    "startDate": "Startdatum",
+    "endDate": "Enddatum",
+    "create": "Erstellen",
+    "save": "Speichern",
+    "validation": {
+      "nameRequired": "Projektname ist erforderlich",
+      "startDateRequired": "Startdatum ist erforderlich"
     }
   }
 }

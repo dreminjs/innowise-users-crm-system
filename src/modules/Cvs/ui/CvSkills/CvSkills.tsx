@@ -8,11 +8,10 @@ import { Loading } from "@/shared/ui/Loading";
 import { TMastery, TSkillForm } from "@/modules/Skills/model/skill.interface";
 import { CvManagementSkills } from "@/modules/Cvs/ui/CvSkills/CvManagementSkills";
 import { useCvSkillStore } from "../../model/cv-skill.store";
-import styles from "@/modules/Skills/ui/Skills.module.css";
 import { SkillItem } from "@/modules/Skills/ui/UsersSkill/SkillsList/SkillItem";
 import { EditCvSkillModal } from "./modals/EditCvSkillModal";
 import { useTranslations } from "next-intl";
-
+import styles from "./CvSkills.module.css";
 type Props = {
   cvId: string;
 };

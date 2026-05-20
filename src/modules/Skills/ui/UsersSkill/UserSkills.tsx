@@ -4,6 +4,8 @@ import { useQuery } from "@apollo/client/react";
 import { GET_PROFILE_SKILLS, GET_SKILL_CATEGORIES } from "../../api/queries";
 import { Loading } from "@/shared/ui/Loading";
 import { FC } from "react";
+import { useUserStore } from "@/application/store/user.store";
+import { UserRole } from "@/generated/graphql";
 
 interface ISkllsProps {
   userSkillsId: string;
@@ -22,6 +24,8 @@ export const UserSkills: FC<ISkllsProps> = ({
   const { data: profileData } = useQuery(GET_PROFILE_SKILLS, {
     variables: { userId: currentUserId },
   });
+  const role = useUserStore((state) => state.role);
+  const isEditable = role === UserRole.Admin || userSkillsId === currentUserId;
   if (loading) return <Loading />;
   if (error) return <div>Error: {error.message}</div>;
   return (
@@ -33,7 +37,7 @@ export const UserSkills: FC<ISkllsProps> = ({
               <SkillsList
                 categoriesData={categoriesData}
                 profileSkillsData={profileData}
-                isAvailableToChange={userSkillsId === currentUserId}
+                isAvailableToChange={isEditable}
               />
             )}
           <MenagementSkills

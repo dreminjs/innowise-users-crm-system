@@ -80,7 +80,7 @@ export const EditLanguageForm: FC<TEditLanguageFormProps> = ({
         )}
       />
       <ConfirmButtons
-        onCancel={toggleAction}
+        cancelAction={toggleAction}
         confirmLabel={t("ConfirmButtons.confirm")}
         confirmButtonType={"submit"}
       />

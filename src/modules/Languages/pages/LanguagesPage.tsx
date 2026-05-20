@@ -1,11 +1,14 @@
-import { useUserStore } from "@/application/store/user.store";
+import { FC } from "react";
 import { Languages } from "../ui/Langauges";
 import styles from "../ui/Languages.module.css";
-export const LanguagesPage = () => {
-  const currentUserId = useUserStore((state) => state.userId);
+interface ILanguagesProps {
+  userId: string;
+}
+
+export const LanguagesPage: FC<ILanguagesProps> = ({ userId }) => {
   return (
     <main className={styles.page}>
-      {currentUserId && <Languages usersLanguagesId={currentUserId} />}
+      {userId && <Languages usersLanguagesId={userId} />}
     </main>
   );
 };

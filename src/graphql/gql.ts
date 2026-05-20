@@ -47,7 +47,11 @@ type Documents = {
     "\n  mutation AddCvProject($project: AddCvProjectInput!) {\n    addCvProject(project: $project) {\n      id\n    }\n  }\n": typeof types.AddCvProjectDocument,
     "\n  mutation UpdateCvProject($project: UpdateCvProjectInput!) {\n    updateCvProject(project: $project) {\n      id\n    }\n  }\n": typeof types.UpdateCvProjectDocument,
     "\n  mutation RemoveCvProject($project: RemoveCvProjectInput!) {\n    removeCvProject(project: $project) {\n      id\n    }\n  }\n": typeof types.RemoveCvProjectDocument,
+    "\n  mutation CreateProject($project: CreateProjectInput!) {\n    createProject(project: $project) {\n      id\n      name\n    }\n  }\n": typeof types.CreateProjectDocument,
+    "\n  mutation UpdateProject($project: UpdateProjectInput!) {\n    updateProject(project: $project) {\n      id\n      name\n    }\n  }\n": typeof types.UpdateProjectDocument,
+    "\n  mutation DeleteProject($project: DeleteProjectInput!) {\n    deleteProject(project: $project) {\n      affected\n    }\n  }\n": typeof types.DeleteProjectDocument,
     "\n  query GetCvProjects($cvId: ID!) {\n    cv(cvId: $cvId) {\n      id\n      projects {\n        id\n        start_date\n        end_date\n        responsibilities\n        roles\n\n        project {\n          id\n          name\n          internal_name\n          domain\n          description\n          environment\n        }\n      }\n    }\n  }\n": typeof types.GetCvProjectsDocument,
+    "\n  query GetProjects {\n    projects {\n      id\n      name\n      domain\n      description\n      environment\n      start_date\n      end_date\n    }\n  }\n": typeof types.GetProjectsDocument,
     "\n  query GetProjectOptions {\n    projects {\n      id\n      name\n      internal_name\n      domain\n      description\n      environment\n    }\n  }\n": typeof types.GetProjectOptionsDocument,
     "\n  mutation addProfileSkill($dto: AddProfileSkillInput!) {\n    addProfileSkill(skill: $dto) {\n      id\n    }\n  }\n": typeof types.AddProfileSkillDocument,
     "\n  mutation deleteProfileSkill($dto: DeleteProfileSkillInput!) {\n    deleteProfileSkill(skill: $dto) {\n      id\n    }\n  }\n": typeof types.DeleteProfileSkillDocument,
@@ -103,7 +107,11 @@ const documents: Documents = {
     "\n  mutation AddCvProject($project: AddCvProjectInput!) {\n    addCvProject(project: $project) {\n      id\n    }\n  }\n": types.AddCvProjectDocument,
     "\n  mutation UpdateCvProject($project: UpdateCvProjectInput!) {\n    updateCvProject(project: $project) {\n      id\n    }\n  }\n": types.UpdateCvProjectDocument,
     "\n  mutation RemoveCvProject($project: RemoveCvProjectInput!) {\n    removeCvProject(project: $project) {\n      id\n    }\n  }\n": types.RemoveCvProjectDocument,
+    "\n  mutation CreateProject($project: CreateProjectInput!) {\n    createProject(project: $project) {\n      id\n      name\n    }\n  }\n": types.CreateProjectDocument,
+    "\n  mutation UpdateProject($project: UpdateProjectInput!) {\n    updateProject(project: $project) {\n      id\n      name\n    }\n  }\n": types.UpdateProjectDocument,
+    "\n  mutation DeleteProject($project: DeleteProjectInput!) {\n    deleteProject(project: $project) {\n      affected\n    }\n  }\n": types.DeleteProjectDocument,
     "\n  query GetCvProjects($cvId: ID!) {\n    cv(cvId: $cvId) {\n      id\n      projects {\n        id\n        start_date\n        end_date\n        responsibilities\n        roles\n\n        project {\n          id\n          name\n          internal_name\n          domain\n          description\n          environment\n        }\n      }\n    }\n  }\n": types.GetCvProjectsDocument,
+    "\n  query GetProjects {\n    projects {\n      id\n      name\n      domain\n      description\n      environment\n      start_date\n      end_date\n    }\n  }\n": types.GetProjectsDocument,
     "\n  query GetProjectOptions {\n    projects {\n      id\n      name\n      internal_name\n      domain\n      description\n      environment\n    }\n  }\n": types.GetProjectOptionsDocument,
     "\n  mutation addProfileSkill($dto: AddProfileSkillInput!) {\n    addProfileSkill(skill: $dto) {\n      id\n    }\n  }\n": types.AddProfileSkillDocument,
     "\n  mutation deleteProfileSkill($dto: DeleteProfileSkillInput!) {\n    deleteProfileSkill(skill: $dto) {\n      id\n    }\n  }\n": types.DeleteProfileSkillDocument,
@@ -275,7 +283,23 @@ export function graphql(source: "\n  mutation RemoveCvProject($project: RemoveCv
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
+export function graphql(source: "\n  mutation CreateProject($project: CreateProjectInput!) {\n    createProject(project: $project) {\n      id\n      name\n    }\n  }\n"): (typeof documents)["\n  mutation CreateProject($project: CreateProjectInput!) {\n    createProject(project: $project) {\n      id\n      name\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n  mutation UpdateProject($project: UpdateProjectInput!) {\n    updateProject(project: $project) {\n      id\n      name\n    }\n  }\n"): (typeof documents)["\n  mutation UpdateProject($project: UpdateProjectInput!) {\n    updateProject(project: $project) {\n      id\n      name\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n  mutation DeleteProject($project: DeleteProjectInput!) {\n    deleteProject(project: $project) {\n      affected\n    }\n  }\n"): (typeof documents)["\n  mutation DeleteProject($project: DeleteProjectInput!) {\n    deleteProject(project: $project) {\n      affected\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
 export function graphql(source: "\n  query GetCvProjects($cvId: ID!) {\n    cv(cvId: $cvId) {\n      id\n      projects {\n        id\n        start_date\n        end_date\n        responsibilities\n        roles\n\n        project {\n          id\n          name\n          internal_name\n          domain\n          description\n          environment\n        }\n      }\n    }\n  }\n"): (typeof documents)["\n  query GetCvProjects($cvId: ID!) {\n    cv(cvId: $cvId) {\n      id\n      projects {\n        id\n        start_date\n        end_date\n        responsibilities\n        roles\n\n        project {\n          id\n          name\n          internal_name\n          domain\n          description\n          environment\n        }\n      }\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n  query GetProjects {\n    projects {\n      id\n      name\n      domain\n      description\n      environment\n      start_date\n      end_date\n    }\n  }\n"): (typeof documents)["\n  query GetProjects {\n    projects {\n      id\n      name\n      domain\n      description\n      environment\n      start_date\n      end_date\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */

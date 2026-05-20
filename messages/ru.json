@@ -30,6 +30,7 @@
     "skills": "Навыки",
     "languages": "Языки",
     "cvs": "Резюме",
+    "projects": "Проекты",
     "positions": "Должности",
     "departments": "Депортаменты",
     "settings": "Настройки",
@@ -412,6 +413,27 @@
       "nameRequired": "Язык обязателен",
       "nativeNameRequired": "Нативное название обязательно",
       "iso2Required": "ISO2 код обязателен"
+    }
+  },
+  "ProjectsToolbar": {
+    "search": "Поиск проекта",
+    "create": "СОЗДАТЬ ПРОЕКТ"
+  },
+
+  "ProjectModal": {
+    "createTitle": "Создание проекта",
+    "editTitle": "Редактирование проекта",
+    "name": "Название проекта",
+    "domain": "Домен",
+    "description": "Описание",
+    "environment": "Окружение",
+    "startDate": "Дата начала",
+    "endDate": "Дата окончания",
+    "create": "Создать",
+    "save": "Сохранить",
+    "validation": {
+      "nameRequired": "Название проекта обязательно",
+      "startDateRequired": "Дата начала обязательна"
     }
   }
 }

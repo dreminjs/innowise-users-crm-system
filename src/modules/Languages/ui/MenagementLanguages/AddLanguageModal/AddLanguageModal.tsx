@@ -7,19 +7,18 @@ import { FormModal } from "@/shared/ui/FormModal";
 interface IAddSkillModalProps {
   open: boolean;
   onToggle: () => void;
+  userId: string;
 }
 
 export const AddLanguageModal: FC<IAddSkillModalProps> = ({
   open,
   onToggle,
+  userId,
 }) => {
-  const currentUserId = useUserStore((state) => state.userId);
   const t = useTranslations("Languages");
   return (
     <FormModal open={open} toggleAction={onToggle} title={t("add")}>
-      {currentUserId && (
-        <AddLanguageForm onToggle={onToggle} currentUserId={currentUserId} />
-      )}
+      {userId && <AddLanguageForm onToggle={onToggle} currentUserId={userId} />}
     </FormModal>
   );
 };

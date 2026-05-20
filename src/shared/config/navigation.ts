@@ -28,11 +28,16 @@ export const navigationItems: {
   {
     label: "departments",
     href: "/departments",
-    icon: "cvs",
+    icon: "settings",
   },
   {
     label: "positions",
     href: "/positions",
-    icon: "cvs",
+    icon: "employees",
+  },
+  {
+    label: "projects",
+    href: "/projects",
+    icon: "search",
   },
 ];

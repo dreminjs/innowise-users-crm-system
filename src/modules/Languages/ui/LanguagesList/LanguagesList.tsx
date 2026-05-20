@@ -18,7 +18,6 @@ export const LanguagesList: FC<ILanguagesListProps> = ({
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
 
   const handleClick = (name: string) => {
-    console.log(name);
     if (isDeleteMode) {
       addDeleteLanguage(name);
     } else {

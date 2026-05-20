@@ -83,7 +83,7 @@ export const AddSkillForm: FC<IEditSkillFormProps> = ({ onToggle }) => {
         )}
       />
       <ConfirmButtons
-        onCancel={onToggle}
+        cancelAction={onToggle}
         confirmLabel={t("ConfirmButtons.confirm")}
         confirmButtonType={"submit"}
       />

@@ -101,7 +101,7 @@ export const CvDetailsPage = ({ cvId }: Props) => {
         <ConfirmButtons
           confirmLabel={updating ? t("updating") : t("update")}
           confirmButtonType="submit"
-          onCancel={() => router.push("/cvs")}
+          cancelAction={() => router.push("/cvs")}
           disabled={updating}
         />
       </form>

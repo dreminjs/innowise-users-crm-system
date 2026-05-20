@@ -179,7 +179,7 @@ export const EditCvProjectPage = ({ cvId, projectId }: Props) => {
           <ConfirmButtons
             confirmLabel={saving ? t("saving") : t("save")}
             confirmButtonType="submit"
-            onCancel={() => router.replace(`/cvs/${cvId}/projects`)}
+            cancelAction={() => router.replace(`/cvs/${cvId}/projects`)}
             disabled={saving}
           />
         </form>

@@ -16,7 +16,7 @@ type Props = {
   open: boolean;
   toggleAction: () => void;
   title: string;
-  confirmLabel: string;
+  confirmLabel?: string;
   loading?: boolean;
   defaultValues?: {
     name: string;
@@ -88,7 +88,7 @@ export const SkillModal: FC<Props> = ({
           onChange={setCategoryId}
         />
         <ConfirmButtons
-          confirmLabel={confirmLabel}
+          confirmLabel={confirmLabel ?? ""}
           confirmButtonType="submit"
           cancelAction={toggleAction}
           disabled={loading}

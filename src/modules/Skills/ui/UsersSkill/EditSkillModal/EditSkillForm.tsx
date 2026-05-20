@@ -78,7 +78,7 @@ export const EditSkillForm: FC<TEditSkillFormProps> = ({
         )}
       />
       <ConfirmButtons
-        onCancel={onToggle}
+        cancelAction={onToggle}
         confirmLabel={t("ConfirmButtons.confirm")}
         confirmButtonType={"submit"}
       />

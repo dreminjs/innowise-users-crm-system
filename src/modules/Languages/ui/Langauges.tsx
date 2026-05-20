@@ -16,9 +16,7 @@ export const Languages: FC<ILanguagesProps> = ({ usersLanguagesId }) => {
       userId: usersLanguagesId,
     },
   });
-
   if (loading) return <Loading />;
-
   return (
     <section>
       <>
@@ -27,7 +25,7 @@ export const Languages: FC<ILanguagesProps> = ({ usersLanguagesId }) => {
         ) : (
           <Empty />
         )}
-        <MenagementLanguages />
+        <MenagementLanguages userId={usersLanguagesId} />
       </>
     </section>
   );

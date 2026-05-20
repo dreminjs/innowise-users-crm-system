@@ -11,7 +11,7 @@ import { GET_SKILLS } from "@/modules/Skills/api/queries";
 import { CustomSelect } from "@/shared/ui/CustomSelect";
 import { ConfirmButtons } from "@/shared/ui/ConfirmButtons";
 import { useUpdateCvSkill } from "@/modules/Cvs/hooks/useUpdateCvSkill";
-import styles from "@/modules/Skills/ui/Skills.module.css";
+import styles from "../CvSkills.module.css";
 import { useTranslations } from "next-intl";
 
 type Props = {
@@ -100,7 +100,7 @@ export const EditCvSkillForm: FC<Props> = ({
       />
 
       <ConfirmButtons
-        onCancel={toggleAction}
+        cancelAction={toggleAction}
         confirmLabel={t("ConfirmButtons.confirm")}
         confirmButtonType={"submit"}
       />

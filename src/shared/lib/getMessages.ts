@@ -1,7 +1,6 @@
 import en from "../../../messages/en.json";
 import ru from "../../../messages/ru.json";
 import de from "../../../messages/de.json";
-
 import { TLanguageLocale } from "@/modules/Settings/model/settings.types";
 
 export type AppMessages = typeof en;
