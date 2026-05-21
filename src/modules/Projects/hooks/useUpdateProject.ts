@@ -26,10 +26,15 @@ export const useUpdateCvProject = (cvId: string) => {
   });
 };
 export const useUpdateProject = () => {
+  const t = useTranslations("Notifications");
+  const notifications = useMutationNotification({
+    successMessage: t("projectUpdatedSuccessfully"),
+    errorMessage: t("failedToUpdateProject"),
+  });
   const [updateProject, result] = useMutation(UPDATE_PROJECT, {
+    ...notifications,
     refetchQueries: [GET_PROJECTS],
   });
-
   return {
     updateProject,
     ...result,

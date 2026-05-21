@@ -24,8 +24,9 @@ export const DesktopSidebar = ({ collapsed, toggleAction }: Props) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const userId = useUserStore((state) => state.userId);
   const email = useUserStore((state) => state.email);
-  const { data } = useGetProfile(userId!);
+  const role = useUserStore((state) => state.role);
   const setRole = useUserStore((state) => state.setRole);
+  const { data } = useGetProfile(userId!);
   const profile = data?.user?.profile;
   const avatar = profile?.avatar;
   const firstName = profile?.first_name;
@@ -34,15 +35,21 @@ export const DesktopSidebar = ({ collapsed, toggleAction }: Props) => {
     firstName || lastName
       ? `${firstName ?? ""} ${lastName ?? ""}`.trim()
       : email;
+
   useEffect(() => {
     if (data?.user.role) {
-      setRole(data?.user.role);
+      setRole(data.user.role);
     }
-  }, [data?.user.role]);
+  }, [data?.user.role, setRole]);
+  if (!role) return null;
+  const availableNavigationItems = role
+    ? navigationItems.filter((item) => item.roles.includes(role))
+    : [];
+
   return (
     <aside className={clsx(styles.sidebar, collapsed && styles.collapsed)}>
       <nav className={styles.navigation}>
-        {navigationItems.map((item) => {
+        {availableNavigationItems.map((item) => {
           const isActive = pathname === item.href;
 
           return (
@@ -86,12 +93,14 @@ export const DesktopSidebar = ({ collapsed, toggleAction }: Props) => {
             </div>
           )}
         </button>
+
         <ProfileMenu
           isOpen={isMenuOpen}
           userId={userId!}
           collapsed={collapsed}
           closeAction={() => setIsMenuOpen(false)}
         />
+
         <button className={styles.collapseButton} onClick={toggleAction}>
           <Icon
             name="arrow"

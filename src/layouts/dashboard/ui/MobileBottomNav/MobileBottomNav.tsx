@@ -16,6 +16,7 @@ export const MobileBottomNav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const userId = useUserStore((state) => state.userId);
   const email = useUserStore((state) => state.email);
+  const role = useUserStore((state) => state.role);
   const { data } = useGetProfile(userId!);
   const profile = data?.user?.profile;
   const avatar = profile?.avatar;
@@ -26,10 +27,14 @@ export const MobileBottomNav = () => {
       ? `${firstName ?? ""} ${lastName ?? ""}`.trim()
       : email;
 
+  const availableNavigationItems = role
+    ? navigationItems.filter((item) => item.roles.includes(role))
+    : [];
   return (
     <nav className={styles.navigation}>
-      {navigationItems.slice(0, 2).map((item) => {
+      {availableNavigationItems.slice(0, 2).map((item) => {
         const isActive = pathname === item.href;
+
         return (
           <Link
             key={item.href}
@@ -37,6 +42,7 @@ export const MobileBottomNav = () => {
             className={`${styles.link} ${isActive ? styles.active : ""}`}
           >
             <Icon name={item.icon} size={24} className={styles.icon} />
+
             <span>{item.label}</span>
           </Link>
         );
@@ -65,6 +71,7 @@ export const MobileBottomNav = () => {
         userId={userId!}
         closeAction={() => setIsMenuOpen(false)}
         collapsed={false}
+        isMobile
       />
     </nav>
   );

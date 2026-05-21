@@ -1,8 +1,9 @@
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
+import { UserRole } from "@/graphql/graphql";
 
 interface UserState {
-  role: string | null;
+  role: UserRole | null;
   userId: string | null;
   email: string | null;
   position: string | null;
@@ -10,7 +11,7 @@ interface UserState {
 }
 
 interface UserActions {
-  setRole: (role: string | null) => void;
+  setRole: (role: UserRole | null) => void;
   setUserId: (id: string | null) => void;
   setEmail: (email: string | null) => void;
   setPositionName: (name: string | null) => void;

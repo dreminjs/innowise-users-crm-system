@@ -7,7 +7,6 @@ import { useMutationNotification } from "@/shared/helpers/useMutationNotificatio
 
 export const useRemoveCvProject = (cvId: string) => {
   const t = useTranslations("Notifications");
-
   const notifications = useMutationNotification({
     successMessage: t("projectRemovedSuccessfully"),
     errorMessage: t("failedToRemoveProject"),
@@ -26,10 +25,15 @@ export const useRemoveCvProject = (cvId: string) => {
   });
 };
 export const useDeleteProject = () => {
+  const t = useTranslations("Notifications");
+  const notifications = useMutationNotification({
+    successMessage: t("projectDeletedSuccessfully"),
+    errorMessage: t("failedToDeleteProject"),
+  });
   const [deleteProject, result] = useMutation(DELETE_PROJECT, {
+    ...notifications,
     refetchQueries: [GET_PROJECTS],
   });
-
   return {
     deleteProject,
     ...result,

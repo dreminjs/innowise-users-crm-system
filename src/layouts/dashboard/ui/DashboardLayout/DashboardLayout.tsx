@@ -1,11 +1,8 @@
 "use client";
 
 import { useState } from "react";
-
 import { DesktopSidebar } from "../DesktopSidebar";
-
 import { MobileBottomNav } from "../MobileBottomNav";
-
 import styles from "./DashboardLayout.module.css";
 
 type Props = {
@@ -26,9 +23,7 @@ export const DashboardLayout = ({ children }: Props) => {
         collapsed={collapsed}
         toggleAction={() => setCollapsed((prev) => !prev)}
       />
-
       <main className={styles.content}>{children}</main>
-
       <MobileBottomNav />
     </div>
   );

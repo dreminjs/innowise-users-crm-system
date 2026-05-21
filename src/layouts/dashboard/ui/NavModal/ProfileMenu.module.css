@@ -1,14 +1,14 @@
 .backdrop {
     position: fixed;
     inset: 0;
-    z-index: 100;
+    z-index: 999;
 }
 
 .modal {
-    position: absolute;
-    right: 0;
-    bottom: 56px;
-    z-index: 101;
+    position: fixed;
+    bottom: 88px;
+    left: 20px;
+    z-index: 1000;
     width: 230px;
     padding: 8px 0;
     background: var(--bg);
@@ -18,8 +18,13 @@
 }
 
 .collapsedModal {
-    left: 80px;
-    right: auto;
+    left: 110px;
+}
+
+.mobileModal {
+    left: auto;
+    right: 16px;
+    bottom: 72px;
 }
 
 .item {

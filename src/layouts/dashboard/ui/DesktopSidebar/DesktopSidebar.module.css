@@ -46,7 +46,7 @@
 }
 
 .active {
-  background: var(--bg);;
+  background: var(--bg-hover);;
   color: var(--color-text);
 }
 
