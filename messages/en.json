@@ -143,6 +143,7 @@
     "description": "Description",
     "update": "Update",
     "updating": "Updating...",
+    "created": "CV created successfully",
     "validation": {
       "nameRequired": "Name is required",
       "nameMax": "Maximum 100 characters",

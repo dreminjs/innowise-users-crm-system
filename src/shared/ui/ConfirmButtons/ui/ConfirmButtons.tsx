@@ -20,7 +20,6 @@ export const ConfirmButtons: FC<ConfirmButtonsProps> = ({
   disabled,
 }) => {
   const t = useTranslations("ConfirmButtons");
-  console.log(confirmLabel);
   return (
     <div className={styles.buttons}>
       <button

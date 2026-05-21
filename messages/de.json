@@ -148,6 +148,7 @@
     "updating": "Wird aktualisiert...",
     "title": "CV erstellen",
     "create": "Erstellen",
+    "created": "CV erstellt",
     "validation": {
       "nameRequired": "Name ist erforderlich",
       "nameMax": "Maximal 100 Zeichen",

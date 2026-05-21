@@ -13,6 +13,7 @@ import {
   createCvDetailsSchema,
   TCvDetailsFormData,
 } from "@/modules/Cvs/model/cvDetails.schema";
+import { useNotification } from "@/modules/Notifications";
 
 type Props = {
   isOpen: boolean;
@@ -22,6 +23,7 @@ type Props = {
 export const CreateCvModal = ({ isOpen, closeAction }: Props) => {
   const t = useTranslations("CvDetails");
   const schema = createCvDetailsSchema(t);
+  const addNotification = useNotification((state) => state.addNotification);
   const userId = useUserStore((state) => state.userId);
   const [createCv, { loading }] = useCreateCv();
   const {
@@ -32,11 +34,6 @@ export const CreateCvModal = ({ isOpen, closeAction }: Props) => {
     formState: { errors },
   } = useForm<TCvDetailsFormData>({
     resolver: zodResolver(schema),
-    defaultValues: {
-      name: "",
-      education: "",
-      description: "",
-    },
   });
   useEffect(() => {
     if (!isOpen) {
@@ -45,10 +42,8 @@ export const CreateCvModal = ({ isOpen, closeAction }: Props) => {
   }, [isOpen, reset]);
 
   const onSubmit = async (form: TCvDetailsFormData) => {
-    if (!userId) {
-      return;
-    }
-    try {
+    if (userId) {
+      addNotification({ message: "Loading...", type: "info" });
       await createCv({
         variables: {
           cv: {
@@ -61,8 +56,6 @@ export const CreateCvModal = ({ isOpen, closeAction }: Props) => {
       });
       reset();
       closeAction();
-    } catch (error) {
-      throw error;
     }
   };
   if (!isOpen) {
