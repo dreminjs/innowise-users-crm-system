@@ -1,7 +1,7 @@
 "use client";
+
 import { useState } from "react";
-import { Path, UseFormRegister } from "react-hook-form";
-import { FieldValues } from "react-hook-form";
+import { FieldValues, Path, UseFormRegister } from "react-hook-form";
 import styles from "./FormField.module.css";
 import { Icon } from "@/shared/ui/Icon/Icon";
 type TInputType = "password" | "email" | "text";
@@ -26,10 +26,9 @@ export const FormField = <T extends FieldValues>({
   name,
   isAvailable = true,
 }: IFormFieldProps<T>) => {
-  const [inputType, setInputType] = useState<TExcludeEmail<TInputType>>(
-    type === "email" ? "text" : type,
+  const [inputType, setInputType] = useState<"text" | "password">(
+    type === "password" ? "password" : "text",
   );
-
   return (
     <>
       <div className={styles.formField}>
@@ -58,6 +57,7 @@ export const FormField = <T extends FieldValues>({
         </div>
         {error && <span className={styles.error}>{error}</span>}
       </div>
-    </>
+      {error && <span className={styles.error}>{error}</span>}
+    </div>
   );
 };

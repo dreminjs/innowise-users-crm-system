@@ -1,3 +1,5 @@
+"use client";
+import { useTranslations } from "next-intl";
 import { useMutation, useQuery } from "@apollo/client/react";
 import { useUserStore } from "@/application/store/user.store";
 import { useNotification } from "@/modules/Notifications";
@@ -11,26 +13,34 @@ import { TSkillForm } from "../skill.interface";
 
 export const useEditProfileSkill = () => {
   const { data: skillsData } = useQuery(GET_SKILLS);
-  // const { data: categoriesData } = useQuery(GET_SKILL_CATEGORIES);
   const currentUserId = useUserStore((state) => state.userId);
-
+  const t = useTranslations("Notifications");
   const addNotification = useNotification((state) => state.addNotification);
   const [mutate, { loading, error }] = useMutation(UPDATE_PROFILE_SKILL, {
     onCompleted: () => {
       addNotification({
-        message: "Skill edited successfully",
+        message: t("skillUpdatedSuccessfully"),
         type: "success",
       });
     },
     onError: () => {
-      addNotification({ message: "Failed to edit skill", type: "error" });
+      addNotification({
+        message: t("failedToUpdateSkill"),
+        type: "error",
+      });
     },
     refetchQueries: [
-      { query: GET_PROFILE_SKILLS, variables: { userId: currentUserId } },
-      { query: GET_SKILL_CATEGORIES },
+      {
+        query: GET_PROFILE_SKILLS,
+        variables: {
+          userId: currentUserId,
+        },
+      },
+      {
+        query: GET_SKILL_CATEGORIES,
+      },
     ],
   });
-
   const handleEditProfileSkill = async (dto: TSkillForm) => {
     if (currentUserId && skillsData?.skills) {
       await mutate({
@@ -47,6 +57,9 @@ export const useEditProfileSkill = () => {
       });
     }
   };
-
-  return { handleEditProfileSkill, loading, error };
+  return {
+    handleEditProfileSkill,
+    loading,
+    error,
+  };
 };

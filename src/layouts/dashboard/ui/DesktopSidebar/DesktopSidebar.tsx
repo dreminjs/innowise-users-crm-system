@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { useUserStore } from "@/application/store/user.store";
 import { useGetProfile } from "@/modules/Users";
 import { ProfileMenu } from "@/layouts/dashboard/ui/NavModal/ProfileMenu";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { Icon } from "@/shared/ui/Icon/Icon";
 import Image from "next/image";
@@ -25,6 +25,7 @@ export const DesktopSidebar = ({ collapsed, toggleAction }: Props) => {
   const userId = useUserStore((state) => state.userId);
   const email = useUserStore((state) => state.email);
   const { data } = useGetProfile(userId!);
+  const setRole = useUserStore((state) => state.setRole);
   const profile = data?.user?.profile;
   const avatar = profile?.avatar;
   const firstName = profile?.first_name;
@@ -33,6 +34,11 @@ export const DesktopSidebar = ({ collapsed, toggleAction }: Props) => {
     firstName || lastName
       ? `${firstName ?? ""} ${lastName ?? ""}`.trim()
       : email;
+  useEffect(() => {
+    if (data?.user.role) {
+      setRole(data?.user.role);
+    }
+  }, [data?.user.role]);
   return (
     <aside className={clsx(styles.sidebar, collapsed && styles.collapsed)}>
       <nav className={styles.navigation}>

@@ -1,16 +1,23 @@
 "use client";
 
-import { GetCvProjectsQuery } from "@/graphql/graphql";
+import { useMemo } from "react";
+import { useTranslations } from "next-intl";
+import { GetProjectsQuery } from "@/graphql/graphql";
+import {
+  DetailsTable,
+  DetailsColumn,
+} from "@/shared/ui/DetailsTable/DetailsTable";
 import {
   ProjectSortField,
   ProjectSortOrder,
-} from "../../model/processProjects";
-import { ProjectTableRow } from "./ProjectTableRow";
+} from "../../model/lib/processProjects";
+import { ProjectActions } from "./ProjectActions";
 import styles from "./ProjectsTable.module.css";
+type Project = NonNullable<GetProjectsQuery["projects"][number]>;
+type ColumnField = "name" | "domain" | "start_date" | "end_date" | "actions";
 
 type Props = {
-  cvId: string;
-  projects: NonNullable<NonNullable<GetCvProjectsQuery["cv"]>["projects"]>;
+  projects: Project[];
   loading: boolean;
   sortField: ProjectSortField;
   sortOrder: ProjectSortOrder;
@@ -23,62 +30,89 @@ export const ProjectsTable = ({
   sortField,
   sortOrder,
   sortAction,
-  cvId,
 }: Props) => {
-  if (loading) {
-    return <div className={styles.empty}>Loading...</div>;
-  }
+  const t = useTranslations("ProjectsTable");
 
-  if (!projects.length) {
-    return <div className={styles.empty}>No projects found</div>;
-  }
+  const columns = useMemo<
+    DetailsColumn<Project, ColumnField, ProjectSortField>[]
+  >(() => {
+    return [
+      {
+        key: "name",
+        title: t("name"),
+        sortable: true,
+        sortKey: "name",
+        className: styles.nameColumn,
+        render: (project) => (
+          <div className={styles.cellContent}>{project.name}</div>
+        ),
+      },
 
+      {
+        key: "domain",
+        title: t("domain"),
+        sortable: true,
+        sortKey: "domain",
+        className: styles.domainColumn,
+        render: (project) => (
+          <div className={styles.cellContent}>{project.domain ?? "-"}</div>
+        ),
+      },
+
+      {
+        key: "start_date",
+        title: t("startDate"),
+        sortable: true,
+        sortKey: "start_date",
+        className: styles.dateColumn,
+        render: (project) => (
+          <div className={styles.cellContent}>{project.start_date}</div>
+        ),
+      },
+
+      {
+        key: "end_date",
+        title: t("endDate"),
+        sortable: true,
+        sortKey: "end_date",
+        className: styles.dateColumn,
+        render: (project) => (
+          <div className={styles.cellContent}>
+            {project.end_date ?? "Till now"}
+          </div>
+        ),
+      },
+      {
+        key: "actions",
+        title: "",
+        className: styles.actionsColumn,
+        render: (project) => <ProjectActions project={project} />,
+      },
+    ];
+  }, [t]);
   return (
-    <div className={styles.wrapper}>
-      <table className={styles.table}>
-        <thead>
-          <tr>
-            <th>
-              <button onClick={() => sortAction("name")}>
-                Name
-                {sortField === "name" && (
-                  <span>{sortOrder === "asc" ? " ↑" : " ↓"}</span>
-                )}
-              </button>
-            </th>
-            <th>
-              <button onClick={() => sortAction("domain")}>
-                Domain
-                {sortField === "domain" && (
-                  <span>{sortOrder === "asc" ? " ↑" : " ↓"}</span>
-                )}
-              </button>
-            </th>
-            <th>
-              <button onClick={() => sortAction("start_date")}>
-                Start date
-                {sortField === "start_date" && (
-                  <span>{sortOrder === "asc" ? " ↑" : " ↓"}</span>
-                )}
-              </button>
-            </th>
-            <th>
-              <button onClick={() => sortAction("end_date")}>
-                End date
-                {sortField === "end_date" && (
-                  <span>{sortOrder === "asc" ? " ↑" : " ↓"}</span>
-                )}
-              </button>
-            </th>
-            <th />
-          </tr>
-        </thead>
-        <tbody>
-          {projects.map((project) => (
-            <ProjectTableRow key={project.id} project={project} cvId={cvId} />
-          ))}
-        </tbody>
-      </table>
-    </div>
+    <DetailsTable<Project, ColumnField, ProjectSortField>
+      data={projects}
+      columns={columns}
+      loading={loading}
+      rowKey={(project) => project.id}
+      sortField={sortField}
+      sortOrder={sortOrder}
+      onSort={sortAction}
+      renderDetails={(project) => (
+        <div className={styles.details}>
+          <p className={styles.description}>{project.description}</p>
+          {!!project.environment?.length && (
+            <div className={styles.environment}>
+              {project.environment.map((item) => (
+                <span key={item} className={styles.tag}>
+                  {item}
+                </span>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
+    />
   );
 };

@@ -23,6 +23,19 @@ export const GET_CV_PROJECTS = graphql(`
     }
   }
 `);
+export const GET_PROJECTS = graphql(`
+  query GetProjects {
+    projects {
+      id
+      name
+      domain
+      description
+      environment
+      start_date
+      end_date
+    }
+  }
+`);
 
 export const GET_PROJECT_OPTIONS = graphql(`
   query GetProjectOptions {

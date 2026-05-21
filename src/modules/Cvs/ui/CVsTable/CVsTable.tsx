@@ -1,11 +1,17 @@
 "use client";
 
+import { useMemo } from "react";
+import { useTranslations } from "next-intl";
 import { GetCvsQuery } from "@/graphql/graphql";
 import { CvSortField, CvSortOrder } from "../../model/lib/processCvs";
-import { CVsTableRow } from "./CVsTableRow";
+import {
+  DetailsTable,
+  DetailsColumn,
+} from "@/shared/ui/DetailsTable/DetailsTable";
+import { CvActions } from "./CvActions/CvActions";
 import styles from "./CVsTable.module.css";
-import { Loading } from "@/shared/ui/Loading";
-
+type Cv = GetCvsQuery["cvs"][number];
+type ColumnField = "name" | "education" | "employee" | "actions";
 type Props = {
   cvs: GetCvsQuery["cvs"];
   sortField: CvSortField;
@@ -21,48 +27,55 @@ export const CVsTable = ({
   sortAction,
   loading,
 }: Props) => {
-  if (loading) {
-    return <Loading />;
-  }
-
-  if (!cvs.length) {
-    return <div className={styles.empty}>No CVs found</div>;
-  }
-
+  const t = useTranslations("CVsTable");
+  const columns = useMemo<DetailsColumn<Cv, ColumnField, CvSortField>[]>(() => {
+    return [
+      {
+        key: "name",
+        title: t("name"),
+        sortable: true,
+        sortKey: "name",
+        className: styles.nameColumn,
+        render: (cv) => <span className={styles.cellContent}>{cv.name}</span>,
+      },
+      {
+        key: "education",
+        title: t("education"),
+        sortable: true,
+        sortKey: "education",
+        className: styles.educationColumn,
+        render: (cv) => (
+          <span className={styles.cellContent}>{cv.education ?? "-"}</span>
+        ),
+      },
+      {
+        key: "employee",
+        title: t("employee"),
+        className: styles.employeeColumn,
+        render: (cv) => (
+          <span className={styles.cellContent}>{cv.user?.email ?? "-"}</span>
+        ),
+      },
+      {
+        key: "actions",
+        title: "",
+        className: styles.actionsColumn,
+        render: (cv) => <CvActions cvId={cv.id} />,
+      },
+    ];
+  }, [t]);
   return (
-    <div className={styles.tableWrapper}>
-      <table className={styles.table}>
-        <thead className={styles.header}>
-          <tr>
-            <th className={styles.nameColumn}>
-              <button
-                className={styles.sortButton}
-                onClick={() => sortAction("name")}
-              >
-                Name
-                {sortField === "name" && (sortOrder === "asc" ? " ↑" : " ↓")}
-              </button>
-            </th>
-            <th>
-              <button
-                className={styles.sortButton}
-                onClick={() => sortAction("education")}
-              >
-                Education
-                {sortField === "education" &&
-                  (sortOrder === "asc" ? " ↑" : " ↓")}
-              </button>
-            </th>
-            <th className={styles.userColumn}>Employee</th>
-            <th className={styles.actionsColumn} />
-          </tr>
-        </thead>
-        <tbody>
-          {cvs.map((cv) => (
-            <CVsTableRow key={cv.id} cv={cv} />
-          ))}
-        </tbody>
-      </table>
-    </div>
+    <DetailsTable<Cv, ColumnField, CvSortField>
+      data={cvs}
+      columns={columns}
+      loading={loading}
+      rowKey={(cv) => cv.id}
+      sortField={sortField}
+      sortOrder={sortOrder}
+      onSort={sortAction}
+      renderDetails={(cv) => (
+        <div className={styles.description}>{cv.description}</div>
+      )}
+    />
   );
 };

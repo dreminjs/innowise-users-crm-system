@@ -1,3 +1,5 @@
+"use client";
+import { useTranslations } from "next-intl";
 import { useUserStore } from "@/application/store/user.store";
 import { useNotification } from "@/modules/Notifications";
 import { useMutation } from "@apollo/client/react";
@@ -6,15 +8,16 @@ import { GET_USER_PROFILE } from "../../api/queries";
 
 export const useDeleteAvatar = () => {
   const currentUserId = useUserStore((state) => state.userId);
-
+  const t = useTranslations("Notifications");
   const addNotification = useNotification((state) => state.addNotification);
   const [mutate, { loading, error }] = useMutation(DELETE_AVATAR, {
     onCompleted: () => {
       addNotification({
-        message: "Avatar deleted successfully",
+        message: t("avatarDeletedSuccessfully"),
         type: "success",
       });
     },
+
     refetchQueries: [
       {
         query: GET_USER_PROFILE,
@@ -23,6 +26,7 @@ export const useDeleteAvatar = () => {
         },
       },
     ],
+
     onError: (error) => {
       addNotification({
         message: error.message,
@@ -43,5 +47,9 @@ export const useDeleteAvatar = () => {
     }
   };
 
-  return { deleteAvatar, loading, error };
+  return {
+    deleteAvatar,
+    loading,
+    error,
+  };
 };

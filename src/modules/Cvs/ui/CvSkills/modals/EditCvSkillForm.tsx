@@ -11,7 +11,8 @@ import { GET_SKILLS } from "@/modules/Skills/api/queries";
 import { CustomSelect } from "@/shared/ui/CustomSelect";
 import { ConfirmButtons } from "@/shared/ui/ConfirmButtons";
 import { useUpdateCvSkill } from "@/modules/Cvs/hooks/useUpdateCvSkill";
-import styles from "@/modules/Skills/ui/Skills.module.css";
+import styles from "../CvSkills.module.css";
+import { useTranslations } from "next-intl";
 
 type Props = {
   cvId: string;
@@ -37,6 +38,7 @@ export const EditCvSkillForm: FC<Props> = ({
     categoryId,
     mastery,
   });
+  const t = useTranslations("");
 
   const onSubmit = async (data: TSkillForm) => {
     const selectedSkill = skillsData?.skills.find(
@@ -66,7 +68,7 @@ export const EditCvSkillForm: FC<Props> = ({
         name={"categoryId"}
         render={({ field }) => (
           <CustomSelect
-            label={"Skill"}
+            label={t("Skills.chooseSkill")}
             options={
               skillsData?.skills.map((el) => ({
                 value: el.id,
@@ -85,10 +87,10 @@ export const EditCvSkillForm: FC<Props> = ({
         name={"mastery"}
         render={({ field }) => (
           <CustomSelect
-            label={"Skill mastery"}
+            label={t("Skills.skillMastery")}
             options={skillLevels.map((el) => ({
               value: el,
-              label: el,
+              label: t(`Skills.${el}`),
             }))}
             value={field.value}
             disabled={!Boolean(currentCategoryId)}
@@ -98,8 +100,8 @@ export const EditCvSkillForm: FC<Props> = ({
       />
 
       <ConfirmButtons
-        onCancel={toggleAction}
-        confirmLabel={"CONFIRM"}
+        cancelAction={toggleAction}
+        confirmLabel={t("ConfirmButtons.confirm")}
         confirmButtonType={"submit"}
       />
     </form>

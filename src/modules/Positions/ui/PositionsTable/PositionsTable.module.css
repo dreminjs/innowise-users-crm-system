@@ -1,0 +1,15 @@
+.nameColumn {
+    width: 100%;
+}
+
+.actionsColumn {
+    width: 72px;
+    min-width: 72px;
+    text-align: center;
+}
+
+.cellContent {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

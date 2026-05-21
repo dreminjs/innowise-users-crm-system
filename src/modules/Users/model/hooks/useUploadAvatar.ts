@@ -1,3 +1,5 @@
+"use client";
+import { useTranslations } from "next-intl";
 import { useMutation } from "@apollo/client/react";
 import { UploadAvatarInput } from "@/generated/graphql";
 import { useNotification } from "@/modules/Notifications";
@@ -5,18 +7,19 @@ import { UPLOAD_AVATAR } from "../../api/mutations";
 import { GET_USER_PROFILE } from "../../api/queries";
 
 export const useUploadAvatar = (userId: string) => {
+  const t = useTranslations("Notifications");
   const addNotification = useNotification((state) => state.addNotification);
   const [mutate, { loading }] = useMutation(UPLOAD_AVATAR, {
     onCompleted: () => {
       addNotification({
         type: "success",
-        message: "Avatar uploaded successfully",
+        message: t("avatarUploadedSuccessfully"),
       });
     },
     onError: () => {
       addNotification({
         type: "error",
-        message: "Failed to upload avatar",
+        message: t("failedToUploadAvatar"),
       });
     },
     refetchQueries: [
@@ -28,11 +31,11 @@ export const useUploadAvatar = (userId: string) => {
       },
     ],
   });
-
   const handleSubmit = async (dto: UploadAvatarInput) => {
-    await mutate({ variables: { dto } });
+    await mutate({
+      variables: { dto },
+    });
   };
-
   return {
     loading,
     onSubmit: handleSubmit,

@@ -1,2 +1,2 @@
-export * from "./ui/SkillsList/SkillsList";
-export * from "./ui/SkillsList/SkillItem";
+export * from "./ui/UsersSkill/SkillsList/SkillsList";
+export * from "./ui/UsersSkill/SkillsList/SkillItem";

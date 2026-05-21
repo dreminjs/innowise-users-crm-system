@@ -4,6 +4,7 @@ import { EditLanguageModal } from "../EditLanguageModal/EditLanguageModal";
 import styles from "../Languages.module.css";
 import clsx from "clsx";
 import { Proficiency } from "@/generated/graphql";
+import { useTranslations } from "next-intl";
 
 interface ILanguagesItemProps {
   name: string;
@@ -22,6 +23,7 @@ export const LanguagesItem: FC<ILanguagesItemProps> = ({
   onClick,
   isEditModalOpen,
 }) => {
+  const t = useTranslations("Languages");
   return (
     <>
       <li>
@@ -35,9 +37,9 @@ export const LanguagesItem: FC<ILanguagesItemProps> = ({
           )}
         >
           <span style={{ color: languageLevelColors[proficiency] }}>
-            {proficiency}
+            {proficiency === "Native" ? t("Native") : proficiency}
           </span>
-          <span>{name}</span>
+          <span>{t(name)}</span>
         </button>
       </li>
       {onClick && (

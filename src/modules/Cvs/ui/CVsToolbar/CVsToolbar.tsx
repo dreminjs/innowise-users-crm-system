@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { SearchToolbar } from "@/shared/ui/SearchToolbar/SearchToolbar";
 
 type Props = {
@@ -9,11 +10,13 @@ type Props = {
 };
 
 export const CVsToolbar = ({ value, changeAction, createAction }: Props) => {
+  const t = useTranslations("CVsToolbar");
   return (
     <SearchToolbar
       value={value}
       changeAction={changeAction}
-      buttonLabel="ADD CV"
+      placeholder={t("search")}
+      buttonLabel={t("addCv")}
       createAction={createAction}
     />
   );

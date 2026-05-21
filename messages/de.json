@@ -9,7 +9,8 @@
     "email": "E-Mail",
     "password": "Passwort",
     "forgotPassword": "PASSWORT VERGESSEN",
-    "submitLabel": "ANMELDEN"
+    "submitLabel": "ANMELDEN",
+    "loading": "Loading..."
   },
   "Signup": {
     "title": "Registrieren",
@@ -29,6 +30,9 @@
     "skills": "Fähigkeiten",
     "languages": "Sprachen",
     "cvs": "Lebensläufe",
+    "projects": "Projekten",
+    "positions": "Positionen",
+    "departments": "Abteilungen",
     "settings": "Einstellungen",
     "profile": "Profil",
     "logout": "Abmelden"
@@ -59,7 +63,15 @@
     "Containerization": "Containerisierung",
     "Source control systems": "Versionskontrollsysteme",
     "Documentation": "Dokumentation",
-    "Graphic editors": "Grafikeditoren"
+    "Graphic editors": "Grafikeditoren",
+    "Competent": "Kompetent",
+    "Proficient": "Profi",
+    "Advanced": "Fortgeschritten",
+    "Novice": "Neuling",
+    "Expert": "Experte",
+    "Name": "Name",
+    "Type": "Typ",
+    "Category": "Kategorie"
   },
   "ConfirmButtons": {
     "cancel": "ABBRECHEN",
@@ -71,7 +83,21 @@
     "edit": "SPRACHE BEARBEITEN",
     "delete": "SPRACHE ENTFERNEN",
     "languageMastery": "Sprachmastery",
-    "chooseLanguage": "Sprache wählen"
+    "chooseLanguage": "Sprache wählen",
+    "English": "Englisch",
+    "Russian": "Russisch",
+    "German": "Deutsch",
+    "Polish": "Polnisch",
+    "Portugal": "Portugiesisch",
+    "Italian": "Italienisch",
+    "Belarusian": "Weißrussisch",
+    "Native": "Muttersprache",
+    "addedSuccessfully": "Sprache erfolgreich hinzugefügt",
+    "deletedSuccessfully": "Sprache erfolgreich entfernt",
+    "editSuccessfully": "Sprache erfolgreich bearbeitet",
+    "failedDelete": "Sprache konnte nicht gelöscht werden",
+    "failedAdd": "Sprache konnte nicht hinzugefügt werden",
+    "failedEdit": "Sprache konnte nicht bearbeitet werden"
   },
   "empty": "Empty :(",
   "profile": {
@@ -95,9 +121,314 @@
     "languages": "Sprachen"
   },
   "Navigation": {
-    "skills": "Skills",
+    "skills": "Fähigkeiten",
     "languages": "Sprachen",
     "users": "Mitarbeiter",
-    "cvs": "Lebensläufe"
+    "cvs": "Lebensläufe",
+    "preview": "Vorschau",
+    "settings": "Einstellungen",
+    "projects": "Projekte"
+  },
+  "Appearance": {
+    "system": "Systemeinstellungen",
+    "dark": "Dunkel",
+    "light": "Hell"
+  },
+  "CvTabs": {
+    "DETAILS": "Details",
+    "SKILLS": "Fähigkeiten",
+    "PROJECTS": "Projekte",
+    "PREVIEW": "Vorschau"
+  },
+  "CvDetails": {
+    "name": "Name",
+    "education": "Ausbildung",
+    "description": "Beschreibung",
+    "update": "Aktualisieren",
+    "updating": "Wird aktualisiert...",
+    "title": "CV erstellen",
+    "create": "Erstellen",
+    "validation": {
+      "nameRequired": "Name ist erforderlich",
+      "nameMax": "Maximal 100 Zeichen",
+      "educationMax": "Maximal 200 Zeichen",
+      "descriptionRequired": "Beschreibung ist erforderlich",
+      "descriptionMax": "Maximal 1000 Zeichen"
+    }
+  },
+  "CVsTable": {
+    "name": "Name",
+    "education": "Ausbildung",
+    "employee": "Mitarbeiter"
+  },
+  "UserActions": {
+    "profile": "Profil",
+    "edit": "Bearbeiten",
+    "delete": "Löschen"
+  },
+  "SearchToolbar": {
+    "search": "Suche"
+  },
+  "CreateCv": {
+    "title": "CV erstellen",
+    "cvName": "CV-Name",
+    "education": "Ausbildung",
+    "description": "Beschreibung",
+    "create": "Erstellen"
+  },
+  "CvActions": {
+    "edit": "CV bearbeiten",
+    "delete": "CV löschen"
+  },
+  "ProjectsTable": {
+    "name": "Name",
+    "domain": "Domäne",
+    "startDate": "Startdatum",
+    "endDate": "Enddatum"
+  },
+  "ProjectActions": {
+    "edit": "Projekt bearbeiten",
+    "remove": "Projekt entfernen"
+  },
+  "Preview": {
+    "languages": "Sprachen",
+    "projects": "Projekte",
+    "professionalSkills": "Berufliche Fähigkeiten",
+    "period": "Zeitraum",
+    "tillNow": "Bis heute",
+    "roles": "Rollen",
+    "responsibilities": "Verantwortlichkeiten"
+  },
+  "CVsToolbar": {
+    "search": "Lebenslauf suchen",
+    "addCv": "LEBENSLAUF HINZUFÜGEN"
+  },
+  "AddCvProject": {
+    "title": "Projekt hinzufügen",
+    "project": "Projekt",
+    "domain": "Domäne",
+    "startDate": "Startdatum",
+    "endDate": "Enddatum",
+    "description": "Beschreibung",
+    "environment": "Umgebung",
+    "responsibilities": "Verantwortlichkeiten",
+    "cancel": "ABBRECHEN",
+    "add": "HINZUFÜGEN",
+    "validation": {
+      "projectRequired": "Projekt ist erforderlich",
+      "startDateRequired": "Startdatum ist erforderlich",
+      "responsibilitiesRequired": "Verantwortlichkeiten sind erforderlich",
+      "responsibilitiesMax": "Maximal 2000 Zeichen"
+    }
+  },
+  "EditCvProject": {
+    "title": "Projekt bearbeiten",
+    "project": "Projekt",
+    "domain": "Domäne",
+    "startDate": "Startdatum",
+    "endDate": "Enddatum",
+    "description": "Beschreibung",
+    "environment": "Umgebung",
+    "responsibilities": "Verantwortlichkeiten",
+    "save": "Speichern",
+    "saving": "Wird gespeichert...",
+    "validation": {
+      "projectRequired": "Projekt auswählen",
+      "startDateRequired": "Startdatum auswählen",
+      "responsibilitiesRequired": "Verantwortlichkeiten eingeben",
+      "responsibilitiesMax": "Maximal 2000 Zeichen"
+    }
+  },
+  "NotFound": {
+    "title": "Seite nicht gefunden",
+    "description": "Die Seite existiert nicht oder wurde verschoben.",
+    "button": "Zur Startseite"
+  },
+  "Notifications": {
+    "skillAddedSuccessfully": "Fähigkeit erfolgreich hinzugefügt",
+    "failedToAddSkill": "Fähigkeit konnte nicht hinzugefügt werden",
+    "cvDeletedSuccessfully": "CV erfolgreich gelöscht",
+    "failedToDeleteCv": "CV konnte nicht gelöscht werden",
+    "skillDeletedSuccessfully": "Fähigkeit erfolgreich gelöscht",
+    "failedToDeleteSkill": "Fähigkeit konnte nicht gelöscht werden",
+    "cvUpdatedSuccessfully": "CV erfolgreich aktualisiert",
+    "failedToUpdateCv": "CV konnte nicht aktualisiert werden",
+    "skillUpdatedSuccessfully": "Fähigkeit erfolgreich aktualisiert",
+    "failedToUpdateSkill": "Fähigkeit konnte nicht aktualisiert werden",
+    "projectAddedSuccessfully": "Projekt erfolgreich hinzugefügt",
+    "failedToAddProject": "Projekt konnte nicht hinzugefügt werden",
+    "projectRemovedSuccessfully": "Projekt erfolgreich entfernt",
+    "failedToRemoveProject": "Projekt konnte nicht entfernt werden",
+    "projectUpdatedSuccessfully": "Projekt erfolgreich aktualisiert",
+    "failedToUpdateProject": "Projekt konnte nicht aktualisiert werden",
+    "languageAddedSuccessfully": "Sprache erfolgreich hinzugefügt",
+    "failedToAddLanguage": "Sprache konnte nicht hinzugefügt werden",
+    "languagesDeletedSuccessfully": "Sprachen erfolgreich gelöscht",
+    "failedToDeleteLanguages": "Sprachen konnten nicht gelöscht werden",
+    "languageUpdatedSuccessfully": "Sprache erfolgreich aktualisiert",
+    "failedToUpdateLanguage": "Sprache konnte nicht aktualisiert werden",
+    "checkYourEmail": "Überprüfen Sie Ihre E-Mails",
+    "avatarDeletedSuccessfully": "Avatar erfolgreich gelöscht",
+    "profileUpdatedSuccessfully": "Profil erfolgreich aktualisiert",
+    "userUpdatedSuccessfully": "Benutzer erfolgreich aktualisiert",
+    "avatarUploadedSuccessfully": "Avatar erfolgreich hochgeladen",
+    "failedToUploadAvatar": "Avatar konnte nicht hochgeladen werden",
+    "userDeletedSuccessfully": "Benutzer erfolgreich gelöscht",
+    "emailAlreadyExists": "Benutzer mit dieser E-Mail existiert bereits",
+    "userCreatedSuccessfully": "Benutzer erfolgreich erstellt",
+    "createUserTitle": "Benutzer erstellen"
+  },
+  "Users": {
+    "fields": {
+      "email": "E-Mail",
+      "password": "Passwort",
+      "firstName": "Vorname",
+      "lastName": "Nachname",
+      "department": "Abteilung",
+      "position": "Position",
+      "role": "Rolle"
+    },
+    "create": {
+      "title": "Benutzer erstellen",
+      "submit": "Erstellen"
+    },
+    "edit": {
+      "title": "Benutzer bearbeiten",
+      "submit": "Speichern"
+    },
+    "errors": {
+      "emailRequired": "E-Mail-Adresse erforderlich",
+      "invalidEmail": "Ungültige E-Mail-Adresse",
+      "passwordMin": "Das Passwort muss mindestens 6 Zeichen lang sein",
+      "firstNameRequired": "Vorname erforderlich",
+      "firstNameMax": "Der Vorname ist zu lang",
+      "lastNameRequired": "Nachname erforderlich",
+      "lastNameMax": "Der Nachname ist zu lang",
+      "departmentRequired": "Die Abteilung ist erforderlich",
+      "positionRequired": "Die Position ist erforderlich"
+    }
+  },
+  "SkillsToolbar": {
+    "search": "Skill suchen",
+    "create": "SKILL HINZUFÜGEN"
+  },
+
+  "SkillsTable": {
+    "name": "Name",
+    "category": "Kategorie"
+  },
+
+  "SkillActions": {
+    "edit": "Skill bearbeiten",
+    "delete": "Skill löschen"
+  },
+
+  "SkillModal": {
+    "createTitle": "Skill erstellen",
+    "editTitle": "Skill bearbeiten",
+    "name": "Skillname",
+    "category": "Kategorie",
+    "create": "Erstellen",
+    "save": "Speichern",
+    "validation": {
+      "nameRequired": "Skillname ist erforderlich"
+    }
+  },
+  "DepartmentsToolbar": {
+    "search": "Abteilung suchen",
+    "create": "ABTEILUNG HINZUFÜGEN"
+  },
+
+  "DepartmentsTable": {
+    "name": "Name"
+  },
+
+  "DepartmentActions": {
+    "edit": "Abteilung bearbeiten",
+    "delete": "Abteilung löschen"
+  },
+
+  "DepartmentModal": {
+    "createTitle": "Abteilung erstellen",
+    "editTitle": "Abteilung bearbeiten",
+    "name": "Abteilungsname",
+    "create": "Erstellen",
+    "save": "Speichern",
+    "validation": {
+      "nameRequired": "Abteilungsname ist erforderlich"
+    }
+  },
+  "PositionsToolbar": {
+    "search": "Position suchen",
+    "create": "POSITION HINZUFÜGEN"
+  },
+
+  "PositionsTable": {
+    "name": "Name"
+  },
+
+  "PositionActions": {
+    "edit": "Position bearbeiten",
+    "delete": "Position löschen"
+  },
+
+  "PositionModal": {
+    "createTitle": "Position erstellen",
+    "editTitle": "Position bearbeiten",
+    "name": "Positionsname",
+    "create": "Erstellen",
+    "save": "Speichern",
+    "validation": {
+      "nameRequired": "Positionsname ist erforderlich"
+    }
+  },
+  "LanguagesToolbar": {
+    "search": "Sprache suchen",
+    "create": "SPRACHE HINZUFÜGEN"
+  },
+
+  "LanguagesTable": {
+    "name": "Sprache",
+    "nativeName": "Native Name",
+    "iso2": "ISO2"
+  },
+
+  "LanguageActions": {
+    "edit": "Sprache bearbeiten",
+    "delete": "Sprache löschen"
+  },
+  "LanguageModal": {
+    "createTitle": "Sprache erstellen",
+    "editTitle": "Sprache bearbeiten",
+    "name": "Sprache",
+    "nativeName": "Native Name",
+    "iso2": "ISO2 Code",
+    "create": "Erstellen",
+    "save": "Speichern",
+    "validation": {
+      "nameRequired": "Sprache ist erforderlich",
+      "nativeNameRequired": "Native Name ist erforderlich",
+      "iso2Required": "ISO2 Code ist erforderlich"
+    }
+  },
+  "ProjectsToolbar": {
+    "search": "Projekt suchen",
+    "create": "PROJEKT ERSTELLEN"
+  },
+  "ProjectModal": {
+    "createTitle": "Projekt erstellen",
+    "editTitle": "Projekt bearbeiten",
+    "name": "Projektname",
+    "domain": "Domäne",
+    "description": "Beschreibung",
+    "environment": "Umgebung",
+    "startDate": "Startdatum",
+    "endDate": "Enddatum",
+    "create": "Erstellen",
+    "save": "Speichern",
+    "validation": {
+      "nameRequired": "Projektname ist erforderlich",
+      "startDateRequired": "Startdatum ist erforderlich"
+    }
   }
 }

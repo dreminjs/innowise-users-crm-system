@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { usePathname } from "next/navigation";
 import styles from "./CvLayout.module.css";
 import { tabs } from "@/shared/config/tabs";
@@ -12,7 +13,7 @@ type Props = {
 
 export const CvLayout = ({ cvId, children }: Props) => {
   const pathname = usePathname();
-
+  const t = useTranslations("CvTabs");
   return (
     <section className={styles.page}>
       <nav className={styles.tabs}>
@@ -22,7 +23,7 @@ export const CvLayout = ({ cvId, children }: Props) => {
             <NavigationItem
               key={tab.label}
               to={href}
-              label={tab.label}
+              label={t(tab.label)}
               isActive={pathname === href}
             />
           );

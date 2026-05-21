@@ -7,19 +7,19 @@ import { toBase64 } from "../../../model/utils/toBase64";
 import styles from "../UpdateUserInfo.module.css";
 import { useTranslations } from "next-intl";
 import { Icon } from "@/shared/ui/Icon/Icon";
-import { Loading } from "@/shared/ui/Loading";
 interface IUploadAvatarProps {
   avatarUrl: string;
   firstLetter: string;
   isUploadAvailable: boolean;
+  userId: string;
 }
 
 export const UploadAvatar: FC<IUploadAvatarProps> = ({
+  userId,
   avatarUrl,
   firstLetter,
   isUploadAvailable,
 }) => {
-  const userId = useUserStore((state) => state.userId);
   const { onSubmit, loading } = useUploadAvatar(userId!);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const t = useTranslations("profile");

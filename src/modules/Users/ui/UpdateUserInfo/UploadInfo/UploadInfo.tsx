@@ -14,8 +14,10 @@ import { useUpdateUser } from "@/modules/Users/model/hooks/useUpdateUser";
 import { FC } from "react";
 import { Loading } from "@/shared/ui/Loading";
 import { useTranslations } from "next-intl";
+import { useRouter } from "next/navigation";
 
 interface IUploadInfoProps {
+  userId: string;
   isAvailable: boolean;
   firstName: string;
   lastName: string;
@@ -24,6 +26,7 @@ interface IUploadInfoProps {
 }
 
 export const UploadInfo: FC<IUploadInfoProps> = ({
+  userId,
   isAvailable,
   firstName,
   lastName,
@@ -31,9 +34,9 @@ export const UploadInfo: FC<IUploadInfoProps> = ({
   departmentId,
 }) => {
   const { onSubmit: updateProfile, loading: loadingUpdatingProfile } =
-    useUpdateProfile();
+    useUpdateProfile(userId);
   const { onSubmit: updateUser, loading: loadingUpdatingUser } =
-    useUpdateUser();
+    useUpdateUser(userId);
   const t = useTranslations("Profile");
   const handleUpdateUserInfo = async (dto: TUpdateUserForm) => {
     await updateProfile({
@@ -45,7 +48,6 @@ export const UploadInfo: FC<IUploadInfoProps> = ({
       positionId: dto.positionId,
     });
   };
-
   const { data, loading, error } = useQuery(GET_USERS_CREATERIES);
   const { register, handleSubmit, control, setValue } =
     useForm<TUpdateUserForm>({

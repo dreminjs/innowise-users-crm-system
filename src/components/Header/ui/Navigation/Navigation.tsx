@@ -15,19 +15,22 @@ export const Navigation = () => {
   return (
     <nav>
       <ul className={styles.navigationList}>
-        {pathSegments.map((el, idx, array) => (
-          <Fragment key={idx}>
-            {idx === 1 && <UserIcon />}
-            <NavigationItem
-              label={idx === 1 ? segment || t(el) : t(el)}
-              href={idx === 1 ? `` : `/${el}`}
-              isActive={idx === 1}
-            />
-            {array[idx + 1] && (
-              <Icon name="arrow" size={10} className={clsx(styles.arrow)} />
-            )}
-          </Fragment>
-        ))}
+        {pathSegments.map((el, idx, array) => {
+          const href = `/${array.slice(0, idx + 1).join("/")}`;
+          return (
+            <Fragment key={href}>
+              {idx === 1 && <UserIcon />}
+              <NavigationItem
+                label={t.has(el) ? t(el) : segment || el}
+                href={idx === 1 ? "" : href}
+                isActive={idx === 1}
+              />
+              {array[idx + 1] && (
+                <Icon name="arrow" size={10} className={clsx(styles.arrow)} />
+              )}
+            </Fragment>
+          );
+        })}
       </ul>
     </nav>
   );

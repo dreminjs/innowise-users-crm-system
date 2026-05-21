@@ -12,9 +12,12 @@ export const GET_PROFILE_LANGUAGES = graphql(`
 `);
 
 export const GET_LANGUAGES = graphql(`
-  query getLanguages {
+  query GetLanguages {
     languages {
+      id
       name
+      native_name
+      iso2
     }
   }
 `);

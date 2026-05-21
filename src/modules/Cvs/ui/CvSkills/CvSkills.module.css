@@ -1,0 +1,189 @@
+.managementSkills {
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 15px;
+    width: 100%;
+    padding: 20px 0;
+    background-color: var(--bg);
+}
+
+.addSkillModalContent {
+    padding: 20px;
+    background-color: var(--bg);
+    color: var(--color-text);
+}
+
+.addSkillModalTitle {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.addSkillForm {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.addSkillHeader {
+    margin-bottom: 25px;
+}
+
+.addSkillPositioner {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.skillsLists {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    padding-bottom: 60px;
+}
+
+.group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+}
+
+.categoryName {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--color-text);
+}
+
+.skillsList {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 289px));
+    gap: 16px;
+}
+
+.skillItem {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+}
+
+.skillItem:hover {
+    background-color: var(--bg-hover);
+}
+
+.masteryLine {
+    display: block;
+    width: 32px;
+    height: 3px;
+    border-radius: 2px;
+}
+
+.skillName {
+    font-size: 15px;
+    color: var(--color-text);
+}
+
+.skillItemDeleteActive {
+    background-color: var(--bg-hover);
+}
+
+.removeSkillsButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-width: 220px;
+    height: 48px;
+    padding: 0 18px;
+    border: none;
+    border-radius: 999px;
+    background-color: var(--color-primary);
+    color: var(--color-text);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+.removeSkillsButton:hover {
+    opacity: 0.92;
+}
+
+.removeSkillsButton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.cancelDeleteButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 220px;
+    height: 48px;
+    padding: 0 18px;
+    border-radius: 999px;
+    border: 1px solid var(--cancel-border);
+    background-color: transparent;
+    color: var(--cancel-text);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition:
+            background-color 0.2s ease,
+            border-color 0.2s ease;
+}
+
+.cancelDeleteButton:hover {
+    background-color: var(--bg-hover);
+}
+
+.deleteConfirmButtonAmount {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: var(--bg);
+    color: var(--color-primary);
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.loading {
+    text-align: center;
+    color: var(--color-text);
+}
+
+.error {
+    text-align: center;
+    color: var(--color-primary);
+}
+
+@media (max-width: 900px) {
+    .skillsList {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .skillsList {
+        grid-template-columns: 1fr;
+    }
+
+    .managementSkills {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .removeSkillsButton,
+    .cancelDeleteButton {
+        width: 100%;
+    }
+}

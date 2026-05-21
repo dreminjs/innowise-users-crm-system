@@ -1,14 +1,8 @@
-export type TLanguage = "English" | "Russian" | "German";
+export type TLanguageLocale = "en" | "ru" | "de";
 
-export type TAppearance = "Device settings" | "Dark" | "Light";
+export type TAppearance = "system" | "dark" | "light";
 
 export type TLanguageOption = {
   label: string;
-  value: TLanguage;
+  value: TLanguageLocale;
 };
-
-export type TLanguageLocalization = TLanguageOption & {
-  locale: TLanguageLocale;
-};
-
-export type TLanguageLocale = "en" | "ru" | "de";

@@ -7,9 +7,13 @@
 
 .actions {
     display: flex;
+    gap:16px;
     justify-content: flex-end;
     width: 794px;
     margin-bottom: 20px;
+}
+.language{
+    width: 150px
 }
 
 .preview {

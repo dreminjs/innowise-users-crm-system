@@ -9,7 +9,7 @@ import {
 } from "../../model/processProjects";
 import styles from "./ProjectsPage.module.css";
 import { ProjectsSearch } from "@/modules/Projects/ui/ProjectsSearch/ProjectsSearch";
-import { ProjectsTable } from "@/modules/Projects/ui/ProjectsTable/ProjectsTable";
+import { ProjectsTable } from "@/modules/Projects/ui/CvProjectsTable/ProjectsTable";
 import { AddCvProjectModal } from "@/modules/Projects/ui/AddCvProjectModal/AddCvProjectModal";
 
 type Props = {

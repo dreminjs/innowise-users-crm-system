@@ -4,8 +4,8 @@ import { AddNewButton } from "@/shared/ui/AddNewButton";
 import { RemoveItemButton } from "@/shared/ui/RemoveItemButton";
 import { useSkillStore } from "../../model/skill.store";
 import { RemoveSkillsButton } from "./RemoveSkillsButton";
-import styles from "../Skills.module.css";
 import { useTranslations } from "next-intl";
+import styles from "../UsersSkill/Skills.module.css";
 
 interface IMenuagementSkillsProps {
   isAvailableToDelete: boolean;

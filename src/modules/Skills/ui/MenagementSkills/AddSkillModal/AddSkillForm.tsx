@@ -11,7 +11,7 @@ import { Mastery } from "@/generated/graphql";
 import { FC } from "react";
 import { useUserStore } from "@/application/store/user.store";
 import { useTranslations } from "next-intl";
-import styles from "../../Skills.module.css";
+import styles from "../../UsersSkill/Skills.module.css";
 
 interface IEditSkillFormProps {
   onToggle: () => void;
@@ -24,6 +24,7 @@ export const AddSkillForm: FC<IEditSkillFormProps> = ({ onToggle }) => {
   const { data: profileData } = useQuery(GET_PROFILE_SKILLS, {
     variables: { userId: currentUserId || "" },
   });
+
   const {
     control,
     handleChangeSkill,
@@ -39,7 +40,6 @@ export const AddSkillForm: FC<IEditSkillFormProps> = ({ onToggle }) => {
       onToggle();
     });
   };
-
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={styles.addSkillForm}>
       <Controller
@@ -74,7 +74,7 @@ export const AddSkillForm: FC<IEditSkillFormProps> = ({ onToggle }) => {
             label={t("Skills.skillMastery")}
             options={skillLevels.map((el) => ({
               value: el,
-              label: el,
+              label: t(`Skills.${el}`),
             }))}
             value={field.value}
             disabled={!currentCategoryId}
@@ -83,7 +83,7 @@ export const AddSkillForm: FC<IEditSkillFormProps> = ({ onToggle }) => {
         )}
       />
       <ConfirmButtons
-        onCancel={onToggle}
+        cancelAction={onToggle}
         confirmLabel={t("ConfirmButtons.confirm")}
         confirmButtonType={"submit"}
       />

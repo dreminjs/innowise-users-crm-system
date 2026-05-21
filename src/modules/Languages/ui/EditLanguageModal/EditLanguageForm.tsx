@@ -54,7 +54,7 @@ export const EditLanguageForm: FC<TEditLanguageFormProps> = ({
             options={
               languagesData?.languages.map((el) => ({
                 value: el!.name,
-                label: el!.name,
+                label: t(`Languages.${el!.name}`) || "Unknow",
               })) || []
             }
             value={field.value}
@@ -71,7 +71,7 @@ export const EditLanguageForm: FC<TEditLanguageFormProps> = ({
             label={t("Languages.languageMastery")}
             options={languageProfiency.map((el) => ({
               value: el,
-              label: el,
+              label: el === "Native" ? t("Languages.Native") : el,
             }))}
             value={field.value}
             disabled={!Boolean(currentName)}
@@ -80,7 +80,7 @@ export const EditLanguageForm: FC<TEditLanguageFormProps> = ({
         )}
       />
       <ConfirmButtons
-        onCancel={toggleAction}
+        cancelAction={toggleAction}
         confirmLabel={t("ConfirmButtons.confirm")}
         confirmButtonType={"submit"}
       />

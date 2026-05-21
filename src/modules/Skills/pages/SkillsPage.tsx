@@ -1,15 +1,10 @@
-import { useUserStore } from "@/application/store/user.store";
-import { Skills } from "../ui/Skills";
-import styles from "../ui/Skills.module.css";
+import { Skills } from "../ui/Skills/Skills";
+import styles from "./SkillsPage.module.css";
 
 export const SkillsPage = () => {
-  const currentUserId = useUserStore((state) => state.userId);
-
   return (
     <div className={styles.page}>
-      {currentUserId && (
-        <Skills userSkillsId={currentUserId} currentUserId={currentUserId} />
-      )}
+      <Skills />
     </div>
   );
 };

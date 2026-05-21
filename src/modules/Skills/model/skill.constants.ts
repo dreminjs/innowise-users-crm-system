@@ -8,6 +8,14 @@ export const skillLevels: Mastery[] = [
   Mastery.Expert,
 ];
 
+export const skillOptions = [
+  { value: Mastery.Novice, label: Mastery.Novice },
+  { value: Mastery.Competent, label: Mastery.Competent },
+  { value: Mastery.Proficient, label: Mastery.Proficient },
+  { value: Mastery.Advanced, label: Mastery.Advanced },
+  { value: Mastery.Expert, label: Mastery.Expert },
+];
+
 export const masteryValue: Record<Mastery, number> = {
   [Mastery.Novice]: 20,
   [Mastery.Competent]: 40,

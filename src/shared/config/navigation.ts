@@ -24,12 +24,19 @@ export const navigationItems = [
     href: "/cvs",
     icon: RiFileUserFill,
   },
-] as const;
-
-// "employees": "Employees",
-// "skills": "Skills",
-// "languages": "Languages",
-// "cvs": "CVs",
-// "settings": "Settings",
-// "profile": "Profile",
-// "logout": "Logout"
+  {
+    label: "departments",
+    href: "/departments",
+    icon: "settings",
+  },
+  {
+    label: "positions",
+    href: "/positions",
+    icon: "employees",
+  },
+  {
+    label: "projects",
+    href: "/projects",
+    icon: "search",
+  },
+];

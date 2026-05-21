@@ -9,7 +9,8 @@
     "email": "Эл. почта",
     "password": "Пароль",
     "forgotPassword": "ЗАБЫЛИ ПАРОЛЬ",
-    "submitLabel": "ВОЙТИ"
+    "submitLabel": "ВОЙТИ",
+    "loading": "Загрузка..."
   },
   "Signup": {
     "title": "Регистрация",
@@ -29,6 +30,9 @@
     "skills": "Навыки",
     "languages": "Языки",
     "cvs": "Резюме",
+    "projects": "Проекты",
+    "positions": "Должности",
+    "departments": "Депортаменты",
     "settings": "Настройки",
     "profile": "Профиль",
     "logout": "Выйти"
@@ -57,7 +61,21 @@
     "Containerization": "Контейнеризация",
     "Source control systems": "Системы контроля версий",
     "Documentation": "Документация",
-    "Graphic editors": "Графические редакторы"
+    "Graphic editors": "Графические редакторы",
+    "Competent": "Компетент",
+    "Proficient": "Профилиент",
+    "Advanced": "Продвинутый",
+    "Novice": "Новичок",
+    "Expert": "Эксперт",
+    "addedSuccessfully": "Навык успешно добавлен",
+    "deletedSuccessfully": "Навык успешно удален",
+    "editSuccessfully": "Навык успешно отредактирован",
+    "failedDelete": "Не получилось удалить",
+    "failedAdd": "Не получилось добавить",
+    "failedEdit": "Не получилось отредактировать",
+    "Name": "Название",
+    "Type": "Тип",
+    "Category": "Категория"
   },
   "ConfirmButtons": {
     "delete": "УДАЛИТЬ",
@@ -69,7 +87,21 @@
     "edit": "РЕДАКТИРОВАТЬ ЯЗЫК",
     "delete": "УДАЛИТЬ ЯЗЫК",
     "languageMastery": "Мастерство Языка",
-    "chooseLanguage": "Язык"
+    "chooseLanguage": "Язык",
+    "English": "английский",
+    "Russian": "русский",
+    "German": "немецкий",
+    "Polish": "польский",
+    "Portugal": "португальский",
+    "Italian": "итальянский",
+    "Belarusian": "белорусский",
+    "Native": "Родной",
+    "addedSuccessfully": "Язык успешно добавлен",
+    "deletedSuccessfully": "Язык успешно удален",
+    "editSuccessfully": "Язык успешно отредактирован",
+    "failedDelete": "Не получилось удалить",
+    "failedAdd": "Не получилось добавить",
+    "failedEdit": "Не получилось отредактировать"
   },
   "empty": "Пусто :(",
   "profile": {
@@ -79,7 +111,7 @@
   "Settings": {
     "appearance": "Тема",
     "language": "Язык",
-    "resumeLanguage": "Язык Резюме"
+    "resumeLanguage": "Язык резюме"
   },
   "Profile": {
     "firstName": "Имя",
@@ -96,6 +128,312 @@
     "skills": "Навыки",
     "languages": "Языки",
     "users": "Сотрудники",
-    "cvs": "Резюме"
+    "cvs": "Резюме",
+    "preview": "Превью",
+    "settings": "Настройки",
+    "projects": "Проекты"
+  },
+  "Appearance": {
+    "system": "Настройки устройства",
+    "dark": "Тёмная",
+    "light": "Светлая"
+  },
+  "CvTabs": {
+    "DETAILS": "Детали",
+    "SKILLS": "Навыки",
+    "PROJECTS": "Проекты",
+    "PREVIEW": "Превью"
+  },
+  "CvDetails": {
+    "name": "Название",
+    "education": "Образование",
+    "description": "Описание",
+    "update": "Обновить",
+    "updating": "Обновление...",
+    "title": "Создать резюме",
+    "create": "Создать",
+    "validation": {
+      "nameRequired": "Введите название",
+      "nameMax": "Максимум 100 символов",
+      "educationMax": "Максимум 200 символов",
+      "descriptionRequired": "Введите описание",
+      "descriptionMax": "Максимум 1000 символов"
+    }
+  },
+  "CVsTable": {
+    "name": "Название",
+    "education": "Образование",
+    "employee": "Сотрудник"
+  },
+  "UserActions": {
+    "profile": "Профиль",
+    "edit": "Редактировать",
+    "delete": "Удалить"
+  },
+  "SearchToolbar": {
+    "search": "Поиск"
+  },
+  "CreateCv": {
+    "title": "Создать резюме",
+    "cvName": "Название",
+    "education": "Образование",
+    "description": "Описание",
+    "create": "Создать"
+  },
+  "CvActions": {
+    "edit": "Редактировать CV",
+    "delete": "Удалить CV"
+  },
+  "ProjectsTable": {
+    "name": "Название",
+    "domain": "Домен",
+    "startDate": "Дата начала",
+    "endDate": "Дата окончания"
+  },
+  "ProjectActions": {
+    "edit": "Редактировать проект",
+    "remove": "Удалить проект"
+  },
+  "Preview": {
+    "languages": "Языки",
+    "projects": "Проекты",
+    "professionalSkills": "Профессиональные навыки",
+    "period": "Период",
+    "tillNow": "По настоящее время",
+    "roles": "Роли",
+    "responsibilities": "Обязанности"
+  },
+  "CVsToolbar": {
+    "search": "Поиск резюме",
+    "addCv": "ДОБАВИТЬ РЕЗЮМЕ"
+  },
+  "AddCvProject": {
+    "title": "Добавить проект",
+    "project": "Проект",
+    "domain": "Домен",
+    "startDate": "Дата начала",
+    "endDate": "Дата окончания",
+    "description": "Описание",
+    "environment": "Окружение",
+    "responsibilities": "Обязанности",
+    "cancel": "ОТМЕНА",
+    "add": "ДОБАВИТЬ",
+    "validation": {
+      "projectRequired": "Выберите проект",
+      "startDateRequired": "Выберите дату начала",
+      "responsibilitiesRequired": "Введите обязанности",
+      "responsibilitiesMax": "Максимум 2000 символов"
+    }
+  },
+  "EditCvProject": {
+    "title": "Редактировать проект",
+    "project": "Проект",
+    "domain": "Домен",
+    "startDate": "Дата начала",
+    "endDate": "Дата окончания",
+    "description": "Описание",
+    "environment": "Окружение",
+    "responsibilities": "Обязанности",
+    "save": "Сохранить",
+    "saving": "Сохранение...",
+    "validation": {
+      "projectRequired": "Выберите проект",
+      "startDateRequired": "Выберите дату начала",
+      "responsibilitiesRequired": "Введите обязанности",
+      "responsibilitiesMax": "Максимум 2000 символов"
+    }
+  },
+  "NotFound": {
+    "title": "Страница не найдена",
+    "description": "Страница не существует или была перемещена.",
+    "button": "На главную"
+  },
+  "Notifications": {
+    "skillAddedSuccessfully": "Навык успешно добавлен",
+    "failedToAddSkill": "Не удалось добавить навык",
+    "cvDeletedSuccessfully": "CV успешно удалено",
+    "failedToDeleteCv": "Не удалось удалить CV",
+    "skillDeletedSuccessfully": "Навык успешно удалён",
+    "failedToDeleteSkill": "Не удалось удалить навык",
+    "cvUpdatedSuccessfully": "CV успешно обновлено",
+    "failedToUpdateCv": "Не удалось обновить CV",
+    "skillUpdatedSuccessfully": "Навык успешно обновлён",
+    "failedToUpdateSkill": "Не удалось обновить навык",
+    "projectAddedSuccessfully": "Проект успешно добавлен",
+    "failedToAddProject": "Не удалось добавить проект",
+    "projectRemovedSuccessfully": "Проект успешно удалён",
+    "failedToRemoveProject": "Не удалось удалить проект",
+    "projectUpdatedSuccessfully": "Проект успешно обновлён",
+    "failedToUpdateProject": "Не удалось обновить проект",
+    "languageAddedSuccessfully": "Язык успешно добавлен",
+    "failedToAddLanguage": "Не удалось добавить язык",
+    "languagesDeletedSuccessfully": "Языки успешно удалены",
+    "failedToDeleteLanguages": "Не удалось удалить языки",
+    "languageUpdatedSuccessfully": "Язык успешно обновлён",
+    "failedToUpdateLanguage": "Не удалось обновить язык",
+    "checkYourEmail": "Проверьте вашу почту",
+    "avatarDeletedSuccessfully": "Аватар успешно удалён",
+    "profileUpdatedSuccessfully": "Профиль успешно обновлён",
+    "userUpdatedSuccessfully": "Пользователь успешно обновлён",
+    "avatarUploadedSuccessfully": "Аватар успешно загружен",
+    "failedToUploadAvatar": "Не удалось загрузить аватар",
+    "userDeletedSuccessfully": "Пользователь успешно удален",
+    "emailAlreadyExists": "Данный емейл не подходит",
+    "userCreatedSuccessfully": "Пользователь успешно создан",
+    "createUserTitle": "Создать пользователя"
+  },
+  "Users": {
+    "fields": {
+      "email": "Почта",
+      "password": "Пароль",
+      "firstName": "Имя",
+      "lastName": "Фамилия",
+      "department": "Отдел",
+      "position": "Должность",
+      "role": "Роль"
+    },
+    "create": {
+      "title": "Создать пользователя",
+      "submit": "Создать"
+    },
+    "edit": {
+      "title": "Редактирование пользователя",
+      "submit": "Сохранить"
+    },
+    "errors": {
+      "emailRequired": "Обязательно укажите адрес электронной почты",
+      "invalidEmail": "Неверный адрес электронной почты",
+      "passwordMin": "Пароль должен содержать не менее 6 символов",
+      "firstNameRequired": "Обязательно укажите имя",
+      "firstNameMax": "Имя слишком длинное",
+      "lastNameRequired": "Обязательно укажите фамилия",
+      "lastNameMax": "Фамилия слишком длинная",
+      "departmentRequired": "Обязательно укажите отдел",
+      "positionRequired": "Обязательно укажите должность"
+    }
+  },
+  "SkillsToolbar": {
+    "search": "Поиск навыка",
+    "create": "ДОБАВИТЬ НАВЫК"
+  },
+
+  "SkillsTable": {
+    "name": "Название",
+    "category": "Категория"
+  },
+
+  "SkillActions": {
+    "edit": "Редактировать навык",
+    "delete": "Удалить навык"
+  },
+
+  "SkillModal": {
+    "createTitle": "Создание навыка",
+    "editTitle": "Редактирование навыка",
+    "name": "Название навыка",
+    "category": "Категория",
+    "create": "Создать",
+    "save": "Сохранить",
+    "validation": {
+      "nameRequired": "Название навыка обязательно"
+    }
+  },
+  "DepartmentsToolbar": {
+    "search": "Поиск отдела",
+    "create": "ДОБАВИТЬ ОТДЕЛ"
+  },
+
+  "DepartmentsTable": {
+    "name": "Название"
+  },
+
+  "DepartmentActions": {
+    "edit": "Редактировать отдел",
+    "delete": "Удалить отдел"
+  },
+
+  "DepartmentModal": {
+    "createTitle": "Создание отдела",
+    "editTitle": "Редактирование отдела",
+    "name": "Название отдела",
+    "create": "Создать",
+    "save": "Сохранить",
+    "validation": {
+      "nameRequired": "Название отдела обязательно"
+    }
+  },
+  "PositionsToolbar": {
+    "search": "Поиск позиции",
+    "create": "ДОБАВИТЬ ПОЗИЦИЮ"
+  },
+
+  "PositionsTable": {
+    "name": "Название"
+  },
+
+  "PositionActions": {
+    "edit": "Редактировать позицию",
+    "delete": "Удалить позицию"
+  },
+
+  "PositionModal": {
+    "createTitle": "Создание позиции",
+    "editTitle": "Редактирование позиции",
+    "name": "Название позиции",
+    "create": "Создать",
+    "save": "Сохранить",
+    "validation": {
+      "nameRequired": "Название позиции обязательно"
+    }
+  },
+  "LanguagesToolbar": {
+    "search": "Поиск языка",
+    "create": "ДОБАВИТЬ ЯЗЫК"
+  },
+
+  "LanguagesTable": {
+    "name": "Язык",
+    "nativeName": "Нативное название",
+    "iso2": "ISO2"
+  },
+
+  "LanguageActions": {
+    "edit": "Редактировать язык",
+    "delete": "Удалить язык"
+  },
+  "LanguageModal": {
+    "createTitle": "Создание языка",
+    "editTitle": "Редактирование языка",
+    "name": "Язык",
+    "nativeName": "Нативное название",
+    "iso2": "ISO2 код",
+    "create": "Создать",
+    "save": "Сохранить",
+    "validation": {
+      "nameRequired": "Язык обязателен",
+      "nativeNameRequired": "Нативное название обязательно",
+      "iso2Required": "ISO2 код обязателен"
+    }
+  },
+  "ProjectsToolbar": {
+    "search": "Поиск проекта",
+    "create": "СОЗДАТЬ ПРОЕКТ"
+  },
+
+  "ProjectModal": {
+    "createTitle": "Создание проекта",
+    "editTitle": "Редактирование проекта",
+    "name": "Название проекта",
+    "domain": "Домен",
+    "description": "Описание",
+    "environment": "Окружение",
+    "startDate": "Дата начала",
+    "endDate": "Дата окончания",
+    "create": "Создать",
+    "save": "Сохранить",
+    "validation": {
+      "nameRequired": "Название проекта обязательно",
+      "startDateRequired": "Дата начала обязательна"
+    }
   }
 }

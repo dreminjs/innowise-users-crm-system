@@ -3,7 +3,8 @@
 import { FC } from "react";
 import { Mastery } from "@/generated/graphql";
 import { EditCvSkillForm } from "./EditCvSkillForm";
-import { FormModal } from "@/shared/ui/FormModal";
+import { FormModal } from "@/shared/ui/FormModal/ui/FormModal";
+import { useTranslations } from "next-intl";
 
 type Props = {
   cvId: string;
@@ -20,8 +21,9 @@ export const EditCvSkillModal: FC<Props> = ({
   categoryId,
   mastery,
 }) => {
+  const t = useTranslations("Skills");
   return (
-    <FormModal open={open} toggleAction={toggleAction} title={"Edit Skill"}>
+    <FormModal open={open} toggleAction={toggleAction} title={t("editSkill")}>
       {categoryId && (
         <EditCvSkillForm
           cvId={cvId}

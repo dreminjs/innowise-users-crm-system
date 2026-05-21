@@ -9,7 +9,8 @@
     "email": "Email",
     "password": "Password",
     "forgotPassword": "FORGOT PASSWORD",
-    "submitLabel": "LOGIN"
+    "submitLabel": "LOGIN",
+    "loading": "Loading..."
   },
   "Signup": {
     "title": "Sign up",
@@ -29,6 +30,9 @@
     "skills": "Skills",
     "languages": "Languages",
     "cvs": "CVs",
+    "projects": "Projects",
+    "departments": "Departments",
+    "positions": "Positions",
     "settings": "Settings",
     "profile": "Profile",
     "logout": "Logout"
@@ -57,7 +61,15 @@
     "Containerization": "Containerization",
     "Source control systems": "Source control systems",
     "Documentation": "Documentation",
-    "Graphic editors": "Graphic editors"
+    "Graphic editors": "Graphic editors",
+    "Expert": "Expert",
+    "Competent": "Competent",
+    "Proficient": "Proficient",
+    "Advanced": "Advanced",
+    "Novice": "Novice",
+    "Name": "Name",
+    "Type": "Type",
+    "Category": "Category"
   },
   "ConfirmButtons": {
     "cancel": "CANCEL",
@@ -69,7 +81,21 @@
     "edit": "EDIT LANGUAGE",
     "delete": "REMOVE LANGUAGE",
     "languageMastery": "Language Mastery",
-    "chooseLanguage": "Language"
+    "chooseLanguage": "Language",
+    "English": "English",
+    "Russian": "Russian",
+    "German": "German",
+    "Polish": "Polish",
+    "Portugal": "Portuguese",
+    "Italian": "Italian",
+    "Belarusian": "Belarusian",
+    "Native": "Native",
+    "addedSuccessfully": "Language added successfully",
+    "failedAdd": "Failed to add language",
+    "deletedSuccessfully": "Language deleted successfully",
+    "editSuccessfully": "Language edited successfully",
+    "failedDelete": "Failed to delete language",
+    "failedEdit": "Failed to edit language"
   },
   "empty": "Empty :(",
   "profile": {
@@ -79,7 +105,7 @@
   "Settings": {
     "appearance": "Appearance",
     "language": "Language",
-    "resumeLanguage": "Resume Language"
+    "resumeLanguage": "CV Language"
   },
   "Profile": {
     "firstName": "First Name",
@@ -97,5 +123,305 @@
     "languages": "Languages",
     "users": "Employees",
     "cvs": "CVs"
+  },
+  "Appearance": {
+    "system": "Device settings",
+    "dark": "Dark",
+    "light": "Light"
+  },
+  "CvTabs": {
+    "DETAILS": "Details",
+    "SKILLS": "Skills",
+    "PROJECTS": "Projects",
+    "PREVIEW": "Preview"
+  },
+  "CvDetails": {
+    "title": "Create CV",
+    "create": "Create",
+    "name": "Name",
+    "education": "Education",
+    "description": "Description",
+    "update": "Update",
+    "updating": "Updating...",
+    "validation": {
+      "nameRequired": "Name is required",
+      "nameMax": "Maximum 100 characters",
+      "educationMax": "Maximum 200 characters",
+      "descriptionRequired": "Description is required",
+      "descriptionMax": "Maximum 1000 characters"
+    }
+  },
+  "CVsTable": {
+    "name": "Name",
+    "education": "Education",
+    "employee": "Employee"
+  },
+  "UserActions": {
+    "profile": "Profile",
+    "edit": "Edit",
+    "delete": "Delete"
+  },
+  "SearchToolbar": {
+    "search": "Search"
+  },
+  "CreateCv": {
+    "title": "Create CV",
+    "cvName": "CV Name",
+    "education": "Education",
+    "description": "Description",
+    "create": "Create"
+  },
+  "CvActions": {
+    "edit": "Edit CV",
+    "delete": "Delete CV"
+  },
+  "ProjectsTable": {
+    "name": "Name",
+    "domain": "Domain",
+    "startDate": "Start date",
+    "endDate": "End date"
+  },
+  "ProjectActions": {
+    "edit": "Edit Project",
+    "remove": "Remove Project"
+  },
+  "Preview": {
+    "languages": "Languages",
+    "projects": "Projects",
+    "professionalSkills": "Professional skills",
+    "period": "Period",
+    "tillNow": "Till now",
+    "roles": "Roles",
+    "responsibilities": "Responsibilities"
+  },
+  "CVsToolbar": {
+    "search": "Search CV",
+    "addCv": "ADD CV"
+  },
+  "AddCvProject": {
+    "title": "Add project",
+    "project": "Project",
+    "domain": "Domain",
+    "startDate": "Start Date",
+    "endDate": "End Date",
+    "description": "Description",
+    "environment": "Environment",
+    "responsibilities": "Responsibilities",
+    "cancel": "CANCEL",
+    "add": "ADD",
+    "validation": {
+      "projectRequired": "Select a project",
+      "startDateRequired": "Select a start date",
+      "responsibilitiesRequired": "Responsibilities are required",
+      "responsibilitiesMax": "Maximum 2000 characters"
+    }
+  },
+  "EditCvProject": {
+    "title": "Edit Project",
+    "project": "Project",
+    "domain": "Domain",
+    "startDate": "Start Date",
+    "endDate": "End Date",
+    "description": "Description",
+    "environment": "Environment",
+    "responsibilities": "Responsibilities",
+    "save": "Save",
+    "saving": "Saving...",
+    "validation": {
+      "projectRequired": "Select a project",
+      "startDateRequired": "Select a start date",
+      "responsibilitiesRequired": "Responsibilities are required",
+      "responsibilitiesMax": "Maximum 2000 characters"
+    }
+  },
+  "NotFound": {
+    "title": "Page not found",
+    "description": "The page you are looking for does not exist or has been moved.",
+    "button": "Go to homepage"
+  },
+  "Notifications": {
+    "skillAddedSuccessfully": "Skill added successfully",
+    "failedToAddSkill": "Failed to add skill",
+    "cvDeletedSuccessfully": "CV deleted successfully",
+    "failedToDeleteCv": "Failed to delete CV",
+    "skillDeletedSuccessfully": "Skill deleted successfully",
+    "failedToDeleteSkill": "Failed to delete skill",
+    "cvUpdatedSuccessfully": "CV updated successfully",
+    "failedToUpdateCv": "Failed to update CV",
+    "skillUpdatedSuccessfully": "Skill updated successfully",
+    "failedToUpdateSkill": "Failed to update skill",
+    "projectAddedSuccessfully": "Project added successfully",
+    "failedToAddProject": "Failed to add project",
+    "projectRemovedSuccessfully": "Project removed successfully",
+    "failedToRemoveProject": "Failed to remove project",
+    "projectUpdatedSuccessfully": "Project updated successfully",
+    "failedToUpdateProject": "Failed to update project",
+    "languageAddedSuccessfully": "Language added successfully",
+    "failedToAddLanguage": "Failed to add language",
+    "languagesDeletedSuccessfully": "Languages deleted successfully",
+    "failedToDeleteLanguages": "Failed to delete languages",
+    "languageUpdatedSuccessfully": "Language updated successfully",
+    "failedToUpdateLanguage": "Failed to update language",
+    "checkYourEmail": "Check your email",
+    "avatarDeletedSuccessfully": "Avatar deleted successfully",
+    "profileUpdatedSuccessfully": "Profile updated successfully",
+    "userUpdatedSuccessfully": "User updated successfully",
+    "avatarUploadedSuccessfully": "Avatar uploaded successfully",
+    "failedToUploadAvatar": "Failed to upload avatar",
+    "userDeletedSuccessfully": "User deleted successfully",
+    "emailAlreadyExists": "This email already exists",
+    "userCreatedSuccessfully": "User created successfully",
+    "createUserTitle": "Create user"
+  },
+  "Users": {
+    "fields": {
+      "email": "Email",
+      "password": "Password",
+      "firstName": "First name",
+      "lastName": "Last name",
+      "department": "Department",
+      "position": "Position",
+      "role": "Role"
+    },
+    "create": {
+      "title": "Create user",
+      "submit": "Create"
+    },
+    "edit": {
+      "title": "Edit user",
+      "submit": "Save"
+    },
+    "errors": {
+      "emailRequired": "Email is required",
+      "invalidEmail": "Invalid email",
+      "passwordMin": "Password must contain at least 6 characters",
+      "firstNameRequired": "First name is required",
+      "firstNameMax": "First name is too long",
+      "lastNameRequired": "Last name is required",
+      "lastNameMax": "Last name is too long",
+      "departmentRequired": "Department is required",
+      "positionRequired": "Position is required"
+    }
+  },
+  "SkillsToolbar": {
+    "search": "Search skill",
+    "create": "CREATE SKILL"
+  },
+
+  "SkillsTable": {
+    "name": "Name",
+    "category": "Category"
+  },
+
+  "SkillActions": {
+    "edit": "Edit skill",
+    "delete": "Delete skill"
+  },
+
+  "SkillModal": {
+    "createTitle": "Create skill",
+    "editTitle": "Edit skill",
+    "name": "Skill name",
+    "category": "Category",
+    "create": "Create",
+    "save": "Save",
+    "validation": {
+      "nameRequired": "Skill name is required"
+    }
+  },
+  "DepartmentsToolbar": {
+    "search": "Search department",
+    "create": "CREATE DEPARTMENT"
+  },
+  "DepartmentsTable": {
+    "name": "Name"
+  },
+  "DepartmentActions": {
+    "edit": "Edit department",
+    "delete": "Delete department"
+  },
+  "DepartmentModal": {
+    "createTitle": "Create department",
+    "editTitle": "Edit department",
+    "name": "Department name",
+    "create": "Create",
+    "save": "Save",
+    "validation": {
+      "nameRequired": "Department name is required"
+    }
+  },
+  "PositionsToolbar": {
+    "search": "Search position",
+    "create": "CREATE POSITION"
+  },
+
+  "PositionsTable": {
+    "name": "Name"
+  },
+
+  "PositionActions": {
+    "edit": "Edit position",
+    "delete": "Delete position"
+  },
+
+  "PositionModal": {
+    "createTitle": "Create position",
+    "editTitle": "Edit position",
+    "name": "Position name",
+    "create": "Create",
+    "save": "Save",
+    "validation": {
+      "nameRequired": "Position name is required"
+    }
+  },
+  "LanguagesToolbar": {
+    "search": "Search language",
+    "create": "CREATE LANGUAGE"
+  },
+
+  "LanguagesTable": {
+    "name": "Language",
+    "nativeName": "Native name",
+    "iso2": "ISO2"
+  },
+
+  "LanguageActions": {
+    "edit": "Edit language",
+    "delete": "Delete language"
+  },
+  "LanguageModal": {
+    "createTitle": "Create language",
+    "editTitle": "Edit language",
+    "name": "Language",
+    "nativeName": "Native name",
+    "iso2": "ISO2 code",
+    "create": "Create",
+    "save": "Save",
+    "validation": {
+      "nameRequired": "Language is required",
+      "nativeNameRequired": "Native name is required",
+      "iso2Required": "ISO2 code is required"
+    }
+  },
+  "ProjectsToolbar": {
+    "search": "Search project",
+    "create": "CREATE PROJECT"
+  },
+
+  "ProjectModal": {
+    "createTitle": "Create project",
+    "editTitle": "Edit project",
+    "name": "Project name",
+    "domain": "Domain",
+    "description": "Description",
+    "environment": "Environment",
+    "startDate": "Start date",
+    "endDate": "End date",
+    "create": "Create",
+    "save": "Save",
+    "validation": {
+      "nameRequired": "Project name is required",
+      "startDateRequired": "Start date is required"
+    }
   }
 }

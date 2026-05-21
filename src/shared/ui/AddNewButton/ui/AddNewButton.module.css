@@ -1,11 +1,15 @@
 .addNewButton {
+  padding: 0.5rem;
   display: flex;
   color: #767676 !important;
   gap: 16px;
-  width: 220px;
+  width: 270px;
   justify-content: center;
   align-items: center;
   font-weight: 500;
   line-height: 25px;
-  font-style: Medium;
+  border-radius: 25px;
+}
+.addNewButton:hover {
+  background-color: var(--bg-hover);
 }

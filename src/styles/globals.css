@@ -12,6 +12,7 @@
   --cancel-border: #00000099;
   --cancel-text: #00000099;
   --spinner-color: #00000099;
+  --z-index: 9999;
 }
 
 [data-theme="dark"] {
