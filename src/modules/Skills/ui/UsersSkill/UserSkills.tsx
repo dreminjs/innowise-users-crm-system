@@ -6,6 +6,7 @@ import { Loading } from "@/shared/ui/Loading";
 import { FC } from "react";
 import { useUserStore } from "@/application/store/user.store";
 import { UserRole } from "@/generated/graphql";
+import { Empty } from "@/shared/ui/Empty";
 
 interface ISkllsProps {
   userSkillsId: string;
@@ -27,24 +28,24 @@ export const UserSkills: FC<ISkllsProps> = ({
   const role = useUserStore((state) => state.role);
   const isEditable = role === UserRole.Admin || userSkillsId === currentUserId;
   if (loading) return <Loading />;
-  if (error) return <div>Error: {error.message}</div>;
+  if (error || !categoriesData?.skillCategories || !profileData?.profile) {
+    return <Empty />;
+  }
+  const hasSkills = profileData.profile.skills.length > 0;
+  const hasCategories = categoriesData.skillCategories.length > 0;
+
   return (
     <section>
-      {currentUserId && (
-        <>
-          {categoriesData?.skillCategories.length &&
-            profileData?.profile?.skills?.length && (
-              <SkillsList
-                categoriesData={categoriesData}
-                profileSkillsData={profileData}
-                isAvailableToChange={isEditable}
-              />
-            )}
-          <MenagementSkills
-            isAvailableToDelete={Boolean(profileData?.profile?.skills?.length)}
-          />
-        </>
+      {hasCategories && hasSkills ? (
+        <SkillsList
+          categoriesData={categoriesData}
+          profileSkillsData={profileData}
+          isAvailableToChange={isEditable}
+        />
+      ) : (
+        <Empty />
       )}
+      <MenagementSkills isAvailableToDelete={hasSkills} />
     </section>
   );
 };

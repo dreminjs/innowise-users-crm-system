@@ -9,24 +9,25 @@ import { Empty } from "@/shared/ui/Empty";
 interface ILanguagesProps {
   usersLanguagesId: string;
 }
-
 export const Languages: FC<ILanguagesProps> = ({ usersLanguagesId }) => {
-  const { data, loading } = useQuery(GET_PROFILE_LANGUAGES, {
+  const { data, loading, error } = useQuery(GET_PROFILE_LANGUAGES, {
     variables: {
       userId: usersLanguagesId,
     },
   });
   if (loading) return <Loading />;
+  if (error || !data?.profile) {
+    return <Empty />;
+  }
+  const languages = data.profile.languages ?? [];
   return (
     <section>
-      <>
-        {data?.profile.languages.length ? (
-          <LanguagesList languagesData={data} isAvailableToChange={true} />
-        ) : (
-          <Empty />
-        )}
-        <MenagementLanguages userId={usersLanguagesId} />
-      </>
+      {languages.length > 0 ? (
+        <LanguagesList languagesData={data} isAvailableToChange={true} />
+      ) : (
+        <Empty />
+      )}
+      <MenagementLanguages userId={usersLanguagesId} />
     </section>
   );
 };
