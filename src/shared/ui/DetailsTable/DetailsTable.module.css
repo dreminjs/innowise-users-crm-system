@@ -8,7 +8,6 @@
 
 .table {
     width: 100%;
-    min-width: 820px;
     border-collapse: separate;
     border-spacing: 0;
     table-layout: fixed;
@@ -82,7 +81,7 @@
     }
 
     .table {
-        min-width: 760px;
+        min-width: 500px;
     }
 
     .table th {

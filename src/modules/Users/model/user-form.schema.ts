@@ -32,3 +32,4 @@ export type TCreateUserFormValues = z.infer<
   ReturnType<typeof createUserSchema>
 >;
 export type TEditUserFormValues = z.infer<ReturnType<typeof editUserSchema>>;
+export type TUserFormValues = TCreateUserFormValues | TEditUserFormValues;

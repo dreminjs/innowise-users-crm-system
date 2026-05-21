@@ -5,15 +5,16 @@ export const refreshToken = async () => {
   if (!refresh) {
     throw new Error("No refresh token");
   }
-  const response = await fetch("https://cv-project-js.inno.ws/api/graphql", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-
-      Authorization: `Bearer ${refresh}`,
-    },
-    body: JSON.stringify({
-      query: `
+  const response = await fetch(
+    process.env.GRAPHQL_URL || "http://localhost:3001/api/graphql",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${refresh}`,
+      },
+      body: JSON.stringify({
+        query: `
           mutation UpdateToken {
             updateToken {
               access_token
@@ -21,12 +22,12 @@ export const refreshToken = async () => {
             }
           }
         `,
-    }),
-  });
+      }),
+    },
+  );
 
   const result = await response.json();
   const tokens = result?.data?.updateToken;
-
   if (!tokens) {
     throw new Error("Refresh failed");
   }

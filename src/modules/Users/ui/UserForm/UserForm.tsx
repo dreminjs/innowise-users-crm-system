@@ -4,17 +4,16 @@ import { Controller } from "react-hook-form";
 import { useQuery } from "@apollo/client/react";
 import { useTranslations } from "next-intl";
 import { FormField } from "@/shared/ui/FormField";
-import styles from "./UserForm.module.css";
-import { useUserForm } from "@/modules/Users/model/hooks/useUserForm";
-import { TUserFormProps } from "@/modules/Users/ui/UserForm/UserForm.types";
-import { GET_USERS_CREATERIES } from "@/modules/Users/api/queries";
 import { Loading } from "@/shared/ui/Loading";
 import { CustomSelect } from "@/shared/ui/CustomSelect";
 import { ConfirmButtons } from "@/shared/ui/ConfirmButtons";
-import { roleOptions } from "@/modules/Users/model/user-form.constants";
 import { useUserStore } from "@/application/store/user.store";
+import { useUserForm } from "@/modules/Users/model/hooks/useUserForm";
+import { roleOptions } from "@/modules/Users/model/user-form.constants";
+import { TUserFormProps } from "@/modules/Users/ui/UserForm/UserForm.types";
+import { GET_USERS_CREATERIES } from "@/modules/Users/api/queries";
 import { UserRole } from "@/generated/graphql";
-
+import styles from "./UserForm.module.css";
 export const UserForm = ({
   mode,
   defaultValues,
@@ -45,7 +44,12 @@ export const UserForm = ({
     return <div>Error: {error.message}</div>;
   }
   return (
-    <form onSubmit={handleSubmit(submitAction)} className={styles.form}>
+    <form
+      onSubmit={handleSubmit(
+        submitAction as Parameters<typeof handleSubmit>[0],
+      )}
+      className={styles.form}
+    >
       <div className={styles.grid}>
         {isCreating && (
           <FormField
@@ -53,7 +57,11 @@ export const UserForm = ({
             register={register}
             name="email"
             label={t("fields.email")}
-            error={errors.email?.message || serverError}
+            error={
+              "email" in errors
+                ? errors.email?.message || serverError
+                : serverError
+            }
           />
         )}
         {isCreating && (
@@ -62,7 +70,7 @@ export const UserForm = ({
             register={register}
             name="password"
             label={t("fields.password")}
-            error={errors.password?.message}
+            error={"password" in errors ? errors.password?.message : undefined}
           />
         )}
         <FormField

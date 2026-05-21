@@ -1,9 +1,9 @@
 .nameColumn {
-    width: 35%;
+    max-width: 35%;
 }
 
 .educationColumn {
-    width: 25%;
+    max-width: 25%;
 }
 
 .employeeColumn {
@@ -34,15 +34,6 @@
 }
 
 @media (max-width: 768px) {
-    .nameColumn {
-        width: 40%;
-    }
-    .educationColumn {
-        width: 30%;
-    }
-    .employeeColumn {
-        width: 30%;
-    }
     .description {
         font-size: 13px;
     }

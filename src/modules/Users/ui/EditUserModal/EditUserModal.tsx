@@ -1,14 +1,14 @@
 "use client";
 import { useTranslations } from "next-intl";
 import { UserForm } from "../UserForm/UserForm";
-import { TUserFormValues } from "../../model/user-form.types";
 import { AddItemModal } from "@/shared/ui/AddItemModal";
+import { TUserFormValues } from "@/modules/Users/model/user-form.schema";
 
 type Props = {
   open: boolean;
   loading?: boolean;
   defaultValues?: Partial<TUserFormValues>;
-  onClose: () => void;
+  closeAction: () => void;
   submitAction: (values: TUserFormValues) => Promise<void>;
 };
 
@@ -16,19 +16,23 @@ export const EditUserModal = ({
   open,
   loading,
   defaultValues,
-  onClose,
+  closeAction,
   submitAction,
 }: Props) => {
   const t = useTranslations("Users");
 
   return (
-    <AddItemModal open={open} toggleAction={onClose} title={t("edit.title")}>
+    <AddItemModal
+      open={open}
+      toggleAction={closeAction}
+      title={t("edit.title")}
+    >
       <UserForm
         mode="edit"
         loading={loading}
         defaultValues={defaultValues}
         submitAction={submitAction}
-        cancelAction={onClose}
+        cancelAction={closeAction}
       />
     </AddItemModal>
   );

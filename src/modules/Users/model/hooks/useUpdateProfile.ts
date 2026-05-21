@@ -4,7 +4,7 @@ import { useMutation } from "@apollo/client/react";
 import { UPDATE_PROFILE } from "../../api/mutations";
 import { useNotification } from "@/modules/Notifications";
 import { TUpdateUserForm } from "../uploadUserInfo.schema";
-import { GET_USER_PROFILE } from "../../api/queries";
+import { GET_USER_PROFILE, GET_USERS } from "../../api/queries";
 
 export const useUpdateProfile = (userId: string) => {
   const t = useTranslations("Notifications");
@@ -28,6 +28,9 @@ export const useUpdateProfile = (userId: string) => {
         variables: {
           userId: userId,
         },
+      },
+      {
+        query: GET_USERS,
       },
     ],
   });

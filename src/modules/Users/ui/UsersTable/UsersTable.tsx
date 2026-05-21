@@ -17,7 +17,7 @@ type Props = {
   loading: boolean;
   sortField: SortField;
   sortOrder: SortOrder;
-  onSort: (field: SortField) => void;
+  sortAction: (field: SortField) => void;
 };
 
 export const UsersTable = ({
@@ -25,7 +25,7 @@ export const UsersTable = ({
   loading,
   sortField,
   sortOrder,
-  onSort,
+  sortAction,
 }: Props) => {
   const t = useTranslations("Profile");
 
@@ -132,7 +132,7 @@ export const UsersTable = ({
       loading={loading}
       sortField={sortField}
       sortOrder={sortOrder}
-      onSort={onSort}
+      onSort={sortAction}
     />
   );
 };

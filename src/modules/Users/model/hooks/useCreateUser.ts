@@ -1,11 +1,11 @@
 "use client";
+
 import { useTranslations } from "next-intl";
 import { useMutation } from "@apollo/client/react";
 import { CREATE_USER } from "../../api/mutations";
 import { GET_USERS } from "../../api/queries";
 import { useNotification } from "@/modules/Notifications";
-import { TUserFormValues } from "@/modules/Users/model/user-form.types";
-
+import { TCreateUserFormValues } from "@/modules/Users/model/user-form.schema";
 export const useCreateUser = () => {
   const t = useTranslations("Notifications");
   const addNotification = useNotification((state) => state.addNotification);
@@ -28,7 +28,7 @@ export const useCreateUser = () => {
       },
     ],
   });
-  const submitAction = async (dto: TUserFormValues) => {
+  const submitAction = async (dto: TCreateUserFormValues) => {
     await mutate({
       variables: {
         user: {
@@ -48,7 +48,6 @@ export const useCreateUser = () => {
       },
     });
   };
-
   return {
     submitAction,
     loading,

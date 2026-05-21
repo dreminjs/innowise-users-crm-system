@@ -5,7 +5,7 @@ import { useMutation } from "@apollo/client/react";
 import { UPDATE_PROFILE, UPDATE_USER_DATA } from "../../api/mutations";
 import { GET_USERS } from "../../api/queries";
 import { useNotification } from "@/modules/Notifications";
-import { TUserFormValues } from "@/modules/Users/model/user-form.types";
+import { TUserFormValues } from "@/modules/Users/model/user-form.schema";
 
 type Props = {
   userId: string;

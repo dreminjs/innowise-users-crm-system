@@ -26,7 +26,8 @@ export const UsersPage = () => {
             users={users}
             sortField={sortField}
             sortOrder={sortOrder}
-            onSort={handleSort}
+            sortAction={handleSort}
+            loading={false}
           />
         </>
       )}

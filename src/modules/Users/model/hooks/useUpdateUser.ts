@@ -1,11 +1,10 @@
 "use client";
 import { useTranslations } from "next-intl";
-import { useUserStore } from "@/application/store/user.store";
 import { useNotification } from "@/modules/Notifications";
 import { UPDATE_USER } from "../../api/mutations";
 import { useMutation } from "@apollo/client/react";
 import { TUpdateUserForm } from "../uploadUserInfo.schema";
-import { GET_USER_PROFILE } from "../../api/queries";
+import { GET_USER_PROFILE, GET_USERS } from "../../api/queries";
 
 export const useUpdateUser = (userId: string) => {
   const t = useTranslations("Notifications");
@@ -29,6 +28,9 @@ export const useUpdateUser = (userId: string) => {
         variables: {
           userId: userId,
         },
+      },
+      {
+        query: GET_USERS,
       },
     ],
   });

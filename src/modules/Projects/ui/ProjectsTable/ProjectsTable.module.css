@@ -1,11 +1,3 @@
-.nameColumn {
-    width: 40%;
-}
-
-.domainColumn {
-    width: 40%;
-}
-
 .actionsColumn {
     width: 72px;
     min-width: 72px;
@@ -51,16 +43,10 @@
     font-size: 12px;
     line-height: 1;
     color: var(--color-text);
-    background: rgba(255, 255, 255, 0.04);
+    background: var(--bg-hover);
 }
 
 @media (max-width: 768px) {
-    .nameColumn {
-        width: 50%;
-    }
-    .domainColumn {
-        width: 50%;
-    }
     .description {
         font-size: 13px;
     }

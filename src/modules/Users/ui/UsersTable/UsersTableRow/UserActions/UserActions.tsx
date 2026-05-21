@@ -70,7 +70,7 @@ export const UserActions: FC<IUserActionsProps> = ({ user }) => {
       <EditUserModal
         open={isEditModalOpen}
         loading={loading}
-        onClose={() => setIsEditModalOpen(false)}
+        closeAction={() => setIsEditModalOpen(false)}
         submitAction={submitAction}
         defaultValues={{
           email: user.email,

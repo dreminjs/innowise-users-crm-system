@@ -1,10 +1,24 @@
-import { TUserFormMode, TUserFormValues } from "../../model/user-form.types";
+import {
+  TCreateUserFormValues,
+  TEditUserFormValues,
+} from "@/modules/Users/model/user-form.schema";
 
-export type TUserFormProps = {
-  mode: TUserFormMode;
-  defaultValues?: Partial<TUserFormValues>;
+type BaseProps = {
   loading?: boolean;
   serverError?: string;
-  submitAction: (values: TUserFormValues) => Promise<void>;
   cancelAction: () => void;
 };
+
+type CreateProps = BaseProps & {
+  mode: "create";
+  defaultValues?: Partial<TCreateUserFormValues>;
+  submitAction: (values: TCreateUserFormValues) => Promise<void>;
+};
+
+type EditProps = BaseProps & {
+  mode: "edit";
+  defaultValues?: Partial<TEditUserFormValues>;
+  submitAction: (values: TEditUserFormValues) => Promise<void>;
+};
+
+export type TUserFormProps = CreateProps | EditProps;
