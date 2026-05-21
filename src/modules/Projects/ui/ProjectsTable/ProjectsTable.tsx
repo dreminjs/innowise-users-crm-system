@@ -105,7 +105,7 @@ export const ProjectsTable = ({
           {!!project.environment?.length && (
             <div className={styles.environment}>
               {project.environment.map((item) => (
-                <span key={item} className={styles.tag}>
+                <span key={crypto.randomUUID()} className={styles.tag}>
                   {item}
                 </span>
               ))}
