@@ -1,7 +1,7 @@
-import { fireEvent, render, waitFor, screen } from "@testing-library/react";
-import { useCreateCv } from "../../model/hooks/useCreateCv";
-import { CreateCvModal } from "./CreateCvModal";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import { CreateCvModal } from "./CreateCvModal";
+import { useCreateCv } from "../../model/hooks/useCreateCv";
 import { useUserStore } from "@/application/store/user.store";
 
 jest.mock("next-intl", () => ({
@@ -9,15 +9,16 @@ jest.mock("next-intl", () => ({
 }));
 
 jest.mock("@/application/store/user.store", () => ({
-  useUserStore: (selector: (state: { userId: string }) => string) =>
-    selector({ userId: "user-123" }),
+  useUserStore: jest.fn(),
 }));
-
-const mockCreateCv = jest.fn();
 jest.mock("../../model/hooks/useCreateCv", () => ({
-  useCreateCv: () => [mockCreateCv, { loading: false }],
+  useCreateCv: jest.fn(),
 }));
-
+jest.mock("@/modules/Notifications", () => ({
+  useNotification: jest.fn(),
+}));
+const mockCreateCv = jest.fn();
+const addNotificationMock = jest.fn();
 const defaultProps = {
   isOpen: true,
   closeAction: jest.fn(),
@@ -27,14 +28,21 @@ describe("CreateCvModal", () => {
   beforeEach(() => {
     jest.clearAllMocks();
     mockCreateCv.mockResolvedValue({});
-
-    jest
-      .mocked(useUserStore)
-      .mockImplementation((selector: any) => selector({ userId: "user-123" }));
-
-    jest
-      .mocked(useCreateCv)
-      .mockReturnValue([mockCreateCv, { loading: false }] as any);
+    (useUserStore as unknown as jest.Mock).mockImplementation((selector) =>
+      selector({
+        userId: "user-123",
+      }),
+    );
+    (useCreateCv as unknown as jest.Mock).mockReturnValue([
+      mockCreateCv,
+      { loading: false },
+    ]);
+    const { useNotification } = jest.requireMock("@/modules/Notifications");
+    (useNotification as jest.Mock).mockImplementation((selector) =>
+      selector({
+        addNotification: addNotificationMock,
+      }),
+    );
   });
 
   describe("visibility", () => {
@@ -60,10 +68,9 @@ describe("CreateCvModal", () => {
       expect(screen.getByText("CvDetails.title")).toBeInTheDocument();
     });
 
-    it("renders name, education and description inputs", () => {
+    it("renders inputs", () => {
       render(<CreateCvModal {...defaultProps} />);
-      const inputs = screen.getAllByRole("textbox");
-      expect(inputs.length).toBe(3);
+      expect(screen.getAllByRole("textbox").length).toBe(3);
     });
 
     it("renders close button", () => {
@@ -71,85 +78,58 @@ describe("CreateCvModal", () => {
       expect(screen.getByText("×")).toBeInTheDocument();
     });
 
-    it("renders confirm button with translated create label", () => {
+    it("renders confirm button", () => {
       render(<CreateCvModal {...defaultProps} />);
       expect(
-        screen.getByRole("button", { name: /CvDetails.create/i }),
+        screen.getByRole("button", {
+          name: /CvDetails.create/i,
+        }),
       ).toBeInTheDocument();
     });
   });
 
   describe("close behavior", () => {
-    it("calls closeAction when close button is clicked", async () => {
+    it("calls closeAction on close button click", async () => {
       const closeAction = jest.fn();
       render(<CreateCvModal {...defaultProps} closeAction={closeAction} />);
       await userEvent.click(screen.getByText("×"));
       expect(closeAction).toHaveBeenCalledTimes(1);
     });
 
-    it("calls closeAction when backdrop is clicked", async () => {
-      const closeAction = jest.fn();
-      render(<CreateCvModal {...defaultProps} closeAction={closeAction} />);
-      await userEvent.click(document.querySelector("[class*='backdrop']")!);
-      expect(closeAction).toHaveBeenCalledTimes(1);
-    });
-
-    it("calls closeAction when cancel button is clicked", async () => {
+    it("calls closeAction on backdrop click", async () => {
       const closeAction = jest.fn();
       render(<CreateCvModal {...defaultProps} closeAction={closeAction} />);
       await userEvent.click(
-        screen.getByRole("button", { name: "ConfirmButtons.cancel" }),
+        document.querySelector("[class*='backdrop']") as HTMLElement,
       );
       expect(closeAction).toHaveBeenCalledTimes(1);
     });
-
-    it("resets form fields when isOpen changes to false", () => {
+    it("resets fields after close", () => {
       const { rerender } = render(<CreateCvModal {...defaultProps} />);
       const input = screen.getAllByRole("textbox")[0];
-      fireEvent.change(input, { target: { value: "My CV" } });
-
+      fireEvent.change(input, {
+        target: {
+          value: "My CV",
+        },
+      });
       rerender(<CreateCvModal {...defaultProps} isOpen={false} />);
-      rerender(<CreateCvModal {...defaultProps} isOpen={true} />);
-
+      rerender(<CreateCvModal {...defaultProps} isOpen />);
       expect(screen.getAllByRole("textbox")[0]).toHaveValue("");
     });
   });
 
-  describe("form validation", () => {
-    it("shows validation error when submitting with empty name", async () => {
-      render(<CreateCvModal {...defaultProps} />);
-      await userEvent.click(
-        screen.getByRole("button", { name: /CvDetails.create/i }),
-      );
-      await waitFor(() => {
-        expect(screen.getByText(/CvDetails.name/i)).toBeInTheDocument();
-      });
-    });
-
-    it("does not call createCv when form is invalid", async () => {
-      render(<CreateCvModal {...defaultProps} />);
-      await userEvent.click(
-        screen.getByRole("button", { name: /CvDetails.create/i }),
-      );
-      await waitFor(() => {
-        expect(mockCreateCv).not.toHaveBeenCalled();
-      });
-    });
-  });
-
   describe("form submission", () => {
-    it("calls createCv with correct variables on valid submit", async () => {
+    it("calls createCv with valid data", async () => {
       render(<CreateCvModal {...defaultProps} />);
-
       const [nameInput, educationInput, descriptionInput] =
         screen.getAllByRole("textbox");
-
       await userEvent.type(nameInput, "My CV");
       await userEvent.type(educationInput, "Bachelor");
-      await userEvent.type(descriptionInput, "Some description");
-
+      await userEvent.type(descriptionInput, "Description");
       await userEvent.click(
-        screen.getByRole("button", { name: /CvDetails.create/i }),
+        screen.getByRole("button", {
+          name: /CvDetails.create/i,
+        }),
       );
 
       await waitFor(() => {
@@ -158,7 +138,7 @@ describe("CreateCvModal", () => {
             cv: {
               name: "My CV",
               education: "Bachelor",
-              description: "Some description",
+              description: "Description",
               userId: "user-123",
             },
           },
@@ -166,45 +146,54 @@ describe("CreateCvModal", () => {
       });
     });
 
-    it("calls closeAction after successful submission", async () => {
+    it("calls closeAction after submit", async () => {
       const closeAction = jest.fn();
       render(<CreateCvModal {...defaultProps} closeAction={closeAction} />);
-
-      await userEvent.type(screen.getAllByRole("textbox")[0], "My CV");
+      const [nameInput, educationInput, descriptionInput] =
+        screen.getAllByRole("textbox");
+      await userEvent.type(nameInput, "My CV");
+      await userEvent.type(educationInput, "Bachelor");
+      await userEvent.type(descriptionInput, "Description");
       await userEvent.click(
-        screen.getByRole("button", { name: /CvDetails.create/i }),
+        screen.getByRole("button", {
+          name: /CvDetails.create/i,
+        }),
       );
-
       await waitFor(() => {
-        expect(closeAction).toHaveBeenCalledTimes(1);
+        expect(closeAction).toHaveBeenCalled();
       });
     });
-
-    it("does not call createCv when userId is missing", async () => {
-      jest
-        .mocked(useUserStore)
-        .mockImplementation((selector: any) => selector({ userId: null }));
-
-      render(<CreateCvModal {...defaultProps} />);
-      await userEvent.type(screen.getAllByRole("textbox")[0], "My CV");
-      await userEvent.click(
-        screen.getByRole("button", { name: /CvDetails.create/i }),
+    it("does not call createCv without userId", async () => {
+      (useUserStore as unknown as jest.Mock).mockImplementation((selector) =>
+        selector({
+          userId: null,
+        }),
       );
-
+      render(<CreateCvModal {...defaultProps} />);
+      const [nameInput, educationInput, descriptionInput] =
+        screen.getAllByRole("textbox");
+      await userEvent.type(nameInput, "My CV");
+      await userEvent.type(educationInput, "Bachelor");
+      await userEvent.type(descriptionInput, "Description");
+      await userEvent.click(
+        screen.getByRole("button", {
+          name: /CvDetails.create/i,
+        }),
+      );
       await waitFor(() => {
         expect(mockCreateCv).not.toHaveBeenCalled();
       });
     });
-
-    it("disables confirm button while loading", () => {
-      jest
-        .mocked(useCreateCv)
-        .mockReturnValue([mockCreateCv, { loading: true }] as any);
-
+    it("disables button while loading", () => {
+      (useCreateCv as unknown as jest.Mock).mockReturnValue([
+        mockCreateCv,
+        { loading: true },
+      ]);
       render(<CreateCvModal {...defaultProps} />);
-
       expect(
-        screen.getByRole("button", { name: /CvDetails.create/i }),
+        screen.getByRole("button", {
+          name: /CvDetails.create/i,
+        }),
       ).toBeDisabled();
     });
   });

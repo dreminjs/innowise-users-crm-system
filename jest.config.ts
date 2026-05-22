@@ -5,12 +5,13 @@ const createJestConfig = nextJest({
 });
 
 const customJestConfig = {
-  preset: "ts-jest",
   testEnvironment: "jsdom",
   setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],
   moduleNameMapper: {
     "^@/(.*)$": "<rootDir>/src/$1",
+
     "^.+\\.module\\.(css|sass|scss)$": "identity-obj-proxy",
+
     "\\.svg$": "<rootDir>/__mocks__/svg.tsx",
   },
   collectCoverage: true,
@@ -22,5 +23,4 @@ const customJestConfig = {
     "!src/graphql/generated/**",
   ],
 };
-
 export default createJestConfig(customJestConfig);

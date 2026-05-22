@@ -2,6 +2,13 @@ import { DetailsColumn, DetailsTable } from "./DetailsTable";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
+jest.mock("@/shared/ui/Loading", () => ({
+  Loading: () => <div data-testid="loading">loading</div>,
+}));
+
+jest.mock("@/shared/ui/Empty", () => ({
+  Empty: () => <div data-testid="empty">empty</div>,
+}));
 const mockColumns: DetailsColumn<
   { id: string; name: string },
   "name" | "actions",
