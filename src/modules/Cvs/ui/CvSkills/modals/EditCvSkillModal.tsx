@@ -2,7 +2,7 @@
 
 import { FC } from "react";
 import { Mastery } from "@/generated/graphql";
-import { EditCvSkillForm } from "./EditCvSkillForm";
+import { EditCvSkillForm } from "../forms/EditCvSkillForm";
 import { FormModal } from "@/shared/ui/FormModal/ui/FormModal";
 import { useTranslations } from "next-intl";
 
