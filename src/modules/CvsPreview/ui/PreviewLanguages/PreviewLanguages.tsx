@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { GetCvQuery } from "@/graphql/graphql";
-import { AppMessages } from "@/shared/lib/getMessages";
 import { translateText } from "@/shared/api/translateText";
 import { useSettingsStore } from "@/modules/Settings/model/settings.store";
 import styles from "./PreviewLanguages.module.css";

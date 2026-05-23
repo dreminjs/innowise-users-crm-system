@@ -1,8 +1,6 @@
 import { renderHook, act } from "@testing-library/react";
 import { useExportPdf } from "./useExportPdf";
 
-// --- Mocks ---
-
 jest.mock("@apollo/client/react", () => ({
   useMutation: jest.fn(),
 }));
@@ -24,29 +22,37 @@ const mockState = { loading: false, error: undefined, data: undefined };
 const MOCK_HTML = "<html><body>CV Content</body></html>";
 const MOCK_BASE64 = btoa("fake-pdf-content");
 
-// --- DOM API Mocks ---
-
 const mockClick = jest.fn();
 const mockCreateObjectURL = jest.fn().mockReturnValue("blob:mock-url");
 const mockRevokeObjectURL = jest.fn();
-const mockCreateElement = jest.spyOn(document, "createElement");
 
 global.URL.createObjectURL = mockCreateObjectURL;
 global.URL.revokeObjectURL = mockRevokeObjectURL;
+
+const originalCreateElement = document.createElement.bind(document);
 
 describe("useExportPdf", () => {
   beforeEach(() => {
     jest.clearAllMocks();
     mockBuildPrintableHtml.mockReturnValue(MOCK_HTML);
     mockUseMutation.mockReturnValue([mockExportPdfFn, mockState]);
-    mockCreateElement.mockReturnValue({
-      href: "",
-      download: "",
-      click: mockClick,
-    } as unknown as HTMLAnchorElement);
-    mockExportPdfFn.mockResolvedValue({
-      data: { exportPdf: MOCK_BASE64 },
+    mockExportPdfFn.mockResolvedValue({ data: { exportPdf: MOCK_BASE64 } });
+    mockCreateObjectURL.mockReturnValue("blob:mock-url");
+
+    jest.spyOn(document, "createElement").mockImplementation((tag: string) => {
+      if (tag === "a") {
+        return {
+          href: "",
+          download: "",
+          click: mockClick,
+        } as unknown as HTMLAnchorElement;
+      }
+      return originalCreateElement(tag);
     });
+  });
+
+  afterEach(() => {
+    jest.restoreAllMocks();
   });
 
   describe("Initialization", () => {
@@ -125,19 +131,17 @@ describe("useExportPdf", () => {
       await act(async () => {
         await result.current.handleExportPdf("raw content");
       });
-      expect(mockCreateElement).toHaveBeenCalledWith("a");
       expect(mockClick).toHaveBeenCalledTimes(1);
     });
 
     it("sets correct href and download on anchor element", async () => {
-      const mockAnchor = {
-        href: "",
-        download: "",
-        click: mockClick,
-      };
-      mockCreateElement.mockReturnValue(
-        mockAnchor as unknown as HTMLAnchorElement,
-      );
+      const mockAnchor = { href: "", download: "", click: mockClick };
+      jest
+        .spyOn(document, "createElement")
+        .mockImplementation((tag: string) => {
+          if (tag === "a") return mockAnchor as unknown as HTMLAnchorElement;
+          return originalCreateElement(tag);
+        });
       const { result } = renderHook(() => useExportPdf());
       await act(async () => {
         await result.current.handleExportPdf("raw content");

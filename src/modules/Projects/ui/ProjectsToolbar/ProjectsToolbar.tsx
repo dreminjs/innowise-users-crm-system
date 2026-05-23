@@ -8,7 +8,6 @@ type Props = {
   changeAction: (value: string) => void;
   createAction: () => void;
 };
-
 export const ProjectsToolbar = ({
   value,
   changeAction,
