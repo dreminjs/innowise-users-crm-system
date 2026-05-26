@@ -11,7 +11,6 @@ export const useRemoveCvProject = (cvId: string) => {
     successMessage: t("projectRemovedSuccessfully"),
     errorMessage: t("failedToRemoveProject"),
   });
-
   return useMutation(REMOVE_CV_PROJECT, {
     ...notifications,
     refetchQueries: [

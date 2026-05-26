@@ -55,7 +55,7 @@ export const ProjectsTable = ({
         sortKey: "domain",
         className: styles.domainColumn,
         render: (project) => (
-          <div className={styles.cellContent}>{project.domain ?? "-"}</div>
+          <div className={styles.cellContent}>{project.domain || "-"}</div>
         ),
       },
 

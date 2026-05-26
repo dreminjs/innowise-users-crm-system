@@ -5,7 +5,10 @@ import { useQuery } from "@apollo/client/react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import styles from "./AddCvProjectModal.module.css";
-import { GET_PROJECT_OPTIONS } from "@/modules/Projects/api/queries";
+import {
+  GET_CV_PROJECTS,
+  GET_PROJECT_OPTIONS,
+} from "@/modules/Projects/api/queries";
 import { useAddCvProject } from "@/modules/Projects/hooks/useAddCvProject";
 import { CustomSelect } from "@/shared/ui/CustomSelect/CustomSelect";
 import { DatePicker } from "@/shared/ui/DatePicker/DatePicker";
@@ -14,7 +17,6 @@ import {
   createAddCvProjectSchema,
   TAddCvProjectFormData,
 } from "@/modules/Projects/model/addCvProject.schema";
-
 type Props = {
   cvId: string;
   closeAction: () => void;
@@ -24,6 +26,11 @@ export const AddCvProjectForm = ({ cvId, closeAction }: Props) => {
   const t = useTranslations("AddCvProject");
   const schema = createAddCvProjectSchema(t);
   const { data } = useQuery(GET_PROJECT_OPTIONS);
+  const { data: cvProjectsData } = useQuery(GET_CV_PROJECTS, {
+    variables: {
+      cvId,
+    },
+  });
   const [addCvProject] = useAddCvProject(cvId);
   const {
     setValue,
@@ -39,12 +46,19 @@ export const AddCvProjectForm = ({ cvId, closeAction }: Props) => {
       responsibilities: "",
     },
   });
-
   const projectId = watch("projectId");
+  const availableProjects = useMemo(() => {
+    const usedProjectIds =
+      cvProjectsData?.cv?.projects?.map((project) => project.project.id) ?? [];
+    return (
+      data?.projects.filter(
+        (project) => !usedProjectIds.includes(project.id),
+      ) ?? []
+    );
+  }, [data, cvProjectsData]);
   const selectedProject = useMemo(() => {
-    return data?.projects.find((project) => project.id === projectId);
-  }, [data, projectId]);
-
+    return availableProjects.find((project) => project.id === projectId);
+  }, [availableProjects, projectId]);
   const onSubmit = async (form: TAddCvProjectFormData) => {
     try {
       await addCvProject({
@@ -76,12 +90,10 @@ export const AddCvProjectForm = ({ cvId, closeAction }: Props) => {
               shouldValidate: true,
             })
           }
-          options={
-            data?.projects.map((project) => ({
-              label: project.name,
-              value: project.id,
-            })) ?? []
-          }
+          options={availableProjects.map((project) => ({
+            label: project.name,
+            value: project.id,
+          }))}
         />
         <ModalField
           label={t("domain")}
