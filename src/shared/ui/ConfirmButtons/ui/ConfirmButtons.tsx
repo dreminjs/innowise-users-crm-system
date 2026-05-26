@@ -26,6 +26,7 @@ export const ConfirmButtons: FC<ConfirmButtonsProps> = ({
         type="button"
         className={styles.cancelButton}
         onClick={cancelAction}
+        data-testid="cancel-btn"
       >
         {t("cancel")}
       </button>
@@ -34,6 +35,7 @@ export const ConfirmButtons: FC<ConfirmButtonsProps> = ({
         type={confirmButtonType}
         className={styles.confirmButton}
         onClick={confirmAction}
+        data-testid="confirm-btn"
       >
         <span>{confirmLabel ?? t("confirm")}</span>
         {amount && <span className={styles.confirmButtonAmount}>{amount}</span>}

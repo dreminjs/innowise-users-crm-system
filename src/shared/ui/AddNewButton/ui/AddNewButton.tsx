@@ -8,7 +8,11 @@ interface IAddNewButtonProps {
 
 export const AddNewButton: FC<IAddNewButtonProps> = ({ onClick, label }) => {
   return (
-    <button className={styles.addNewButton} onClick={onClick}>
+    <button
+      className={styles.addNewButton}
+      onClick={onClick}
+      data-testid="add-new-btn"
+    >
       <span>+</span>
       <span>{label}</span>
     </button>

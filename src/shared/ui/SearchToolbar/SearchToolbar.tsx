@@ -32,6 +32,7 @@ export const SearchToolbar = ({
           onChange={(e) => changeAction(e.target.value)}
           placeholder={placeholder || t("search")}
           className={styles.input}
+          data-testid="search-input"
         />
       </div>
       {buttonLabel && createAction && (

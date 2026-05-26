@@ -20,6 +20,7 @@ interface ICustomSelectProps {
   disabled?: boolean;
   value: string | null;
   error?: string;
+  testId?: string;
   onChange?: (value: string) => void;
 }
 
@@ -36,6 +37,7 @@ export const CustomSelect: FC<ICustomSelectProps> = ({
   value,
   error,
   onChange,
+  testId,
 }) => {
   const flatItems = useMemo(() => {
     if (!options.length) {
@@ -67,7 +69,7 @@ export const CustomSelect: FC<ICustomSelectProps> = ({
             [styles.errorBorder]: error,
           })}
         >
-          <Select.Trigger>
+          <Select.Trigger data-testid={testId}>
             <Select.ValueText
               suppressHydrationWarning
               placeholder=" "
