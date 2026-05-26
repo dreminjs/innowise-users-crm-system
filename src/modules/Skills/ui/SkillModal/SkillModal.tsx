@@ -88,7 +88,7 @@ export const SkillModal: FC<Props> = ({
           onChange={setCategoryId}
         />
         <ConfirmButtons
-          confirmLabel={confirmLabel ?? ""}
+          confirmLabel={confirmLabel!}
           confirmButtonType="submit"
           cancelAction={toggleAction}
           disabled={loading}

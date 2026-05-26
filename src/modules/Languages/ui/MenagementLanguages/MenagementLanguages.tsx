@@ -21,7 +21,7 @@ export const MenagementLanguages = ({ userId }: Props) => {
     <>
       <div className={styles.managementLanguages}>
         {isDeleteMode ? (
-          <>
+          <div className={styles.menagementLanguages}>
             <button
               className={styles.cancelDeleteButton}
               onClick={() => toggleDeleteMode()}
@@ -29,7 +29,7 @@ export const MenagementLanguages = ({ userId }: Props) => {
               {t("ConfirmButtons.cancel")}
             </button>
             <RemoveLanguagesButton userId={userId} />
-          </>
+          </div>
         ) : (
           <div className={styles.menagementLanguages}>
             <AddNewButton
@@ -46,7 +46,7 @@ export const MenagementLanguages = ({ userId }: Props) => {
       <AddLanguageModal
         userId={userId}
         open={isLanguageModalOpen}
-        onToggle={() => setIsLanguageModalOpen((prev) => !prev)}
+        onToggle={() => setIsLanguageModalOpen(false)}
       />
     </>
   );

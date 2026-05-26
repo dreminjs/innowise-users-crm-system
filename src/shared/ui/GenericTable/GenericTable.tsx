@@ -2,27 +2,25 @@ import { Empty } from "@/shared/ui/Empty";
 import { Loading } from "@/shared/ui/Loading";
 import styles from "./GenericTable.module.css";
 
-export type Column<T, TColumn extends string, TSort extends string> = {
+export type Column<T, TColumn extends string> = {
   key: TColumn;
   title: React.ReactNode;
   sortable?: boolean;
   className?: string;
   render: (item: T) => React.ReactNode;
-  sortKey?: TSort;
 };
 
-type Props<T, TColumn extends string, TSort extends string> = {
+type Props<T, TColumn extends string> = {
   data: T[];
-  columns: Column<T, TColumn, TSort>[];
+  columns: Column<T, TColumn>[];
   rowKey: (item: T) => string;
   loading?: boolean;
-  sortField?: TSort;
+  sortField?: TColumn;
   sortOrder?: "asc" | "desc";
-  onSort?: (field: TSort) => void;
+  onSort?: (field: TColumn) => void;
   empty?: React.ReactNode;
 };
-
-export const GenericTable = <T, TColumn extends string, TSort extends string>({
+export const GenericTable = <T, TColumn extends string>({
   data,
   columns,
   rowKey,
@@ -31,7 +29,7 @@ export const GenericTable = <T, TColumn extends string, TSort extends string>({
   sortOrder,
   onSort,
   empty,
-}: Props<T, TColumn, TSort>) => {
+}: Props<T, TColumn>) => {
   if (loading) {
     return <Loading />;
   }
@@ -44,13 +42,13 @@ export const GenericTable = <T, TColumn extends string, TSort extends string>({
         <thead>
           <tr>
             {columns.map((column) => {
-              const isActive = column.sortable && column.sortKey === sortField;
+              const isActive = column.sortable && column.key === sortField;
               return (
                 <th key={column.key} className={column.className}>
-                  {column.sortable && column.sortKey ? (
+                  {column.sortable ? (
                     <button
                       className={styles.sortButton}
-                      onClick={() => onSort?.(column.sortKey!)}
+                      onClick={() => onSort?.(column.key)}
                     >
                       {column.title}
                       {isActive && (
