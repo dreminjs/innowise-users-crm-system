@@ -84,7 +84,7 @@ describe("Projects Component", () => {
     projects: [{ id: "1", name: "Project 1" }],
   };
 
-  const mockUseQuery = useQuery as jest.Mock;
+  const mockUseQuery = useQuery as unknown as jest.Mock;
 
   beforeEach(() => {
     jest.clearAllMocks();

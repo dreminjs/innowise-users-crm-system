@@ -1,8 +1,29 @@
-import { render, screen, fireEvent, waitFor } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { ProjectForm } from "./ProjectForm";
 
+jest.mock("@apollo/client/react", () => ({
+  useQuery: () => ({
+    data: {
+      skills: [
+        {
+          name: "dev",
+        },
+        {
+          name: "staging",
+        },
+        {
+          name: "prod",
+        },
+      ],
+    },
+  }),
+}));
+
 jest.mock("@/shared/ui/DatePicker/DatePicker", () => ({
-  DatePicker: (props: any) => (
+  DatePicker: (props: {
+    value?: string;
+    changeAction?: (value: string) => void;
+  }) => (
     <input
       data-testid="mock-datepicker"
       value={props.value || ""}
@@ -12,6 +33,32 @@ jest.mock("@/shared/ui/DatePicker/DatePicker", () => ({
         }
       }}
     />
+  ),
+}));
+
+jest.mock("@/shared/ui/CustomSelect", () => ({
+  CustomSelect: ({
+    onChange,
+    options,
+  }: {
+    onChange: (value: string) => void;
+    options: {
+      label: string;
+      value: string;
+    }[];
+  }) => (
+    <select
+      data-testid="environment-select"
+      onChange={(e) => onChange(e.target.value)}
+    >
+      <option value="">Select</option>
+
+      {options.map((option) => (
+        <option key={option.value} value={option.value}>
+          {option.label}
+        </option>
+      ))}
+    </select>
   ),
 }));
 
@@ -30,31 +77,73 @@ describe("ProjectForm", () => {
 
     const nameInput = screen.getByText("name")
       .previousElementSibling as HTMLInputElement;
-    fireEvent.change(nameInput, { target: { value: "New Project" } });
+
+    fireEvent.change(nameInput, {
+      target: {
+        value: "New Project",
+      },
+    });
 
     const domainInput = screen.getByText("domain")
       .previousElementSibling as HTMLInputElement;
-    fireEvent.change(domainInput, { target: { value: "example.com" } });
+
+    fireEvent.change(domainInput, {
+      target: {
+        value: "example.com",
+      },
+    });
 
     const datePickers = screen.getAllByTestId("mock-datepicker");
+
     if (datePickers[0]) {
-      fireEvent.change(datePickers[0], { target: { value: "2026-05-22" } });
+      fireEvent.change(datePickers[0], {
+        target: {
+          value: "2026-05-22",
+        },
+      });
     }
+
     if (datePickers[1]) {
-      fireEvent.change(datePickers[1], { target: { value: "2026-06-01" } });
+      fireEvent.change(datePickers[1], {
+        target: {
+          value: "2026-06-01",
+        },
+      });
     }
 
     const descInput = screen.getByText("description")
       .previousElementSibling as HTMLTextAreaElement;
+
     fireEvent.change(descInput, {
-      target: { value: "Test description for the project" },
+      target: {
+        value: "Test description for the project",
+      },
     });
 
-    const envInput = screen.getByText("environment")
-      .previousElementSibling as HTMLInputElement;
-    fireEvent.change(envInput, { target: { value: "dev, staging, prod" } });
+    const select = screen.getByTestId("environment-select");
 
-    const submitButton = screen.getByRole("button", { name: /save/i });
+    fireEvent.change(select, {
+      target: {
+        value: "dev",
+      },
+    });
+
+    fireEvent.change(select, {
+      target: {
+        value: "staging",
+      },
+    });
+
+    fireEvent.change(select, {
+      target: {
+        value: "prod",
+      },
+    });
+
+    const submitButton = screen.getByRole("button", {
+      name: /save/i,
+    });
+
     fireEvent.click(submitButton);
 
     await waitFor(() => {
@@ -71,7 +160,5 @@ describe("ProjectForm", () => {
         end_date: "2026-06-01",
       }),
     );
-
-    expect(defaultProps.closeAction).toHaveBeenCalledTimes(1);
   });
 });

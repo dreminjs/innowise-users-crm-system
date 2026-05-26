@@ -20,7 +20,7 @@ describe("useGetProjects hook", () => {
 
   beforeEach(() => {
     jest.clearAllMocks();
-    (useQuery as jest.Mock).mockReturnValue(mockQueryResult);
+    (useQuery as unknown as jest.Mock).mockReturnValue(mockQueryResult);
   });
 
   it("should call useQuery with GET_CV_PROJECTS and the correct cvId variable", () => {

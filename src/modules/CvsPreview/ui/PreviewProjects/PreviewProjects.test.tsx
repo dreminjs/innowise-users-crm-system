@@ -7,7 +7,7 @@ jest.mock("@/shared/api/translateText");
 import { useSettingsStore } from "@/modules/Settings/model/settings.store";
 import { translateText } from "@/shared/api/translateText";
 
-const mockUseSettingsStore = useSettingsStore as jest.Mock;
+const mockUseSettingsStore = useSettingsStore as unknown as jest.Mock;
 const mockTranslateText = translateText as jest.Mock;
 
 const mockMessages = {

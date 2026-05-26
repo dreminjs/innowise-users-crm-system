@@ -119,7 +119,10 @@ describe("EditCvProjectPage Component", () => {
   });
 
   it("should render the loading fallback state when data is fetching", () => {
-    (useQuery as jest.Mock).mockReturnValue({ data: undefined, loading: true });
+    (useQuery as unknown as jest.Mock).mockReturnValue({
+      data: undefined,
+      loading: true,
+    });
 
     render(<EditCvProjectPage cvId={mockCvId} projectId={mockProjectId} />);
 
@@ -128,7 +131,7 @@ describe("EditCvProjectPage Component", () => {
   });
 
   it("should render the empty state if the specified project ID is not found in payload data", () => {
-    (useQuery as jest.Mock).mockReturnValue({
+    (useQuery as unknown as jest.Mock).mockReturnValue({
       data: { cv: { projects: [] } },
       loading: false,
     });
@@ -139,7 +142,7 @@ describe("EditCvProjectPage Component", () => {
   });
 
   it("should correctly populate all read-only fields and prefill input form values", () => {
-    (useQuery as jest.Mock).mockReturnValue({
+    (useQuery as unknown as jest.Mock).mockReturnValue({
       data: sampleQueryData,
       loading: false,
     });
@@ -167,7 +170,7 @@ describe("EditCvProjectPage Component", () => {
   });
 
   it("should redirect back to projects overview list when clicking Cancel", () => {
-    (useQuery as jest.Mock).mockReturnValue({
+    (useQuery as unknown as jest.Mock).mockReturnValue({
       data: sampleQueryData,
       loading: false,
     });
@@ -181,7 +184,7 @@ describe("EditCvProjectPage Component", () => {
   });
 
   it("should display a localized saving indicator status and disable buttons during submission", () => {
-    (useQuery as jest.Mock).mockReturnValue({
+    (useQuery as unknown as jest.Mock).mockReturnValue({
       data: sampleQueryData,
       loading: false,
     });
@@ -198,7 +201,7 @@ describe("EditCvProjectPage Component", () => {
   });
 
   it("should transform parameters properly, submit the update mutation hook, and redirect upon completion", async () => {
-    (useQuery as jest.Mock).mockReturnValue({
+    (useQuery as unknown as jest.Mock).mockReturnValue({
       data: sampleQueryData,
       loading: false,
     });

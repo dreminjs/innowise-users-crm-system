@@ -90,7 +90,7 @@ describe("EditCvSkillForm", () => {
   beforeEach(() => {
     jest.clearAllMocks();
 
-    (useQuery as jest.Mock).mockReturnValue({
+    (useQuery as unknown as jest.Mock).mockReturnValue({
       data: mockSkillsData,
     });
 
@@ -154,7 +154,7 @@ describe("EditCvSkillForm", () => {
   });
 
   it("should not call updateCvSkill if the selected skill is not found in skills data", async () => {
-    (useQuery as jest.Mock).mockReturnValue({
+    (useQuery as unknown as jest.Mock).mockReturnValue({
       data: { skills: [] },
     });
 

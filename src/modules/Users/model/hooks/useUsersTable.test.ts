@@ -26,7 +26,6 @@ describe("useUsersTable", () => {
     (filterUsers as unknown as jest.Mock).mockReturnValue(usersMock);
     (sortUsers as unknown as jest.Mock).mockReturnValue(usersMock);
   });
-
   it("should return default values", () => {
     const { result } = renderHook(() => useUsersTable(usersMock as never));
     expect(result.current.search).toBe("");
@@ -34,7 +33,6 @@ describe("useUsersTable", () => {
     expect(result.current.sortOrder).toBe("asc");
     expect(result.current.users).toEqual(usersMock);
   });
-
   it("should set search value", () => {
     const { result } = renderHook(() => useUsersTable(usersMock as never));
     act(() => {

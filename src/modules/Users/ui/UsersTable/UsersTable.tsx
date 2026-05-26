@@ -49,7 +49,8 @@ export const UsersTable = ({
       },
 
       {
-        key: "first_name" as SortField,
+        key: "first_name",
+        sortKey: "first_name" as SortField,
         title: t("firstName"),
         sortable: true,
         className: styles.nameColumn,
@@ -61,7 +62,8 @@ export const UsersTable = ({
       },
 
       {
-        key: "last_name" as SortField,
+        key: "last_name",
+        sortKey: "last_name" as SortField,
         title: t("lastName"),
         sortable: true,
         className: styles.nameColumn,
@@ -73,7 +75,8 @@ export const UsersTable = ({
       },
 
       {
-        key: "email" as SortField,
+        key: "email",
+        sortKey: "email" as SortField,
         title: "Email",
         sortable: true,
         className: styles.emailColumn,
@@ -83,7 +86,8 @@ export const UsersTable = ({
       },
 
       {
-        key: "department" as SortField,
+        key: "department",
+        sortKey: "department" as SortField,
         title: t("department"),
         sortable: true,
         render: (user: GetUsersQuery["users"][number]) => (
@@ -94,7 +98,8 @@ export const UsersTable = ({
       },
 
       {
-        key: "position" as SortField,
+        key: "position",
+        sortKey: "position" as SortField,
         title: t("position"),
         sortable: true,
         render: (user: GetUsersQuery["users"][number]) => (
@@ -103,7 +108,7 @@ export const UsersTable = ({
       },
 
       {
-        key: "actions" as SortField,
+        key: "actions",
         title: "",
         sortable: false,
         className: styles.actionsColumn,

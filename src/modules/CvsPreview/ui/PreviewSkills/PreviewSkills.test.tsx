@@ -1,23 +1,22 @@
 import { render, screen } from "@testing-library/react";
 import { PreviewSkills } from "./PreviewSkills";
+import { Mastery } from "@/generated/graphql";
 
 jest.mock("next-intl", () => ({
   useTranslations: () => (key: string) => `translated_${key}`,
 }));
-
 const mockUseQuery = jest.fn();
 jest.mock("@apollo/client/react", () => ({
-  useQuery: (...args) => mockUseQuery(...args),
-  gql: (strings: any) => strings,
+  useQuery: (...args: unknown[]) => mockUseQuery(...args),
+  gql: (strings: unknown) => strings,
 }));
-
 jest.mock("@/modules/Skills/api/queries.ts", () => ({
   GET_SKILL_CATEGORIES: "GET_SKILL_CATEGORIES",
 }));
-
 const mockGroupSkillsByCategory = jest.fn();
 jest.mock("../../utils/groupSkillsByCategory", () => ({
-  groupSkillsByCategory: (...args) => mockGroupSkillsByCategory(...args),
+  groupSkillsByCategory: (...args: unknown[]) =>
+    mockGroupSkillsByCategory(...args),
 }));
 
 describe("PreviewSkills", () => {
@@ -26,25 +25,40 @@ describe("PreviewSkills", () => {
       professionalSkills: "Professional Skills Title",
     },
     Skills: {
-      frontend: "Front-End Development",
+      Frontend: "Front-End Development",
     },
-  } as any;
-
+  } as unknown as React.ComponentProps<typeof PreviewSkills>["messages"];
   const mockSkills = [
-    { name: "React" },
-    { name: "Node.js" },
-    { name: "TypeScript" },
+    {
+      name: "React",
+      mastery: Mastery.Proficient,
+      categoryId: "1",
+    },
+    {
+      name: "Node.js",
+      mastery: Mastery.Proficient,
+      categoryId: "2",
+    },
+    {
+      name: "TypeScript",
+      mastery: Mastery.Proficient,
+      categoryId: "1",
+    },
   ];
 
   beforeEach(() => {
     jest.clearAllMocks();
-
-    // Default useQuery response
     mockUseQuery.mockReturnValue({
       data: {
         skillCategories: [
-          { id: "1", name: "frontend" },
-          { id: "2", name: "backend" },
+          {
+            id: "1",
+            name: "Frontend",
+          },
+          {
+            id: "2",
+            name: "Backend",
+          },
         ],
       },
     });
@@ -52,43 +66,56 @@ describe("PreviewSkills", () => {
 
   it("renders the section title from the messages prop", () => {
     mockGroupSkillsByCategory.mockReturnValue([]);
-
     render(<PreviewSkills skills={mockSkills} messages={mockMessages} />);
-
     expect(
-      screen.getByRole("heading", { name: "Professional Skills Title" }),
+      screen.getByRole("heading", {
+        name: "Professional Skills Title",
+      }),
     ).toBeInTheDocument();
   });
 
   it("renders grouped skills and formats commas correctly", () => {
-    // Mock the utility to return two groups
     mockGroupSkillsByCategory.mockReturnValue([
       {
-        groupName: "frontend",
-        skills: [{ name: "React" }, { name: "TypeScript" }],
+        groupName: "Frontend",
+        skills: [
+          {
+            name: "React",
+            mastery: Mastery.Proficient,
+            categoryId: "1",
+          },
+          {
+            name: "TypeScript",
+            mastery: Mastery.Proficient,
+            categoryId: "1",
+          },
+        ],
       },
       {
-        groupName: "backend",
-        skills: [{ name: "Node.js" }],
+        groupName: "Backend",
+        skills: [
+          {
+            name: "Node.js",
+            mastery: Mastery.Proficient,
+            categoryId: "2",
+          },
+        ],
       },
     ]);
-
     render(<PreviewSkills skills={mockSkills} messages={mockMessages} />);
-
     expect(screen.getByText("Front-End Development")).toBeInTheDocument();
     expect(screen.getByText("React,")).toBeInTheDocument();
     expect(screen.getByText("TypeScript")).toBeInTheDocument();
-
-    expect(screen.getByText("translated_backend")).toBeInTheDocument();
+    expect(screen.getByText("translated_Backend")).toBeInTheDocument();
     expect(screen.getByText("Node.js")).toBeInTheDocument();
   });
 
   it("handles empty skill categories from useQuery gracefully", () => {
-    mockUseQuery.mockReturnValue({ data: undefined });
+    mockUseQuery.mockReturnValue({
+      data: undefined,
+    });
     mockGroupSkillsByCategory.mockReturnValue([]);
-
     render(<PreviewSkills skills={mockSkills} messages={mockMessages} />);
-
     expect(mockGroupSkillsByCategory).toHaveBeenCalledWith(mockSkills, []);
   });
 });

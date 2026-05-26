@@ -13,7 +13,7 @@ import { useMutation } from "@apollo/client/react";
 import { buildPrintableHtml } from "@/modules/CvsPreview/lib/buildPrintableHtml";
 import { EXPORT_PDF } from "../api/mutations";
 
-const mockUseMutation = useMutation as jest.Mock;
+const mockUseMutation = useMutation as unknown as jest.Mock;
 const mockBuildPrintableHtml = buildPrintableHtml as jest.Mock;
 
 const mockExportPdfFn = jest.fn();

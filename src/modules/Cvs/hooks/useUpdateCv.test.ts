@@ -20,7 +20,7 @@ import { UPDATE_CV } from "@/modules/Cvs/api/mutations";
 import { GET_CVS } from "@/modules/Cvs/api/queries";
 
 const mockUseTranslations = useTranslations as jest.Mock;
-const mockUseMutation = useMutation as jest.Mock;
+const mockUseMutation = useMutation as unknown as jest.Mock;
 const mockUseMutationNotification = useMutationNotification as jest.Mock;
 
 const mockMutationFn = jest.fn();

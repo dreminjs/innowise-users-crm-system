@@ -1,16 +1,23 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { useForm } from "react-hook-form";
+import { useQuery } from "@apollo/client/react";
+import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+
+import { GET_SKILLS } from "@/modules/Skills/api/queries";
+
 import { ModalField } from "@/shared/ui/ModalField/ModalField";
 import { DatePicker } from "@/shared/ui/DatePicker/DatePicker";
+import { ConfirmButtons } from "@/shared/ui/ConfirmButtons";
+import { CustomSelect } from "@/shared/ui/CustomSelect";
+
 import styles from "./ProjectModal.module.css";
+
 import {
   createProjectSchema,
   TProjectFormData,
 } from "@/modules/Projects/model/project.schema";
-import { ConfirmButtons } from "@/shared/ui/ConfirmButtons";
 
 type Props = {
   mode: "create" | "edit";
@@ -44,7 +51,10 @@ export const ProjectForm = ({
   const t = useTranslations("ProjectModal");
   const schema = createProjectSchema(t);
 
+  const { data: skillsData } = useQuery(GET_SKILLS);
+
   const {
+    control,
     watch,
     setValue,
     handleSubmit,
@@ -55,11 +65,13 @@ export const ProjectForm = ({
       name: defaultValues?.name ?? "",
       domain: defaultValues?.domain ?? "",
       description: defaultValues?.description ?? "",
-      environment: defaultValues?.environment.join(", ") ?? "",
+      environment: defaultValues?.environment ?? [],
       startDate: defaultValues?.start_date ?? "",
       endDate: defaultValues?.end_date ?? "",
     },
   });
+
+  const environment = watch("environment");
 
   const onSubmit = async (form: TProjectFormData) => {
     await submitAction({
@@ -68,13 +80,8 @@ export const ProjectForm = ({
       description: form.description,
       start_date: form.startDate,
       end_date: form.endDate || null,
-      environment: form.environment
-        .split(",")
-        .map((item) => item.trim())
-        .filter(Boolean),
+      environment: form.environment,
     });
-
-    closeAction();
   };
 
   return (
@@ -147,16 +154,47 @@ export const ProjectForm = ({
         />
       </ModalField>
 
-      <ModalField
-        label={t("environment")}
-        active={Boolean(watch("environment"))}
-      >
-        <input
-          value={watch("environment")}
-          onChange={(e) => setValue("environment", e.target.value)}
-          className={styles.input}
-        />
-      </ModalField>
+      <Controller
+        control={control}
+        name="environment"
+        render={({ field }) => (
+          <CustomSelect
+            label={t("environment")}
+            options={
+              skillsData?.skills.map((skill) => ({
+                value: skill.name,
+                label: skill.name,
+              })) ?? []
+            }
+            value=""
+            onChange={(value) => {
+              if (field.value.includes(value)) {
+                return;
+              }
+
+              field.onChange([...field.value, value]);
+            }}
+          />
+        )}
+      />
+
+      <div className={styles.environmentList}>
+        {environment.map((skill) => (
+          <button
+            key={skill}
+            type="button"
+            className={styles.environmentItem}
+            onClick={() =>
+              setValue(
+                "environment",
+                environment.filter((el) => el !== skill),
+              )
+            }
+          >
+            {skill} ×
+          </button>
+        ))}
+      </div>
 
       <ConfirmButtons
         confirmLabel={t(mode === "create" ? "create" : "save")}

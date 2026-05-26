@@ -105,8 +105,10 @@ describe("MenagementLanguages", () => {
 
   it("toggles modal from modal action", () => {
     render(<MenagementLanguages userId="user-1" />);
-    fireEvent.click(screen.getByText("toggle-modal"));
+    fireEvent.click(screen.getByText("add:Languages.add"));
     expect(screen.getByText("modal-open:true")).toBeInTheDocument();
+    fireEvent.click(screen.getByText("toggle-modal"));
+    expect(screen.getByText("modal-open:false")).toBeInTheDocument();
   });
 
   it("calls toggleDeleteMode on remove click", () => {

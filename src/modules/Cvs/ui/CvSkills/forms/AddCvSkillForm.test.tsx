@@ -118,7 +118,7 @@ function buildUseSkillFormReturn(overrides: Record<string, any> = {}) {
 
 function setupMocks(skillFormOverrides: Record<string, any> = {}) {
   let callCount = 0;
-  (useQuery as jest.Mock).mockImplementation(() => {
+  (useQuery as unknown as jest.Mock).mockImplementation(() => {
     callCount++;
     if (callCount === 1) return { data: { skills: mockSkills } };
     if (callCount === 2) return { data: { skillCategories: mockCategories } };

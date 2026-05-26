@@ -20,12 +20,9 @@ type Props =
       mode: "edit";
       defaultValues?: Partial<TEditUserFormValues>;
     };
-
 export const useUserForm = (props: Props) => {
   const t = useTranslations("Users");
-
   const isCreate = props.mode === "create";
-
   return useForm<TCreateUserFormValues | TEditUserFormValues>({
     defaultValues: isCreate
       ? {
@@ -44,9 +41,7 @@ export const useUserForm = (props: Props) => {
           positionId: props.defaultValues?.positionId ?? "",
           role: props.defaultValues?.role ?? "Employee",
         },
-
     resolver: zodResolver(isCreate ? createUserSchema(t) : editUserSchema(t)),
-
     mode: "onBlur",
   });
 };

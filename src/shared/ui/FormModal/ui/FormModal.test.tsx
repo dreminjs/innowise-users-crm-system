@@ -1,15 +1,27 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { FormModal } from "./FormModal";
-
 jest.mock("@chakra-ui/react", () => ({
   Dialog: {
-    Root: ({ children }: { children: React.ReactNode }) => (
-      <div>{children}</div>
+    Root: ({
+      children,
+      onOpenChange,
+    }: {
+      children: React.ReactNode;
+      onOpenChange?: (details: { open: boolean }) => void;
+    }) => (
+      <div
+        data-testid="dialog-root"
+        onClick={() =>
+          onOpenChange?.({
+            open: false,
+          })
+        }
+      >
+        {children}
+      </div>
     ),
-
     Backdrop: () => <div data-testid="backdrop" />,
-
     Positioner: ({
       children,
       className,
@@ -17,7 +29,6 @@ jest.mock("@chakra-ui/react", () => ({
       children: React.ReactNode;
       className?: string;
     }) => <div className={className}>{children}</div>,
-
     Content: ({
       children,
       className,
@@ -25,7 +36,6 @@ jest.mock("@chakra-ui/react", () => ({
       children: React.ReactNode;
       className?: string;
     }) => <div className={className}>{children}</div>,
-
     Header: ({
       children,
       className,
@@ -33,7 +43,6 @@ jest.mock("@chakra-ui/react", () => ({
       children: React.ReactNode;
       className?: string;
     }) => <div className={className}>{children}</div>,
-
     Title: ({
       children,
       className,
@@ -41,21 +50,17 @@ jest.mock("@chakra-ui/react", () => ({
       children: React.ReactNode;
       className?: string;
     }) => <h2 className={className}>{children}</h2>,
-    CloseTrigger: ({ onClick }: { onClick?: () => void }) => (
-      <button onClick={onClick}>close</button>
-    ),
+    CloseTrigger: () => <button>close</button>,
     Body: ({ children }: { children: React.ReactNode }) => (
       <div>{children}</div>
     ),
   },
 }));
-
 describe("FormModal", () => {
   const toggleActionMock = jest.fn();
   beforeEach(() => {
     jest.clearAllMocks();
   });
-
   it("renders title", () => {
     render(
       <FormModal open title="Edit User" toggleAction={toggleActionMock}>
@@ -64,7 +69,6 @@ describe("FormModal", () => {
     );
     expect(screen.getByText("Edit User")).toBeInTheDocument();
   });
-
   it("renders children", () => {
     render(
       <FormModal open title="Modal" toggleAction={toggleActionMock}>
@@ -73,7 +77,6 @@ describe("FormModal", () => {
     );
     expect(screen.getByText("modal content")).toBeInTheDocument();
   });
-
   it("renders close button", () => {
     render(
       <FormModal open title="Modal" toggleAction={toggleActionMock}>
@@ -92,11 +95,7 @@ describe("FormModal", () => {
         content
       </FormModal>,
     );
-    await userEvent.click(
-      screen.getByRole("button", {
-        name: /close/i,
-      }),
-    );
+    await userEvent.click(screen.getByTestId("dialog-root"));
     expect(toggleActionMock).toHaveBeenCalled();
   });
   it("renders backdrop", () => {

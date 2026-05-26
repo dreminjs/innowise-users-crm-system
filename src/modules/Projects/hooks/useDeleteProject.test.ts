@@ -38,7 +38,7 @@ describe("Project Mutation Hooks", () => {
 
     (useTranslations as jest.Mock).mockReturnValue(mockTranslate);
     (useMutationNotification as jest.Mock).mockReturnValue(mockNotifications);
-    (useMutation as jest.Mock).mockReturnValue(mockMutationResult);
+    (useMutation as unknown as jest.Mock).mockReturnValue(mockMutationResult);
   });
 
   describe("useRemoveCvProject", () => {
@@ -106,7 +106,10 @@ describe("Project Mutation Hooks", () => {
       const mockMutateFn = jest.fn();
       const mockResultObj = { loading: true, error: undefined };
 
-      (useMutation as jest.Mock).mockReturnValue([mockMutateFn, mockResultObj]);
+      (useMutation as unknown as jest.Mock).mockReturnValue([
+        mockMutateFn,
+        mockResultObj,
+      ]);
 
       const { result } = renderHook(() => useDeleteProject());
 

@@ -40,7 +40,7 @@ describe("Hook useCreatePosition", () => {
       mockNotificationsConfig,
     );
 
-    (useMutation as jest.Mock).mockReturnValue([
+    (useMutation as unknown as jest.Mock).mockReturnValue([
       mockCreatePositionFn,
       mockMutationResult,
     ]);

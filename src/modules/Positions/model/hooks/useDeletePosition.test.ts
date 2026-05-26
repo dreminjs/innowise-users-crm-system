@@ -37,7 +37,10 @@ describe("useDeletePosition Hook", () => {
 
     (useTranslations as jest.Mock).mockReturnValue(mockTranslate);
     (useMutationNotification as jest.Mock).mockReturnValue(mockNotifications);
-    (useMutation as jest.Mock).mockReturnValue([mockMutateFn, mockResultObj]);
+    (useMutation as unknown as jest.Mock).mockReturnValue([
+      mockMutateFn,
+      mockResultObj,
+    ]);
   });
 
   it("should initialize translations with the 'Notifications' namespace", () => {
@@ -65,7 +68,10 @@ describe("useDeletePosition Hook", () => {
 
   it("should correctly map and return the mutation function alongside the result object", () => {
     const activeResultObj = { loading: true, data: undefined };
-    (useMutation as jest.Mock).mockReturnValue([mockMutateFn, activeResultObj]);
+    (useMutation as unknown as jest.Mock).mockReturnValue([
+      mockMutateFn,
+      activeResultObj,
+    ]);
 
     const { result } = renderHook(() => useDeletePosition());
 

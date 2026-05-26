@@ -1,21 +1,20 @@
 "use client";
-
 import { useMemo } from "react";
 import { useTranslations } from "next-intl";
 import { useQuery } from "@apollo/client/react";
 import { GetDepartmentsQuery } from "@/graphql/graphql";
 import { GenericTable, Column } from "@/shared/ui/GenericTable/GenericTable";
 import { useTableState } from "@/shared/helpers/useTableState";
-import styles from "./DepartmentsTable.module.css";
 import { GET_DEPARTMENTS } from "@/modules/Departments/api/queries";
 import { DepartmentActions } from "@/modules/Departments/ui/DepartmentsTable/DepartmentActions";
+import styles from "./DepartmentsTable.module.css";
+
 type Department = GetDepartmentsQuery["departments"][number];
 type SortField = "name";
 type ColumnField = "name" | "actions";
 type Props = {
   search: string;
 };
-
 export const DepartmentsTable = ({ search }: Props) => {
   const t = useTranslations("DepartmentsTable");
   const { data, loading, error } =
@@ -23,6 +22,7 @@ export const DepartmentsTable = ({ search }: Props) => {
   const { sortField, sortOrder, handleSort } = useTableState<SortField>({
     defaultField: "name",
   });
+
   const processedDepartments = useMemo(() => {
     const normalizedSearch = search.toLowerCase();
     const filtered = (data?.departments ?? []).filter((department) =>
@@ -33,16 +33,16 @@ export const DepartmentsTable = ({ search }: Props) => {
         ? a.name.localeCompare(b.name)
         : b.name.localeCompare(a.name),
     );
-
     return filtered;
   }, [data, search, sortOrder]);
+
   const columns = useMemo<Column<Department, ColumnField, SortField>[]>(() => {
     return [
       {
         key: "name",
+        sortKey: "name",
         title: t("name"),
         sortable: true,
-        sortKey: "name",
         className: styles.nameColumn,
         render: (department: Department) => (
           <div className={styles.cellContent}>{department.name}</div>

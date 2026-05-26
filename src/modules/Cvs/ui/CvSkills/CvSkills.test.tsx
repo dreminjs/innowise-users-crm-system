@@ -94,7 +94,7 @@ describe("CvSkills Component", () => {
       deleteSkills: {},
     });
 
-    (useQuery as jest.Mock).mockImplementation((query) => {
+    (useQuery as unknown as jest.Mock).mockImplementation((query) => {
       if (query === GET_SKILL_CATEGORIES) {
         return { data: mockCategoriesData, loading: false, error: undefined };
       }
@@ -106,13 +106,13 @@ describe("CvSkills Component", () => {
   });
 
   it("should render loading state when queries are loading", () => {
-    (useQuery as jest.Mock).mockReturnValue({ loading: true });
+    (useQuery as unknown as jest.Mock).mockReturnValue({ loading: true });
     render(<CvSkills cvId={mockCvId} />);
     expect(screen.getByTestId("loading-component")).toBeInTheDocument();
   });
 
   it("should render error message if categories query fails", () => {
-    (useQuery as jest.Mock).mockImplementation((query) => {
+    (useQuery as unknown as jest.Mock).mockImplementation((query) => {
       if (query === GET_SKILL_CATEGORIES)
         return { error: { message: "Categories failed" } };
       return { loading: false };
@@ -123,7 +123,7 @@ describe("CvSkills Component", () => {
   });
 
   it("should render error message if CV skills query fails", () => {
-    (useQuery as jest.Mock).mockImplementation((query) => {
+    (useQuery as unknown as jest.Mock).mockImplementation((query) => {
       if (query === GET_CV_SKILLS)
         return { error: { message: "Skills failed" } };
       return { data: mockCategoriesData, loading: false };

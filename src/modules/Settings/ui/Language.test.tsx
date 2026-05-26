@@ -1,11 +1,18 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import { Language } from "./Language";
 import { useSettingsStore } from "../model/settings.store";
-
+const mockRefresh = jest.fn();
+jest.mock("next/navigation", () => ({
+  useRouter: () => ({
+    refresh: mockRefresh,
+    replace: jest.fn(),
+    push: jest.fn(),
+  }),
+  usePathname: () => "/settings",
+}));
 jest.mock("../model/settings.store", () => ({
   useSettingsStore: jest.fn(),
 }));
-
 jest.mock("../model/settings.data", () => ({
   languageOptions: [
     {
@@ -18,7 +25,6 @@ jest.mock("../model/settings.data", () => ({
     },
   ],
 }));
-
 jest.mock("@/shared/ui/CustomSelect", () => ({
   CustomSelect: ({
     label,
@@ -50,7 +56,6 @@ jest.mock("@/shared/ui/CustomSelect", () => ({
     </div>
   ),
 }));
-
 describe("Language", () => {
   const setLanguageMock = jest.fn();
   beforeEach(() => {
@@ -64,23 +69,19 @@ describe("Language", () => {
   afterEach(() => {
     jest.restoreAllMocks();
   });
-
   it("should render label", () => {
     render(<Language label="Language" />);
     expect(screen.getByText("Language")).toBeInTheDocument();
   });
-
   it("should render current language", () => {
     render(<Language label="Language" />);
     expect(screen.getByTestId("current-language")).toHaveTextContent("en");
   });
-
   it("should render options", () => {
     render(<Language label="Language" />);
     expect(screen.getByText("English")).toBeInTheDocument();
     expect(screen.getByText("Russian")).toBeInTheDocument();
   });
-
   it("should change language", () => {
     render(<Language label="Language" />);
     fireEvent.change(screen.getByLabelText("language-select"), {

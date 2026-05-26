@@ -32,7 +32,9 @@ describe("CvRemoveSkillsButton", () => {
   beforeEach(() => {
     jest.clearAllMocks();
 
-    (useCvSkillStore as jest.Mock).mockReturnValue(defaultStoreState);
+    (useCvSkillStore as unknown as jest.Mock).mockReturnValue(
+      defaultStoreState,
+    );
     (useDeleteCvSkill as jest.Mock).mockReturnValue([
       mockDeleteCvSkill,
       { loading: false },

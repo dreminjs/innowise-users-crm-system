@@ -38,7 +38,7 @@ describe("useCreateProject hook", () => {
 
     (useTranslations as jest.Mock).mockReturnValue(mockT);
     (useMutationNotification as jest.Mock).mockReturnValue(mockNotifications);
-    (useMutation as jest.Mock).mockReturnValue([
+    (useMutation as unknown as jest.Mock).mockReturnValue([
       mockCreateProjectFn,
       mockMutationResult,
     ]);

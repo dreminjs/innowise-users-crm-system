@@ -8,15 +8,12 @@ import { UserRole } from "@/generated/graphql";
 jest.mock("@apollo/client/react", () => ({
   useMutation: jest.fn(),
 }));
-
 jest.mock("next-intl", () => ({
   useTranslations: jest.fn(),
 }));
-
 jest.mock("@/modules/Notifications", () => ({
   useNotification: jest.fn(),
 }));
-
 describe("useCreateUser", () => {
   const mutateMock = jest.fn();
   const addNotificationMock = jest.fn();
@@ -49,11 +46,9 @@ describe("useCreateUser", () => {
       positionId: "2",
       role: UserRole.Employee,
     };
-
     await act(async () => {
       await result.current.submitAction(dto);
     });
-
     expect(mutateMock).toHaveBeenCalledWith({
       variables: {
         user: {
@@ -73,7 +68,6 @@ describe("useCreateUser", () => {
       },
     });
   });
-
   it("should return loading state", () => {
     (useMutation as unknown as jest.Mock).mockReturnValue([
       mutateMock,
@@ -85,10 +79,8 @@ describe("useCreateUser", () => {
     const { result } = renderHook(() => useCreateUser());
     expect(result.current.loading).toBe(true);
   });
-
   it("should return error state", () => {
     const error = new Error("Test error");
-
     (useMutation as unknown as jest.Mock).mockReturnValue([
       mutateMock,
       {

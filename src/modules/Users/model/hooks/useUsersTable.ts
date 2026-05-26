@@ -13,7 +13,6 @@ export const useUsersTable = (users: GetUsersQuery["users"] | undefined) => {
   const handleSort = (field: SortField) => {
     if (field === sortField) {
       setSortOrder((prev) => (prev === "asc" ? "desc" : "asc"));
-
       return;
     }
     setSortField(field);

@@ -38,7 +38,15 @@ jest.mock("@/shared/ui/Loading", () => ({
 }));
 
 jest.mock("@/shared/ui/ConfirmButtons", () => ({
-  ConfirmButtons: ({ confirmLabel, cancelAction, disabled }) => (
+  ConfirmButtons: ({
+    confirmLabel,
+    cancelAction,
+    disabled,
+  }: {
+    confirmLabel: string;
+    cancelAction?: () => void;
+    disabled?: boolean;
+  }) => (
     <div>
       <button type="button" onClick={cancelAction}>
         Cancel

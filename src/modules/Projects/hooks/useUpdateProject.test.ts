@@ -44,7 +44,7 @@ describe("Project Mutation Hooks", () => {
     const mockMutationTuple = [jest.fn(), { loading: false }];
 
     beforeEach(() => {
-      (useMutation as jest.Mock).mockReturnValue(mockMutationTuple);
+      (useMutation as unknown as jest.Mock).mockReturnValue(mockMutationTuple);
     });
 
     it("should initialize translations with 'Notifications' namespace", () => {
@@ -83,7 +83,7 @@ describe("Project Mutation Hooks", () => {
     const mockMutationResult = { loading: true, data: null };
 
     beforeEach(() => {
-      (useMutation as jest.Mock).mockReturnValue([
+      (useMutation as unknown as jest.Mock).mockReturnValue([
         mockUpdateProjectFn,
         mockMutationResult,
       ]);

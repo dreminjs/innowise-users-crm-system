@@ -10,19 +10,16 @@ jest.mock("next-intl", () => ({
 describe("useUserForm", () => {
   beforeEach(() => {
     jest.clearAllMocks();
-
     (useTranslations as unknown as jest.Mock).mockReturnValue(
       (key: string) => key,
     );
   });
-
   it("should return create form default values", () => {
     const { result } = renderHook(() =>
       useUserForm({
         mode: "create",
       }),
     );
-
     expect(result.current.getValues()).toEqual({
       email: "",
       password: "",
@@ -33,14 +30,12 @@ describe("useUserForm", () => {
       role: UserRole.Employee,
     });
   });
-
   it("should return edit form default values", () => {
     const { result } = renderHook(() =>
       useUserForm({
         mode: "edit",
       }),
     );
-
     expect(result.current.getValues()).toEqual({
       firstName: "",
       lastName: "",
@@ -49,7 +44,6 @@ describe("useUserForm", () => {
       role: UserRole.Employee,
     });
   });
-
   it("should use create default values", () => {
     const { result } = renderHook(() =>
       useUserForm({
@@ -65,7 +59,6 @@ describe("useUserForm", () => {
         },
       }),
     );
-
     expect(result.current.getValues()).toEqual({
       email: "test@test.com",
       password: "123456",

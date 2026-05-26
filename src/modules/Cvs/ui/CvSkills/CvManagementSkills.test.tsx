@@ -58,7 +58,7 @@ describe("CvManagementSkills Component", () => {
 
   describe("When isDeleteMode is false (Normal Mode)", () => {
     beforeEach(() => {
-      (useCvSkillStore as jest.Mock).mockReturnValue({
+      (useCvSkillStore as unknown as jest.Mock).mockReturnValue({
         isDeleteMode: false,
         toggleDeleteMode: mockToggleDeleteMode,
       });
@@ -105,7 +105,7 @@ describe("CvManagementSkills Component", () => {
 
   describe("When isDeleteMode is true (Delete Mode)", () => {
     beforeEach(() => {
-      (useCvSkillStore as jest.Mock).mockReturnValue({
+      (useCvSkillStore as unknown as jest.Mock).mockReturnValue({
         isDeleteMode: true,
         toggleDeleteMode: mockToggleDeleteMode,
       });

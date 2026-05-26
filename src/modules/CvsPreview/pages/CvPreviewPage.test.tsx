@@ -31,8 +31,8 @@ import { PreviewSkills } from "@/modules/CvsPreview/ui/PreviewSkills/PreviewSkil
 import { ResumeLanguage } from "@/modules/Settings/ui/ResumeLanguage";
 import { GET_CV } from "@/modules/Cvs/api/queries";
 
-const mockUseQuery = useQuery as jest.Mock;
-const mockUseSettingsStore = useSettingsStore as jest.Mock;
+const mockUseQuery = useQuery as unknown as jest.Mock;
+const mockUseSettingsStore = useSettingsStore as unknown as jest.Mock;
 const mockGetMessages = getMessages as jest.Mock;
 const MockLoading = Loading as jest.Mock;
 const MockPreviewExportButton = PreviewExportButton as jest.Mock;

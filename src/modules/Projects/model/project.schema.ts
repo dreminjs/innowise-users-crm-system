@@ -5,7 +5,7 @@ export const createProjectSchema = (t: (key: string) => string) =>
     name: z.string().min(1, t("validation.nameRequired")),
     domain: z.string(),
     description: z.string(),
-    environment: z.string(),
+    environment: z.array(z.string()),
     startDate: z.string().min(1, t("validation.startDateRequired")),
     endDate: z.string(),
   });
