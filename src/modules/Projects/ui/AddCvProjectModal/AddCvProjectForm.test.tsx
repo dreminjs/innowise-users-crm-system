@@ -106,7 +106,7 @@ describe("AddCvProjectForm Component", () => {
   beforeEach(() => {
     jest.clearAllMocks();
 
-    (useQuery as jest.Mock).mockReturnValue({
+    (useQuery as unknown as jest.Mock).mockReturnValue({
       data: mockProjectsData,
     });
 

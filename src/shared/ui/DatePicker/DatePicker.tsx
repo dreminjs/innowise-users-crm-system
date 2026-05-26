@@ -59,27 +59,30 @@ const CustomInput = forwardRef<
     </button>
   );
 });
+
 CustomInput.displayName = "CustomInput";
+
 export const DatePicker = ({
   value,
   changeAction,
   placeholder = "",
 }: Props) => {
   return (
-    <ReactDatePicker
-      withPortal
-      selected={value ? new Date(value) : null}
-      onChange={(date: Date | null) => {
-        if (!date) {
-          changeAction("");
-
-          return;
-        }
-        changeAction(date.toISOString().split("T")[0]);
-      }}
-      dateFormat="yyyy-MM-dd"
-      calendarClassName={styles.calendar}
-      customInput={<CustomInput placeholder={placeholder} />}
-    />
+    <div className={styles.calendarWrapper}>
+      <ReactDatePicker
+        selected={value ? new Date(value) : null}
+        onChange={(date: Date | null) => {
+          if (!date) {
+            changeAction("");
+            return;
+          }
+          changeAction(date.toISOString().split("T")[0]);
+        }}
+        dateFormat="yyyy-MM-dd"
+        calendarClassName={styles.calendar}
+        popperClassName={styles.popper}
+        customInput={<CustomInput placeholder={placeholder} />}
+      />
+    </div>
   );
 };
