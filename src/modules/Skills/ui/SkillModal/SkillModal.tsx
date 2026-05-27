@@ -77,6 +77,7 @@ export const SkillModal: FC<Props> = ({
         <ModalField label={t("name")} active={!!name} error={error}>
           <input
             value={name}
+            data-testid={"skills-name"}
             onChange={(e) => setName(e.target.value)}
             className={styles.input}
           />
@@ -85,6 +86,7 @@ export const SkillModal: FC<Props> = ({
           label={t("category")}
           options={categoryOptions}
           value={categoryId}
+          testId={"skills-category"}
           onChange={setCategoryId}
         />
         <ConfirmButtons

@@ -8,7 +8,7 @@ interface IUserActionProps {
 
 export const UserAction: FC<IUserActionProps> = ({ children, to }) => {
   return (
-    <li className={styles.userActionsItem}>
+    <li className={styles.userActionsItem} data-testid="menu-link">
       <Link href={to}>{children}</Link>
     </li>
   );

@@ -56,6 +56,7 @@ export const DesktopSidebar = ({ collapsed, toggleAction }: Props) => {
             <Link
               key={item.href}
               href={item.href}
+              data-testid={`${item.href}`}
               className={clsx(styles.link, isActive && styles.active)}
             >
               <Icon name={item.icon} />
