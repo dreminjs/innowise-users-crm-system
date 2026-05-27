@@ -20,8 +20,8 @@ interface ICustomSelectProps {
   disabled?: boolean;
   value: string | null;
   error?: string;
-  testId?: string;
   onChange?: (value: string) => void;
+  testId?: string;
 }
 
 const isGroupedOptions = (
@@ -39,6 +39,7 @@ export const CustomSelect: FC<ICustomSelectProps> = ({
   onChange,
   testId,
 }) => {
+  console.log(testId);
   const flatItems = useMemo(() => {
     if (!options.length) {
       return [];
@@ -101,11 +102,12 @@ export const CustomSelect: FC<ICustomSelectProps> = ({
                         {group.label}
                       </Select.ItemGroupLabel>
 
-                      {group.items.map((item) => (
+                      {group.items.map((item, idx) => (
                         <Select.Item
                           item={item}
                           className={styles.selectItem}
                           key={item.value}
+                          data-testid={`option-${testId}-${idx}`}
                         >
                           {item.label}
                           <Select.ItemIndicator />
@@ -113,10 +115,11 @@ export const CustomSelect: FC<ICustomSelectProps> = ({
                       ))}
                     </Select.ItemGroup>
                   ))
-                : options.map((item) => (
+                : options.map((item, idx) => (
                     <Select.Item
                       item={item}
                       className={styles.selectItem}
+                      data-testid={`option-${testId}-${idx}`}
                       key={item.value}
                     >
                       {item.label}
