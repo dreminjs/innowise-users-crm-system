@@ -13,7 +13,11 @@ export const RemoveItemButton: FC<IRemoveItemButtonProps> = ({
   label,
 }) => {
   return (
-    <button className={styles.removeItemButton} onClick={onClick}>
+    <button
+      data-testid="remove-item-button"
+      className={styles.removeItemButton}
+      onClick={onClick}
+    >
       <span>
         <Icon name="trash" className={clsx(styles.arrow)} />
       </span>

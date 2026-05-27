@@ -74,11 +74,13 @@ export const EditLanguageForm: FC<TEditLanguageFormProps> = ({
               label: el === "Native" ? t("Languages.Native") : el,
             }))}
             value={field.value}
+            testId="proficiency"
             disabled={!Boolean(currentName)}
             onChange={(value) => handleChangeProficiency(value as Proficiency)}
           />
         )}
       />
+
       <ConfirmButtons
         cancelAction={toggleAction}
         confirmLabel={t("ConfirmButtons.confirm")}

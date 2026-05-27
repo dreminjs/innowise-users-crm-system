@@ -39,7 +39,6 @@ export const CustomSelect: FC<ICustomSelectProps> = ({
   onChange,
   testId,
 }) => {
-  console.log(testId);
   const flatItems = useMemo(() => {
     if (!options.length) {
       return [];

@@ -17,8 +17,12 @@ export const RemoveLanguagesButton = ({ userId }: Props) => {
         disabled={loading}
         onClick={handleDeleteProfileLanguages}
         className={styles.removeLanguagesButton}
+        data-testid="remove-language-button"
       >
-        <span className={styles.deleteConfirmButtonAmount}>
+        <span
+          data-testid="delete-confirm-button-amount"
+          className={styles.deleteConfirmButtonAmount}
+        >
           {Object.keys(deleteLanguages).length}
         </span>
         <span>{loading ? "Loading..." : t("delete")}</span>

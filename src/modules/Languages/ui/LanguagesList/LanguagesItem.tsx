@@ -1,18 +1,18 @@
 import { FC } from "react";
 import { languageLevelColors } from "../../model/languages.constants";
-import { EditLanguageModal } from "../EditLanguageModal/EditLanguageModal";
+
 import styles from "../Languages.module.css";
 import clsx from "clsx";
 import { Proficiency } from "@/generated/graphql";
 import { useTranslations } from "next-intl";
+import { TLanguageForm } from "../../model/languages.interface";
 
 interface ILanguagesItemProps {
   name: string;
   proficiency: Proficiency;
   isAvailableToChange: boolean;
-  onClick?: (name: string) => void;
+  onClick?: (dto: TLanguageForm) => void;
   isActive: boolean;
-  isEditModalOpen: boolean;
 }
 
 export const LanguagesItem: FC<ILanguagesItemProps> = ({
@@ -21,15 +21,15 @@ export const LanguagesItem: FC<ILanguagesItemProps> = ({
   isAvailableToChange,
   isActive,
   onClick,
-  isEditModalOpen,
 }) => {
   const t = useTranslations("Languages");
   return (
     <>
       <li>
         <button
+          data-testid="languages-item"
           {...(isAvailableToChange && onClick
-            ? { onClick: onClick.bind(null, name) }
+            ? { onClick: onClick.bind(null, { name, proficiency }) }
             : {})}
           className={clsx(
             styles.languagesItem,
@@ -42,14 +42,6 @@ export const LanguagesItem: FC<ILanguagesItemProps> = ({
           <span>{t(name)}</span>
         </button>
       </li>
-      {onClick && (
-        <EditLanguageModal
-          open={isEditModalOpen}
-          toggleAction={onClick.bind(null, name)}
-          name={name}
-          proficiency={proficiency}
-        />
-      )}
     </>
   );
 };
