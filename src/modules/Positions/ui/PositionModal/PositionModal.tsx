@@ -59,6 +59,7 @@ export const PositionModal: FC<Props> = ({
             value={name}
             onChange={(e) => setName(e.target.value)}
             className={styles.input}
+            data-testid="position-name"
           />
         </ModalField>
         <ConfirmButtons
