@@ -2,14 +2,7 @@ import { expect, test } from "@playwright/test";
 test("admin can create edit and delete skills", async ({ page }) => {
   const skillName = "html51";
   const updatedSkillName = "HTML5";
-  await page.goto("/auth/signin");
-  await page.locator('input[name="email"]').fill("123@mail.com");
-  await page.locator('input[name="password"]').fill("123456");
-  await page.locator('button[type="submit"]').click();
-  await page.waitForURL(/users/);
-  await expect(page).toHaveURL(/users/);
-  await page.getByTestId("/skills").click();
-  await page.waitForURL(/skills/);
+  await page.goto("/skills");
   await expect(page).toHaveURL(/skills/);
   await page.getByTestId("add-new-btn").click();
   const createDialog = page.getByRole("dialog");
@@ -21,11 +14,21 @@ test("admin can create edit and delete skills", async ({ page }) => {
     .filter({ hasText: "Data visualization" })
     .click();
   await createDialog.getByTestId("confirm-btn").click();
+  await expect(createDialog).not.toBeVisible();
   await page.getByTestId("search-input").fill(skillName);
-  await expect(page.locator("tbody tr")).toHaveCount(1);
-  const row = page.locator("tbody tr").first();
+  await expect(
+    page.locator("tbody tr").filter({
+      hasText: skillName,
+    }),
+  ).toHaveCount(1);
+  const row = page
+    .locator("tbody tr")
+    .filter({
+      hasText: skillName,
+    })
+    .first();
   await row.locator('button[data-part="trigger"]').click();
-  const popover = page.locator('[data-part="content"][role="dialog"]:visible');
+  const popover = page.locator('[data-part="content"][role="dialog"]').last();
   await expect(popover.getByTestId("button")).toBeVisible();
   await expect(popover.getByTestId("button-danger")).toBeVisible();
   await popover.getByTestId("button").click();
@@ -40,16 +43,30 @@ test("admin can create edit and delete skills", async ({ page }) => {
     .filter({ hasText: "Programming languages" })
     .click();
   await editDialog.getByTestId("confirm-btn").click();
+  await expect(editDialog).not.toBeVisible();
   await page.getByTestId("search-input").clear();
   await page.getByTestId("search-input").fill(updatedSkillName);
-  await expect(page.getByText(updatedSkillName)).toBeVisible();
-  const updatedRow = page.locator("tbody tr").first();
+  await expect(
+    page.locator("tbody tr").filter({
+      hasText: updatedSkillName,
+    }),
+  ).toHaveCount(1);
+  const updatedRow = page
+    .locator("tbody tr")
+    .filter({
+      hasText: updatedSkillName,
+    })
+    .first();
   await updatedRow.locator('button[data-part="trigger"]').click();
-  const updatedPopover = page.locator(
-    '[data-part="content"][role="dialog"]:visible',
-  );
+  const updatedPopover = page
+    .locator('[data-part="content"][role="dialog"]')
+    .last();
   await updatedPopover.getByTestId("button-danger").click();
   await page.getByTestId("search-input").clear();
   await page.getByTestId("search-input").fill(updatedSkillName);
-  await expect(page.locator("tbody tr")).toHaveCount(0);
+  await expect(
+    page.locator("tbody tr").filter({
+      hasText: updatedSkillName,
+    }),
+  ).toHaveCount(0);
 });

@@ -2,14 +2,7 @@ import { expect, test } from "@playwright/test";
 test("admin can create edit and delete languages", async ({ page }) => {
   const languageName = "test";
   const updatedLanguageName = "TEST";
-  await page.goto("/auth/signin");
-  await page.locator('input[name="email"]').fill("123@mail.com");
-  await page.locator('input[name="password"]').fill("123456");
-  await page.locator('button[type="submit"]').click();
-  await page.waitForURL(/users/);
-  await expect(page).toHaveURL(/users/);
-  await page.getByTestId("/languages").click();
-  await page.waitForURL(/languages/);
+  await page.goto("/languages");
   await expect(page).toHaveURL(/languages/);
   await page.getByTestId("add-new-btn").click();
   const createDialog = page.getByRole("dialog");
@@ -18,6 +11,7 @@ test("admin can create edit and delete languages", async ({ page }) => {
   await createDialog.getByTestId("language-native-name").fill(languageName);
   await createDialog.getByTestId("iso2").fill("ts");
   await createDialog.getByTestId("confirm-btn").click();
+  await expect(createDialog).not.toBeVisible();
   await page.getByTestId("search-input").fill(languageName);
   await expect(
     page.locator("tbody tr").filter({

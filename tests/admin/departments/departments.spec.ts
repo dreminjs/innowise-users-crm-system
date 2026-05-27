@@ -2,43 +2,61 @@ import { expect, test } from "@playwright/test";
 test("admin can create edit and delete departments", async ({ page }) => {
   const departmentName = "test_department";
   const updatedDepartmentName = "test_department2";
-  await page.goto("/auth/signin");
-  await page.locator('input[name="email"]').fill("123@mail.com");
-  await page.locator('input[name="password"]').fill("123456");
-  await page.locator('button[type="submit"]').click();
-  await page.waitForURL(/users/);
-  await expect(page).toHaveURL(/users/);
-  await page.getByTestId("/departments").click();
+  await page.goto("/departments");
   await expect(page).toHaveURL(/departments/);
   await page.getByTestId("add-new-btn").click();
   const createDialog = page.getByRole("dialog");
   await expect(createDialog).toBeVisible();
   await createDialog.getByTestId("department-name").fill(departmentName);
   await createDialog.getByTestId("confirm-btn").click();
+  await expect(createDialog).not.toBeVisible();
   await page.getByTestId("search-input").fill(departmentName);
-  await expect(page.locator("tbody tr")).toHaveCount(1);
-  const row = page.locator("tbody tr").first();
+  await expect(
+    page.locator("tbody tr").filter({
+      hasText: departmentName,
+    }),
+  ).toHaveCount(1);
+  const row = page
+    .locator("tbody tr")
+    .filter({
+      hasText: departmentName,
+    })
+    .first();
   await row.locator('button[data-part="trigger"]').click();
-  const popover = page.locator('[data-part="content"][role="dialog"]:visible');
+  const popover = page.locator('[data-part="content"][role="dialog"]').last();
   await expect(popover.getByTestId("button")).toBeVisible();
   await expect(popover.getByTestId("button-danger")).toBeVisible();
   await popover.getByTestId("button").click();
   const editDialog = page.getByRole("dialog");
   await expect(editDialog).toBeVisible();
-  const skillInput = editDialog.getByTestId("department-name");
-  await skillInput.clear();
-  await skillInput.fill(updatedDepartmentName);
+  const departmentInput = editDialog.getByTestId("department-name");
+  await departmentInput.clear();
+  await departmentInput.fill(updatedDepartmentName);
   await editDialog.getByTestId("confirm-btn").click();
+  await expect(editDialog).not.toBeVisible();
   await page.getByTestId("search-input").clear();
   await page.getByTestId("search-input").fill(updatedDepartmentName);
-  await expect(page.getByText(updatedDepartmentName)).toBeVisible();
-  const updatedRow = page.locator("tbody tr").first();
+  await expect(
+    page.locator("tbody tr").filter({
+      hasText: updatedDepartmentName,
+    }),
+  ).toHaveCount(1);
+  const updatedRow = page
+    .locator("tbody tr")
+    .filter({
+      hasText: updatedDepartmentName,
+    })
+    .first();
   await updatedRow.locator('button[data-part="trigger"]').click();
-  const updatedPopover = page.locator(
-    '[data-part="content"][role="dialog"]:visible',
-  );
+  const updatedPopover = page
+    .locator('[data-part="content"][role="dialog"]')
+    .last();
   await updatedPopover.getByTestId("button-danger").click();
   await page.getByTestId("search-input").clear();
   await page.getByTestId("search-input").fill(updatedDepartmentName);
-  await expect(page.locator("tbody tr")).toHaveCount(0);
+  await expect(
+    page.locator("tbody tr").filter({
+      hasText: updatedDepartmentName,
+    }),
+  ).toHaveCount(0);
 });
