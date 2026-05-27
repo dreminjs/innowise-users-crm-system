@@ -6,8 +6,10 @@ test("admin can create edit and delete languages", async ({ page }) => {
   await page.locator('input[name="email"]').fill("123@mail.com");
   await page.locator('input[name="password"]').fill("123456");
   await page.locator('button[type="submit"]').click();
+  await page.waitForURL(/users/);
   await expect(page).toHaveURL(/users/);
   await page.getByTestId("/languages").click();
+  await page.waitForURL(/languages/);
   await expect(page).toHaveURL(/languages/);
   await page.getByTestId("add-new-btn").click();
   const createDialog = page.getByRole("dialog");

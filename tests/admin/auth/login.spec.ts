@@ -12,5 +12,6 @@ test("unauthorized user is redirected to signin and can login", async ({
   await page.locator('input[name="email"]').fill("123@mail.com");
   await page.locator('input[name="password"]').fill("123456");
   await page.locator('button[type="submit"]').click();
+  await page.waitForURL(/users/);
   await expect(page).toHaveURL(/users/);
 });

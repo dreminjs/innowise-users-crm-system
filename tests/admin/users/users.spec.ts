@@ -7,6 +7,7 @@ test("admin can create edit and delete user", async ({ page }) => {
   await page.locator('input[name="email"]').fill("123@mail.com");
   await page.locator('input[name="password"]').fill("123456");
   await page.locator('button[type="submit"]').click();
+  await page.waitForURL(/users/);
   await expect(page).toHaveURL(/users/);
   await page.getByTestId("add-new-btn").click();
   const createDialog = page.getByRole("dialog");
