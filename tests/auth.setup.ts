@@ -6,4 +6,5 @@ setup("auth setup", async ({ page }) => {
   await page.locator('input[name="password"]').fill("23072007");
   await page.locator('button[type="submit"]').click();
   await expect(page).toHaveURL(/http:\/\/localhost:3000\/users/);
+  await page.context().storageState({ path: "playwright/.auth/user.json" });
 });

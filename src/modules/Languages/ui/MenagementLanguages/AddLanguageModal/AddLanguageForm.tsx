@@ -86,7 +86,7 @@ export const AddLanguageForm: FC<IEditLangugeFormProps> = ({
             value={field.value}
             disabled={!Boolean(currentName)}
             onChange={(value) => handleChangeProficiency(value as Proficiency)}
-            testId={"proficiency-name"}
+            testId={"proficiency"}
           />
         )}
       />
