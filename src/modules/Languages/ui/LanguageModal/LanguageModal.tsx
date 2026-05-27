@@ -84,6 +84,7 @@ export const LanguageModal: FC<Props> = ({
             value={name}
             onChange={(e) => setName(e.target.value)}
             className={styles.input}
+            data-testid="language-name"
           />
         </ModalField>
 
@@ -96,6 +97,7 @@ export const LanguageModal: FC<Props> = ({
             value={nativeName}
             onChange={(e) => setNativeName(e.target.value)}
             className={styles.input}
+            data-testid="language-native-name"
           />
         </ModalField>
         <ModalField label={t("iso2")} active={!!iso2} error={errors.iso2}>
@@ -103,6 +105,7 @@ export const LanguageModal: FC<Props> = ({
             value={iso2}
             onChange={(e) => setIso2(e.target.value)}
             className={styles.input}
+            data-testid="iso2"
           />
         </ModalField>
         <ConfirmButtons
