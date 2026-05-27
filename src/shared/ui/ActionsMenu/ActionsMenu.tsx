@@ -45,6 +45,7 @@ export const ActionsMenu: FC<Props> = ({ items, width = "160px" }) => {
                     key={item.href}
                     href={item.href}
                     className={styles.item}
+                    data-testid="menu-link"
                   >
                     {item.label}
                   </Link>
@@ -54,6 +55,9 @@ export const ActionsMenu: FC<Props> = ({ items, width = "160px" }) => {
                 <button
                   key={item.label}
                   type="button"
+                  data-testid={
+                    item.type + (item.variant ? "-" + item.variant : "")
+                  }
                   onClick={() => handleAction(item.onClick)}
                   className={`${styles.item} ${
                     item.variant === "danger" ? styles.danger : ""

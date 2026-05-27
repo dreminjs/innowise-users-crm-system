@@ -43,6 +43,7 @@ export const UserActions: FC<IUserActionsProps> = ({ user }) => {
               <li className={styles.userActionsItem}>
                 <button
                   type="button"
+                  data-testid="edit-btn"
                   onClick={() => {
                     setIsPopoverVisible(false);
                     setIsEditModalOpen(true);
@@ -57,6 +58,7 @@ export const UserActions: FC<IUserActionsProps> = ({ user }) => {
                   <button
                     type="button"
                     onClick={handleDelete}
+                    data-testid="delete-btn"
                     className={styles.deleteButton}
                   >
                     {t("delete")}
