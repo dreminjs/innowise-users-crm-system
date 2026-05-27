@@ -19,14 +19,14 @@ export default defineConfig({
   projects: [
     {
       name: "setup",
-      testMatch: /auth.setup.ts/,
+      testMatch: /.*\.setup\.ts/,
     },
     {
       name: "chromium",
       dependencies: ["setup"],
       use: {
         ...devices["Desktop Chrome"],
-        storageState: "playwright/.auth/user.json",
+        storageState: "playwright/.auth/admin.json",
       },
     },
   ],

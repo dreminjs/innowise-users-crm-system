@@ -56,6 +56,7 @@ export const DepartmentModal: FC<Props> = ({
             value={name}
             onChange={(e) => setName(e.target.value)}
             className={styles.input}
+            data-testid="department-name"
           />
         </ModalField>
         <ConfirmButtons

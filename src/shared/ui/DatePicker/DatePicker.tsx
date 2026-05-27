@@ -9,6 +9,7 @@ type Props = {
   value: string;
   changeAction: (value: string) => void;
   placeholder?: string;
+  testId?: string;
 };
 
 const CustomInput = forwardRef<
@@ -17,14 +18,16 @@ const CustomInput = forwardRef<
     value?: string;
     onClick?: () => void;
     placeholder?: string;
+    testId?: string;
   }
->(({ value, onClick, placeholder }, ref) => {
+>(({ value, onClick, placeholder, testId }, ref) => {
   return (
     <button
       type="button"
       className={styles.trigger}
       onClick={onClick}
       ref={ref}
+      data-testid={testId}
     >
       <span>{value || placeholder}</span>
       <svg
@@ -66,6 +69,7 @@ export const DatePicker = ({
   value,
   changeAction,
   placeholder = "",
+  testId,
 }: Props) => {
   return (
     <div className={styles.calendarWrapper}>
@@ -81,7 +85,7 @@ export const DatePicker = ({
         dateFormat="yyyy-MM-dd"
         calendarClassName={styles.calendar}
         popperClassName={styles.popper}
-        customInput={<CustomInput placeholder={placeholder} />}
+        customInput={<CustomInput placeholder={placeholder} testId={testId} />}
       />
     </div>
   );

@@ -99,6 +99,7 @@ export const ProjectForm = ({
             })
           }
           className={styles.input}
+          data-testid="project-name"
         />
       </ModalField>
 
@@ -107,6 +108,7 @@ export const ProjectForm = ({
           value={watch("domain")}
           onChange={(e) => setValue("domain", e.target.value)}
           className={styles.input}
+          data-testid="domain"
         />
       </ModalField>
 
@@ -123,6 +125,7 @@ export const ProjectForm = ({
                 shouldValidate: true,
               })
             }
+            testId="startDate"
           />
         </ModalField>
 
@@ -138,6 +141,7 @@ export const ProjectForm = ({
                 shouldValidate: true,
               })
             }
+            testId="endDate"
           />
         </ModalField>
       </div>
@@ -151,6 +155,7 @@ export const ProjectForm = ({
           value={watch("description")}
           onChange={(e) => setValue("description", e.target.value)}
           className={styles.textarea}
+          data-testid="textarea"
         />
       </ModalField>
 
