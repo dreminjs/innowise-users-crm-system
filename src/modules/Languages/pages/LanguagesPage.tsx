@@ -10,7 +10,7 @@ export const LanguagesPage: FC<ILanguagesProps> = ({ userId }) => {
   const currentUserId = useUserStore((state) => state.userId);
   return (
     <main className={styles.page}>
-      {userId && (
+      {userId && currentUserId && (
         <Languages usersLanguagesId={userId} currentUserId={currentUserId} />
       )}
     </main>

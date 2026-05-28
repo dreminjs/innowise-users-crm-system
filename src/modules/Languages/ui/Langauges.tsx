@@ -28,11 +28,11 @@ export const Languages: FC<ILanguagesProps> = ({
   return (
     <section>
       {languages.length > 0 ? (
-        <LanguagesList languagesData={data} isAvailableToChange={true} />
+        <LanguagesList languagesData={data} isAvailableToChange={isEditable} />
       ) : (
         <Empty />
       )}
-      <MenagementLanguages userId={usersLanguagesId} />
+      {isEditable && <MenagementLanguages userId={usersLanguagesId} />}
     </section>
   );
 };

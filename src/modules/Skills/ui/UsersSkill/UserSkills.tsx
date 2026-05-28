@@ -4,19 +4,18 @@ import { useQuery } from "@apollo/client/react";
 import { GET_PROFILE_SKILLS, GET_SKILL_CATEGORIES } from "../../api/queries";
 import { Loading } from "@/shared/ui/Loading";
 import { FC } from "react";
-import { UserRole } from "@/graphql/graphql";
 import { Empty } from "@/shared/ui/Empty";
 
 interface ISkllsProps {
   userSkillsId: string;
   currentUserId: string;
-  role: UserRole;
+  isAdmin: boolean;
 }
 
 export const UserSkills: FC<ISkllsProps> = ({
   userSkillsId,
   currentUserId,
-  role,
+  isAdmin,
 }) => {
   const {
     data: categoriesData,
@@ -24,10 +23,9 @@ export const UserSkills: FC<ISkllsProps> = ({
     error,
   } = useQuery(GET_SKILL_CATEGORIES);
   const { data: profileData } = useQuery(GET_PROFILE_SKILLS, {
-    variables: { userId: currentUserId },
+    variables: { userId: userSkillsId },
   });
-  console.log(userSkillsId);
-  const isEditable = role === UserRole.Admin || userSkillsId === currentUserId;
+  const isEditable = isAdmin || userSkillsId === currentUserId;
   if (loading) return <Loading />;
   if (error || !categoriesData?.skillCategories || !profileData?.profile) {
     return <Empty />;
