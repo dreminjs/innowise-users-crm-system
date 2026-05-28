@@ -10,12 +10,14 @@ type ActionItem =
       type: "link";
       label: string;
       href: string;
+      testId?: string;
     }
   | {
       type: "button";
       label: string;
       variant?: "default" | "danger";
       onClick: () => void | Promise<void>;
+      testId?: string;
     };
 interface Props {
   items: ActionItem[];
@@ -31,7 +33,11 @@ export const ActionsMenu: FC<Props> = ({ items, width = "160px" }) => {
   return (
     <Popover.Root open={isOpen} onOpenChange={(e) => setIsOpen(e.open)}>
       <Popover.Trigger asChild>
-        <button type="button" className={styles.trigger}>
+        <button
+          type="button"
+          className={styles.trigger}
+          data-testid="actions-trigger"
+        >
           ⋮
         </button>
       </Popover.Trigger>
@@ -56,6 +62,7 @@ export const ActionsMenu: FC<Props> = ({ items, width = "160px" }) => {
                   key={item.label}
                   type="button"
                   data-testid={
+                    item.testId ??
                     item.type + (item.variant ? "-" + item.variant : "")
                   }
                   onClick={() => handleAction(item.onClick)}

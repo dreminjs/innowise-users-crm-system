@@ -20,11 +20,13 @@ export const CvActions: FC<Props> = ({ cvId }) => {
           type: "link",
           label: `${t("edit")}`,
           href: `/cvs/${cvId}`,
+          testId: `edit-cv-${cvId}`,
         },
         {
           type: "button",
           label: `${t("delete")}`,
           variant: "danger",
+          testId: `delete-cv-${cvId}`,
           onClick: async () => {
             await deleteCv({
               variables: {
