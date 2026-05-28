@@ -446,5 +446,13 @@
       "nameRequired": "Project name is required",
       "startDateRequired": "Start date is required"
     }
+  },
+  "resetPassword": {
+    "title": "Reset password",
+    "subtitle": "Enter your new password",
+    "newPassword": "new password",
+    "sendedMailSuccessfuly": "Password reset link has been sent to your email",
+    "sendedMailFailed": "Failed to send password reset link",
+    "submit": "Reset password"
   }
 }

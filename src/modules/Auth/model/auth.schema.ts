@@ -8,3 +8,7 @@ export const authSchema = z.object({
 export const forgotPasswordSchema = z.object({
   email: z.string().email(),
 });
+
+export const resetPasswordSchema = z.object({
+  newPassword: z.string().min(1, "new password is required"),
+});
