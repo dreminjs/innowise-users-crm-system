@@ -18,15 +18,35 @@ export default defineConfig({
   },
   projects: [
     {
-      name: "setup",
-      testMatch: /.*\.setup\.ts/,
+      name: "admin-setup",
+      testMatch: /.*admin\.setup\.ts/,
+      use: {
+        storageState: undefined,
+      },
     },
     {
-      name: "chromium",
-      dependencies: ["setup"],
+      name: "user-setup",
+      testMatch: /.*user\.setup\.ts/,
+      use: {
+        storageState: undefined,
+      },
+    },
+    {
+      name: "admin",
+      testDir: "./tests/admin",
+      dependencies: ["admin-setup"],
       use: {
         ...devices["Desktop Chrome"],
         storageState: "playwright/.auth/admin.json",
+      },
+    },
+    {
+      name: "user",
+      testDir: "./tests/user",
+      dependencies: ["user-setup"],
+      use: {
+        ...devices["Desktop Chrome"],
+        storageState: "playwright/.auth/user.json",
       },
     },
   ],
