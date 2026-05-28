@@ -2,11 +2,9 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import { LanguagesList } from "./LanguagesList";
 import { useLanguageStore } from "../../model/language.store";
 import { Proficiency } from "@/generated/graphql";
-
 jest.mock("../../model/language.store", () => ({
   useLanguageStore: jest.fn(),
 }));
-
 jest.mock("./LanguagesItem", () => ({
   LanguagesItem: ({
     name,
@@ -14,14 +12,12 @@ jest.mock("./LanguagesItem", () => ({
     isAvailableToChange,
     isActive,
     onClick,
-    isEditModalOpen,
   }: {
     name: string;
     proficiency: string;
     isAvailableToChange: boolean;
     isActive: boolean;
-    onClick?: (name: string) => void;
-    isEditModalOpen: boolean;
+    onClick?: (dto: { name: string; proficiency: string }) => void;
   }) => (
     <div>
       <div>
@@ -40,25 +36,27 @@ jest.mock("./LanguagesItem", () => ({
         active:
         {String(isActive)}
       </div>
-      <div>
-        modal:
-        {String(isEditModalOpen)}
-      </div>
-      <button type="button" onClick={() => onClick?.(name)}>
+      <button
+        type="button"
+        onClick={() =>
+          onClick?.({
+            name,
+            proficiency,
+          })
+        }
+      >
         click-
         {name}
       </button>
     </div>
   ),
 }));
-
 jest.mock("../Languages.module.css", () => ({
   languagesList: "languagesList",
 }));
 
 describe("LanguagesList", () => {
   const addDeleteLanguage = jest.fn();
-
   const languagesData = {
     profile: {
       languages: [
@@ -73,7 +71,6 @@ describe("LanguagesList", () => {
       ],
     },
   };
-
   beforeEach(() => {
     jest.clearAllMocks();
     (useLanguageStore as unknown as jest.Mock).mockReturnValue({
@@ -82,7 +79,6 @@ describe("LanguagesList", () => {
       deleteLanguages: {},
     });
   });
-
   it("renders all languages", () => {
     render(
       <LanguagesList
@@ -93,7 +89,6 @@ describe("LanguagesList", () => {
     expect(screen.getByText("name:English")).toBeInTheDocument();
     expect(screen.getByText("name:German")).toBeInTheDocument();
   });
-
   it("renders proficiencies", () => {
     render(
       <LanguagesList
@@ -104,7 +99,6 @@ describe("LanguagesList", () => {
     expect(screen.getByText("proficiency:B2")).toBeInTheDocument();
     expect(screen.getByText("proficiency:C1")).toBeInTheDocument();
   });
-
   it("passes isAvailableToChange", () => {
     render(
       <LanguagesList
@@ -148,31 +142,6 @@ describe("LanguagesList", () => {
     expect(addDeleteLanguage).toHaveBeenCalledWith("English");
   });
 
-  it("opens edit modal when not in delete mode", () => {
-    render(
-      <LanguagesList
-        languagesData={languagesData as never}
-        isAvailableToChange={true}
-      />,
-    );
-    expect(screen.getAllByText("modal:false")).toHaveLength(2);
-    fireEvent.click(screen.getByText("click-English"));
-    expect(screen.getAllByText("modal:true")).toHaveLength(2);
-  });
-
-  it("toggles edit modal state", () => {
-    render(
-      <LanguagesList
-        languagesData={languagesData as never}
-        isAvailableToChange={true}
-      />,
-    );
-    fireEvent.click(screen.getByText("click-English"));
-    expect(screen.getAllByText("modal:true")).toHaveLength(2);
-    fireEvent.click(screen.getByText("click-English"));
-    expect(screen.getAllByText("modal:false")).toHaveLength(2);
-  });
-
   it("renders empty list", () => {
     render(
       <LanguagesList
@@ -197,16 +166,5 @@ describe("LanguagesList", () => {
       />,
     );
     expect(container.querySelector(".languagesList")).toBeInTheDocument();
-  });
-
-  it("passes modal state to all items", () => {
-    render(
-      <LanguagesList
-        languagesData={languagesData as never}
-        isAvailableToChange={true}
-      />,
-    );
-    fireEvent.click(screen.getByText("click-German"));
-    expect(screen.getAllByText("modal:true")).toHaveLength(2);
   });
 });
