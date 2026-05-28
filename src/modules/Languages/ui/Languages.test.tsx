@@ -1,15 +1,16 @@
 import { render, screen } from "@testing-library/react";
 import { useQuery } from "@apollo/client/react";
 import { Languages } from "@/modules/Languages/ui/Langauges";
-
+import { useUserStore } from "@/application/store/user.store";
 jest.mock("@apollo/client/react", () => ({
   useQuery: jest.fn(),
 }));
-
+jest.mock("@/application/store/user.store", () => ({
+  useUserStore: jest.fn(),
+}));
 jest.mock("../api/queries", () => ({
   GET_PROFILE_LANGUAGES: "GET_PROFILE_LANGUAGES",
 }));
-
 jest.mock("./MenagementLanguages/MenagementLanguages", () => ({
   MenagementLanguages: ({ userId }: { userId: string }) => (
     <div>
@@ -18,7 +19,6 @@ jest.mock("./MenagementLanguages/MenagementLanguages", () => ({
     </div>
   ),
 }));
-
 jest.mock("@/modules/Languages", () => ({
   LanguagesList: ({
     languagesData,
@@ -38,7 +38,6 @@ jest.mock("@/modules/Languages", () => ({
         list-count:
         {languagesData.profile.languages.length}
       </div>
-
       <div>
         editable:
         {String(isAvailableToChange)}
@@ -46,11 +45,9 @@ jest.mock("@/modules/Languages", () => ({
     </div>
   ),
 }));
-
 jest.mock("@/shared/ui/Loading", () => ({
   Loading: () => <div>loading</div>,
 }));
-
 jest.mock("@/shared/ui/Empty", () => ({
   Empty: () => <div>empty</div>,
 }));
@@ -58,7 +55,13 @@ jest.mock("@/shared/ui/Empty", () => ({
 describe("Languages", () => {
   beforeEach(() => {
     jest.clearAllMocks();
+    (useUserStore as unknown as jest.Mock).mockImplementation((selector) =>
+      selector({
+        userId: "user-1",
+      }),
+    );
   });
+
   it("renders loading state", () => {
     (useQuery as unknown as jest.Mock).mockReturnValue({
       data: undefined,
@@ -68,6 +71,7 @@ describe("Languages", () => {
     render(<Languages usersLanguagesId="user-1" />);
     expect(screen.getByText("loading")).toBeInTheDocument();
   });
+
   it("renders empty on error", () => {
     (useQuery as unknown as jest.Mock).mockReturnValue({
       data: undefined,
@@ -109,7 +113,7 @@ describe("Languages", () => {
     expect(screen.getByText("list-count:2")).toBeInTheDocument();
   });
 
-  it("passes editable=true to LanguagesList", () => {
+  it("passes editable=true to LanguagesList for owner", () => {
     (useQuery as unknown as jest.Mock).mockReturnValue({
       data: {
         profile: {
@@ -127,6 +131,24 @@ describe("Languages", () => {
     expect(screen.getByText("editable:true")).toBeInTheDocument();
   });
 
+  it("passes editable=false for another user", () => {
+    (useQuery as unknown as jest.Mock).mockReturnValue({
+      data: {
+        profile: {
+          languages: [
+            {
+              name: "English",
+            },
+          ],
+        },
+      },
+      loading: false,
+      error: null,
+    });
+    render(<Languages usersLanguagesId="user-55" />);
+    expect(screen.getByText("editable:false")).toBeInTheDocument();
+  });
+
   it("renders empty when languages array empty", () => {
     (useQuery as unknown as jest.Mock).mockReturnValue({
       data: {
@@ -141,7 +163,21 @@ describe("Languages", () => {
     expect(screen.getByText("empty")).toBeInTheDocument();
   });
 
-  it("always renders MenagementLanguages", () => {
+  it("renders MenagementLanguages only for owner", () => {
+    (useQuery as unknown as jest.Mock).mockReturnValue({
+      data: {
+        profile: {
+          languages: [],
+        },
+      },
+      loading: false,
+      error: null,
+    });
+    render(<Languages usersLanguagesId="user-1" />);
+    expect(screen.getByText("management:user-1")).toBeInTheDocument();
+  });
+
+  it("does not render MenagementLanguages for another user", () => {
     (useQuery as unknown as jest.Mock).mockReturnValue({
       data: {
         profile: {
@@ -152,9 +188,8 @@ describe("Languages", () => {
       error: null,
     });
     render(<Languages usersLanguagesId="user-55" />);
-    expect(screen.getByText("management:user-55")).toBeInTheDocument();
+    expect(screen.queryByText("management:user-55")).not.toBeInTheDocument();
   });
-
   it("passes userId to query variables", () => {
     (useQuery as unknown as jest.Mock).mockReturnValue({
       data: {
@@ -189,6 +224,7 @@ describe("Languages", () => {
     const { container } = render(<Languages usersLanguagesId="user-1" />);
     expect(container.querySelector("section")).toBeInTheDocument();
   });
+
   it("passes full data to LanguagesList", () => {
     const data = {
       profile: {

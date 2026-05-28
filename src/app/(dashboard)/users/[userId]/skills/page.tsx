@@ -10,12 +10,18 @@ export default function Page({
 }) {
   const { userId } = use(params);
   const currentUserId = useUserStore((state) => state.userId);
-  if (!currentUserId) {
+  const currentUserRole = useUserStore((state) => state.role);
+
+  if (!currentUserId || !currentUserRole) {
     return null;
   }
   return (
     <>
-      <UserSkills userSkillsId={userId} currentUserId={currentUserId} />
+      <UserSkills
+        userSkillsId={userId}
+        currentUserId={currentUserId}
+        role={currentUserRole}
+      />
     </>
   );
 }

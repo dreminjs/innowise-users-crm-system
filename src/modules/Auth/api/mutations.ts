@@ -29,3 +29,9 @@ export const FORGOT_PASSWORD = graphql(`
     forgotPassword(auth: $dto)
   }
 `);
+
+export const RESET_PASSWORD = graphql(`
+  mutation resetPassword($dto: ResetPasswordInput!) {
+    resetPassword(auth: $dto)
+  }
+`);

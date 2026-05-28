@@ -5,16 +5,22 @@ import { FC } from "react";
 import { Loading } from "@/shared/ui/Loading";
 import { LanguagesList } from "@/modules/Languages";
 import { Empty } from "@/shared/ui/Empty";
+import { useUserStore } from "@/application/store/user.store";
+import { UserRole } from "@/generated/graphql";
 
 interface ILanguagesProps {
   usersLanguagesId: string;
 }
 export const Languages: FC<ILanguagesProps> = ({ usersLanguagesId }) => {
+  const currentUserId = useUserStore((state) => state.userId);
+  const role = useUserStore((state) => state.role);
   const { data, loading, error } = useQuery(GET_PROFILE_LANGUAGES, {
     variables: {
       userId: usersLanguagesId,
     },
   });
+  const isEditable =
+    currentUserId === usersLanguagesId || role === UserRole.Admin;
   if (loading) return <Loading />;
   if (error || !data?.profile) {
     return <Empty />;
@@ -23,11 +29,11 @@ export const Languages: FC<ILanguagesProps> = ({ usersLanguagesId }) => {
   return (
     <section>
       {languages.length > 0 ? (
-        <LanguagesList languagesData={data} isAvailableToChange={true} />
+        <LanguagesList languagesData={data} isAvailableToChange={isEditable} />
       ) : (
         <Empty />
       )}
-      <MenagementLanguages userId={usersLanguagesId} />
+      {isEditable && <MenagementLanguages userId={usersLanguagesId} />}
     </section>
   );
 };

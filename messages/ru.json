@@ -458,5 +458,13 @@
       "nameRequired": "Название проекта обязательно",
       "startDateRequired": "Дата начала обязательна"
     }
+  },
+  "ResetPassword": {
+    "title": "Сброс пароля",
+    "subtitle": "Введите новый пароль",
+    "newPassword": "Новый пароль",
+    "sendedMailSuccessfuly": "Ссылка для сброса пароля отправлена на ваш email",
+    "sendedMailFailed": "Не удалось отправить ссылку для сброса пароля",
+    "submit": "Сбросить пароль"
   }
 }

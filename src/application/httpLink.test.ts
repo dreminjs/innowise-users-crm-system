@@ -6,13 +6,13 @@ describe("httpLink", () => {
   });
 
   it("creates HttpLink with GRAPHQL_URL from env", async () => {
-    process.env.GRAPHQL_URL = "https://test-api.com/graphql";
+    process.env.GRAPHQL_URL = "https://cv-project-js.inno.ws/api/graphql";
     jest.doMock("@apollo/client", () => ({
       HttpLink: HttpLinkMock,
     }));
     await import("./httpLink");
     expect(HttpLinkMock).toHaveBeenCalledWith({
-      uri: "https://test-api.com/graphql",
+      uri: "https://cv-project-js.inno.ws/api/graphql",
     });
   });
 

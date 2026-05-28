@@ -8,6 +8,7 @@ interface IAuthButtons {
   linkLabel: string;
   linkUrl: string;
   isLoading: boolean;
+  submitIsEnabled?: boolean;
 }
 
 export const AuthButtons: FC<IAuthButtons> = ({
@@ -15,12 +16,13 @@ export const AuthButtons: FC<IAuthButtons> = ({
   linkLabel,
   linkUrl,
   isLoading,
+  submitIsEnabled = true,
 }) => {
   const t = useTranslations("Login");
   return (
     <div className={styles.authButtons}>
       <button
-        disabled={isLoading}
+        disabled={isLoading || !submitIsEnabled}
         className={styles.authFormSubmit}
         type="submit"
       >

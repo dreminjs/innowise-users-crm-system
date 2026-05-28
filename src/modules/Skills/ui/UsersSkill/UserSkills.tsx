@@ -4,18 +4,18 @@ import { useQuery } from "@apollo/client/react";
 import { GET_PROFILE_SKILLS, GET_SKILL_CATEGORIES } from "../../api/queries";
 import { Loading } from "@/shared/ui/Loading";
 import { FC } from "react";
-import { useUserStore } from "@/application/store/user.store";
-import { UserRole } from "@/generated/graphql";
 import { Empty } from "@/shared/ui/Empty";
 
 interface ISkllsProps {
   userSkillsId: string;
   currentUserId: string;
+  isAdmin: boolean;
 }
 
 export const UserSkills: FC<ISkllsProps> = ({
   userSkillsId,
   currentUserId,
+  isAdmin,
 }) => {
   const {
     data: categoriesData,
@@ -23,10 +23,9 @@ export const UserSkills: FC<ISkllsProps> = ({
     error,
   } = useQuery(GET_SKILL_CATEGORIES);
   const { data: profileData } = useQuery(GET_PROFILE_SKILLS, {
-    variables: { userId: currentUserId },
+    variables: { userId: userSkillsId },
   });
-  const role = useUserStore((state) => state.role);
-  const isEditable = role === UserRole.Admin || userSkillsId === currentUserId;
+  const isEditable = isAdmin || userSkillsId === currentUserId;
   if (loading) return <Loading />;
   if (error || !categoriesData?.skillCategories || !profileData?.profile) {
     return <Empty />;
@@ -45,7 +44,7 @@ export const UserSkills: FC<ISkllsProps> = ({
       ) : (
         <Empty />
       )}
-      <MenagementSkills isAvailableToDelete={hasSkills} />
+      {isEditable && <MenagementSkills isAvailableToDelete={hasSkills} />}
     </section>
   );
 };

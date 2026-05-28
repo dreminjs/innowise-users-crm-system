@@ -2,7 +2,6 @@
 import { useLazyQuery } from "@apollo/client/react";
 import { SIGNIN } from "../../api/queries";
 import { AuthInput } from "@/generated/graphql";
-import { useRouter } from "next/navigation";
 import { useNotification } from "@/modules/Notifications/";
 import { useEffect } from "react";
 import { useTokens } from "@/modules/Tokens";
@@ -13,7 +12,6 @@ export const useSignin = () => {
   const setAccessToken = useTokens((state) => state.setAccessToken);
   const setRefreshToken = useTokens((state) => state.setRefreshToken);
   const setUser = useUserStore((state) => state.setUser);
-  useRouter();
   const [mutate, { data, loading, error }] = useLazyQuery(SIGNIN);
 
   useEffect(() => {
