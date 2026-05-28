@@ -19,7 +19,6 @@ type Props = {
   isOpen: boolean;
   closeAction: () => void;
 };
-
 export const CreateCvModal = ({ isOpen, closeAction }: Props) => {
   const t = useTranslations("CvDetails");
   const schema = createCvDetailsSchema(t);
@@ -40,10 +39,12 @@ export const CreateCvModal = ({ isOpen, closeAction }: Props) => {
       reset();
     }
   }, [isOpen, reset]);
-
   const onSubmit = async (form: TCvDetailsFormData) => {
     if (userId) {
-      addNotification({ message: "Loading...", type: "info" });
+      addNotification({
+        message: "Loading...",
+        type: "info",
+      });
       await createCv({
         variables: {
           cv: {
@@ -58,18 +59,19 @@ export const CreateCvModal = ({ isOpen, closeAction }: Props) => {
       closeAction();
     }
   };
+
   if (!isOpen) {
     return null;
   }
-
   return (
     <>
       <div className={styles.backdrop} onClick={closeAction} />
-      <div className={styles.modal}>
+      <div className={styles.modal} data-testid="create-cv-modal">
         <button
           type="button"
           onClick={closeAction}
           className={styles.closeButton}
+          data-testid="close-cv-modal"
         >
           ×
         </button>
@@ -80,14 +82,22 @@ export const CreateCvModal = ({ isOpen, closeAction }: Props) => {
             active={Boolean(watch("name"))}
             error={errors.name?.message}
           >
-            <input {...register("name")} placeholder=" " />
+            <input
+              {...register("name")}
+              placeholder=" "
+              data-testid="cv-name-input"
+            />
           </ModalField>
           <ModalField
             label={t("education")}
             active={Boolean(watch("education"))}
             error={errors.education?.message}
           >
-            <input {...register("education")} placeholder=" " />
+            <input
+              {...register("education")}
+              placeholder=" "
+              data-testid="cv-education-input"
+            />
           </ModalField>
           <ModalField
             label={t("description")}
@@ -95,14 +105,20 @@ export const CreateCvModal = ({ isOpen, closeAction }: Props) => {
             active={Boolean(watch("description"))}
             error={errors.description?.message}
           >
-            <textarea {...register("description")} placeholder=" " />
+            <textarea
+              {...register("description")}
+              placeholder=" "
+              data-testid="cv-description-input"
+            />
           </ModalField>
-          <ConfirmButtons
-            confirmLabel={t("create")}
-            confirmButtonType="submit"
-            cancelAction={closeAction}
-            disabled={loading}
-          />
+          <div data-testid="cv-submit-button">
+            <ConfirmButtons
+              confirmLabel={t("create")}
+              confirmButtonType="submit"
+              cancelAction={closeAction}
+              disabled={loading}
+            />
+          </div>
         </form>
       </div>
     </>

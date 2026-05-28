@@ -5,9 +5,7 @@ import styles from "../UsersSkill/Skills.module.css";
 
 export const RemoveSkillsButton = () => {
   const { deleteSkills } = useSkillStore();
-
   const { handleDeleteProfileSkills, loading } = useDeleteProfileSkills();
-
   const t = useTranslations("ConfirmButtons");
   if (Object.keys(deleteSkills).length !== 0) {
     return (
@@ -15,6 +13,7 @@ export const RemoveSkillsButton = () => {
         disabled={loading || Object.keys(deleteSkills).length === 0}
         onClick={handleDeleteProfileSkills}
         className={styles.removeSkillsButton}
+        data-testid="remove-skill-button"
       >
         <span className={styles.deleteConfirmButtonAmount}>
           {Object.keys(deleteSkills).length}

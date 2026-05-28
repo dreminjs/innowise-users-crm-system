@@ -7,7 +7,7 @@ import { FormModal } from "@/shared/ui/FormModal";
 type TEditSkillModalProps = {
   open: boolean;
   onClose: () => void;
-  categoryId: string | null;
+  categoryId: string;
 } & Omit<TSkillForm, "categoryId">;
 
 export const EditSkillModal: FC<TEditSkillModalProps> = ({
@@ -22,7 +22,7 @@ export const EditSkillModal: FC<TEditSkillModalProps> = ({
       {open && categoryId && (
         <EditSkillForm
           onToggle={onClose}
-          categoryId={categoryId}
+          categoryId={String(categoryId)}
           mastery={mastery}
         />
       )}
