@@ -8,13 +8,18 @@ import { Empty } from "@/shared/ui/Empty";
 
 interface ILanguagesProps {
   usersLanguagesId: string;
+  currentUserId: string;
 }
-export const Languages: FC<ILanguagesProps> = ({ usersLanguagesId }) => {
+export const Languages: FC<ILanguagesProps> = ({
+  usersLanguagesId,
+  currentUserId,
+}) => {
   const { data, loading, error } = useQuery(GET_PROFILE_LANGUAGES, {
     variables: {
       userId: usersLanguagesId,
     },
   });
+  const isEditable = currentUserId === usersLanguagesId;
   if (loading) return <Loading />;
   if (error || !data?.profile) {
     return <Empty />;
