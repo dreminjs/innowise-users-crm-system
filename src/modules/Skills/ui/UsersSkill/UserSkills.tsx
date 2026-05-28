@@ -25,6 +25,7 @@ export const UserSkills: FC<ISkllsProps> = ({
   const { data: profileData } = useQuery(GET_PROFILE_SKILLS, {
     variables: { userId: currentUserId },
   });
+  console.log(userSkillsId);
   const role = useUserStore((state) => state.role);
   const isEditable = role === UserRole.Admin || userSkillsId === currentUserId;
   if (loading) return <Loading />;
@@ -45,7 +46,7 @@ export const UserSkills: FC<ISkllsProps> = ({
       ) : (
         <Empty />
       )}
-      <MenagementSkills isAvailableToDelete={hasSkills} />
+      {isEditable && <MenagementSkills isAvailableToDelete={hasSkills} />}
     </section>
   );
 };

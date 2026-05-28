@@ -10,6 +10,7 @@ export default function Page({
 }) {
   const { userId } = use(params);
   const currentUserId = useUserStore((state) => state.userId);
+  console.log(userId);
   if (!currentUserId) {
     return null;
   }
