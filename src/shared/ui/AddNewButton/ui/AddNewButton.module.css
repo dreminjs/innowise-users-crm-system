@@ -12,4 +12,5 @@
 }
 .addNewButton:hover {
   background-color: var(--bg-hover);
+  color: var(--color-text)  !important;
 }

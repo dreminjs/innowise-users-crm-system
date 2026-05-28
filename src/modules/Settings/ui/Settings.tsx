@@ -9,7 +9,7 @@ export const Settings = () => {
   return (
     <div className={styles.settings}>
       <Appearance label={t("appearance")} />
-      <Language label={t("language")} />
+      <Language label={t("language")} testId="language" />
       <ResumeLanguage label={t("resumeLanguage")} />
     </div>
   );

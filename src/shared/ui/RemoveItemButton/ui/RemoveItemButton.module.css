@@ -1,11 +1,16 @@
 .removeItemButton {
   display: flex;
+
   color: var(--color-primary);
-  padding: 15px 0;
+  padding: 0.5rem;
   gap: 16px;
-  width: 220px;
+  width: 270px;
   justify-content: center;
   align-items: center;
   font-weight: 500;
   line-height: 25px;
+  border-radius: 25px;
+}
+.removeItemButton:hover {
+  background: var(--bg-hover);
 }

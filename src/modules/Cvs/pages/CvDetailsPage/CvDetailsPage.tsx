@@ -81,14 +81,22 @@ export const CvDetailsPage = ({ cvId }: Props) => {
           active={Boolean(watch("name"))}
           error={errors.name?.message}
         >
-          <input {...register("name")} placeholder=" " />
+          <input
+            {...register("name")}
+            placeholder=" "
+            data-testid="cv-name-input"
+          />
         </ModalField>
         <ModalField
           label={t("education")}
           active={Boolean(watch("education"))}
           error={errors.education?.message}
         >
-          <input {...register("education")} placeholder=" " />
+          <input
+            {...register("education")}
+            placeholder=" "
+            data-testid="cv-education-input"
+          />
         </ModalField>
         <ModalField
           label={t("description")}
@@ -96,7 +104,11 @@ export const CvDetailsPage = ({ cvId }: Props) => {
           active={Boolean(watch("description"))}
           error={errors.description?.message}
         >
-          <textarea {...register("description")} placeholder=" " />
+          <textarea
+            {...register("description")}
+            placeholder=" "
+            data-testid="cv-description-input"
+          />
         </ModalField>
         <ConfirmButtons
           confirmLabel={updating ? t("updating") : t("update")}

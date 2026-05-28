@@ -18,38 +18,6 @@ jest.mock("../../model/languages.constants", () => ({
   },
 }));
 
-jest.mock("../EditLanguageModal/EditLanguageModal", () => ({
-  EditLanguageModal: ({
-    open,
-    toggleAction,
-    name,
-    proficiency,
-  }: {
-    open: boolean;
-    toggleAction: () => void;
-    name: string;
-    proficiency: string;
-  }) => (
-    <div>
-      <div>
-        modal-open:
-        {String(open)}
-      </div>
-      <div>
-        modal-name:
-        {name}
-      </div>
-      <div>
-        modal-proficiency:
-        {proficiency}
-      </div>
-      <button type="button" onClick={toggleAction}>
-        modal-toggle
-      </button>
-    </div>
-  ),
-}));
-
 jest.mock("../Languages.module.css", () => ({
   languagesItem: "languagesItem",
   languagesItemActive: "languagesItemActive",
@@ -69,7 +37,6 @@ describe("LanguagesItem", () => {
         proficiency={Proficiency.B2}
         isAvailableToChange={true}
         isActive={false}
-        isEditModalOpen={false}
         onClick={onClick}
       />,
     );
@@ -84,7 +51,6 @@ describe("LanguagesItem", () => {
         proficiency={Proficiency.C1}
         isAvailableToChange={true}
         isActive={false}
-        isEditModalOpen={false}
         onClick={onClick}
       />,
     );
@@ -99,7 +65,6 @@ describe("LanguagesItem", () => {
         proficiency={Proficiency.Native}
         isAvailableToChange={true}
         isActive={false}
-        isEditModalOpen={false}
         onClick={onClick}
       />,
     );
@@ -107,14 +72,13 @@ describe("LanguagesItem", () => {
     expect(screen.getByText("Native")).toBeInTheDocument();
   });
 
-  it("calls onClick with name", () => {
+  it("calls onClick with dto", () => {
     render(
       <LanguagesItem
         name="German"
         proficiency={Proficiency.B1}
         isAvailableToChange={true}
         isActive={false}
-        isEditModalOpen={false}
         onClick={onClick}
       />,
     );
@@ -125,7 +89,13 @@ describe("LanguagesItem", () => {
       }),
     );
 
-    expect(onClick).toHaveBeenCalledWith("German", expect.any(Object));
+    expect(onClick).toHaveBeenCalledWith(
+      {
+        name: "German",
+        proficiency: Proficiency.B1,
+      },
+      expect.any(Object),
+    );
   });
 
   it("does not call onClick when change is unavailable", () => {
@@ -135,7 +105,6 @@ describe("LanguagesItem", () => {
         proficiency={Proficiency.B1}
         isAvailableToChange={false}
         isActive={false}
-        isEditModalOpen={false}
         onClick={onClick}
       />,
     );
@@ -156,75 +125,11 @@ describe("LanguagesItem", () => {
         proficiency={Proficiency.B2}
         isAvailableToChange={true}
         isActive={true}
-        isEditModalOpen={false}
         onClick={onClick}
       />,
     );
 
     expect(container.querySelector(".languagesItemActive")).toBeInTheDocument();
-  });
-
-  it("renders EditLanguageModal when onClick exists", () => {
-    render(
-      <LanguagesItem
-        name="English"
-        proficiency={Proficiency.B2}
-        isAvailableToChange={true}
-        isActive={false}
-        isEditModalOpen={true}
-        onClick={onClick}
-      />,
-    );
-
-    expect(screen.getByText("modal-open:true")).toBeInTheDocument();
-  });
-
-  it("does not render EditLanguageModal when onClick missing", () => {
-    render(
-      <LanguagesItem
-        name="English"
-        proficiency={Proficiency.B2}
-        isAvailableToChange={true}
-        isActive={false}
-        isEditModalOpen={false}
-      />,
-    );
-
-    expect(screen.queryByText(/modal-open:/)).not.toBeInTheDocument();
-  });
-
-  it("passes props to EditLanguageModal", () => {
-    render(
-      <LanguagesItem
-        name="Spanish"
-        proficiency={Proficiency.C2}
-        isAvailableToChange={true}
-        isActive={false}
-        isEditModalOpen={true}
-        onClick={onClick}
-      />,
-    );
-
-    expect(screen.getByText("modal-name:Spanish")).toBeInTheDocument();
-
-    expect(screen.getByText("modal-proficiency:C2")).toBeInTheDocument();
-  });
-
-  it("calls modal toggleAction with name", () => {
-    render(
-      <LanguagesItem
-        name="French"
-        proficiency={Proficiency.A2}
-        isAvailableToChange={true}
-        isActive={false}
-        isEditModalOpen={true}
-        onClick={onClick}
-      />,
-    );
-
-    fireEvent.click(screen.getByText("modal-toggle"));
-
-    expect(onClick).toHaveBeenCalledWith("French", expect.any(Object));
   });
 
   it("applies proficiency color", () => {
@@ -234,7 +139,6 @@ describe("LanguagesItem", () => {
         proficiency={Proficiency.C2}
         isAvailableToChange={true}
         isActive={false}
-        isEditModalOpen={false}
         onClick={onClick}
       />,
     );

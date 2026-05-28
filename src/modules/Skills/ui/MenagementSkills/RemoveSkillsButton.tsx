@@ -5,9 +5,7 @@ import styles from "../UsersSkill/Skills.module.css";
 
 export const RemoveSkillsButton = () => {
   const { deleteSkills } = useSkillStore();
-
   const { handleDeleteProfileSkills, loading } = useDeleteProfileSkills();
-
   const t = useTranslations("ConfirmButtons");
   if (Object.keys(deleteSkills).length !== 0) {
     return (
