@@ -1,5 +1,4 @@
 import { test as setup, expect } from "@playwright/test";
-
 setup("authenticate", async ({ page }) => {
   await page.goto("/auth/signin");
   await page.locator('input[name="email"]').fill("123@mail.com");

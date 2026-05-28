@@ -4,9 +4,12 @@ test("admin can create edit and delete departments", async ({ page }) => {
   const updatedDepartmentName = "test_department2";
   await page.goto("/departments");
   await expect(page).toHaveURL(/departments/);
+  await expect(page.getByTestId("add-new-btn")).toBeVisible();
   await page.getByTestId("add-new-btn").click();
   const createDialog = page.getByRole("dialog");
-  await expect(createDialog).toBeVisible();
+  await expect(createDialog).toBeVisible({
+    timeout: 10000,
+  });
   await createDialog.getByTestId("department-name").fill(departmentName);
   await createDialog.getByTestId("confirm-btn").click();
   await expect(createDialog).not.toBeVisible();

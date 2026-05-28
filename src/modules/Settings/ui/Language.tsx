@@ -8,8 +8,9 @@ import { languageOptions } from "../model/settings.data";
 import { TLanguageLocale } from "../model/settings.types";
 interface ILanguageProps {
   label: string;
+  testId?: string;
 }
-export const Language: FC<ILanguageProps> = ({ label }) => {
+export const Language: FC<ILanguageProps> = ({ label, testId }) => {
   const router = useRouter();
   const pathname = usePathname();
   const [isPending, startTransition] = useTransition();
@@ -28,6 +29,7 @@ export const Language: FC<ILanguageProps> = ({ label }) => {
       options={languageOptions}
       value={language}
       disabled={isPending}
+      testId={testId}
       onChange={(value) => handleLanguageChange(value as TLanguageLocale)}
     />
   );

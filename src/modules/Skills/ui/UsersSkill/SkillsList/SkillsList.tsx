@@ -45,23 +45,18 @@ export const SkillsList: FC<ISkillsListProps> = ({
     const categoryMap = Object.fromEntries(
       categories.map((cat) => [cat.id, cat]),
     );
-
     const result: Record<string, { groupName: string; skills: typeof skills }> =
       {};
-
     skills.forEach((skill) => {
       if (!skill.categoryId) return;
       const category = categoryMap[skill.categoryId];
       if (!category) return;
-
       const group = category.parent ?? category;
-
       if (!result[group.id]) {
         result[group.id] = { groupName: group.name, skills: [] };
       }
       result[group.id].skills.push(skill);
     });
-
     return Object.values(result);
   }, [skills, categories]);
 
