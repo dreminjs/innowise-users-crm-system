@@ -22,6 +22,7 @@ export const SkillItem: FC<ISkillItemProps> = ({
   isActive,
   onClick,
 }) => {
+  console.log(isActive);
   return (
     <>
       <li>

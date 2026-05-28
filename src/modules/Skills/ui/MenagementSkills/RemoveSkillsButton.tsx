@@ -15,8 +15,12 @@ export const RemoveSkillsButton = () => {
         disabled={loading || Object.keys(deleteSkills).length === 0}
         onClick={handleDeleteProfileSkills}
         className={styles.removeSkillsButton}
+        data-testid="remove-skills-button"
       >
-        <span className={styles.deleteConfirmButtonAmount}>
+        <span
+          data-testid="delete-confirm-button-amount"
+          className={styles.deleteConfirmButtonAmount}
+        >
           {Object.keys(deleteSkills).length}
         </span>
         <span>{loading ? "Loading..." : t("delete")}</span>
