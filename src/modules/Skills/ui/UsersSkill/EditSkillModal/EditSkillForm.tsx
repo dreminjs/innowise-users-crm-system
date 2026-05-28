@@ -74,6 +74,7 @@ export const EditSkillForm: FC<TEditSkillFormProps> = ({
             value={field.value}
             disabled={!Boolean(currentCategoryId)}
             onChange={(value) => handleChangeMastery(value as Mastery)}
+            testId="mastery"
           />
         )}
       />
