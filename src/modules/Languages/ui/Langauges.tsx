@@ -5,21 +5,22 @@ import { FC } from "react";
 import { Loading } from "@/shared/ui/Loading";
 import { LanguagesList } from "@/modules/Languages";
 import { Empty } from "@/shared/ui/Empty";
+import { useUserStore } from "@/application/store/user.store";
+import { UserRole } from "@/generated/graphql";
 
 interface ILanguagesProps {
   usersLanguagesId: string;
-  currentUserId: string;
 }
-export const Languages: FC<ILanguagesProps> = ({
-  usersLanguagesId,
-  currentUserId,
-}) => {
+export const Languages: FC<ILanguagesProps> = ({ usersLanguagesId }) => {
+  const currentUserId = useUserStore((state) => state.userId);
+  const role = useUserStore((state) => state.role);
   const { data, loading, error } = useQuery(GET_PROFILE_LANGUAGES, {
     variables: {
       userId: usersLanguagesId,
     },
   });
-  const isEditable = currentUserId === usersLanguagesId;
+  const isEditable =
+    currentUserId === usersLanguagesId || role === UserRole.Admin;
   if (loading) return <Loading />;
   if (error || !data?.profile) {
     return <Empty />;

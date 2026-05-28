@@ -48,7 +48,6 @@ export const CustomSelect: FC<ICustomSelectProps> = ({
     }
     return options;
   }, [options]);
-  console.log(testId);
   const collection = useMemo(
     () => createListCollection({ items: flatItems }),
     [flatItems],
