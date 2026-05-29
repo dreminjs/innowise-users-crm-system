@@ -1,4 +1,7 @@
 .empty {
+  margin-top: 2rem;
+  padding: 1rem;
   color: var(--color-text);
+  font-size: 3rem;
   text-align: center;
 }

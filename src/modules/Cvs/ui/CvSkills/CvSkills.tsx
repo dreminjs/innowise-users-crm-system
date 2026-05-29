@@ -12,6 +12,7 @@ import { SkillItem } from "@/modules/Skills/ui/UsersSkill/SkillsList/SkillItem";
 import { EditCvSkillModal } from "./modals/EditCvSkillModal";
 import { useTranslations } from "next-intl";
 import styles from "./CvSkills.module.css";
+import { Empty } from "@/shared/ui/Empty";
 type Props = {
   cvId: string;
 };
@@ -78,11 +79,8 @@ export const CvSkills = ({ cvId }: Props) => {
   if (categoriesLoading || cvLoading) {
     return <Loading />;
   }
-  if (categoriesError) {
-    return <div>Error: {categoriesError.message}</div>;
-  }
-  if (cvError) {
-    return <div>Error: {cvError.message}</div>;
+  if (categoriesError || cvError) {
+    return <Empty />;
   }
   return (
     <>
