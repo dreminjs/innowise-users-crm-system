@@ -31,7 +31,7 @@ export const SkillItem: FC<ISkillItemProps> = ({
             styles.skillItem,
             isActive && styles.skillItemDeleteActive,
           )}
-          data-testid="skill-item"
+          data-testid={`skill-item-${name}`}
         >
           <Progress.Root
             value={masteryValue[mastery]}

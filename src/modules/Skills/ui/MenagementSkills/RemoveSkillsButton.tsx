@@ -3,9 +3,9 @@ import { useDeleteProfileSkills } from "../../model/hooks/useDeleteProfileSkills
 import { useSkillStore } from "../../model/skill.store";
 import styles from "../UsersSkill/Skills.module.css";
 
-export const RemoveSkillsButton = () => {
+export const RemoveSkillsButton = ({ userId }: { userId: string }) => {
   const { deleteSkills } = useSkillStore();
-  const { handleDeleteProfileSkills, loading } = useDeleteProfileSkills();
+  const { handleDeleteProfileSkills, loading } = useDeleteProfileSkills(userId);
   const t = useTranslations("ConfirmButtons");
   if (Object.keys(deleteSkills).length !== 0) {
     return (

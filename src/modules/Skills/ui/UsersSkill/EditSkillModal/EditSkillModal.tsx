@@ -8,6 +8,7 @@ type TEditSkillModalProps = {
   open: boolean;
   onClose: () => void;
   categoryId: string;
+  userId: string;
 } & Omit<TSkillForm, "categoryId">;
 
 export const EditSkillModal: FC<TEditSkillModalProps> = ({
@@ -15,6 +16,7 @@ export const EditSkillModal: FC<TEditSkillModalProps> = ({
   onClose,
   categoryId,
   mastery,
+  userId,
 }) => {
   const t = useTranslations("Skills");
   return (
@@ -24,6 +26,7 @@ export const EditSkillModal: FC<TEditSkillModalProps> = ({
           onToggle={onClose}
           categoryId={String(categoryId)}
           mastery={mastery}
+          userId={userId}
         />
       )}
     </FormModal>

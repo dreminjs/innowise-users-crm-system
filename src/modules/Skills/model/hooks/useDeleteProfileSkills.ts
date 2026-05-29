@@ -2,14 +2,12 @@
 import { useTranslations } from "next-intl";
 import { useMutation } from "@apollo/client/react";
 import { useSkillStore } from "../skill.store";
-import { useUserStore } from "@/application/store/user.store";
 import { useNotification } from "@/modules/Notifications";
 import { DELETE_PROFILE_SKILL } from "../../api/mutations";
 import { GET_PROFILE_SKILLS } from "../../api/queries";
 
-export const useDeleteProfileSkills = () => {
+export const useDeleteProfileSkills = (userId: string) => {
   const addNotification = useNotification((state) => state.addNotification);
-  const currentUserId = useUserStore((state) => state.userId);
   const { deleteSkills, clearDeleteSkills, toggleDeleteMode } = useSkillStore();
   const t = useTranslations("Notifications");
   const [mutate, { loading, error }] = useMutation(DELETE_PROFILE_SKILL, {
@@ -33,18 +31,18 @@ export const useDeleteProfileSkills = () => {
       {
         query: GET_PROFILE_SKILLS,
         variables: {
-          userId: currentUserId,
+          userId: userId,
         },
       },
     ],
   });
   const handleDeleteProfileSkills = () => {
-    if (currentUserId) {
+    if (userId) {
       mutate({
         variables: {
           dto: {
             name: Object.values(deleteSkills),
-            userId: currentUserId,
+            userId: userId,
           },
         },
       });

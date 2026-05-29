@@ -31,7 +31,7 @@ test("create edit and delete cv", async ({ page }) => {
   const createdCv = page.getByText(cvName).first();
   await expect(createdCv).toBeVisible();
   await page.locator('[data-testid^="actions-trigger"]').first().click();
-  await page.getByTestId("menu-link").click();
+  await page.getByTestId("menu-link").first().click();
   await expect(page).toHaveURL(/\/cvs\/\d+/);
   const editNameInput = page.getByTestId("cv-name-input");
   await expect(editNameInput).toBeVisible();

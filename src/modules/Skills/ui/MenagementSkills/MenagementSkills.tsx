@@ -9,10 +9,12 @@ import styles from "../UsersSkill/Skills.module.css";
 
 interface IMenuagementSkillsProps {
   isAvailableToDelete: boolean;
+  userId: string;
 }
 
 export const MenagementSkills: FC<IMenuagementSkillsProps> = ({
   isAvailableToDelete,
+  userId,
 }) => {
   const [isSkillModalOpen, setIsSkillModalOpen] = useState(false);
   const { toggleDeleteMode, isDeleteMode } = useSkillStore();
@@ -29,7 +31,7 @@ export const MenagementSkills: FC<IMenuagementSkillsProps> = ({
             >
               {t("ConfirmButtons.cancel")}
             </button>
-            <RemoveSkillsButton />
+            <RemoveSkillsButton userId={userId} />
           </>
         ) : (
           <>
@@ -50,6 +52,7 @@ export const MenagementSkills: FC<IMenuagementSkillsProps> = ({
       <AddSkillModal
         open={isSkillModalOpen}
         onToggle={() => setIsSkillModalOpen((prev) => !prev)}
+        userId={userId}
       />
     </>
   );

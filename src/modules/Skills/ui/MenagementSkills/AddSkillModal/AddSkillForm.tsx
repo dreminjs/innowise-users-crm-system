@@ -15,14 +15,14 @@ import styles from "../../UsersSkill/Skills.module.css";
 
 interface IEditSkillFormProps {
   onToggle: () => void;
+  userId: string;
 }
 
-export const AddSkillForm: FC<IEditSkillFormProps> = ({ onToggle }) => {
-  const currentUserId = useUserStore((state) => state.userId);
-  const { handleAddProfileSkill } = useAddProfileSkill();
+export const AddSkillForm: FC<IEditSkillFormProps> = ({ onToggle, userId }) => {
+  const { handleAddProfileSkill } = useAddProfileSkill(userId);
   const { data: skillsData } = useQuery(GET_SKILLS);
   const { data: profileData } = useQuery(GET_PROFILE_SKILLS, {
-    variables: { userId: currentUserId || "" },
+    variables: { userId: userId || "" },
   });
 
   const {
@@ -63,7 +63,7 @@ export const AddSkillForm: FC<IEditSkillFormProps> = ({ onToggle }) => {
             value={field.value}
             onChange={handleChangeSkill}
             disabled={false}
-            testId="skill-name"
+            testId="select-skill"
           />
         )}
       />
@@ -79,7 +79,6 @@ export const AddSkillForm: FC<IEditSkillFormProps> = ({ onToggle }) => {
             }))}
             value={field.value}
             disabled={!currentCategoryId}
-            testId="mastery"
             onChange={(value) => handleChangeMastery(value as Mastery)}
             testId="select-mastery"
           />

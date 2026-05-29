@@ -16,12 +16,14 @@ interface ISkillsListProps {
   categoriesData: GetSkillCategoriesQuery;
   profileSkillsData: GetProfileSkillsQuery;
   isAvailableToChange: boolean;
+  userId: string;
 }
 
 export const SkillsList: FC<ISkillsListProps> = ({
   categoriesData,
   isAvailableToChange,
   profileSkillsData,
+  userId,
 }) => {
   const { deleteSkills, toggleDeleteSkill, isDeleteMode } = useSkillStore();
 
@@ -94,6 +96,7 @@ export const SkillsList: FC<ISkillsListProps> = ({
         onClose={handleCloseModal}
         categoryId={skillToEdit?.categoryId ?? ""}
         mastery={(skillToEdit?.mastery as Mastery) ?? ""}
+        userId={userId}
       />
     </>
   );

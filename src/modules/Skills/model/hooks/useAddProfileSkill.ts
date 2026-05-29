@@ -1,7 +1,6 @@
 "use client";
 import { useTranslations } from "next-intl";
 import { useMutation, useQuery } from "@apollo/client/react";
-import { useUserStore } from "@/application/store/user.store";
 import { useNotification } from "@/modules/Notifications";
 import { ADD_PROFILE_SKILL } from "../../api/mutations";
 import {
@@ -11,9 +10,8 @@ import {
 } from "../../api/queries";
 import { TSkillForm } from "../skill.interface";
 
-export const useAddProfileSkill = () => {
+export const useAddProfileSkill = (userId: string) => {
   const { data: skillsData } = useQuery(GET_SKILLS);
-  const currentUserId = useUserStore((state) => state.userId);
   const t = useTranslations("Notifications");
   const addNotification = useNotification((state) => state.addNotification);
   const [mutate, { loading, error }] = useMutation(ADD_PROFILE_SKILL, {
@@ -35,7 +33,7 @@ export const useAddProfileSkill = () => {
       {
         query: GET_PROFILE_SKILLS,
         variables: {
-          userId: currentUserId,
+          userId: userId,
         },
       },
       {
@@ -45,13 +43,13 @@ export const useAddProfileSkill = () => {
   });
 
   const handleAddProfileSkill = async (dto: TSkillForm) => {
-    if (currentUserId && skillsData?.skills) {
+    if (userId && skillsData?.skills) {
       await mutate({
         variables: {
           dto: {
             categoryId: dto.categoryId,
             mastery: dto.mastery,
-            userId: currentUserId,
+            userId: userId,
             name:
               skillsData.skills.find((s) => s.id === dto.categoryId)?.name ||
               "Unknown",

@@ -53,9 +53,9 @@ test("add edit and remove skill from profile", async ({ page }) => {
   expect(updateData).toHaveProperty("data.updateProfileSkill");
   await expect(page.getByTestId("remove-item-button")).toBeVisible();
   await page.getByTestId("remove-item-button").click();
-  await expect(page.getByTestId("remove-skill-button")).not.toBeVisible();
+  await expect(page.getByTestId("remove-skills-button")).not.toBeVisible();
   await createdSkill.click();
-  await expect(page.getByTestId("remove-skill-button")).toBeVisible();
+  await expect(page.getByTestId("remove-skills-button")).toBeVisible();
   const deleteResponsePromise = page.waitForResponse(async (res) => {
     if (!res.url().includes("/graphql")) {
       return false;
@@ -63,7 +63,7 @@ test("add edit and remove skill from profile", async ({ page }) => {
     const body = res.request().postDataJSON();
     return body?.operationName === "deleteProfileSkill";
   });
-  await page.getByTestId("remove-skill-button").click();
+  await page.getByTestId("remove-skills-button").click();
   const deleteResponse = await deleteResponsePromise;
   const deleteData = await deleteResponse.json();
   expect(deleteData).toBeDefined();

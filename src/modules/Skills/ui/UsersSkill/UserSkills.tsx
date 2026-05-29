@@ -32,7 +32,6 @@ export const UserSkills: FC<ISkllsProps> = ({
   }
   const hasSkills = profileData.profile.skills.length > 0;
   const hasCategories = categoriesData.skillCategories.length > 0;
-
   return (
     <section>
       {hasCategories && hasSkills ? (
@@ -40,11 +39,17 @@ export const UserSkills: FC<ISkllsProps> = ({
           categoriesData={categoriesData}
           profileSkillsData={profileData}
           isAvailableToChange={isEditable}
+          userId={userSkillsId}
         />
       ) : (
         <Empty />
       )}
-      {isEditable && <MenagementSkills isAvailableToDelete={hasSkills} />}
+      {isEditable && (
+        <MenagementSkills
+          isAvailableToDelete={hasSkills}
+          userId={userSkillsId}
+        />
+      )}
     </section>
   );
 };

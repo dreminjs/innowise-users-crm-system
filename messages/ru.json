@@ -459,7 +459,7 @@
       "startDateRequired": "Дата начала обязательна"
     }
   },
-  "ResetPassword": {
+  "resetPassword": {
     "title": "Сброс пароля",
     "subtitle": "Введите новый пароль",
     "newPassword": "Новый пароль",

@@ -14,14 +14,16 @@ import { useTranslations } from "next-intl";
 
 type TEditSkillFormProps = {
   onToggle: () => void;
+  userId: string;
 } & TSkillForm;
 
 export const EditSkillForm: FC<TEditSkillFormProps> = ({
   onToggle,
   mastery,
   categoryId,
+  userId,
 }) => {
-  const { handleEditProfileSkill } = useEditProfileSkill();
+  const { handleEditProfileSkill } = useEditProfileSkill(userId);
   const { data: skillsData } = useQuery(GET_SKILLS);
   const {
     control,
@@ -74,7 +76,7 @@ export const EditSkillForm: FC<TEditSkillFormProps> = ({
             value={field.value}
             disabled={!Boolean(currentCategoryId)}
             onChange={(value) => handleChangeMastery(value as Mastery)}
-            testId="mastery"
+            testId="select-mastery"
           />
         )}
       />

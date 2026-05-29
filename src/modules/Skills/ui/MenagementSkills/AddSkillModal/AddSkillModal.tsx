@@ -6,13 +6,18 @@ import { FormModal } from "@/shared/ui/FormModal";
 interface IAddSkillModalProps {
   open: boolean;
   onToggle: () => void;
+  userId: string;
 }
 
-export const AddSkillModal: FC<IAddSkillModalProps> = ({ open, onToggle }) => {
+export const AddSkillModal: FC<IAddSkillModalProps> = ({
+  open,
+  onToggle,
+  userId,
+}) => {
   const t = useTranslations("Skills");
   return (
     <FormModal open={open} toggleAction={onToggle} title={t("addSkill")}>
-      <AddSkillForm onToggle={onToggle} />
+      <AddSkillForm onToggle={onToggle} userId={userId} />
     </FormModal>
   );
 };
