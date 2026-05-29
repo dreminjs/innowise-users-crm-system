@@ -10,6 +10,7 @@ import { useTokens } from "@/modules/Tokens";
 import { Icon } from "@/shared/ui/Icon/Icon";
 import { useTranslations } from "next-intl";
 import { navigationItems } from "@/shared/config/navigation";
+import { useApolloClient } from "@apollo/client/react";
 
 type Props = {
   isOpen: boolean;
@@ -31,10 +32,12 @@ export const ProfileMenu = ({
   const role = useUserStore((state) => state.role);
   const resetUser = useUserStore((state) => state.resetUser);
   const clearToken = useTokens((state) => state.deleteAccessToken);
-  const handleLogout = () => {
+  const client = useApolloClient();
+  const handleLogout = async () => {
     resetUser();
     clearToken();
     closeAction();
+    await client.clearStore();
     router.push("/auth/signin");
   };
   if (!isOpen) return null;
