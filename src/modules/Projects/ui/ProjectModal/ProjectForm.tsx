@@ -166,17 +166,15 @@ export const ProjectForm = ({
           <CustomSelect
             label={t("environment")}
             options={
-              skillsData?.skills.map((skill) => ({
-                value: skill.name,
-                label: skill.name,
-              })) ?? []
+              skillsData?.skills
+                .filter((skill) => !field.value.includes(skill.name))
+                .map((skill) => ({
+                  value: skill.name,
+                  label: skill.name,
+                })) ?? []
             }
             value=""
             onChange={(value) => {
-              if (field.value.includes(value)) {
-                return;
-              }
-
               field.onChange([...field.value, value]);
             }}
           />
