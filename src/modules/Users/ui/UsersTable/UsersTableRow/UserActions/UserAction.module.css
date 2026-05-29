@@ -10,3 +10,6 @@
 .userActionsItem:hover {
     background: var(--bg-hover);
 }
+.deleteButton{
+    color: var(--color-primary);
+}
