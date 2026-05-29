@@ -8,7 +8,7 @@ import { TResetPasswordFormData } from "../auth.types";
 import { useTranslations } from "next-intl";
 
 export const useResetPassword = () => {
-  const t = useTranslations("ResetPassword");
+  const t = useTranslations("resetPassword");
 
   const addNotification = useNotification((state) => state.addNotification);
   const push = useRouter().push;

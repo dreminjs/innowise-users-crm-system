@@ -23,20 +23,20 @@ export const ResetPasswordForm = () => {
   const t = useTranslations();
   return (
     <AuthFormLayout
-      title={t("ResetPassword.title")}
-      subtitle={t("ResetPassword.subtitle")}
+      title={t("resetPassword.title")}
+      subtitle={t("resetPassword.subtitle")}
     >
       <form className={styles.forgotPassword} onSubmit={handleSubmit(onSubmit)}>
         <FormField<TResetPasswordFormData>
           type={"email"}
           register={register}
           name={"newPassword"}
-          label={t("ResetPassword.newPassword")}
+          label={t("resetPassword.newPassword")}
           error={errors.newPassword?.message}
         />
         <AuthButtons
           submitIsEnabled={watch("newPassword")?.length > 0}
-          submitLabel={t("ResetPassword.submit")}
+          submitLabel={t("resetPassword.submit")}
           linkLabel={t("ConfirmButtons.cancel")}
           linkUrl="/auth/signin"
           isLoading={loading}

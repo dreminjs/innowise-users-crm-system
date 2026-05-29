@@ -8,7 +8,6 @@ import { AuthButtons } from "./AuthButtons";
 import { FormField } from "@/shared/ui/FormField";
 import { useTranslations } from "next-intl";
 import styles from "./AuthForm.module.css";
-import { useEffect } from "react";
 
 export const ForgotPasswordForm = () => {
   const {
