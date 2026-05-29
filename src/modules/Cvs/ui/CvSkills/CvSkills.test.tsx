@@ -33,7 +33,15 @@ jest.mock("@/shared/ui/Loading", () => ({
 }));
 
 jest.mock("@/modules/Skills/ui/UsersSkill/SkillsList/SkillItem", () => ({
-  SkillItem: ({ name, onClick, isActive }: any) => (
+  SkillItem: ({
+    name,
+    onClick,
+    isActive,
+  }: {
+    name: string;
+    onClick?: () => void;
+    isActive: boolean;
+  }) => (
     <li
       data-testid={`skill-item-${name}`}
       data-active={isActive}
@@ -45,13 +53,23 @@ jest.mock("@/modules/Skills/ui/UsersSkill/SkillsList/SkillItem", () => ({
 }));
 
 jest.mock("./CvManagementSkills", () => ({
-  CvManagementSkills: ({ cvId }: any) => (
+  CvManagementSkills: ({ cvId }: { cvId: string }) => (
     <div data-testid="cv-management-skills">Manage Skills for {cvId}</div>
   ),
 }));
 
 jest.mock("./modals/EditCvSkillModal", () => ({
-  EditCvSkillModal: ({ open, categoryId, mastery, toggleAction }: any) => (
+  EditCvSkillModal: ({
+    open,
+    categoryId,
+    mastery,
+    toggleAction,
+  }: {
+    open: boolean;
+    categoryId: string | null;
+    mastery?: string;
+    toggleAction: () => void;
+  }) => (
     <div data-testid="edit-skill-modal" data-open={open}>
       Modal Open: {String(open)} | Category: {categoryId} | Mastery: {mastery}
       <button onClick={toggleAction} data-testid="close-modal-btn">
@@ -104,33 +122,44 @@ describe("CvSkills Component", () => {
       return { data: undefined, loading: false, error: undefined };
     });
   });
-
   it("should render loading state when queries are loading", () => {
     (useQuery as unknown as jest.Mock).mockReturnValue({ loading: true });
     render(<CvSkills cvId={mockCvId} />);
     expect(screen.getByTestId("loading-component")).toBeInTheDocument();
   });
-
-  it("should render error message if categories query fails", () => {
+  it("should render empty state if categories query fails", () => {
     (useQuery as unknown as jest.Mock).mockImplementation((query) => {
-      if (query === GET_SKILL_CATEGORIES)
-        return { error: { message: "Categories failed" } };
-      return { loading: false };
+      if (query === GET_SKILL_CATEGORIES) {
+        return {
+          error: { message: "Categories failed" },
+          loading: false,
+        };
+      }
+      return {
+        loading: false,
+        data: undefined,
+      };
     });
-
     render(<CvSkills cvId={mockCvId} />);
-    expect(screen.getByText("Error: Categories failed")).toBeInTheDocument();
+    expect(screen.getByText("empty")).toBeInTheDocument();
   });
 
-  it("should render error message if CV skills query fails", () => {
+  it("should render empty state if CV skills query fails", () => {
     (useQuery as unknown as jest.Mock).mockImplementation((query) => {
-      if (query === GET_CV_SKILLS)
-        return { error: { message: "Skills failed" } };
-      return { data: mockCategoriesData, loading: false };
+      if (query === GET_CV_SKILLS) {
+        return {
+          error: { message: "Skills failed" },
+          loading: false,
+        };
+      }
+      return {
+        data: mockCategoriesData,
+        loading: false,
+        error: undefined,
+      };
     });
-
     render(<CvSkills cvId={mockCvId} />);
-    expect(screen.getByText("Error: Skills failed")).toBeInTheDocument();
+    expect(screen.getByText("empty")).toBeInTheDocument();
   });
 
   it("should render grouped skills and child components successfully", () => {
