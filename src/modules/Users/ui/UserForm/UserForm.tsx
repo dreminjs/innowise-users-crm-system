@@ -102,6 +102,7 @@ export const UserForm = ({
               value={field.value}
               testId="department-select"
               onChange={(value) => setValue("departmentId", value)}
+              error={errors.departmentId?.message}
             />
           )}
         />
@@ -120,6 +121,7 @@ export const UserForm = ({
               value={field.value}
               testId="position-select"
               onChange={(value) => setValue("positionId", value)}
+              error={errors.positionId?.message}
             />
           )}
         />
