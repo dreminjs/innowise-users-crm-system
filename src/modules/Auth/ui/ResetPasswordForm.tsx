@@ -28,7 +28,7 @@ export const ResetPasswordForm = () => {
     >
       <form className={styles.forgotPassword} onSubmit={handleSubmit(onSubmit)}>
         <FormField<TResetPasswordFormData>
-          type={"email"}
+          type={"password"}
           register={register}
           name={"newPassword"}
           label={t("resetPassword.newPassword")}

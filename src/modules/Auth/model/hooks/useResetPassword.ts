@@ -3,12 +3,14 @@
 import { useMutation } from "@apollo/client/react";
 import { RESET_PASSWORD } from "../../api/mutations";
 import { useNotification } from "@/modules/Notifications";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { TResetPasswordFormData } from "../auth.types";
 import { useTranslations } from "next-intl";
 
 export const useResetPassword = () => {
   const t = useTranslations("resetPassword");
+  const searchParams = useSearchParams();
+  const token = searchParams.get("token");
 
   const addNotification = useNotification((state) => state.addNotification);
   const push = useRouter().push;
@@ -22,7 +24,14 @@ export const useResetPassword = () => {
     },
   });
   const onSubmit = (dto: TResetPasswordFormData) => {
-    mutate({ variables: { dto } });
+    mutate({
+      variables: { dto },
+      context: {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      },
+    });
   };
   return { onSubmit, loading };
 };
