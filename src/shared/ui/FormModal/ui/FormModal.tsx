@@ -18,13 +18,14 @@ export const FormModal: FC<IFormModalProps> = ({
   return (
     <Dialog.Root
       open={open}
+      modal={false}
       onOpenChange={(details) => {
         if (!details.open) {
           toggleAction();
         }
       }}
     >
-      <Dialog.Backdrop />
+      <Dialog.Backdrop backdropFilter="blur(8px)" bg="rgba(0, 0, 0, 0.2)" />
       <Dialog.Positioner className={styles.formPositioner}>
         <Dialog.Content className={styles.formModalContent}>
           <Dialog.Header className={styles.formHeader}>

@@ -51,7 +51,7 @@ describe("UserSkills", () => {
     });
     useQuery.mockReturnValueOnce({});
     useUserStore.mockReturnValue("Admin");
-    render(<UserSkills userSkillsId="1" currentUserId="1" />);
+    render(<UserSkills userSkillsId="1" currentUserId="1" isAdmin={false} />);
     expect(screen.getByText("loading")).toBeInTheDocument();
   });
 
@@ -64,7 +64,7 @@ describe("UserSkills", () => {
     });
     useQuery.mockReturnValueOnce({});
     useUserStore.mockReturnValue("Admin");
-    render(<UserSkills userSkillsId="1" currentUserId="1" />);
+    render(<UserSkills userSkillsId="1" currentUserId="1" isAdmin={false} />);
     expect(screen.getByText("empty")).toBeInTheDocument();
   });
 
@@ -81,7 +81,7 @@ describe("UserSkills", () => {
       },
     });
     useUserStore.mockReturnValue("Admin");
-    render(<UserSkills userSkillsId="1" currentUserId="1" />);
+    render(<UserSkills userSkillsId="1" currentUserId="1" isAdmin={false} />);
     expect(screen.getByText("empty")).toBeInTheDocument();
   });
 
@@ -96,7 +96,7 @@ describe("UserSkills", () => {
       data: {},
     });
     useUserStore.mockReturnValue("Admin");
-    render(<UserSkills userSkillsId="1" currentUserId="1" />);
+    render(<UserSkills userSkillsId="1" currentUserId="1" isAdmin={false} />);
     expect(screen.getByText("empty")).toBeInTheDocument();
   });
 
@@ -124,7 +124,7 @@ describe("UserSkills", () => {
       },
     });
     useUserStore.mockReturnValue("Admin");
-    render(<UserSkills userSkillsId="1" currentUserId="1" />);
+    render(<UserSkills userSkillsId="1" currentUserId="1" isAdmin={false} />);
     expect(screen.getByText("skills-list:true")).toBeInTheDocument();
   });
 
@@ -147,7 +147,7 @@ describe("UserSkills", () => {
       },
     });
     useUserStore.mockReturnValue("Admin");
-    render(<UserSkills userSkillsId="1" currentUserId="1" />);
+    render(<UserSkills userSkillsId="1" currentUserId="1" isAdmin={false} />);
     expect(screen.getByText("empty")).toBeInTheDocument();
   });
 
@@ -174,7 +174,7 @@ describe("UserSkills", () => {
       },
     });
     useUserStore.mockReturnValue("Admin");
-    render(<UserSkills userSkillsId="1" currentUserId="1" />);
+    render(<UserSkills userSkillsId="1" currentUserId="1" isAdmin={false} />);
     expect(screen.getByText("management:true")).toBeInTheDocument();
   });
 
@@ -197,7 +197,7 @@ describe("UserSkills", () => {
       },
     });
     useUserStore.mockReturnValue("Admin");
-    render(<UserSkills userSkillsId="1" currentUserId="1" />);
+    render(<UserSkills userSkillsId="1" currentUserId="1" isAdmin={false} />);
     expect(screen.getByText("management:false")).toBeInTheDocument();
   });
 
@@ -224,7 +224,7 @@ describe("UserSkills", () => {
       },
     });
     useUserStore.mockReturnValue("Employee");
-    render(<UserSkills userSkillsId="1" currentUserId="1" />);
+    render(<UserSkills userSkillsId="1" currentUserId="1" isAdmin={false} />);
     expect(screen.getByText("skills-list:true")).toBeInTheDocument();
   });
 
@@ -251,7 +251,7 @@ describe("UserSkills", () => {
       },
     });
     useUserStore.mockReturnValue("Employee");
-    render(<UserSkills userSkillsId="2" currentUserId="1" />);
+    render(<UserSkills userSkillsId="2" currentUserId="1" isAdmin={false} />);
     expect(screen.getByText("skills-list:false")).toBeInTheDocument();
   });
 });

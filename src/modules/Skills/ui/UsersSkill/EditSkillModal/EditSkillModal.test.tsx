@@ -19,11 +19,9 @@ jest.mock("@/shared/ui/FormModal", () => ({
   }) => (
     <div>
       <h1>{title}</h1>
-
       <button type="button" onClick={toggleAction}>
         close
       </button>
-
       {children}
     </div>
   ),
@@ -44,7 +42,6 @@ jest.mock("./EditSkillForm", () => ({
         form:
         {categoryId}:{mastery}
       </div>
-
       <button type="button" onClick={onToggle}>
         form-close
       </button>
@@ -64,6 +61,7 @@ describe("EditSkillModal", () => {
         onClose={onCloseMock}
         categoryId="1"
         mastery={Mastery.Expert}
+        userId={""}
       />,
     );
     expect(screen.getByText("editSkill")).toBeInTheDocument();
@@ -76,6 +74,7 @@ describe("EditSkillModal", () => {
         onClose={onCloseMock}
         categoryId="1"
         mastery={Mastery.Expert}
+        userId={""}
       />,
     );
     expect(screen.getByText("form:1:Expert")).toBeInTheDocument();
@@ -88,6 +87,7 @@ describe("EditSkillModal", () => {
         onClose={onCloseMock}
         categoryId="1"
         mastery={Mastery.Expert}
+        userId={""}
       />,
     );
     expect(screen.queryByText("form:1:Expert")).not.toBeInTheDocument();
@@ -98,8 +98,9 @@ describe("EditSkillModal", () => {
       <EditSkillModal
         open
         onClose={onCloseMock}
-        categoryId={null}
+        categoryId={""}
         mastery={Mastery.Expert}
+        userId={""}
       />,
     );
     expect(screen.queryByText(/form:/i)).not.toBeInTheDocument();
@@ -112,6 +113,7 @@ describe("EditSkillModal", () => {
         onClose={onCloseMock}
         categoryId="1"
         mastery={Mastery.Expert}
+        userId={""}
       />,
     );
     await userEvent.click(screen.getByText("close"));
@@ -125,6 +127,7 @@ describe("EditSkillModal", () => {
         onClose={onCloseMock}
         categoryId="1"
         mastery={Mastery.Expert}
+        userId={""}
       />,
     );
     await userEvent.click(screen.getByText("form-close"));
@@ -138,6 +141,7 @@ describe("EditSkillModal", () => {
         onClose={onCloseMock}
         categoryId="1"
         mastery={Mastery.Advanced}
+        userId={""}
       />,
     );
     expect(screen.getByText("form:1:Advanced")).toBeInTheDocument();
