@@ -7,7 +7,7 @@ import { FC } from "react";
 import { Empty } from "@/shared/ui/Empty";
 
 interface ISkllsProps {
-  userSkillsId: string;
+  userSkillsId: UserRole;
   currentUserId: string;
   isAdmin: boolean;
 }

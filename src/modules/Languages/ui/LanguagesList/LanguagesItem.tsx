@@ -1,6 +1,5 @@
 import { FC } from "react";
 import { languageLevelColors } from "../../model/languages.constants";
-
 import styles from "../Languages.module.css";
 import clsx from "clsx";
 import { Proficiency } from "@/generated/graphql";
