@@ -122,7 +122,14 @@
     "skills": "Skills",
     "languages": "Languages",
     "users": "Employees",
-    "cvs": "CVs"
+    "cvs": "CVs",
+    "employees": "Employees",
+    "projects": "Projects",
+    "departments": "Departments",
+    "positions": "Positions",
+    "settings": "Settings",
+    "profile": "Profile",
+    "logout": "Logout"
   },
   "Appearance": {
     "system": "Device settings",

@@ -121,13 +121,17 @@
     "languages": "Sprachen"
   },
   "Navigation": {
+    "employees": "Mitarbeiter",
+    "users": "Mitarbeiter",
     "skills": "Fähigkeiten",
     "languages": "Sprachen",
-    "users": "Mitarbeiter",
     "cvs": "Lebensläufe",
-    "preview": "Vorschau",
+    "projects": "Projekten",
+    "positions": "Positionen",
+    "departments": "Abteilungen",
     "settings": "Einstellungen",
-    "projects": "Projekte"
+    "profile": "Profil",
+    "logout": "Abmelden"
   },
   "Appearance": {
     "system": "Systemeinstellungen",

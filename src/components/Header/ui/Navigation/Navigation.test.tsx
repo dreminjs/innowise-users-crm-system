@@ -12,9 +12,7 @@ jest.mock("next-intl", () => ({
     ) => string) & {
       has: (key: string) => boolean;
     };
-
     t.has = (key: string) => key === "dashboard";
-
     return t;
   }),
 }));

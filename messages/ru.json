@@ -125,13 +125,17 @@
     "languages": "Языки"
   },
   "Navigation": {
+    "employees": "Сотрудники",
     "skills": "Навыки",
     "languages": "Языки",
-    "users": "Сотрудники",
     "cvs": "Резюме",
-    "preview": "Превью",
+    "users": "Сотрудники",
+    "projects": "Проекты",
+    "positions": "Должности",
+    "departments": "Депортаменты",
     "settings": "Настройки",
-    "projects": "Проекты"
+    "profile": "Профиль",
+    "logout": "Выйти"
   },
   "Appearance": {
     "system": "Настройки устройства",
