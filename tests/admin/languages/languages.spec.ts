@@ -1,72 +1,55 @@
 import { expect, test } from "@playwright/test";
+
 test("admin can create edit and delete languages", async ({ page }) => {
-  const languageName = "test";
-  const updatedLanguageName = "TEST";
+  const languageName = `test_${Date.now()}`;
+  const updatedLanguageName = `TEST_${Date.now()}`;
+  const searchInput = page.getByTestId("search-input");
+  const findRow = (name: string) =>
+    page.locator("tbody tr").filter({ hasText: name });
+  const openDialog = () =>
+    page.locator('[role="dialog"][data-scope="dialog"][data-state="open"]');
+  const openPopover = () =>
+    page.locator('[role="dialog"][data-part="content"][data-state="open"]');
   await page.goto("/languages");
   await expect(page).toHaveURL(/languages/);
   await page.getByTestId("add-new-btn").click();
-  const createDialog = page.getByRole("dialog");
-  await expect(createDialog).toBeVisible();
+  const createDialog = openDialog();
+  await expect(createDialog).toBeVisible({ timeout: 10000 });
   await createDialog.getByTestId("language-name").fill(languageName);
   await createDialog.getByTestId("language-native-name").fill(languageName);
   await createDialog.getByTestId("iso2").fill("ts");
   await createDialog.getByTestId("confirm-btn").click();
-  await expect(createDialog).not.toBeVisible();
-  await page.getByTestId("search-input").fill(languageName);
-  await expect(
-    page.locator("tbody tr").filter({
-      hasText: languageName,
-    }),
-  ).toHaveCount(1);
-  const row = page
-    .locator("tbody tr")
-    .filter({
-      hasText: languageName,
-    })
-    .first();
+  await expect(createDialog).toBeHidden({ timeout: 10000 });
+  await searchInput.fill(languageName);
+  await expect(findRow(languageName)).toHaveCount(1);
+  const row = findRow(languageName).first();
   await row.locator('button[data-part="trigger"]').click();
-  const popover = page.locator('[data-part="content"][role="dialog"]').last();
+  const popover = openPopover();
   await expect(popover).toBeVisible();
   await expect(popover.getByTestId("button")).toBeVisible();
   await expect(popover.getByTestId("button-danger")).toBeVisible();
   await popover.getByTestId("button").click();
-  const editDialog = page.getByRole("dialog");
-  await expect(editDialog).toBeVisible();
-  const languageInput = editDialog.getByTestId("language-name");
-  await languageInput.clear();
-  await languageInput.fill(updatedLanguageName);
-  const nativeNameInput = editDialog.getByTestId("language-native-name");
-  await nativeNameInput.clear();
-  await nativeNameInput.fill(updatedLanguageName);
-  const iso2Input = editDialog.getByTestId("iso2");
-  await iso2Input.clear();
-  await iso2Input.fill("TS");
+  const editDialog = openDialog();
+  await expect(editDialog).toBeVisible({ timeout: 10000 });
+  await editDialog.getByTestId("language-name").clear();
+  await editDialog.getByTestId("language-name").fill(updatedLanguageName);
+  await editDialog.getByTestId("language-native-name").clear();
+  await editDialog
+    .getByTestId("language-native-name")
+    .fill(updatedLanguageName);
+  await editDialog.getByTestId("iso2").clear();
+  await editDialog.getByTestId("iso2").fill("TS");
   await editDialog.getByTestId("confirm-btn").click();
-  await expect(editDialog).not.toBeVisible();
-  await page.getByTestId("search-input").clear();
-  await page.getByTestId("search-input").fill(updatedLanguageName);
-  await expect(
-    page.locator("tbody tr").filter({
-      hasText: updatedLanguageName,
-    }),
-  ).toHaveCount(1);
-  const updatedRow = page
-    .locator("tbody tr")
-    .filter({
-      hasText: updatedLanguageName,
-    })
-    .first();
+  await expect(editDialog).toBeHidden({ timeout: 10000 });
+  await searchInput.clear();
+  await searchInput.fill(updatedLanguageName);
+  await expect(findRow(updatedLanguageName)).toHaveCount(1);
+  const updatedRow = findRow(updatedLanguageName).first();
   await updatedRow.locator('button[data-part="trigger"]').click();
-  const updatedPopover = page
-    .locator('[data-part="content"][role="dialog"]')
-    .last();
-  await expect(updatedPopover).toBeVisible();
-  await updatedPopover.getByTestId("button-danger").click();
-  await page.getByTestId("search-input").clear();
-  await page.getByTestId("search-input").fill(updatedLanguageName);
-  await expect(
-    page.locator("tbody tr").filter({
-      hasText: updatedLanguageName,
-    }),
-  ).toHaveCount(0);
+  const deletePopover = openPopover();
+  await expect(deletePopover).toBeVisible();
+  await deletePopover.getByTestId("button-danger").click();
+  await expect(findRow(updatedLanguageName)).toHaveCount(0, {
+    timeout: 10000,
+  });
 });

@@ -34,7 +34,9 @@ export const UserActions: FC<IUserActionsProps> = ({ user }) => {
         open={isPopoverVisible}
         onOpenChange={(e) => setIsPopoverVisible(e.open)}
       >
-        <Popover.Trigger>⋮</Popover.Trigger>
+        <Popover.Trigger asChild>
+          <button className={styles.actionsTrigger}>⋮</button>
+        </Popover.Trigger>
         <Popover.Positioner>
           <Popover.Content width={130} className={styles.actionContainer}>
             <Popover.CloseTrigger />

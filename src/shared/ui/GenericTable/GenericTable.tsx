@@ -35,11 +35,9 @@ export const GenericTable = <T, TColumn extends string, TSort extends string>({
   if (loading) {
     return <Loading />;
   }
-
   if (!data.length) {
     return empty || <Empty />;
   }
-
   return (
     <div className={styles.wrapper}>
       <table className={styles.table}>

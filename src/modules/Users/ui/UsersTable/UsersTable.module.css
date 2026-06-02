@@ -12,11 +12,8 @@
 }
 
 .actionsColumn {
-    width: 72px;
-    min-width: 72px;
-    text-align: center;
+    width: 48px;
 }
-
 .cellContent {
     overflow: hidden;
     text-overflow: ellipsis;
