@@ -21,7 +21,7 @@ export const Navigation = () => {
             <Fragment key={href}>
               {idx === 1 && <UserIcon />}
               <NavigationItem
-                label={t.has(el) ? t(el) : segment || el}
+                label={t.has(el) ? t(el) : el}
                 href={idx === 1 ? "" : href}
                 isActive={idx === 1}
               />
