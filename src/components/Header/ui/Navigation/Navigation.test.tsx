@@ -107,9 +107,10 @@ describe("Navigation", () => {
     ).toBeInTheDocument();
   });
 
-  it("renders dynamic segment", () => {
+  it("renders segment", () => {
     render(<Navigation />);
-    expect(screen.getAllByText("nav-label:dynamic-user")).toHaveLength(2);
+    expect(screen.getByText("nav-label:users")).toBeInTheDocument();
+    expect(screen.getByText("nav-label:123")).toBeInTheDocument();
   });
 
   it("renders correct hrefs", () => {
