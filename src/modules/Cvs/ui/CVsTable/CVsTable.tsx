@@ -51,6 +51,8 @@ export const CVsTable = ({
       {
         key: "employee",
         title: t("employee"),
+        sortable: true,
+        sortKey: "employee",
         className: styles.employeeColumn,
         render: (cv) => (
           <span className={styles.cellContent}>{cv.user?.email ?? "-"}</span>

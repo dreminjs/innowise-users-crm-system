@@ -1,6 +1,6 @@
 import { GetCvsQuery } from "@/graphql/graphql";
 
-export type CvSortField = "name" | "education";
+export type CvSortField = "name" | "education" | "employee";
 export type CvSortOrder = "asc" | "desc";
 
 export const processCvs = (
@@ -34,6 +34,10 @@ export const processCvs = (
     if (sortField === "education") {
       first = a.education?.toLowerCase() ?? "";
       second = b.education?.toLowerCase() ?? "";
+    }
+    if (sortField === "employee") {
+      first = a.user?.email?.toLowerCase() ?? "";
+      second = b.user?.email?.toLowerCase() ?? "";
     }
 
     if (sortOrder === "asc") {
